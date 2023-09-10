@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjn2i8rf1li1j"]
+
+[ext_resource type="Script" path="res://Core/Scenes/ShaderSystems/ConstanceMousePosShaderUpdate.gd" id="1_u0q02"]
+
+[node name="ConstanceMousePosShaderUpdate" type="Node"]
+process_mode = 3
+script = ExtResource("1_u0q02")

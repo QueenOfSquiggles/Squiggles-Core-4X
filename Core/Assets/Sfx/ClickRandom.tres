@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://c0xwf1oiftm4e"]
+
+[ext_resource type="AudioStream" uid="uid://5s5cftbnfvbg" path="res://Assets/Sfx/click_blip.wav" id="1_ttpv0"]
+
+[resource]
+streams_count = 1
+random_pitch = 2.0
+stream_0/stream = ExtResource("1_ttpv0")
+stream_0/weight = 1.0

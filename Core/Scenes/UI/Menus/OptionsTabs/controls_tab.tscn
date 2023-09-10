@@ -1,0 +1,270 @@
+[gd_scene load_steps=7 format=3 uid="uid://btd2j8upuoh1b"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/ControlsTab.cs" id="1_y6pcj"]
+[ext_resource type="PackedScene" uid="uid://sgndh4ywb4st" path="res://Core/Scenes/UI/Menus/OptionsTabs/slider_combo.tscn" id="2_midyy"]
+[ext_resource type="PackedScene" uid="uid://t2bcoypqjyrt" path="res://Core/Scenes/UI/Menus/OptionsTabs/action_mapping_slot.tscn" id="3_hxwhr"]
+[ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="3_k08te"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="5_dayim"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4loes"]
+font_size = 32
+
+[node name="ControlSettings" type="PanelContainer"]
+custom_minimum_size = Vector2(720, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 76.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_y6pcj")
+PathSliderMouseSensitive = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity/HBoxContainer/HSlider")
+PathSliderGamepadSensitive = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity/HBoxContainer/HSlider")
+PathListeningPopup = NodePath("SlidingRoot/ListeningPopup")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls Settings"
+label_settings = SubResource("LabelSettings_4loes")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Sensitivity" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LblSensitivity" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity"]
+layout_mode = 2
+text = "Sensitivities
+"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity"]
+layout_mode = 2
+
+[node name="MouseSensitivity" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity" instance=ExtResource("2_midyy")]
+layout_mode = 2
+text = "Mouse"
+slider_value = 400.0
+min_value = 1.0
+max_value = 1000.0
+step_value = 5.0
+
+[node name="Lbl" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity" index="0"]
+text = "Mouse"
+
+[node name="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity/HBoxContainer" index="0"]
+min_value = 1.0
+max_value = 1000.0
+step = 5.0
+value = 401.0
+
+[node name="ValueLbl" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity/HBoxContainer" index="1"]
+text = "400"
+
+[node name="GamepadSensitivity" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity" instance=ExtResource("2_midyy")]
+layout_mode = 2
+text = "Gamepad"
+slider_value = 500.0
+min_value = 1.0
+max_value = 1000.0
+step_value = 5.0
+
+[node name="Lbl" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity" index="0"]
+text = "Gamepad"
+
+[node name="HSlider" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity/HBoxContainer" index="0"]
+min_value = 1.0
+max_value = 1000.0
+step = 5.0
+value = 501.0
+
+[node name="ValueLbl" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity/HBoxContainer" index="1"]
+text = "500"
+
+[node name="Mappings" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings"]
+layout_mode = 2
+text = "Controls Mappings"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnApplyChanges" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply Changes"
+
+[node name="UISounds" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnApplyChanges" instance=ExtResource("3_k08te")]
+
+[node name="BtnResetAll" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reset All Mappings"
+
+[node name="UISounds" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnResetAll" instance=ExtResource("3_k08te")]
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings"]
+layout_mode = 2
+
+[node name="Action_MoveForward" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "move_forward"
+
+[node name="Action_MoveBack" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "move_back"
+
+[node name="Action_MoveLeft" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "move_left"
+
+[node name="Action_MoveRight" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "move_right"
+
+[node name="Action_Interact" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "interact"
+
+[node name="Action_Jump" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "jump"
+
+[node name="Action_Sprint" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "sprint"
+
+[node name="Action_Crouch" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "crouch"
+
+[node name="Action_OpenInventory" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "open_inventory"
+
+[node name="Action_PickupItem" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "pickup_item"
+
+[node name="Action_GamepadLookUp" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_look_up"
+
+[node name="Action_GamepadLookDown" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_look_down"
+
+[node name="Action_GamepadLookLeft" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_look_left"
+
+[node name="Action_GamepadLookRight" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_look_right"
+
+[node name="Action_GamepadMoveForward" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_move_forward"
+
+[node name="Action_GamepadMoveBack" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_move_back"
+
+[node name="Action_GamepadMoveLeft" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_move_left"
+
+[node name="Action_GamepadMoveRight" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "gamepad_move_right"
+
+[node name="Action_UiCycleLeft" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "ui_cycle_left"
+
+[node name="Action_UiCycleRight" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings" instance=ExtResource("3_hxwhr")]
+layout_mode = 2
+TargetAction = "ui_cycle_right"
+
+[node name="SlidingRoot" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ListeningPopup" type="Popup" parent="SlidingRoot"]
+disable_3d = true
+title = "Listening For Input"
+initial_position = 2
+size = Vector2i(480, 360)
+always_on_top = true
+transparent = true
+
+[node name="CenterContainer" type="CenterContainer" parent="SlidingRoot/ListeningPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SlidingRoot/ListeningPopup/CenterContainer"]
+layout_mode = 2
+text = "Listening For Input
+Press any button to assign!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlidingPanelComponent" type="Node" parent="."]
+script = ExtResource("5_dayim")
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnApplyChanges" to="." method="ApplyChanges"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnResetAll" to="." method="ResetAllMappings"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_MoveForward" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_MoveBack" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_MoveLeft" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_MoveRight" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_Interact" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_Jump" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_Sprint" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_Crouch" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_OpenInventory" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_PickupItem" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadLookUp" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadLookDown" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadLookLeft" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadLookRight" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadMoveForward" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadMoveBack" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadMoveLeft" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_GamepadMoveRight" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_UiCycleLeft" to="." method="ListenForAction"]
+[connection signal="ListenForAction" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/Action_UiCycleRight" to="." method="ListenForAction"]
+
+[editable path="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity"]
+[editable path="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity"]

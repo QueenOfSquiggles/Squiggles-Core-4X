@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bes6on8dhb1c3"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/CreditsScene.cs" id="2_0eafv"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="3_l3624"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_og6d8"]
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.658824)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vlqgw"]
+font_size = 32
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("_CreditsLinesRoot")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -183.5
+offset_right = 806.0
+offset_bottom = 183.5
+grow_vertical = 2
+script = ExtResource("2_0eafv")
+_CreditsLinesRoot = NodePath("MarginContainer/VBoxContainer")
+_LabelStyling = SubResource("LabelSettings_og6d8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_vlqgw")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SlidingPanelComponent" type="Node" parent="."]
+script = ExtResource("3_l3624")

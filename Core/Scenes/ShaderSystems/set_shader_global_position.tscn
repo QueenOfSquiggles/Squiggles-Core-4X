@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://db4g3dbnfr7m5"]
+
+[ext_resource type="Script" path="res://Core/Scenes/ShaderSystems/set_shader_global_position.gd" id="1_rm4ek"]
+
+[node name="SetShaderGlobalPosition" type="Marker3D"]
+script = ExtResource("1_rm4ek")

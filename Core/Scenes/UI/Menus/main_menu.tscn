@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4l37id685tw"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/MainMenu.cs" id="1_ef7d4"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="3_k7orp"]
+[ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="4_geber"]
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="5_scqaj"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/ControlsHelp/load_controls_mappings.tscn" id="6_unbtx"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/VersioningLabel.cs" id="7_1dicm"]
+[ext_resource type="Script" path="res://Core/Scenes/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0pa6q"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_ButtonsPanel", "_GameLogo")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ef7d4")
+PlayMenuScene = "res://Core/Scenes/UI/Menus/play_menu.tscn"
+Options = "res://Core/Scenes/UI/Menus/options_menu.tscn"
+CreditsScene = "res://Core/Scenes/UI/Menus/credits_scene.tscn"
+_ButtonsPanel = NodePath("ControlButtons")
+_GameLogo = NodePath("ControlButtons/MarginContainer/VBoxContainer/TitleTexture")
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -516.0
+offset_top = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ControlButtons" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 268.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlButtons"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlButtons/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleTexture" type="TextureRect" parent="ControlButtons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_scqaj")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="ControlButtons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="BtnPlay" type="Button" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main_menu.play"
+
+[node name="RequestFocusOnParent" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" instance=ExtResource("3_k7orp")]
+layout_mode = 1
+
+[node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" instance=ExtResource("4_geber")]
+
+[node name="BtnOptions" type="Button" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main_menu.options"
+
+[node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnOptions" instance=ExtResource("4_geber")]
+
+[node name="BtnCredits" type="Button" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main_menu.credits"
+
+[node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnCredits" instance=ExtResource("4_geber")]
+
+[node name="BtnQuit" type="Button" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main_menu.quit"
+
+[node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnQuit" instance=ExtResource("4_geber")]
+
+[node name="Control" type="Control" parent="ControlButtons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LinkButton" type="LinkButton" parent="ControlButtons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "main_menu.made_by"
+underline = 1
+uri = "https://queenofsquiggles.itch.io/"
+
+[node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/LinkButton" instance=ExtResource("4_geber")]
+
+[node name="LoadControlsMappings" parent="." instance=ExtResource("6_unbtx")]
+
+[node name="VersioningLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "Dyanamic Versioning Text"
+label_settings = SubResource("LabelSettings_0pa6q")
+script = ExtResource("7_1dicm")
+
+[node name="SceneBGMLoader" type="Node" parent="."]
+script = ExtResource("8_4ubeu")
+crossfade_duration = 2.0
+
+[connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" to="." method="OnBtnPlay"]
+[connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnOptions" to="." method="OnBtnOptions"]
+[connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnCredits" to="." method="OnBtnCredits"]
+[connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnQuit" to="." method="OnBtnQuit"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://Core/Scenes/Character/Player/PlayerController.cs" id="1_a4hb8"]
+[ext_resource type="PackedScene" uid="uid://cvxg1i0juoqmy" path="res://Core/Scenes/Utility/CameraUtilities/virtual_camera.tscn" id="2_ctyh5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bput"]
+albedo_color = Color(0.368627, 0.054902, 0.607843, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_egvq0"]
+radius = 0.2
+height = 1.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ovivv"]
+radius = 0.2
+height = 1.6
+
+[sub_resource type="Animation" id="Animation_fvani"]
+resource_name = "Test"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtxw5"]
+_data = {
+"Test": SubResource("Animation_fvani")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_26orf"]
+animation = &"Test"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uoswe"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fs7a4"]
+states/Start/position = Vector2(154.4, 89.6)
+states/Test/node = SubResource("AnimationNodeAnimation_26orf")
+states/Test/position = Vector2(300, 106)
+transitions = ["Start", "Test", SubResource("AnimationNodeStateMachineTransition_uoswe")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_jgq6h"]
+
+[node name="First Person Character Controller" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_a4hb8")
+cam_arm_path = NodePath("CameraArm")
+anim_tree_path = NodePath("AnimationTree")
+raycast_path = NodePath("CameraArm/VirtualCamera/InteractionRay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801277, 0)
+material_override = SubResource("StandardMaterial3D_5bput")
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_egvq0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.814102, 0)
+shape = SubResource("CapsuleShape3D_ovivv")
+
+[node name="CameraArm" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37657, 0)
+
+[node name="VirtualCamera" parent="CameraArm" instance=ExtResource("2_ctyh5")]
+PushCamOnReady = true
+AllowVCamChildren = true
+LerpCamera = false
+
+[node name="InteractionRay" type="RayCast3D" parent="CameraArm/VirtualCamera"]
+target_position = Vector3(0, 0, -1.5)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gtxw5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_fs7a4")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_jgq6h")

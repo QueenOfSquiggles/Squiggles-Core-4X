@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Core/Scenes/Utility/Effects/ScreenShakeDriver.cs" id="1_krrry"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lsmy6"]
+frequency = 0.1
+
+[node name="ScreenShakeDriver" type="Node" groups=["screen_shake_driver"]]
+script = ExtResource("1_krrry")
+noise = SubResource("FastNoiseLite_lsmy6")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://366c8134uumb"]
+
+[ext_resource type="Script" path="res://Core/Scenes/World/GroundMaterial/GroundMaterial.cs" id="1_exh2y"]
+
+[node name="GroundMaterialComponent" type="Node"]
+script = ExtResource("1_exh2y")

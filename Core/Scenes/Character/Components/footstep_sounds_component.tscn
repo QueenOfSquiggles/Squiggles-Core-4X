@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg7138iwmapsx"]
+
+[ext_resource type="Script" path="res://Core/Scenes/Character/Components/FootstepSoundsComponent.cs" id="1_u11rn"]
+[ext_resource type="PackedScene" uid="uid://xiabcgjmvnuf" path="res://Core/Scenes/World/GroundMaterial/ground_material_poller.tscn" id="2_d2ae5"]
+
+[node name="FootstepSoundsComponent" type="Node3D"]
+script = ExtResource("1_u11rn")
+PathStepSound = NodePath("StepSound")
+PathGroundPoller = NodePath("GroundMaterialPoller")
+
+[node name="StepSound" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 4
+
+[node name="GroundMaterialPoller" parent="." instance=ExtResource("2_d2ae5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+target_position = Vector3(0, -0.2, 0)

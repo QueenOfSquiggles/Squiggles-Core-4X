@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://t2bcoypqjyrt"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/ActionMappingSlot.cs" id="1_rla21"]
+[ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="2_oaymo"]
+
+[node name="ActionMappingSlot" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 22
+alignment = 1
+script = ExtResource("1_rla21")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "ACTION_NAME"
+
+[node name="BtnListen" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ACTION_TEXT"
+text_overrun_behavior = 3
+
+[node name="UISounds" parent="BtnListen" instance=ExtResource("2_oaymo")]
+
+[node name="BtnReset" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Reset"
+
+[node name="UISounds" parent="BtnReset" instance=ExtResource("2_oaymo")]

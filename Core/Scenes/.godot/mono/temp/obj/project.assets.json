@@ -1,0 +1,208 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Godot.SourceGenerators/4.1.0-beta.2": {
+        "type": "package",
+        "build": {
+          "build/Godot.SourceGenerators.props": {}
+        }
+      },
+      "GodotSharp/4.1.0-beta.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/GodotSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/GodotSharp.dll": {}
+        }
+      },
+      "GodotSharpEditor/4.1.0-beta.2": {
+        "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.1.0-beta.2"
+        },
+        "compile": {
+          "lib/net6.0/GodotSharpEditor.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/GodotSharpEditor.dll": {}
+        }
+      },
+      "addons/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Godot.SourceGenerators": "4.1.0-beta.2",
+          "GodotSharp": "4.1.0-beta.2",
+          "GodotSharpEditor": "4.1.0-beta.2"
+        },
+        "compile": {
+          "bin/placeholder/addons.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/addons.dll": {}
+        }
+      },
+      "Modules/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Godot.SourceGenerators": "4.1.0-beta.2",
+          "GodotSharp": "4.1.0-beta.2",
+          "GodotSharpEditor": "4.1.0-beta.2",
+          "addons": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Modules.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Modules.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Godot.SourceGenerators/4.1.0-beta.2": {
+      "sha512": "GF5L3jE+Ck2gyU4bgzq50FeF0VQCj5LAKp+ePd1FPfuHoDwaUuVbofWbJsCWNJ9qL6D5OGRal2ONy2nY6Nsxog==",
+      "type": "package",
+      "path": "godot.sourcegenerators/4.1.0-beta.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "analyzers/dotnet/cs/Godot.SourceGenerators.dll",
+        "build/Godot.SourceGenerators.props",
+        "godot.sourcegenerators.4.1.0-beta.2.nupkg.sha512",
+        "godot.sourcegenerators.nuspec"
+      ]
+    },
+    "GodotSharp/4.1.0-beta.2": {
+      "sha512": "ehtkYjH/0TX1/VIWIu0LgpPbPb0y87XmekCEA1cfAcyOw53M+Z9C6FQcA5y9yr2w7RaJX6XuDW0sqzktkTzhCg==",
+      "type": "package",
+      "path": "godotsharp/4.1.0-beta.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "godotsharp.4.1.0-beta.2.nupkg.sha512",
+        "godotsharp.nuspec",
+        "lib/net6.0/GodotSharp.dll",
+        "lib/net6.0/GodotSharp.xml"
+      ]
+    },
+    "GodotSharpEditor/4.1.0-beta.2": {
+      "sha512": "I8JVtCN/ZYJKuAJlYMpZEwTBxQffuQ8+W+KukBXqG2x8Z5ZBAO3SqcuVDp7x3tDBhL19VCHQLD6QKUHT7/yB0g==",
+      "type": "package",
+      "path": "godotsharpeditor/4.1.0-beta.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "godotsharpeditor.4.1.0-beta.2.nupkg.sha512",
+        "godotsharpeditor.nuspec",
+        "lib/net6.0/GodotSharpEditor.dll",
+        "lib/net6.0/GodotSharpEditor.xml"
+      ]
+    },
+    "addons/1.0.0": {
+      "type": "project",
+      "path": "../addons/addons.csproj",
+      "msbuildProject": "../addons/addons.csproj"
+    },
+    "Modules/1.0.0": {
+      "type": "project",
+      "path": "../Modules/Modules.csproj",
+      "msbuildProject": "../Modules/Modules.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Godot.SourceGenerators >= 4.1.0-beta.2",
+      "GodotSharp >= 4.1.0-beta.2",
+      "GodotSharpEditor >= 4.1.0-beta.2",
+      "Modules >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/nessa/.nuget/packages/": {},
+    "/home/nessa/.local/share/Godot-Manager/versions/4.0.3-mono/editor_data/mono/GodotNuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/nessa/Documents/programming/godot/projects/repos/cute-farm-sim/Scenes/Scenes.csproj",
+      "projectName": "Scenes",
+      "projectPath": "/home/nessa/Documents/programming/godot/projects/repos/cute-farm-sim/Scenes/Scenes.csproj",
+      "packagesPath": "/home/nessa/.nuget/packages/",
+      "outputPath": "/home/nessa/Documents/programming/godot/projects/repos/cute-farm-sim/Scenes/.godot/mono/temp/obj/",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/home/nessa/.local/share/Godot-Manager/versions/4.0.3-mono/editor_data/mono/GodotNuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "/home/nessa/.nuget/NuGet/NuGet.Config",
+        "/home/nessa/.nuget/NuGet/config/Godot.Offline.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "/home/nessa/Documents/programming/godot/projects/repos/cute-farm-sim/Modules/Modules.csproj": {
+              "projectPath": "/home/nessa/Documents/programming/godot/projects/repos/cute-farm-sim/Modules/Modules.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "Godot.SourceGenerators": {
+            "target": "Package",
+            "version": "[4.1.0-beta.2, )"
+          },
+          "GodotSharp": {
+            "target": "Package",
+            "version": "[4.1.0-beta.2, )"
+          },
+          "GodotSharpEditor": {
+            "target": "Package",
+            "version": "[4.1.0-beta.2, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.14, 6.0.14]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.114/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

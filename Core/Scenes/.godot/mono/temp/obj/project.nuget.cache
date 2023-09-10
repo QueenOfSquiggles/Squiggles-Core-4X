@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "LOTkU2dNqfvvuGHSey5db14da/4sBlBE6ZUqtSDzA2afxBeafFuwWALcz2z8mJytYk8TjUAJOziZwezRXMTtFg==",
+  "success": true,
+  "projectFilePath": "/home/nessa/Documents/programming/godot/projects/repos/cute-farm-sim/Scenes/Scenes.csproj",
+  "expectedPackageFiles": [
+    "/home/nessa/.nuget/packages/godot.sourcegenerators/4.1.0-beta.2/godot.sourcegenerators.4.1.0-beta.2.nupkg.sha512",
+    "/home/nessa/.nuget/packages/godotsharp/4.1.0-beta.2/godotsharp.4.1.0-beta.2.nupkg.sha512",
+    "/home/nessa/.nuget/packages/godotsharpeditor/4.1.0-beta.2/godotsharpeditor.4.1.0-beta.2.nupkg.sha512",
+    "/home/nessa/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.14/microsoft.aspnetcore.app.ref.6.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}

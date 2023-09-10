@@ -1,0 +1,191 @@
+[gd_scene load_steps=7 format=3 uid="uid://ceeiivirtbxx6"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/GraphicsTab.cs" id="1_lbres"]
+[ext_resource type="PackedScene" uid="uid://sgndh4ywb4st" path="res://Core/Scenes/UI/Menus/OptionsTabs/slider_combo.tscn" id="2_h61vd"]
+[ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="2_u0rvq"]
+[ext_resource type="PackedScene" uid="uid://4elgg5q5jaob" path="res://Core/Scenes/UI/Menus/OptionsTabs/graphics_demo_display_async.tscn" id="2_upr2m"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="4_26by2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_scsl4"]
+font_size = 32
+
+[node name="GraphicsTab" type="PanelContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = 33.0
+grow_vertical = 2
+script = ExtResource("1_lbres")
+PackedGraphicsDisplay = ExtResource("2_upr2m")
+path_option_fullscreen = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/HBoxContainer/OptionFullscreenMode")
+path_check_bloom = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckBloom")
+path_check_ssr = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSR")
+path_check_ssao = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSAO")
+path_check_ssil = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSIL")
+path_check_sdfgi = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSDFGI")
+path_slider_exposure = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideExposure/HBoxContainer/HSlider")
+path_slider_brightness = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness/HBoxContainer/HSlider")
+path_slider_contrast = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast/HBoxContainer/HSlider")
+path_slider_saturation = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation/HBoxContainer/HSlider")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Graphics Settings"
+label_settings = SubResource("LabelSettings_scsl4")
+horizontal_alignment = 1
+
+[node name="VSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="GraphicsDisplayRoot" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="BtnApplySettings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply Graphics Settings"
+
+[node name="UIEffects" parent="MarginContainer/VBoxContainer/BtnApplySettings" instance=ExtResource("2_u0rvq")]
+
+[node name="ScrollContainer_2" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer_2"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Window Mode"
+
+[node name="OptionFullscreenMode" type="OptionButton" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 4
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 2
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 10
+popup/item_1/separator = true
+popup/item_2/text = "Full Windowed"
+popup/item_2/id = 3
+popup/item_3/text = "Full Exclusive"
+popup/item_3/id = 4
+
+[node name="UIEffects" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/HBoxContainer/OptionFullscreenMode" instance=ExtResource("2_u0rvq")]
+
+[node name="CheckBloom" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "The glowing of illuminated objects. 
+Fairly low impact on performance"
+text = "Bloom"
+
+[node name="UIEffects_5" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckBloom" instance=ExtResource("2_u0rvq")]
+
+[node name="CheckSSAO" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "The glowing of illuminated objects. 
+Fairly low impact on performance"
+text = "Screen-Space Ambient Occlusion"
+
+[node name="UIEffects_4" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSAO" instance=ExtResource("2_u0rvq")]
+
+[node name="CheckSSR" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer"]
+layout_mode = 2
+text = "Screen-Space Reflections"
+
+[node name="UIEffects_3" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSR" instance=ExtResource("2_u0rvq")]
+
+[node name="CheckSSIL" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer"]
+layout_mode = 2
+text = "Screen-Space Indirect Lighting"
+
+[node name="UIEffects_2" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSIL" instance=ExtResource("2_u0rvq")]
+
+[node name="CheckSDFGI" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer"]
+layout_mode = 2
+text = "SDF Global Illumination"
+
+[node name="UIEffects" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSDFGI" instance=ExtResource("2_u0rvq")]
+
+[node name="SlideExposure" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer" instance=ExtResource("2_h61vd")]
+layout_mode = 2
+text = "Exposure"
+max_value = 8.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideExposure" index="0"]
+text = "Exposure"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideExposure/HBoxContainer" index="0"]
+max_value = 8.0
+
+[node name="SlideBrightness" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer" instance=ExtResource("2_h61vd")]
+layout_mode = 2
+text = "Brightness"
+max_value = 2.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness" index="0"]
+text = "Brightness"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness/HBoxContainer" index="0"]
+max_value = 2.0
+
+[node name="SlideContrast" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer" instance=ExtResource("2_h61vd")]
+layout_mode = 2
+text = "Contrast"
+max_value = 2.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast" index="0"]
+text = "Contrast"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast/HBoxContainer" index="0"]
+max_value = 2.0
+
+[node name="SlideSaturation" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer" instance=ExtResource("2_h61vd")]
+layout_mode = 2
+text = "Saturation"
+max_value = 2.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation" index="0"]
+text = "Saturation"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation/HBoxContainer" index="0"]
+max_value = 2.0
+
+[node name="SlidingPanelComponent" type="Node" parent="."]
+script = ExtResource("4_26by2")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnApplySettings" to="." method="ApplyGraphicsSettings"]
+
+[editable path="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideExposure"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation"]

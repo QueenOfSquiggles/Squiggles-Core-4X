@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd0c4x15l7x2v"]
+
+[ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="1_52vsu"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/PlayMenu.cs" id="1_vbd2q"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="2_id8sb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tddlm"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_m1em8"]
+
+[node name="PlayMenu" type="PanelContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 4.0
+grow_vertical = 2
+script = ExtResource("1_vbd2q")
+LevelScene = "res://Game/testing_level_heightmap.tscn"
+PathSaveSlotsRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/SaveSlotsRoot")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "main_menu.title.play"
+label_settings = SubResource("LabelSettings_tddlm")
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnContinue" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "main_menu.continue"
+
+[node name="UIEffects" parent="MarginContainer/VBoxContainer/BtnContinue" instance=ExtResource("1_52vsu")]
+
+[node name="BtnNewGame" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "main_menu.new_game"
+
+[node name="UIEffects" parent="MarginContainer/VBoxContainer/BtnNewGame" instance=ExtResource("1_52vsu")]
+
+[node name="HSeparator_2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label_2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "main_menu.title.load"
+label_settings = SubResource("LabelSettings_m1em8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="SaveSlotsRoot" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SlidingPanelComponent" type="Node" parent="."]
+script = ExtResource("2_id8sb")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnContinue" to="." method="OnBtnContinue"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnNewGame" to="." method="OnBtnNewGame"]

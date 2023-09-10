@@ -1,0 +1,17 @@
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.csproj.AssemblyReference.cache
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.GeneratedMSBuildEditorConfig.editorconfig
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.AssemblyInfoInputs.cache
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.AssemblyInfo.cs
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.csproj.CoreCompileInputs.cache
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/bin/Debug/SquigglesCommon4X.deps.json
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/bin/Debug/SquigglesCommon4X.runtimeconfig.json
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/bin/Debug/SquigglesCommon4X.dll
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/bin/Debug/ref/SquigglesCommon4X.dll
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/bin/Debug/SquigglesCommon4X.pdb
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.csproj.CopyComplete
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.dll
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/ref/SquigglesCommon4X.dll
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.pdb
+/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/.godot/mono/temp/obj/Debug/SquigglesCommon4X.genruntimeconfig.cache

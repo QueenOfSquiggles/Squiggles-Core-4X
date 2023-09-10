@@ -1,0 +1,17 @@
+keys,en
+main_menu.title,TITLE TBD
+main_menu.play,Play
+main_menu.continue,Continue
+main_menu.options,Options
+main_menu.credits,Credits
+main_menu.quit,Quit
+main_menu.made_by,Made By Queen Of Squiggles
+main_menu.new_game,New Game
+main_menu.title.play,Play Menu
+main_menu.title.load,Load Save
+TEST,This is a test translation. Working!
+empty_plot.name,Empty Plot
+plots.farm,Farming Plot
+creatures.rat,Rat
+items.base_potion,Testing Potion
+items.cheese_fruit,Cheese Fruit

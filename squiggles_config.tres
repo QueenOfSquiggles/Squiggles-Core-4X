@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SquigglesCoreConfigFile" load_steps=3 format=3 uid="uid://b04fyr3fsw1lx"]
+
+[ext_resource type="Script" path="res://Core/MetaConfig/SquigglesCoreConfigFile.cs" id="1_55e3y"]
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="1_smwbr"]
+
+[resource]
+script = ExtResource("1_55e3y")
+PlayScene = ""
+GameLogo = ExtResource("1_smwbr")
+LaunchSceneOverride = ""
+MainMenuOverride = ""
+RegistryPathPattern = "res://Game/Registries/%s/"
+RegistryTypes = PackedStringArray()
+CreditsLines = PackedStringArray("Kenney - for all kinds of awesome CC0 assets")

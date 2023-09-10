@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://jxv636fg1elf"]
+
+[ext_resource type="PackedScene" uid="uid://cpi11vcqc7gk3" path="res://Core/Scenes/Utility/Environment/world_env_settings_compliant.tscn" id="1_303i3"]
+[ext_resource type="PackedScene" uid="uid://bwohee6c633j6" path="res://Core/Scenes/UI/Menus/pause_menu_controller.tscn" id="2_2cy7m"]
+[ext_resource type="PackedScene" uid="uid://clvfklayqmfnw" path="res://Core/Scenes/UI/HUD/default_hud.tscn" id="2_b2wle"]
+[ext_resource type="PackedScene" uid="uid://ctgxlwrddpdbx" path="res://Core/Scenes/Utility/CameraUtilities/camera_brain.tscn" id="3_kk5cy"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/UI/HUD/hud_requests.tscn" id="8_gp156"]
+
+[node name="WorldBase" type="Node3D"]
+editor_description = "Intended to be used as a base scene for any 3D scenes in the game. The default necessary nodes are in place for convenience"
+
+[node name="DefaultHUD" parent="." instance=ExtResource("2_b2wle")]
+layer = 6
+
+[node name="PauseMenuController" parent="DefaultHUD" instance=ExtResource("2_2cy7m")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.556296, -0.503567, 0.661026, 0, 0.795473, 0.605989, -0.830984, -0.337109, 0.442518, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnv_SettingsCompliant" parent="." instance=ExtResource("1_303i3")]
+
+[node name="CameraBrain" parent="." instance=ExtResource("3_kk5cy")]
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="HUD Requests" parent="." instance=ExtResource("8_gp156")]

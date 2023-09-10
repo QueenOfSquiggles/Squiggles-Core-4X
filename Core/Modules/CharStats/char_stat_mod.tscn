@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://n7kfgksndv61"]
+
+[ext_resource type="Script" path="res://Core/Modules/CharStats/CharStatFloatMod.cs" id="1_v6tnt"]
+
+[node name="CharStatMod" type="Node"]
+script = ExtResource("1_v6tnt")

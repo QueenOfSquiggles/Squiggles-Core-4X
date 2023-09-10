@@ -1,0 +1,227 @@
+[gd_scene load_steps=11 format=3 uid="uid://ci8028xlquyq1"]
+
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/AccessHelp/force_access_load.tscn" id="2_kdbm6"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/LaunchSequence/LaunchSequence.cs" id="2_q1rby"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/Effects/cutscene_skipper.tscn" id="3_ngdg6"]
+[ext_resource type="Texture2D" uid="uid://01na5gpnckya" path="res://Core/Scenes/UI/LaunchSequence/icon-alternative-dark.png" id="4_c6jfh"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/Environment/load_graphics_settings.tscn" id="6_mmmhm"]
+
+[sub_resource type="Animation" id="Animation_sphh6"]
+resource_name = "OpeningAnimation"
+length = 12.0
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneSkipper")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"Start"
+}, {
+"args": [],
+"method": &"Stop"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GodotLogo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(11.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"EndLaunchSequence"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LblAGameBy:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameLogo:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.6, 9.6, 11.1, 12.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2v66e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GodotLogo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LblAGameBy:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameLogo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_inaex"]
+_data = {
+"OpeningAnimation": SubResource("Animation_sphh6"),
+"RESET": SubResource("Animation_2v66e")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_um2mp"]
+font_size = 69
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_onokb"]
+
+[node name="LaunchSequence" type="Control" node_paths=PackedStringArray("_Anim", "_GameLogo")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_q1rby")
+testing = true
+_Anim = NodePath("AnimationPlayer")
+_GameLogo = NodePath("GameLogo")
+
+[node name="ForceAccessLoad" parent="." instance=ExtResource("2_kdbm6")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_inaex")
+}
+
+[node name="CutsceneSkipper" parent="." instance=ExtResource("3_ngdg6")]
+path_animation_player = NodePath("../AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LblMadeWith" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -52.0
+offset_right = 412.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lovingly made with..."
+label_settings = SubResource("LabelSettings_um2mp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GodotLogo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_c6jfh")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="LblAGameBy" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -52.0
+offset_right = 412.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A game by
+Queen Of Squiggles"
+label_settings = SubResource("LabelSettings_um2mp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameLogo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_onokb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LoadGraphicsSettings" parent="." instance=ExtResource("6_mmmhm")]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]

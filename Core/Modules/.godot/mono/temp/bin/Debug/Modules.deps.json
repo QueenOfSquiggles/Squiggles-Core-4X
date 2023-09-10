@@ -1,0 +1,85 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Modules/1.0.0": {
+        "dependencies": {
+          "Godot.SourceGenerators": "4.1.0-beta.2",
+          "GodotSharp": "4.1.0-beta.2",
+          "GodotSharpEditor": "4.1.0-beta.2",
+          "addons": "1.0.0"
+        },
+        "runtime": {
+          "Modules.dll": {}
+        }
+      },
+      "Godot.SourceGenerators/4.1.0-beta.2": {},
+      "GodotSharp/4.1.0-beta.2": {
+        "runtime": {
+          "lib/net6.0/GodotSharp.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "GodotSharpEditor/4.1.0-beta.2": {
+        "dependencies": {
+          "GodotSharp": "4.1.0-beta.2"
+        },
+        "runtime": {
+          "lib/net6.0/GodotSharpEditor.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
+          }
+        }
+      },
+      "addons/1.0.0": {
+        "dependencies": {
+          "Godot.SourceGenerators": "4.1.0-beta.2",
+          "GodotSharp": "4.1.0-beta.2",
+          "GodotSharpEditor": "4.1.0-beta.2"
+        },
+        "runtime": {
+          "addons.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Modules/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Godot.SourceGenerators/4.1.0-beta.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GF5L3jE+Ck2gyU4bgzq50FeF0VQCj5LAKp+ePd1FPfuHoDwaUuVbofWbJsCWNJ9qL6D5OGRal2ONy2nY6Nsxog==",
+      "path": "godot.sourcegenerators/4.1.0-beta.2",
+      "hashPath": "godot.sourcegenerators.4.1.0-beta.2.nupkg.sha512"
+    },
+    "GodotSharp/4.1.0-beta.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ehtkYjH/0TX1/VIWIu0LgpPbPb0y87XmekCEA1cfAcyOw53M+Z9C6FQcA5y9yr2w7RaJX6XuDW0sqzktkTzhCg==",
+      "path": "godotsharp/4.1.0-beta.2",
+      "hashPath": "godotsharp.4.1.0-beta.2.nupkg.sha512"
+    },
+    "GodotSharpEditor/4.1.0-beta.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I8JVtCN/ZYJKuAJlYMpZEwTBxQffuQ8+W+KukBXqG2x8Z5ZBAO3SqcuVDp7x3tDBhL19VCHQLD6QKUHT7/yB0g==",
+      "path": "godotsharpeditor/4.1.0-beta.2",
+      "hashPath": "godotsharpeditor.4.1.0-beta.2.nupkg.sha512"
+    },
+    "addons/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

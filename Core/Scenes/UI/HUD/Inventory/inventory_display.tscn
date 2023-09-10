@@ -1,0 +1,180 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdbea4r3ttnjr"]
+
+[ext_resource type="Theme" uid="uid://b6m4xd68fa5um" path="res://Core/Assets/Theme/default_theme.tres" id="1_dt4db"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/Inventory/ObjectDisplay.gd" id="2_u0y2s"]
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="2_xc552"]
+
+[sub_resource type="World3D" id="World3D_mqpo8"]
+
+[sub_resource type="TextMesh" id="TextMesh_x7j5r"]
+text = "Woah!"
+
+[node name="InventoryDisplay" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dt4db")
+
+[node name="ItemPreviewSection" type="SubViewportContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+script = ExtResource("2_u0y2s")
+
+[node name="SubViewport" type="SubViewport" parent="ItemPreviewSection"]
+world_3d = SubResource("World3D_mqpo8")
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(624, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="ItemPreviewSection/SubViewport"]
+
+[node name="ObjectRotator" type="MeshInstance3D" parent="ItemPreviewSection/SubViewport/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.45581)
+cast_shadow = 0
+mesh = SubResource("TextMesh_x7j5r")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemPreviewSection/SubViewport/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91855, 1.93673, -1.00539)
+omni_attenuation = 1e-05
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="ItemPreviewSection/SubViewport/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99495, -1.59089, -0.935685)
+omni_attenuation = 1e-05
+
+[node name="InventoryUI" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryUI"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="InventoryUI/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 5
+
+[node name="Button" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button2" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button3" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button4" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button5" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button6" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button7" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button8" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button9" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button10" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button11" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button12" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button13" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button14" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="Button15" type="Button" parent="InventoryUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("2_xc552")
+flat = true
+expand_icon = true
+
+[node name="HSeparator2" type="HSeparator" parent="InventoryUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InventoryUI/VBoxContainer"]
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="InventoryUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="InventoryUI/VBoxContainer"]
+layout_mode = 2
+text = "Item Description"

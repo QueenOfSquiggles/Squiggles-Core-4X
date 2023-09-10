@@ -1,0 +1,172 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbfdlcj7agxhj"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/AudioTab.cs" id="1_uko75"]
+[ext_resource type="PackedScene" uid="uid://sgndh4ywb4st" path="res://Core/Scenes/UI/Menus/OptionsTabs/slider_combo.tscn" id="2_wor7r"]
+[ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="3_3gmn4"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="4_yvpk1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_81ya3"]
+font_size = 32
+
+[node name="AudioOptions" type="PanelContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 346.0
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("1_uko75")
+path_slider_main = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainBus/HBoxContainer/HSlider")
+path_slider_vo = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VOBus/HBoxContainer/HSlider")
+path_slider_sfx = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXBus/HBoxContainer/HSlider")
+path_slider_creature = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CreatureBus/HBoxContainer/HSlider")
+path_slider_drones = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DronesBus/HBoxContainer/HSlider")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Audio Volumes"
+label_settings = SubResource("LabelSettings_81ya3")
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="BtnApply" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Apply Changes"
+
+[node name="UIEffects" parent="MarginContainer/VBoxContainer/BtnApply" instance=ExtResource("3_3gmn4")]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="MainBus" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_wor7r")]
+layout_mode = 2
+text = "Main Audio (Controls Others)"
+slider_value = -15.0
+min_value = -72.0
+max_value = -6.0
+step_value = 1.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainBus" index="0"]
+text = "Main Audio (Controls Others)"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainBus/HBoxContainer" index="0"]
+min_value = -72.0
+max_value = -6.0
+step = 1.0
+value = -15.0
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainBus/HBoxContainer" index="1"]
+text = "-15"
+
+[node name="VOBus" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_wor7r")]
+layout_mode = 2
+text = "Voices"
+slider_value = -15.0
+min_value = -72.0
+max_value = -6.0
+step_value = 1.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VOBus" index="0"]
+text = "Voices"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VOBus/HBoxContainer" index="0"]
+min_value = -72.0
+max_value = -6.0
+step = 1.0
+value = -15.0
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VOBus/HBoxContainer" index="1"]
+text = "-15"
+
+[node name="SFXBus" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_wor7r")]
+layout_mode = 2
+text = "SFX"
+slider_value = -15.0
+min_value = -72.0
+max_value = -6.0
+step_value = 1.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXBus" index="0"]
+text = "SFX"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXBus/HBoxContainer" index="0"]
+min_value = -72.0
+max_value = -6.0
+step = 1.0
+value = -15.0
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXBus/HBoxContainer" index="1"]
+text = "-15"
+
+[node name="CreatureBus" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_wor7r")]
+layout_mode = 2
+text = "Creature Noises"
+slider_value = -15.0
+min_value = -72.0
+max_value = -6.0
+step_value = 1.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CreatureBus" index="0"]
+text = "Creature Noises"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CreatureBus/HBoxContainer" index="0"]
+min_value = -72.0
+max_value = -6.0
+step = 1.0
+value = -15.0
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CreatureBus/HBoxContainer" index="1"]
+text = "-15"
+
+[node name="DronesBus" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_wor7r")]
+layout_mode = 2
+text = "Background Music"
+slider_value = -15.0
+min_value = -72.0
+max_value = -6.0
+step_value = 1.0
+
+[node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DronesBus" index="0"]
+text = "Background Music"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DronesBus/HBoxContainer" index="0"]
+min_value = -72.0
+max_value = -6.0
+step = 1.0
+value = -15.0
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DronesBus/HBoxContainer" index="1"]
+text = "-15"
+
+[node name="SlidingPanelComponent" type="Node" parent="."]
+script = ExtResource("4_yvpk1")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnApply" to="." method="ApplyChanges"]
+
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MainBus"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VOBus"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SFXBus"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CreatureBus"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DronesBus"]

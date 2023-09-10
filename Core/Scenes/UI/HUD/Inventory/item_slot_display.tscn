@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cehxnein641v"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/Inventory/ItemSlotDisplay.cs" id="1_4mgao"]
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="1_12baf"]
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="2_ngcrk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mx625"]
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ItemSlotDisplay" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 132.0
+offset_bottom = 172.0
+script = ExtResource("1_4mgao")
+SelectOffset = 32.0
+PathIcon = NodePath("TextureRect")
+PathLabel = NodePath("TextureRect/Label")
+
+[node name="BGTexture" type="TextureRect" parent="."]
+self_modulate = Color(0.32549, 0.384314, 0.341176, 1)
+layout_mode = 2
+texture = ExtResource("2_ngcrk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("1_12baf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TextureRect"]
+custom_minimum_size = Vector2(32, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "999"
+label_settings = SubResource("LabelSettings_mx625")
+horizontal_alignment = 2

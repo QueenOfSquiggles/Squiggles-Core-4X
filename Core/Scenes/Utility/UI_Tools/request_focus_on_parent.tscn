@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.gd" id="1_qfqto"]
+
+[node name="RequestFocusOnParent" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_qfqto")

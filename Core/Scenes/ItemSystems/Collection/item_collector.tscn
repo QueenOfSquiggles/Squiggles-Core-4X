@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqwng1o8by3wt"]
+
+[ext_resource type="Script" path="res://Core/Scenes/ItemSystems/Collection/ItemCollector.cs" id="1_5v4wc"]
+
+[node name="ItemCollector" type="Area3D"]
+monitorable = false
+script = ExtResource("1_5v4wc")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEnter"]
