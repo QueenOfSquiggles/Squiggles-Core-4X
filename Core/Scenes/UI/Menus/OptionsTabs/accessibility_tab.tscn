@@ -104,9 +104,10 @@ popup/item_2/id = 2
 
 [node name="UIEffects" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/FontStyle2/FontStyle" instance=ExtResource("2_n5o3d")]
 
-[node name="Spacing" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Spacing" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_constants/separation = 64
 
 [node name="FlashingLights" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -125,9 +126,10 @@ text = "Less Flashing Lights"
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Spacing2" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Spacing2" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_constants/separation = 64
 
 [node name="UIScaling" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -143,6 +145,9 @@ text = "Scale"
 
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling/SliderCombo" index="0"]
 text = "Scale"
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling/SliderCombo/HBoxContainer" index="1"]
+text = "1"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling" groups=["access_description"]]
 layout_mode = 2
@@ -183,9 +188,10 @@ autowrap_mode = 3
 [node name="HSeparator5" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Spacing5" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Spacing5" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_constants/separation = 64
 
 [node name="ScreenShake" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -202,12 +208,18 @@ text = "Strength"
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/Stength" index="0"]
 text = "Strength"
 
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/Stength/HBoxContainer" index="1"]
+text = "1"
+
 [node name="MaxDuration" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake" instance=ExtResource("2_wr3cm")]
 layout_mode = 2
 text = "Max Duration"
 
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/MaxDuration" index="0"]
 text = "Max Duration"
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/MaxDuration/HBoxContainer" index="1"]
+text = "1"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake" groups=["access_description"]]
 layout_mode = 2
@@ -217,9 +229,10 @@ autowrap_mode = 3
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Spacing4" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Spacing4" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_constants/separation = 64
 
 [node name="ControllerRumble" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -236,12 +249,18 @@ text = "Strength"
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/Stength" index="0"]
 text = "Strength"
 
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/Stength/HBoxContainer" index="1"]
+text = "1"
+
 [node name="MaxDuration" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble" instance=ExtResource("2_wr3cm")]
 layout_mode = 2
 text = "Max Duration"
 
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/MaxDuration" index="0"]
 text = "Max Duration"
+
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/MaxDuration/HBoxContainer" index="1"]
+text = "1"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble" groups=["access_description"]]
 layout_mode = 2
@@ -251,9 +270,10 @@ autowrap_mode = 3
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Spacing3" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Spacing3" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_constants/separation = 64
 
 [node name="AlwaysShowReticle" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -289,6 +309,9 @@ text = "Time Scale"
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale/Stength" index="0"]
 text = "Time Scale"
 
+[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale/Stength/HBoxContainer" index="1"]
+text = "1"
+
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale" groups=["access_description"]]
 layout_mode = 2
 text = "Time Scale will change the clock speed of the game. This can help with giving more reaction time, however this will scale all time based operations, so be careful if you choose to alter this. Additonally, there is the option to increase the time scale about 1.0, which will make the game run faster than normal, which could provide an interesting challenge to anyone who really wants it. 
@@ -298,9 +321,10 @@ autowrap_mode = 3
 [node name="HSeparator6" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Spacing6" type="Control" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Spacing6" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_constants/separation = 64
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

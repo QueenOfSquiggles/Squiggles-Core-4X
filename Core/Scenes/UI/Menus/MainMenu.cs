@@ -18,6 +18,7 @@ public partial class MainMenu : Control
 	[ExportGroup("Node Paths")]
 	[Export] private Control _ButtonsPanel;
 	[Export] private TextureRect _GameLogo;
+	[Export] private LinkButton _AuthorLabel;
 
 	private Node _CurrentPopup = null;
 
@@ -25,6 +26,8 @@ public partial class MainMenu : Control
 	{
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 		_GameLogo.Texture = ThisIsYourMainScene.Config.GameLogo;
+		_AuthorLabel.Text = Tr(_AuthorLabel.Text).Replace("%s", ThisIsYourMainScene.Config.AuthorName);
+		_AuthorLabel.Uri = ThisIsYourMainScene.Config.AuthorGamesURL;
 	}
 
 	private async void OnBtnPlay()

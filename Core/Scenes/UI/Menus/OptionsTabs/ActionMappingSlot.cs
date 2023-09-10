@@ -8,7 +8,7 @@ public partial class ActionMappingSlot : HBoxContainer
 
     [Signal] public delegate void ListenForActionEventHandler(string action_name);
 
-    [Export] private string TargetAction = "";
+    [Export] public string TargetAction = "";
 
     private Label label;
     private Button action_button;
@@ -29,8 +29,8 @@ public partial class ActionMappingSlot : HBoxContainer
 
     private void HandleMappingChanged(string action)
     {
-        if(action != TargetAction) return;
-        action_button.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);        
+        if (action != TargetAction) return;
+        action_button.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);
     }
 
     public void AssignButtonPressed()

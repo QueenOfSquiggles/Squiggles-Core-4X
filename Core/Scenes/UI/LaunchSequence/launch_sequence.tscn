@@ -136,7 +136,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_q1rby")
-testing = true
 _Anim = NodePath("AnimationPlayer")
 _GameLogo = NodePath("GameLogo")
 

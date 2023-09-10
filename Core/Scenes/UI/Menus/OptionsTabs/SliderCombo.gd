@@ -37,6 +37,7 @@ func _ready() -> void:
 	slider.min_value = min_value
 	slider.max_value = max_value
 	slider.step = step_value
+	$HBoxContainer/ValueLbl.text = str(slider.value)
 
 
 func _on_h_slider_drag_ended(value_changed: bool) -> void:

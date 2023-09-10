@@ -13,10 +13,17 @@ public partial class SquigglesCoreConfigFile : Resource
 	[Export(PropertyHint.File, "*.tscn")] public string LaunchSceneOverride = "";
 	[Export(PropertyHint.File, "*.tscn")] public string MainMenuOverride = "";
 
+	[ExportGroup("Remappable Controls")]
+	[Export] public string[] RemapControlsNames = Array.Empty<string>();
+	[Export] public bool HideUIMappings = true;
 
 	[ExportGroup("Registries", "Registry")]
 	[Export] public string RegistryPathPattern = "res://Game/Registries/%s/";
 	[Export] public string[] RegistryTypes = Array.Empty<string>();
+
+	[ExportGroup("Author Info", "Author")]
+	[Export] public string AuthorName = "";
+	[Export] public string AuthorGamesURL = "";
 
 	[ExportGroup("Credits")]
 	[Export] public string[] CreditsLines = Array.Empty<string>();

@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-[GlobalClass, Icon("res://Assets/UsefulEditorIcons/world_entity_resource.svg")]
+[GlobalClass]
 public partial class WorldEntity : Resource
 {
 

@@ -7,7 +7,6 @@ using queen.extension;
 
 public partial class PlayMenu : PanelContainer
 {
-    [Export(PropertyHint.File, "*.tscn")] private string LevelScene;
     [Export] private NodePath PathSaveSlotsRoot;
 
     private Control _SlotsRoot;
@@ -38,9 +37,10 @@ public partial class PlayMenu : PanelContainer
     {
         Events.Data.TriggerSerializeAll();
         Data.LoadMostRecentSaveSlot();
-        if (GetTree().CurrentScene.SceneFilePath != LevelScene) Scenes.LoadSceneAsync(LevelScene);
+        if (GetTree().CurrentScene.SceneFilePath != GetLevelScene()) Scenes.LoadSceneAsync(GetLevelScene());
         Events.Data.TriggerReload();
     }
+
     private void OnBtnNewGame()
     {
         LoadSlot(Data.CreateSaveSlotName()); // makes a new save slot for current time
@@ -50,7 +50,9 @@ public partial class PlayMenu : PanelContainer
     {
         Events.Data.TriggerSerializeAll();
         Data.SetSaveSlot(slot_name);
-        if (GetTree().CurrentScene.SceneFilePath != LevelScene) Scenes.LoadSceneAsync(LevelScene);
+        if (GetTree().CurrentScene.SceneFilePath != GetLevelScene()) Scenes.LoadSceneAsync(GetLevelScene());
         Events.Data.TriggerReload();
     }
+
+    private string GetLevelScene() => ThisIsYourMainScene.Config.PlayScene;
 }

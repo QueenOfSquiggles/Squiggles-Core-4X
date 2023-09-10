@@ -15,7 +15,6 @@ anchor_bottom = 1.0
 offset_right = 4.0
 grow_vertical = 2
 script = ExtResource("1_vbd2q")
-LevelScene = "res://Game/testing_level_heightmap.tscn"
 PathSaveSlotsRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/SaveSlotsRoot")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -10,9 +10,9 @@ public class Access
     private const int FONT_GOTHIC = 0;
     private const int FONT_NOTO_SANS = 1;
     private const int FONT_OPEN_DYSLEXIE = 2;
-    private const string FONT_PATH_GOTHIC = "res://Assets/Fonts/DelaGothicOne-Regular.ttf";
-    private const string FONT_PATH_NOTO_SANS = "res://Assets/Fonts/NotoSans-Regular.ttf";
-    private const string FONT_PATH_OPEN_DYSLEXIE = "res://Assets/Fonts/OpenDyslexic-Regular.otf";
+    private const string FONT_PATH_GOTHIC = "res://Core/Assets/Fonts/DelaGothicOne-Regular.ttf";
+    private const string FONT_PATH_NOTO_SANS = "res://Core/Assets/Fonts/NotoSans-Regular.ttf";
+    private const string FONT_PATH_OPEN_DYSLEXIE = "res://Core/Assets/Fonts/OpenDyslexic-Regular.otf";
 
     public const float RETICLE_SHOW = 0.4f;
     public const float RETICLE_HIDE_VISIBLE = 0.1f;
@@ -77,9 +77,23 @@ public class Access
     private static void ApplyChanges()
     {
         // audio limiter
-        var effect = AudioServer.GetBusEffect(0, 0) as AudioEffectLimiter;
-        queen.error.Debugging.Assert(effect != null, "Access failed to get the Limiter effect on the Master audio bus.  Make sure the indices are correct!");
-        if (effect is not null) effect.CeilingDb = Instance.AudioDecibelLimit;
+        var effect_count = AudioServer.GetBusEffectCount(0);
+        AudioEffectLimiter ael = null;
+        for (int i = 0; i < effect_count; i++)
+        {
+            ael = AudioServer.GetBusEffect(0, i) as AudioEffectLimiter;
+            if (ael is null) continue;
+            break;
+        }
+        bool add_effect = false;
+        if (ael is null)
+        {
+            // no limiter effect found
+            add_effect = true;
+            ael = new();
+        }
+        ael.CeilingDb = Instance.AudioDecibelLimit;
+        if (add_effect) AudioServer.AddBusEffect(0, ael);
 
         // font management
         string path = "";

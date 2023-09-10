@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace queen.data;
@@ -10,6 +11,7 @@ public class AudioBuses
     //      Defaults assigned as well
     //
 
+    public float[] Volumes = new float[0];
     public float VolumeMain = 0.0f;
     public float VolumeVO = 0.0f;
     public float VolumeSFX = 0.0f;
@@ -49,11 +51,14 @@ public class AudioBuses
 
     private static void UpdateAudioServer()
     {
-        AudioServer.SetBusVolumeDb(0, _instance.VolumeMain);
-        AudioServer.SetBusVolumeDb(1, _instance.VolumeVO);
-        AudioServer.SetBusVolumeDb(2, _instance.VolumeSFX);
-        AudioServer.SetBusVolumeDb(3, _instance.VolumeCreature);
-        AudioServer.SetBusVolumeDb(4, _instance.VolumeDrones);
+        if (_instance.Volumes.Length != AudioServer.BusCount)
+        {
+            Array.Resize(ref _instance.Volumes, AudioServer.BusCount);
+        }
+        for (int i = 0; i < AudioServer.BusCount; i++)
+        {
+            AudioServer.SetBusVolumeDb(i, _instance.Volumes[i]);
+        }
     }
 
 }

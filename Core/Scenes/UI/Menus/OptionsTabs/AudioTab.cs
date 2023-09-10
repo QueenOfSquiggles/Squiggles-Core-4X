@@ -6,31 +6,28 @@ using queen.extension;
 
 public partial class AudioTab : PanelContainer
 {
-    [Export] private NodePath path_slider_main;
-    [Export] private NodePath path_slider_vo;
-    [Export] private NodePath path_slider_sfx;
-    [Export] private NodePath path_slider_creature;
-    [Export] private NodePath path_slider_drones;
-
-    private HSlider slider_main;
-    private HSlider slider_vo;
-    private HSlider slider_sfx;
-    private HSlider slider_creature;
-    private HSlider slider_drones;
+    [Export] private Control _SlidersRoot;
+    [Export] private PackedScene _SliderComboScene;
 
     public override void _Ready()
     {
-        this.GetNode(path_slider_main, out slider_main);
-        this.GetNode(path_slider_vo, out slider_vo);
-        this.GetNode(path_slider_sfx, out slider_sfx);
-        this.GetNode(path_slider_creature, out slider_creature);
-        this.GetNode(path_slider_drones, out slider_drones);
+        int count = AudioServer.BusCount;
+        for (int i = 0; i < count; i++)
+        {
+            var scene = _SliderComboScene.Instantiate();
+            var bus_name = AudioServer.GetBusName(i);
+            scene.Name = $"AudioSlider_{bus_name}";
+            var sci = new SliderComboInterface(scene)
+            {
+                Text = bus_name,
+                MinValue = -72,
+                MaxValue = -6,
+                StepValue = 1,
+                SliderValue = -15
+            };
+            _SlidersRoot.AddChild(scene);
+        }
 
-        slider_main.Value = AudioBuses.Instance.VolumeMain;
-        slider_vo.Value = AudioBuses.Instance.VolumeVO;
-        slider_sfx.Value = AudioBuses.Instance.VolumeSFX;
-        slider_creature.Value = AudioBuses.Instance.VolumeCreature;
-        slider_drones.Value = AudioBuses.Instance.VolumeDrones;
 
         Events.Data.SerializeAll += ApplyChanges;
     }
@@ -44,12 +41,13 @@ public partial class AudioTab : PanelContainer
 
     public void ApplyChanges()
     {
-        AudioBuses.Instance.VolumeMain = (float)slider_main.Value;
-        AudioBuses.Instance.VolumeVO = (float)slider_vo.Value;
-        AudioBuses.Instance.VolumeSFX = (float)slider_sfx.Value;
-        AudioBuses.Instance.VolumeCreature = (float)slider_creature.Value;
-        AudioBuses.Instance.VolumeDrones = (float)slider_drones.Value;
-
+        int count = AudioServer.BusCount;
+        for (int i = 0; i < count; i++)
+        {
+            var slider = _SlidersRoot.GetChild(i);
+            var sci = new SliderComboInterface(slider);
+            AudioBuses.Instance.Volumes[i] = sci.SliderValue;
+        }
         AudioBuses.SaveSettings();
     }
 }

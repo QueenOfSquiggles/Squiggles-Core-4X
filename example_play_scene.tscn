@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqvtk8t4gy4df"]
+
+[ext_resource type="PackedScene" uid="uid://bwohee6c633j6" path="res://Core/Scenes/UI/Menus/pause_menu_controller.tscn" id="1_45dlq"]
+
+[node name="ExamplePlayScene" type="Node2D"]
+
+[node name="PauseMenuController" parent="." instance=ExtResource("1_45dlq")]

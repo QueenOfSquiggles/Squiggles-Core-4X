@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Godot;
 using queen.data;
@@ -9,29 +11,52 @@ using queen.extension;
 public partial class ControlsTab : PanelContainer
 {
 
-    [Export] private NodePath PathSliderMouseSensitive;
-    [Export] private NodePath PathSliderGamepadSensitive;
-    [Export] private NodePath PathListeningPopup;
+    private bool _Listening = false;
+    private string _CurrentActionTarget = "";
+    [Export] private Popup _PopupListening;
 
-    private bool Listening = false;
-    private string CurrentActionTarget = "";
-    private Popup popup_listening;
+    [Export] private Slider _SliderMouse;
+    [Export] private Slider SliderGamepad;
 
-    private Slider SliderMouse;
-    private Slider SliderGamepad;
+    [ExportGroup("Mappings", "_Mapping")]
+    [Export] private Control _MappingRoot;
+    [Export] private PackedScene _MappingScene;
 
     public override void _Ready()
     {
-        this.GetNode(PathListeningPopup, out popup_listening);
-        this.GetSafe(PathSliderMouseSensitive, out SliderMouse);
-        this.GetSafe(PathSliderGamepadSensitive, out SliderGamepad);
-        popup_listening.Exclusive = true;
-        popup_listening.WindowInput += _Input;
+        _PopupListening.Exclusive = true;
+        _PopupListening.WindowInput += _Input;
 
-        SliderMouse.Value = Controls.Instance.MouseLookSensivity;
+        _SliderMouse.Value = Controls.Instance.MouseLookSensivity;
         SliderGamepad.Value = Controls.Instance.ControllerLookSensitivity;
 
         Events.Data.SerializeAll += ApplyChanges;
+
+        var keys = ThisIsYourMainScene.Config.RemapControlsNames;
+        if (keys.Length <= 0)
+        {
+            // empty array, assume all are valid and place custom mappings first
+            var mappings = InputMap.GetActions();
+            var union = new List<StringName>();
+            var custom_mappings = mappings.Where((key) => !key.ToString().StartsWith("ui")).ToList();
+            union.AddRange(custom_mappings);
+            if (!ThisIsYourMainScene.Config.HideUIMappings)
+            {
+                var ui_mappings = mappings.Where((key) => key.ToString().StartsWith("ui")).ToList();
+                union.AddRange(ui_mappings);
+            }
+
+            keys = new string[union.Count];
+            for (int i = 0; i < union.Count; i++) keys[i] = union[i];
+        }
+        foreach (var action in keys)
+        {
+            var scene = _MappingScene.Instantiate() as ActionMappingSlot;
+            scene.Name = $"Remam_{action}";
+            scene.TargetAction = action;
+            _MappingRoot.AddChild(scene);
+            scene.ListenForAction += ListenForAction;
+        }
     }
 
     public override void _ExitTree()
@@ -41,16 +66,16 @@ public partial class ControlsTab : PanelContainer
 
     public async void ListenForAction(string action_name)
     {
-        CurrentActionTarget = action_name;
-        popup_listening.PopupCenteredRatio();
+        _CurrentActionTarget = action_name;
+        _PopupListening.PopupCenteredRatio();
         await Task.Delay(50);
-        Listening = true;
+        _Listening = true;
     }
 
     public override void _Input(InputEvent e)
     {
-        if (!Listening) return;
-        if (CurrentActionTarget.Length == 0) return;
+        if (!_Listening) return;
+        if (_CurrentActionTarget.Length == 0) return;
 
         bool is_valid = false;
 
@@ -62,11 +87,11 @@ public partial class ControlsTab : PanelContainer
 
         if (is_valid)
         {
-            Print.Debug($"Processing input event override for action {CurrentActionTarget}, received event: {e.AsText()}");
-            Controls.Instance.SetMapping(CurrentActionTarget, e);
-            CurrentActionTarget = "";
-            Listening = false;
-            popup_listening.Hide();
+            Print.Debug($"Processing input event override for action {_CurrentActionTarget}, received event: {e.AsText()}");
+            Controls.Instance.SetMapping(_CurrentActionTarget, e);
+            _CurrentActionTarget = "";
+            _Listening = false;
+            _PopupListening.Hide();
         }
     }
 
@@ -77,7 +102,7 @@ public partial class ControlsTab : PanelContainer
 
     public void ApplyChanges()
     {
-        Controls.Instance.MouseLookSensivity = (float)SliderMouse.Value;
+        Controls.Instance.MouseLookSensivity = (float)_SliderMouse.Value;
         Controls.Instance.ControllerLookSensitivity = (float)SliderGamepad.Value;
         Controls.SaveSettings();
     }
