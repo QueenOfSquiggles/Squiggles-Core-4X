@@ -2,6 +2,9 @@
 
 A boilerplate game base for making games in Godot 4.X with C#
 
+## Tests
+[![.NET](https://github.com/QueenOfSquiggles/SquigglesCommon4X/actions/workflows/dotnet.yml/badge.svg)](https://github.com/QueenOfSquiggles/SquigglesCommon4X/actions/workflows/dotnet.yml)
+
 ## Requirements
 - Godot 4.X (newer versions may work with tweaks?)
 - Vulkan supporting Graphics Card
