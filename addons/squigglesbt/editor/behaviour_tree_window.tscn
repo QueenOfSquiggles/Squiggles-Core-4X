@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5kfv0hf62732"]
+
+[ext_resource type="PackedScene" uid="uid://b0ljnqr08cgwd" path="res://addons/squigglesbt/editor/components/tree_panel_no_children.tscn" id="1_m8j1w"]
+[ext_resource type="Script" path="res://addons/squigglesbt/editor/BehaviourTreeWindow.cs" id="1_qu7ux"]
+[ext_resource type="PackedScene" uid="uid://b4g4g060a33td" path="res://addons/squigglesbt/editor/components/tree_panel_one_child.tscn" id="4_axebq"]
+[ext_resource type="PackedScene" uid="uid://c0b6hd8a1a4qn" path="res://addons/squigglesbt/editor/components/tree_panel_many_children.tscn" id="5_n1jnn"]
+[ext_resource type="Theme" uid="uid://g28ko45h4chp" path="res://addons/squigglesbt/editor/BTWindowTheme.tres" id="6_77tew"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_cyrnq"]
+device = -1
+ctrl_pressed = true
+keycode = 83
+unicode = 115
+
+[sub_resource type="Shortcut" id="Shortcut_7f1la"]
+events = [SubResource("InputEventKey_cyrnq")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2e1vy"]
+font_size = 24
+
+[node name="BehaviourTreeWindow" type="Window" node_paths=PackedStringArray("_TreeContainerRoot", "_CurrentTreeLabel")]
+mode = 2
+title = "Behaviour Tree"
+initial_position = 1
+size = Vector2i(1280, 900)
+wrap_controls = true
+content_scale_mode = 1
+script = ExtResource("1_qu7ux")
+_TreeContainerRoot = NodePath("PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/TreeContainer")
+_CurrentTreeLabel = NodePath("PanelContainer/VBoxContainer/CurrentTreeLabel")
+_SceneNoChildren = ExtResource("1_m8j1w")
+_SceneOneChild = ExtResource("4_axebq")
+_SceneManyChildren = ExtResource("5_n1jnn")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_77tew")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BtnSave" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_7f1la")
+text = "Save"
+
+[node name="CurrentTreeLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Current Tree Name"
+label_settings = SubResource("LabelSettings_2e1vy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TreeContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="close_requested" from="." to="." method="queue_free"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/BtnSave" to="." method="SaveResource"]
