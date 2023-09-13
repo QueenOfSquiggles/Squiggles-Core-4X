@@ -29,10 +29,10 @@ public partial class DynamicDOFRay : RayCast3D
         {
             DofBlurFarEnabled = true,
             DofBlurNearEnabled = true,
-            
+
             DofBlurNearTransition = transition_range_meters,
             DofBlurNearDistance = default_distance,
-            
+
             DofBlurFarTransition = transition_range_meters,
             DofBlurFarDistance = default_distance,
         };
@@ -41,7 +41,7 @@ public partial class DynamicDOFRay : RayCast3D
 
     public override void _Process(double delta)
     {
-        var att = camera.Attributes as CameraAttributesPractical;
+        if (camera?.Attributes is not CameraAttributesPractical att) return;
         att.DofBlurFarDistance = Mathf.Lerp(att.DofBlurFarDistance, current_target_distance, ((float)delta) * transition_speed_lerp_factor);
         att.DofBlurNearDistance = Mathf.Lerp(att.DofBlurNearDistance, current_target_distance, ((float)delta) * transition_speed_lerp_factor);
     }

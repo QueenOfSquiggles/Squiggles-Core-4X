@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Core/MetaConfig/SquigglesCoreConfigFile.cs" id="1_55e3y"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2wb48"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wawyq"]
 
 [resource]
 script = ExtResource("1_55e3y")
 PlayScene = "res://example_play_scene.tscn"
-GameLogo = SubResource("PlaceholderTexture2D_2wb48")
+GameLogo = SubResource("PlaceholderTexture2D_wawyq")
 LaunchSceneOverride = ""
 MainMenuOverride = ""
 RemapControlsNames = PackedStringArray()

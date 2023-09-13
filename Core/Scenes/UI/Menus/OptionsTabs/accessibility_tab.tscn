@@ -7,22 +7,22 @@
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/clear_scroll.gd" id="3_m8o3s"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="6_8fdip"]
 
-[node name="Accessibility" type="PanelContainer"]
+[node name="Accessibility" type="PanelContainer" node_paths=PackedStringArray("_CheckboxNoFlashingLights", "_SliderRumbleStrength", "_SliderScreenShakeStrength", "_SliderRumbleDuration", "_SliderScreenShakeDuration", "_SliderMaxVolume", "_SliderTimeScale", "_SliderGUIScale", "_OptionFont", "_CheckAlwaysShowReticle")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 1051.0
 grow_vertical = 2
 script = ExtResource("1_qvlnx")
-path_checkbox_no_flashing_lights = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/FlashingLights/CheckBox_NoFlashingLights")
-path_slider_rumble_strength = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/Stength/HBoxContainer/HSlider")
-path_slider_screen_shake_strength = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/Stength/HBoxContainer/HSlider")
-path_slider_rumble_duration = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/MaxDuration/HBoxContainer/HSlider")
-path_slider_screen_shake_duration = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/MaxDuration/HBoxContainer/HSlider")
-path_slider_max_volume = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/AudioLimit/SliderCombo/HBoxContainer/HSlider")
-path_slider_engine_time_scale = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale/Stength/HBoxContainer/HSlider")
-path_option_font = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/FontStyle2/FontStyle")
-path_gui_scale = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling/SliderCombo/HBoxContainer/HSlider")
-path_check_always_show_reticle = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/AlwaysShowReticle/CheckBox")
+_CheckboxNoFlashingLights = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/FlashingLights/CheckBox_NoFlashingLights")
+_SliderRumbleStrength = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/Stength/HBoxContainer/HSlider")
+_SliderScreenShakeStrength = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/Stength/HBoxContainer/HSlider")
+_SliderRumbleDuration = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/MaxDuration/HBoxContainer/HSlider")
+_SliderScreenShakeDuration = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/MaxDuration/HBoxContainer/HSlider")
+_SliderMaxVolume = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/AudioLimit/SliderCombo/HBoxContainer/HSlider")
+_SliderTimeScale = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale/Stength/HBoxContainer/HSlider")
+_SliderGUIScale = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling/SliderCombo/HBoxContainer/HSlider")
+_OptionFont = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/FontStyle2/FontStyle")
+_CheckAlwaysShowReticle = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/AlwaysShowReticle/CheckBox")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -146,9 +146,6 @@ text = "Scale"
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling/SliderCombo" index="0"]
 text = "Scale"
 
-[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling/SliderCombo/HBoxContainer" index="1"]
-text = "1"
-
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/UIScaling" groups=["access_description"]]
 layout_mode = 2
 text = "Applies a global scaling to user interfaces. This can make it easier to read UI on various screen sizes. The structure is made for the screen I have which is 1920x1080. This effect is global and may have some unintended repurcussions. Start small at first to avoid complications. "
@@ -208,18 +205,12 @@ text = "Strength"
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/Stength" index="0"]
 text = "Strength"
 
-[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/Stength/HBoxContainer" index="1"]
-text = "1"
-
 [node name="MaxDuration" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake" instance=ExtResource("2_wr3cm")]
 layout_mode = 2
 text = "Max Duration"
 
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/MaxDuration" index="0"]
 text = "Max Duration"
-
-[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake/MaxDuration/HBoxContainer" index="1"]
-text = "1"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ScreenShake" groups=["access_description"]]
 layout_mode = 2
@@ -249,18 +240,12 @@ text = "Strength"
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/Stength" index="0"]
 text = "Strength"
 
-[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/Stength/HBoxContainer" index="1"]
-text = "1"
-
 [node name="MaxDuration" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble" instance=ExtResource("2_wr3cm")]
 layout_mode = 2
 text = "Max Duration"
 
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/MaxDuration" index="0"]
 text = "Max Duration"
-
-[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble/MaxDuration/HBoxContainer" index="1"]
-text = "1"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ControllerRumble" groups=["access_description"]]
 layout_mode = 2
@@ -309,9 +294,6 @@ text = "Time Scale"
 [node name="Lbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale/Stength" index="0"]
 text = "Time Scale"
 
-[node name="ValueLbl" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale/Stength/HBoxContainer" index="1"]
-text = "1"
-
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/EngineTimeScale" groups=["access_description"]]
 layout_mode = 2
 text = "Time Scale will change the clock speed of the game. This can help with giving more reaction time, however this will scale all time based operations, so be careful if you choose to alter this. Additonally, there is the option to increase the time scale about 1.0, which will make the game run faster than normal, which could provide an interesting challenge to anyone who really wants it. 
@@ -338,8 +320,9 @@ uri = "https://github.com/QueenOfSquiggles/Squiggle-Zone-Game-Base/issues/new"
 
 [node name="UIEffects" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/LinkButton" instance=ExtResource("2_n5o3d")]
 
-[node name="SlidingPanelComponent" type="Node" parent="."]
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_Target")]
 script = ExtResource("6_8fdip")
+_Target = NodePath("..")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BtnApplyChanges" to="." method="ApplyChanges"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckToggleDescriptions" to="MarginContainer/VBoxContainer/HBoxContainer/CheckToggleDescriptions" method="_on_toggled"]

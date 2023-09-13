@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using queen.error;
 
 public partial class ThisIsYourMainScene : Node
 {
@@ -24,7 +25,7 @@ public partial class ThisIsYourMainScene : Node
 
 	public override void _Ready()
 	{
-		_WarningLabel.Text = "";
+		if (_WarningLabel is not null) _WarningLabel.Text = "";
 		instance = this;
 		config = TryLoadConfigs();
 		if (config is not null)
@@ -32,9 +33,11 @@ public partial class ThisIsYourMainScene : Node
 			ProcessConfig(config);
 			LoadNextScene(config);
 		}
-		else
+		else if (_WarningLabel is not null)
 		{
-			_WarningLabel.Text = $"Failed to find configuration file at: \n {CONFIG_FILE_PATH}";
+			var msg = $"Failed to find configuration file at: \n {CONFIG_FILE_PATH}";
+			_WarningLabel.Text = msg;
+			Print.Warn(msg);
 		}
 	}
 
@@ -56,9 +59,9 @@ public partial class ThisIsYourMainScene : Node
 
 	private void LoadNextScene(SquigglesCoreConfigFile config)
 	{
-		var path = DEFAULT_LAUNCH_SEQUENCE;
-		//if (config.LaunchSceneOverride != "") path = config.LaunchSceneOverride;
-
+		string path = DEFAULT_LAUNCH_SEQUENCE;
+		if (config.LaunchSceneOverride.Length > 5) path = config.LaunchSceneOverride;
+		Print.Debug($"Loading into launch sequence: {path}");
 		Scenes.LoadSceneAsync(path);
 	}
 

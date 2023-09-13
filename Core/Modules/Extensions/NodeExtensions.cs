@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using queen.error;
 
@@ -13,7 +14,7 @@ public static class NodeExtensions
     /// <param name="node">The node we are searching from</param>
     /// <param name="path">The path (absolute or relative to node) to the node we want. Can be a string </param>
     /// <param name="result">Outputs the node if found, else null</param>
-    public static bool GetNode<T>(this Node node, NodePath? path, out T? result, bool alertErrors = true) where T : class
+    public static bool GetNode<T>(this Node node, NodePath path, out T result, bool alertErrors = true) where T : class
     {
         result = null;
         if (path is not null) result = node.GetNode(path) as T;
@@ -73,18 +74,24 @@ public static class NodeExtensions
             node.QueueFree();
             return false;
         }
-        instance = node as T;
+        if (node is not T ist)
+        {
+            string msg = $"Failed to cast to preferred type instance [{nameof(T)}]";
+            Print.Error(msg);
+            throw new InvalidCastException(msg);
+        }
+        instance = ist;
         return true;
     }
 
     /// <summary>
-    /// Unity-like component approach. Iterates through the children of the node starting at the end 
+    /// Unity-like component approach. Iterates through the children of the node starting at the end
     /// (convention encourages placing component nodes at the bottom of the node's child list to speed up acquisition)
     /// </summary>
     /// <typeparam name="T">The type of component we are trying to acquire. This should be a script attached to a node</typeparam>
     /// <param name="node">The node which we wish to acquire the component of.</param>
     /// <returns>The component if found. Else null</returns>
-    public static T? GetComponent<T>(this Node node) where T : Node
+    public static T GetComponent<T>(this Node node) where T : Node
     {
         for (int i = node.GetChildCount() - 1; i >= 0; i--)
         {

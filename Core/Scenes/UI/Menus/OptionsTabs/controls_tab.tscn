@@ -84,7 +84,7 @@ step = 5.0
 value = 401.0
 
 [node name="ValueLbl" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity/HBoxContainer" index="1"]
-text = "400"
+text = "401"
 
 [node name="GamepadSensitivity" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity" instance=ExtResource("2_midyy")]
 layout_mode = 2
@@ -104,7 +104,7 @@ step = 5.0
 value = 501.0
 
 [node name="ValueLbl" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity/HBoxContainer" index="1"]
-text = "500"
+text = "501"
 
 [node name="Mappings" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -162,8 +162,9 @@ Press any button to assign!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlidingPanelComponent" type="Node" parent="."]
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_Target")]
 script = ExtResource("5_dayim")
+_Target = NodePath("..")
 
 [connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnApplyChanges" to="." method="ApplyChanges"]
 [connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnResetAll" to="." method="ResetAllMappings"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://b0kul8hq05onq"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Utility/CameraUtilities/cinematic_sequence.tscn" id="1_fvn6j"]
-[ext_resource type="PackedScene" path="res://Scenes/Utility/Effects/effects_driver.tscn" id="2_6hdby"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/HUD/hud_requests.tscn" id="3_63f0d"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/CameraUtilities/cinematic_sequence.tscn" id="1_fvn6j"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/Effects/effects_driver.tscn" id="2_6hdby"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/UI/HUD/hud_requests.tscn" id="3_63f0d"]
 [ext_resource type="PackedScene" uid="uid://clvfklayqmfnw" path="res://Core/Scenes/UI/HUD/default_hud.tscn" id="4_46eni"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/Menus/pause_menu_controller.tscn" id="5_w8dr2"]
-[ext_resource type="PackedScene" path="res://Scenes/Utility/Effects/cutscene_skipper.tscn" id="6_dlr1c"]
+[ext_resource type="PackedScene" uid="uid://bwohee6c633j6" path="res://Core/Scenes/UI/Menus/pause_menu_controller.tscn" id="5_w8dr2"]
+[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/Effects/cutscene_skipper.tscn" id="6_dlr1c"]
 
 [node name="LevelBootstrap" type="Node"]
 

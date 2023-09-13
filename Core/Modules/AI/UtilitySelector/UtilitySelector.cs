@@ -8,18 +8,18 @@ using Godot;
 
 /// <summary>
 /// UtilitySelector is an AI sub-system that is used for selecting the course of action with the most utility at the current moment. This system is designed to be used modularly so each possible action will have a string key.
-/// 
+///
 /// </summary>
 public partial class UtilitySelector : Node
 {
 
-    private readonly Dictionary<string, IUtilitySelectionComponent> actions = new();
-    private readonly Dictionary<string, float> preferences = new();
+    private readonly Dictionary<string, IUtilitySelectionComponent> _Actions = new();
+    private readonly Dictionary<string, float> _Preferences = new();
     /// <summary>
     /// The amount by which two actions' weights are considered equivalent. If actions are equivalent, the choice is made through randomization
     /// </summary>
     public float UtilityFuzziness { get; set; } = 0.1f;
-    private Random random = new();
+    private Random _Random = new();
 
     /// <summary>
     /// A property to set the seed of the interal RNG.
@@ -29,7 +29,7 @@ public partial class UtilitySelector : Node
         get { return 0; }
         set
         {
-            random = new Random(value);
+            _Random = new Random(value);
         }
     }
 
@@ -39,13 +39,13 @@ public partial class UtilitySelector : Node
     /// <param name="actor">An object reference for the actor to pass to the action <seealso cref="UtlitySelectionComponent"/></param>
     /// <param name="doNoActionIfNegative">True if this selector should return no action if all actions have negative weight. Default is false.</param>
     /// <returns>A string key for the selected action. Returns an empty string if no proper action could be found</returns>
-    public string GetBestAction(object? actor, bool doNoActionIfNegative = false)
+    public string GetBestAction(object actor, bool doNoActionIfNegative = false)
     {
         var weights = new List<KeyValuePair<string, float>>();
-        foreach (string action in actions.Keys)
+        foreach (string action in _Actions.Keys)
         {
-            if (actions[action] is null) continue;
-            var pair = new KeyValuePair<string, float>(action, actions[action].GetWeight(actor) + GetPreference(action));
+            if (_Actions[action] is null) continue;
+            var pair = new KeyValuePair<string, float>(action, _Actions[action].GetWeight(actor) + GetPreference(action));
             weights.Add(pair);
         }
 
@@ -57,37 +57,37 @@ public partial class UtilitySelector : Node
             => Mathf.Abs(x.Value - top) < UtilityFuzziness).ToList();
         if (available.Count <= 0) return ""; // no action selected
         if (available.Count == 1) return available[0].Key; // only one top action
-        return available[random.Next(available.Count)].Key; // select random from top actions based on fuzziness
+        return available[_Random.Next(available.Count)].Key; // select random from top actions based on fuzziness
     }
 
 
 
     public void AddActionComponent(string action, IUtilitySelectionComponent selection_component)
     {
-        actions[action] = selection_component;
+        _Actions[action] = selection_component;
     }
 
     public void RemoveAction(string action)
     {
-        if (!actions.ContainsKey(action)) return;
-        actions.Remove(action);
+        if (!_Actions.ContainsKey(action)) return;
+        _Actions.Remove(action);
     }
 
     public void SetPreference(string action, float preference)
     {
-        if (preferences.ContainsKey(action)) preferences[action] = preference;
-        else preferences.Add(action, preference);
+        if (_Preferences.ContainsKey(action)) _Preferences[action] = preference;
+        else _Preferences.Add(action, preference);
     }
 
     public void AddPreference(string action, float preference)
     {
-        if (preferences.ContainsKey(action)) preferences[action] += preference;
-        else preferences.Add(action, preference);
+        if (_Preferences.ContainsKey(action)) _Preferences[action] += preference;
+        else _Preferences.Add(action, preference);
     }
 
     public float GetPreference(string action)
     {
-        if (preferences.ContainsKey(action)) return preferences[action];
+        if (_Preferences.ContainsKey(action)) return _Preferences[action];
         return 0.0f;
     }
 

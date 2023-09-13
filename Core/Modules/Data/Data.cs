@@ -93,7 +93,7 @@ public static class Data
     /// <typeparam name="T">data type to load. Must be specified when it cannot be inferred.</typeparam>
     /// <param name="path">The path of a json file relative to "user://"</param>
     /// <returns>The data of type T that was loaded from file. </returns>
-    public static T? Load<T>(string path, bool print_errors = true) where T : class => DEFAULT_DATA_PATH.Load<T>(path, print_errors);
+    public static T Load<T>(string path, bool print_errors = true) where T : class => DEFAULT_DATA_PATH.Load<T>(path, print_errors);
 
     public static void SetJsonSettings(JsonSerializerOptions options) => DEFAULT_DATA_PATH.SetJsonSettings(options);
 
@@ -203,7 +203,7 @@ public class DataPath
     /// <typeparam name="T">data type to load. Must be specified when it cannot be inferred.</typeparam>
     /// <param name="path">The path of a json file relative to the assigned path (likely a save slot)</param>
     /// <returns>The data of type T that was loaded from file. </returns>
-    public T? Load<T>(string path, bool print_errors = true) where T : class
+    public T Load<T>(string path, bool print_errors = true) where T : class
     {
         if (JsonSettings == null) LoadDefaultJsonSettings();
         try
@@ -255,7 +255,7 @@ public class DataPath
         if (!path.Contains(META_DATA_FILE_PATH)) SaveMetaData();
     }
 
-    public string? LoadText(string path, bool print_errors)
+    public string LoadText(string path, bool print_errors)
     {
 
         try

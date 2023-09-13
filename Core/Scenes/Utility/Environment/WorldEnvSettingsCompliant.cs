@@ -18,11 +18,11 @@ public partial class WorldEnvSettingsCompliant : WorldEnvironment
 
     private void ApplyGraphicsSettings()
     {
-        Environment.GlowEnabled = Graphics.Instance.Bloom;        
-        Environment.SsrEnabled = Graphics.Instance.SSR;        
-        Environment.SsaoEnabled = Graphics.Instance.SSAO;        
-        Environment.SsilEnabled = Graphics.Instance.SSIL;        
-        Environment.SdfgiEnabled = Graphics.Instance.SDFGI;        
+        Environment.GlowEnabled = Graphics.Instance.Bloom;
+        Environment.SsrEnabled = Graphics.Instance.SSR;
+        Environment.SsaoEnabled = Graphics.Instance.SSAO;
+        Environment.SsilEnabled = Graphics.Instance.SSIL;
+        Environment.SdfgiEnabled = Graphics.Instance.SDFGI;
         Environment.TonemapExposure = Graphics.Instance.TonemapExposure;
         Environment.AdjustmentBrightness = Graphics.Instance.Brightness;
         Environment.AdjustmentContrast = Graphics.Instance.Contrast;

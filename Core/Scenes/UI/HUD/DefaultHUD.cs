@@ -10,50 +10,31 @@ public partial class DefaultHUD : Control
 {
 
     [ExportGroup("Reticle Settings")]
-    [Export] private float TransitionTime = 0.2f;
+    [Export] private float _TransitionTime = 0.2f;
 
     [ExportGroup("Inventory Stuff")]
-    [Export] private PackedScene InventorySlotPacked;
+    [Export] private PackedScene _InventorySlotPacked;
+
     [ExportGroup("Player Money", "PlayerMoney")]
-    [Export] private Color PlayerMoneyIncreaseCol = Colors.Lime;
-    [Export] private Color PlayerMoneyDecreaseCol = Colors.Red;
+    [Export] private Color _PlayerMoneyIncreaseCol = Colors.Lime;
+    [Export] private Color _PlayerMoneyDecreaseCol = Colors.Red;
 
     [ExportGroup("Paths", "Path")]
-    [Export] private NodePath PathLabelSubtitle;
-    [Export] private NodePath PathLabelAlert;
-
-    [Export] private NodePath PathRootSubtitle;
-    [Export] private NodePath PathRootAlert;
-    [Export] private NodePath PathReticle;
-    [Export] private NodePath PathInteractionPrompt;
-    [Export] private NodePath PathGenericGuiRoot;
-    [Export] private NodePath PathPlayerStatsHealthBar;
-    [Export] private NodePath PathPlayerStatsHealthLabel;
-    [Export] private NodePath PathPlayerStatsEnergyBar;
-    [Export] private NodePath PathPlayerStatsEnergyLabel;
-    [Export] private NodePath PathPlayerInventory;
-    [Export] private NodePath PathPlayerMoneyTexture;
-    [Export] private NodePath PathPlayerMoneyLabel;
-    [Export] private NodePath PathPlayerMoneyPopLabel;
-
-
-
-    private Label _LblSubtitle;
-    private Label _LblAlert;
-    private Control _RootSubtitle;
-    private Control _RootAlert;
-    private TextureRect _Reticle;
-    private Label _InteractionPrompt;
-    private Control _GenericGUIRoot;
-    private TextureProgressBar _PlayerStatsHealthBar;
-    private Label _PlayerStatsHealthLabel;
-    private TextureProgressBar _PlayerStatsEnergyBar;
-    private Label _PlayerStatsEnergyLabel;
-    private Control _PlayerInventory;
-
-    private Control _PlayerMoneyTexture;
-    private Label _PlayerMoneyLabel;
-    private Label _PlayerMoneyPopLabel;
+    [Export] private Label _LblSubtitle;
+    [Export] private Label _LblAlert;
+    [Export] private Control _RootSubtitle;
+    [Export] private Control _RootAlert;
+    [Export] private TextureRect _Reticle;
+    [Export] private Label _InteractionPrompt;
+    [Export] private Control _GenericGUIRoot;
+    [Export] private TextureProgressBar _PlayerStatsHealthBar;
+    [Export] private Label _PlayerStatsHealthLabel;
+    [Export] private TextureProgressBar _PlayerStatsEnergyBar;
+    [Export] private Label _PlayerStatsEnergyLabel;
+    [Export] private Control _PlayerInventory;
+    [Export] private Control _PlayerMoneyTexture;
+    [Export] private Label _PlayerMoneyLabel;
+    [Export] private Label _PlayerMoneyPopLabel;
 
 
     private Color COLOUR_TRANSPARENT = Color.FromString("#FFFFFF00", Colors.White);
@@ -65,21 +46,15 @@ public partial class DefaultHUD : Control
 
     public override void _Ready()
     {
-        this.GetNode(PathLabelSubtitle, out _LblSubtitle);
-        this.GetNode(PathLabelAlert, out _LblAlert);
-        this.GetNode(PathRootSubtitle, out _RootSubtitle);
-        this.GetNode(PathRootAlert, out _RootAlert);
-        this.GetNode(PathReticle, out _Reticle);
-        this.GetNode(PathInteractionPrompt, out _InteractionPrompt);
-        this.GetSafe(PathGenericGuiRoot, out _GenericGUIRoot);
-        this.GetSafe(PathPlayerStatsHealthBar, out _PlayerStatsHealthBar);
-        this.GetSafe(PathPlayerStatsHealthLabel, out _PlayerStatsHealthLabel);
-        this.GetSafe(PathPlayerStatsEnergyBar, out _PlayerStatsEnergyBar);
-        this.GetSafe(PathPlayerStatsEnergyLabel, out _PlayerStatsEnergyLabel);
-        this.GetSafe(PathPlayerInventory, out _PlayerInventory);
-        this.GetSafe(PathPlayerMoneyTexture, out _PlayerMoneyTexture);
-        this.GetSafe(PathPlayerMoneyLabel, out _PlayerMoneyLabel);
-        this.GetSafe(PathPlayerMoneyPopLabel, out _PlayerMoneyPopLabel);
+        if (_LblSubtitle is null) return;
+        if (_LblAlert is null) return;
+        if (_RootSubtitle is null) return;
+        if (_RootAlert is null) return;
+        if (_LblSubtitle is null) return;
+        if (_Reticle is null) return;
+        if (_InteractionPrompt is null) return;
+        if (_PlayerMoneyLabel is null) return;
+        if (_PlayerMoneyPopLabel is null) return;
 
         _LblSubtitle.Text = "";
         _LblAlert.Text = "";
@@ -131,18 +106,21 @@ public partial class DefaultHUD : Control
 
     public void ShowSubtitle(string text)
     {
+        if (_LblSubtitle is null) return;
         _LblSubtitle.Text = text;
         HandleAnimation(_RootSubtitle, text.Length > 0);
     }
 
     public void ShowAlert(string text)
     {
+        if (_LblAlert is null) return;
         _LblAlert.Text = text;
         HandleAnimation(_RootAlert, text.Length > 0);
     }
 
     private void HandleAnimation(Control control, bool isVisible)
     {
+        if (control is null) return;
         var tween = GetTree().CreateTween().SetDefaultStyle();
         var colour = isVisible ? COLOUR_VISIBLE : COLOUR_TRANSPARENT;
         tween.TweenProperty(control, "modulate", colour, 0.2f);
@@ -150,6 +128,7 @@ public partial class DefaultHUD : Control
 
     private void OnCanInteract(string text)
     {
+        if (_InteractionPrompt is null) return;
         _PromptTween?.Kill();
         _PromptTween = GetTree().CreateTween().SetDefaultStyle();
         _PromptTween.SetTrans(Tween.TransitionType.Bounce);
@@ -172,17 +151,22 @@ public partial class DefaultHUD : Control
 
     private void OnRequestGenericGUI(Control gui)
     {
-        _GenericGUIRoot.RemoveAllChildren();
-        _GenericGUIRoot.AddChild(gui);
+        _GenericGUIRoot?.RemoveAllChildren();
+        _GenericGUIRoot?.AddChild(gui);
     }
 
     private void OnRequestCloseGUI()
     {
-        _GenericGUIRoot.RemoveAllChildren();
+        _GenericGUIRoot?.RemoveAllChildren();
     }
 
     private void OnPlayerStatsUpdated(float health, float max_health, float energy, float max_energy)
     {
+        if (_PlayerStatsHealthBar is null) return;
+        if (_PlayerStatsEnergyBar is null) return;
+        if (_PlayerStatsHealthLabel is null) return;
+        if (_PlayerStatsEnergyLabel is null) return;
+
         var health_percent = health / max_health;
         var energy_percent = energy / max_energy;
         _PlayerStatsHealthBar.Value = health_percent;
@@ -193,12 +177,14 @@ public partial class DefaultHUD : Control
 
     private void OnInventorySlotUpdate(int index, string item, int qty)
     {
+        if (_PlayerInventory is null) return;
         if (_PlayerInventory.GetChildCount() <= index || index < 0) return;
         (_PlayerInventory.GetChild(index) as ItemSlotDisplay)?.UpdateItem(item, qty);
     }
 
     private void OnInventorySelect(int index)
     {
+        if (_PlayerInventory is null) return;
         if (_PlayerInventory.GetChildCount() <= index || index < 0) return;
         (_PlayerInventory.GetChild(_PreviousSelectSlot) as ItemSlotDisplay)?.OnDeselect();
         (_PlayerInventory.GetChild(index) as ItemSlotDisplay)?.OnSelect();
@@ -207,9 +193,12 @@ public partial class DefaultHUD : Control
 
     private void EnsureInventorySlots(int index)
     {
+        if (_PlayerInventory is null) return;
+        if (_InventorySlotPacked is null) return;
+
         while (index > _PlayerInventory.GetChildCount())
         {
-            var slot = InventorySlotPacked.Instantiate();
+            var slot = _InventorySlotPacked.Instantiate();
             _PlayerInventory.AddChild(slot);
         }
     }
@@ -218,6 +207,10 @@ public partial class DefaultHUD : Control
     private const string _MoneyFormatString = "N0";
     private void OnPlayerMoneyChange(int new_total)
     {
+        if (_PlayerMoneyLabel is null) return;
+        if (_PlayerMoneyPopLabel is null) return;
+        if (_PlayerMoneyTexture is null) return;
+
         var delta = new_total - _LastKnownPlayerMoney;
         _LastKnownPlayerMoney = new_total;
         _PlayerMoneyLabel.Text = new_total.ToString(_MoneyFormatString);
@@ -225,7 +218,7 @@ public partial class DefaultHUD : Control
         _PlayerMoneyPopLabel.GlobalPosition = _PlayerMoneyLabel.GlobalPosition;
         _PlayerMoneyPopLabel.Scale = new Vector2(1.5f, 1.5f);
         _PlayerMoneyPopLabel.Visible = true;
-        _PlayerMoneyPopLabel.Modulate = delta >= 0 ? PlayerMoneyIncreaseCol : PlayerMoneyDecreaseCol;
+        _PlayerMoneyPopLabel.Modulate = delta >= 0 ? _PlayerMoneyIncreaseCol : _PlayerMoneyDecreaseCol;
 
         _CurMoneyPopLabelTween?.Kill();
         _CurMoneyPopLabelTween = _PlayerMoneyTexture.CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.InOut);

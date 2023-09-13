@@ -9,7 +9,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_scsl4"]
 font_size = 32
 
-[node name="GraphicsTab" type="PanelContainer"]
+[node name="GraphicsTab" type="PanelContainer" node_paths=PackedStringArray("_OptionFullscreen", "_CheckBloom", "_CheckSSR", "_CheckSSAO", "_CheckSSIL", "_CheckSDFGI", "_SliderExposure", "_SliderBrightness", "_SliderContrast", "_SliderSaturation")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 11.0
@@ -17,16 +17,16 @@ offset_right = 33.0
 grow_vertical = 2
 script = ExtResource("1_lbres")
 PackedGraphicsDisplay = ExtResource("2_upr2m")
-path_option_fullscreen = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/HBoxContainer/OptionFullscreenMode")
-path_check_bloom = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckBloom")
-path_check_ssr = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSR")
-path_check_ssao = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSAO")
-path_check_ssil = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSIL")
-path_check_sdfgi = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSDFGI")
-path_slider_exposure = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideExposure/HBoxContainer/HSlider")
-path_slider_brightness = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness/HBoxContainer/HSlider")
-path_slider_contrast = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast/HBoxContainer/HSlider")
-path_slider_saturation = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation/HBoxContainer/HSlider")
+_OptionFullscreen = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/HBoxContainer/OptionFullscreenMode")
+_CheckBloom = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckBloom")
+_CheckSSR = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSR")
+_CheckSSAO = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSAO")
+_CheckSSIL = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSSIL")
+_CheckSDFGI = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/CheckSDFGI")
+_SliderExposure = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideExposure/HBoxContainer/HSlider")
+_SliderBrightness = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness/HBoxContainer/HSlider")
+_SliderContrast = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast/HBoxContainer/HSlider")
+_SliderSaturation = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation/HBoxContainer/HSlider")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -180,8 +180,9 @@ text = "Saturation"
 [node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation/HBoxContainer" index="0"]
 max_value = 2.0
 
-[node name="SlidingPanelComponent" type="Node" parent="."]
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_Target")]
 script = ExtResource("4_26by2")
+_Target = NodePath("..")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnApplySettings" to="." method="ApplyGraphicsSettings"]
 

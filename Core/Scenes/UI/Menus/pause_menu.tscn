@@ -47,7 +47,7 @@ _data = {
 "blur_out": SubResource("Animation_3x88v")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("_MenuPanel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -56,9 +56,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_u13u6")
-main_menu_file = "res://Core/Scenes/UI/Menus/main_menu.tscn"
-options_menu_file = "res://Core/Scenes/UI/Menus/options_menu.tscn"
-PathMenuPanel = NodePath("PanelContainer")
+_MainMenuFile = "res://Core/Scenes/UI/Menus/main_menu.tscn"
+_OptionsMenuFile = "res://Core/Scenes/UI/Menus/options_menu.tscn"
+_MenuPanel = NodePath("PanelContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096

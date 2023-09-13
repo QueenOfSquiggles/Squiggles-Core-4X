@@ -7,11 +7,11 @@ using queen.error;
 public partial class EventEmitter : Node
 {
 
-    [Export(PropertyHint.Enum, "OnAudio,OnGameStart,OnLevelLoaded,OnPlayerDie,OnPlayerWin,RequestCloseGUI")] private string event_name = "";
+    [Export(PropertyHint.Enum, "OnAudio,OnGameStart,OnLevelLoaded,OnPlayerDie,OnPlayerWin,RequestCloseGUI")] private string _EventName = "";
 
     public void EmitEvent()
     {
-        switch (event_name)
+        switch (_EventName)
         {
             case "OnAudio":
                 Events.Audio.TriggerOnAudio();

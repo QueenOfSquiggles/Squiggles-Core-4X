@@ -14,20 +14,20 @@ public static class ModRegistry
 
     private const string MODS_PATH = "user://Mods";
     public static int LoadedMods { get; private set; } = 0;
-    private static List<IModificationAdapter> mods = new();
+    private static List<IModificationAdapter> _Mods = new();
 
 
 
     public static void OnRegisterMods()
     {
-        Print.Debug($"[ModRegistry] Loaded {mods.Count} mods");
-        foreach (var mod in mods)
+        Print.Debug($"[ModRegistry] Loaded {_Mods.Count} mods");
+        foreach (var mod in _Mods)
             mod.OnRegister();
     }
 
     public static void OnUnRegisterMods()
     {
-        foreach (var mod in mods)
+        foreach (var mod in _Mods)
             mod.OnUnRegister();
     }
 
@@ -66,8 +66,8 @@ public static class ModRegistry
             Print.Warn("failed to open dir");
             return;
         }
-        string? packFile = null;
-        string? dllFile = null;
+        string packFile = null;
+        string dllFile = null;
         foreach (var file in dir.GetFiles())
         {
             if (file.ToLower().EndsWith("dll")) dllFile = file;
@@ -109,7 +109,8 @@ public static class ModRegistry
 
 
 
-    // TODO unsafe code must be compiled with the unsafe flag. How to change compile flags for Godot?
+    // TODO this requires "<AllowUnsafeBlocks>true</AllowUnsafeBlocks>" to be in the csproj file. Otherwise it will throw an error
+    // If that is something you want for your game, you can do a bit of tweaking here to ensure the C# dlls are loaded properly. Otherwise this feature is omitted for safety. Without this feature, resource overrides and custom GDScript can still be integrated.
     // private unsafe static void LoadAdapterFromPointer(IntPtr ptr, string modName)
     // {
     //     try

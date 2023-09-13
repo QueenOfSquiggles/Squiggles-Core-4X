@@ -30,8 +30,8 @@ public partial class LaunchSequence : Control
 				Print.Debug("Detected Release Build");
 			}
 #endif
+		if (_GameLogo is not null) _GameLogo.Texture = ThisIsYourMainScene.Config?.GameLogo;
 
-		_GameLogo.Texture = ThisIsYourMainScene.Config.GameLogo;
 		var ran = new Random();
 		if (!Stats.Instance.FirstTimeLaunch && (ran.NextSingle() > chance_do_anyway))
 		{
@@ -58,13 +58,13 @@ public partial class LaunchSequence : Control
 
 		Stats.Instance.FirstTimeLaunch = false;
 		Stats.SaveSettings();
-		_Anim.Play("OpeningAnimation");
+		_Anim?.Play("OpeningAnimation");
 	}
 
 	public void EndLaunchSequence()
 	{
-		var path = ThisIsYourMainScene.Config.MainMenuOverride;
-		if (path == "") path = DEFAULT_MAIN_MENU;
+		var path = ThisIsYourMainScene.Config?.MainMenuOverride ?? "";
+		if (path is null || path == "") path = DEFAULT_MAIN_MENU;
 		Scenes.LoadSceneAsync(path);
 	}
 

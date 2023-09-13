@@ -4,20 +4,21 @@ using queen.error;
 
 public partial class VirtualCamera : Marker3D
 {
-    [Export] private bool PushCamOnReady = false;
-    [Export] private bool AllowVCamChildren = false;
+    [Export] private bool _PushCamOnReady = false;
+    [Export] private bool _AllowVCamChildren = false;
 
-    [ExportGroup("Camera Lerping")]
-    [Export] public bool LerpCamera = true;
-    [Export] private float LerpDuration = 0.1f;
-    [ExportGroup("Advanced Lerp Options")]
-    [Export] private bool UseAdvancedLerpOptions = false;
-    [Export] private bool Adv_LerpPosX = true;
+    [ExportGroup("Camera Lerping", "_Lerp")]
+    [Export] public bool _LerpCamera = true;
+    [Export] private float _LerpDuration = 0.1f;
+
+    [ExportGroup("Advanced Lerp Options", "_Adv_Lerp")]
+    [Export] private bool _UseAdvancedLerpOptions = false;
+    [Export] private bool _Adv_LerpPosX = true;
     [Export] private bool Adv_LerpPosY = true;
     [Export] private bool Adv_LerpPosZ = true;
-    [Export] private bool Adv_LerpRotX = true;
+    [Export] private bool _Adv_LerpRotX = true;
     [Export] private bool Adv_LerpRotY = true;
-    [Export] private bool Adv_LerpRotZ = true;
+    [Export] private bool _Adv_LerpRotZ = true;
 
     public bool IsOnStack { get; private set; } = false;
 
@@ -25,15 +26,14 @@ public partial class VirtualCamera : Marker3D
     {
         get
         {
-            return 1.0f / LerpDuration;
+            return 1.0f / _LerpDuration;
         }
     }
 
-
     public override void _Ready()
     {
-        if (PushCamOnReady) PushVCam();
-        if (GetChildCount() > 0 && !AllowVCamChildren)
+        if (_PushCamOnReady) PushVCam();
+        if (GetChildCount() > 0 && !_AllowVCamChildren)
         {
             Print.Warn("Removing VirtualCamera child nodes. These should be removed for release!");
             while (GetChildCount() > 0)
@@ -57,7 +57,7 @@ public partial class VirtualCamera : Marker3D
         IsOnStack = false;
     }
 
-    private CameraBrain? GetBrain()
+    private CameraBrain GetBrain()
     {
         var brain = GetTree().GetFirstNodeInGroup("cam_brain") as CameraBrain;
         //Debugging.Assert(brain != null, "VirtualCamera failed to find CameraBrain in scene. Possibly it is missing??");
@@ -73,15 +73,15 @@ public partial class VirtualCamera : Marker3D
 
     public Transform3D GetNewTransform(Transform3D brainTransform, float delta)
     {
-        if (!LerpCamera) return GlobalTransform;
-        if (!UseAdvancedLerpOptions) return brainTransform.InterpolateWith(GlobalTransform, LerpFactor * delta);
+        if (!_LerpCamera) return GlobalTransform;
+        if (!_UseAdvancedLerpOptions) return brainTransform.InterpolateWith(GlobalTransform, LerpFactor * delta);
 
         // Use Advanced Lerping Options
         var trans = brainTransform; // trans rights
         var factor = LerpFactor * delta;
 
         // Positions
-        if (Adv_LerpPosX) trans.Origin.X = Mathf.Lerp(trans.Origin.X, GlobalPosition.X, factor);
+        if (_Adv_LerpPosX) trans.Origin.X = Mathf.Lerp(trans.Origin.X, GlobalPosition.X, factor);
         else trans.Origin.X = GlobalPosition.X;
 
         if (Adv_LerpPosY) trans.Origin.Y = Mathf.Lerp(trans.Origin.Y, GlobalPosition.Y, factor);
@@ -93,13 +93,13 @@ public partial class VirtualCamera : Marker3D
         // Rotations
 
         // TODO determine if this correctly lerps rotations
-        if (Adv_LerpRotX) trans.Basis.X = trans.Basis.X.Lerp(GlobalTransform.Basis.X, factor);
+        if (_Adv_LerpRotX) trans.Basis.X = trans.Basis.X.Lerp(GlobalTransform.Basis.X, factor);
         else trans.Basis.X = GlobalTransform.Basis.X;
 
         if (Adv_LerpRotY) trans.Basis.Y = trans.Basis.Y.Lerp(GlobalTransform.Basis.Y, factor);
         else trans.Basis.Y = GlobalTransform.Basis.Y;
 
-        if (Adv_LerpRotZ) trans.Basis.Z = trans.Basis.Z.Lerp(GlobalTransform.Basis.Z, factor);
+        if (_Adv_LerpRotZ) trans.Basis.Z = trans.Basis.Z.Lerp(GlobalTransform.Basis.Z, factor);
         else trans.Basis.Z = GlobalTransform.Basis.Z;
 
 

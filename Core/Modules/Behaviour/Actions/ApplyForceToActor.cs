@@ -5,7 +5,7 @@ using queen.extension;
 
 public class ApplyForceToActor : Leaf
 {
-    private Vector3 LastForce = Vector3.Zero;
+    private Vector3 _LastForce = Vector3.Zero;
 
     protected override void RegisterParams()
     {
@@ -23,13 +23,13 @@ public class ApplyForceToActor : Leaf
         if (GetParam("is_impulse", false, bb).AsBool()) rb.ApplyCentralImpulse(force);
         else rb.ApplyCentralForce(force);
 
-        LastForce = force;
+        _LastForce = force;
         return SUCCESS;
     }
 
     public override void LoadDebuggingValues(Blackboard bb)
     {
-        bb.SetLocal($"debug.{Label}:last_force", LastForce);
+        bb.SetLocal($"debug.{Label}:last_force", _LastForce);
     }
 
 }

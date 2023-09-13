@@ -17,8 +17,8 @@ public class Controls
     public float MouseLookSensivity = 400.0f;
     public float ControllerLookSensitivity = 500.0f;
 
-    public Dictionary<string, int[]> mappings_overloads = new();
-    private Dictionary<string, List<InputEvent>> original_mappings_cache = new();
+    public Dictionary<string, int[]> MappingsOverloads = new();
+    private Dictionary<string, List<InputEvent>> _OriginalMappingsCache = new();
 
 
     //
@@ -38,12 +38,12 @@ public class Controls
     public void ResetMappings()
     {
         var affected = new List<string>();
-        foreach (var key in mappings_overloads.Keys)
+        foreach (var key in MappingsOverloads.Keys)
         {
             affected.Add(key);
         }
         InputMap.LoadFromProjectSettings();
-        mappings_overloads.Clear();
+        MappingsOverloads.Clear();
         foreach (var action in affected)
         {
             OnControlMappingChanged?.Invoke(action);
@@ -57,33 +57,33 @@ public class Controls
             return;
         }
 
-        if (!original_mappings_cache.ContainsKey(action))
+        if (!_OriginalMappingsCache.ContainsKey(action))
         {
             // caches the originally loaded mapping
             var event_list = InputMap.ActionGetEvents(action);
             var list = new List<InputEvent>();
             list.AddRange(event_list.AsEnumerable());
-            original_mappings_cache.Add(action, list);
+            _OriginalMappingsCache.Add(action, list);
         }
 
         InputMap.ActionEraseEvents(action);
         InputMap.ActionAddEvent(action, assigned_input);
 
-        mappings_overloads[action] = GetInputCode(assigned_input);
+        MappingsOverloads[action] = GetInputCode(assigned_input);
         OnControlMappingChanged?.Invoke(action);
     }
 
     public void ResetMapping(string action)
     {
-        if (!original_mappings_cache.ContainsKey(action)) return;
+        if (!_OriginalMappingsCache.ContainsKey(action)) return;
         InputMap.ActionEraseEvents(action);
-        var list = original_mappings_cache[action];
+        var list = _OriginalMappingsCache[action];
         foreach (var e in list)
         {
             InputMap.ActionAddEvent(action, e);
         }
-        mappings_overloads.Remove(action);
-        original_mappings_cache.Remove(action);
+        MappingsOverloads.Remove(action);
+        _OriginalMappingsCache.Remove(action);
         OnControlMappingChanged?.Invoke(action);
     }
 
@@ -120,7 +120,7 @@ public class Controls
                 };
                 break;
         }
-        if (input == null)
+        if (input is null)
         {
             Print.Warn($"Failed to load custom mapping from data:\n\t'{action}' = {codes[0]}:{codes[1]}");
             return;
@@ -161,7 +161,7 @@ public class Controls
     {
         get
         {
-            if (_instance == null) CreateInstance();
+            if (_instance is null) CreateInstance();
             return _instance;
         }
     }
@@ -173,9 +173,9 @@ public class Controls
         _instance = new Controls();
         var loaded = Data.Load<Controls>(FILE_PATH);
         if (loaded != null) _instance = loaded;
-        foreach (var key in _instance.mappings_overloads.Keys)
+        foreach (var key in _instance.MappingsOverloads.Keys)
         {
-            var codes = _instance.mappings_overloads[key];
+            var codes = _instance.MappingsOverloads[key];
             _instance.LoadMappingsFromData(key, codes);
         }
     }

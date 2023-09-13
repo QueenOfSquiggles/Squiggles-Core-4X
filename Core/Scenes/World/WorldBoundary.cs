@@ -4,13 +4,11 @@ using Godot;
 public partial class WorldBoundary : Area3D
 {
     [Export] private string PlayerGroupName = "player";
-    [Export] private NodePath RefRespawnPoint;
+    [Export] private Node3D _RespawnPoint;
 
     private void OnBodyEnter(Node3D node)
     {
-        // resets all fallen
-        var pos = GetNode<Node3D>(RefRespawnPoint);
-        if (pos is RigidBody3D rb) rb.LinearVelocity = Vector3.Zero;
-        node.GlobalPosition = pos.GlobalPosition;
+        if (_RespawnPoint is null) return;
+        node.GlobalPosition = _RespawnPoint.GlobalPosition;
     }
 }

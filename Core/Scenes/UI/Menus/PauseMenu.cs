@@ -7,16 +7,14 @@ using queen.extension;
 public partial class PauseMenu : Control
 {
 
-    [Export(PropertyHint.File, "*.tscn")] private string main_menu_file;
-    [Export(PropertyHint.File, "*.tscn")] private string options_menu_file;
-    [Export] private NodePath PathMenuPanel;
+    [Export(PropertyHint.File, "*.tscn")] private string _MainMenuFile = "";
+    [Export(PropertyHint.File, "*.tscn")] private string _OptionsMenuFile = "";
 
-    private Control CurrentPopup = null;
-    private Control MenuPanel;
+    [Export] private Control _MenuPanel;
+    private Control _CurrentPopup = null;
 
     public override void _Ready()
     {
-        this.GetSafe(PathMenuPanel, out MenuPanel);
         GetTree().Paused = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
     }
@@ -45,18 +43,18 @@ public partial class PauseMenu : Control
         Events.Data.TriggerSerializeAll();
         await Task.Delay(10);
         GetTree().Paused = false;
-        Scenes.LoadSceneAsync(main_menu_file);
+        Scenes.LoadSceneAsync(_MainMenuFile);
     }
 
     private void OnBtnOptions()
     {
-        if (CurrentPopup is null || !IsInstanceValid(CurrentPopup))
+        if (_CurrentPopup is null || !IsInstanceValid(_CurrentPopup))
         {
-            CreateNewSlidingScene(options_menu_file);
+            CreateNewSlidingScene(_OptionsMenuFile);
         }
         else
         {
-            CurrentPopup?.GetComponent<SlidingPanelComponent>()?.RemoveScene();
+            _CurrentPopup?.GetComponent<SlidingPanelComponent>()?.RemoveScene();
         }
 
     }
@@ -75,8 +73,8 @@ public partial class PauseMenu : Control
         var packed = GD.Load<PackedScene>(scene_file);
         var scene = packed?.Instantiate<Control>();
         if (scene is null) return;
-        scene.GlobalPosition = new Vector2(MenuPanel.Size.X, 0);
+        scene.GlobalPosition = new Vector2(_MenuPanel?.Size.X ?? 0, 0);
         AddChild(scene);
-        CurrentPopup = scene;
+        _CurrentPopup = scene;
     }
 }

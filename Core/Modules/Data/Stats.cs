@@ -23,7 +23,7 @@ public class Stats
     {
         get
         {
-            if (_instance == null) CreateInstance();
+            if (_instance is null) CreateInstance();
             return _instance;
 
         }

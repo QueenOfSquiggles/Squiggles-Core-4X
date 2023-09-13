@@ -3,7 +3,7 @@ using System;
 
 public partial class DemoEndScene : Control
 {
-    [Export(PropertyHint.File, "*.tscn")] private string main_menu_scene;
+    [Export(PropertyHint.File, "*.tscn")] private string _MainMenuScene = "";
 
     public override void _Ready()
     {
@@ -11,5 +11,5 @@ public partial class DemoEndScene : Control
         Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
-    public void ReturnMainMenu() => Scenes.LoadSceneAsync(main_menu_scene);
+    public void ReturnMainMenu() => Scenes.LoadSceneAsync(_MainMenuScene);
 }

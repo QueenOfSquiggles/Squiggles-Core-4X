@@ -97,16 +97,14 @@ _data = {
 "RESET": SubResource("Animation_c1qpn")
 }
 
-[node name="PseudoAAA_FPS_Controller" type="CharacterBody3D"]
+[node name="PseudoAAA_FPS_Controller" type="CharacterBody3D" node_paths=PackedStringArray("_Vcam", "_Anim", "_CanStandCheck", "_CanStepCheckTop", "_CanStepCheckBottom", "_InteractionRay")]
 script = ExtResource("1_av74f")
-mouse_sensitivity = 0.003
-StepStrength = 5.0
-PathVCam = NodePath("CamRoot/CameraSway/VirtualCamera")
-PathAnimationPlayer = NodePath("AnimationPlayer")
-PathCanStandCheck = NodePath("CanStandCheck")
-PathStepCheckTop = NodePath("StepRayTop")
-PathStepCheckBottom = NodePath("StepRayBottom")
-PathInteractRay = NodePath("CamRoot/CameraSway/VirtualCamera/InteractRay")
+_Vcam = NodePath("CamRoot/CameraSway/VirtualCamera")
+_Anim = NodePath("AnimationPlayer")
+_CanStandCheck = NodePath("CanStandCheck")
+_CanStepCheckTop = NodePath("StepRayTop")
+_CanStepCheckBottom = NodePath("StepRayBottom")
+_InteractionRay = NodePath("CamRoot/CameraSway/VirtualCamera/InteractRay")
 
 [node name="LowerBody" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
@@ -138,8 +136,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="CameraSway" type="Node3D" parent="CamRoot"]
 
 [node name="VirtualCamera" parent="CamRoot/CameraSway" instance=ExtResource("2_yeh30")]
-PushCamOnReady = true
-AllowVCamChildren = true
 
 [node name="InteractRay" type="RayCast3D" parent="CamRoot/CameraSway/VirtualCamera"]
 target_position = Vector3(0, 0, -2.5)

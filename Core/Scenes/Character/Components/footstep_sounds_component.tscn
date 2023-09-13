@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Core/Scenes/Character/Components/FootstepSoundsComponent.cs" id="1_u11rn"]
 [ext_resource type="PackedScene" uid="uid://xiabcgjmvnuf" path="res://Core/Scenes/World/GroundMaterial/ground_material_poller.tscn" id="2_d2ae5"]
 
-[node name="FootstepSoundsComponent" type="Node3D"]
+[node name="FootstepSoundsComponent" type="Node3D" node_paths=PackedStringArray("StepSound", "_GroundPoller")]
 script = ExtResource("1_u11rn")
-PathStepSound = NodePath("StepSound")
-PathGroundPoller = NodePath("GroundMaterialPoller")
+StepSound = NodePath("StepSound")
+_GroundPoller = NodePath("GroundMaterialPoller")
 
 [node name="StepSound" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 4

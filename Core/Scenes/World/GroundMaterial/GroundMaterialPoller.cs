@@ -9,7 +9,7 @@ public partial class GroundMaterialPoller : RayCast3D
 
     [Signal] public delegate void OnNewMaterialFoundEventHandler(GroundMaterial ground_material);
     [Export] private string GroundMaterialGroup = "HasGroundMaterial";
-    public GroundMaterial? Material { get; private set; } = null;
+    public GroundMaterial Material { get; private set; } = null;
 
     public override void _Ready() => DelayedForceUpdate(50);
 
@@ -18,7 +18,6 @@ public partial class GroundMaterialPoller : RayCast3D
         await Task.Delay(delay_millis);
         ForceRaycastUpdate();
     }
-
     public override void _PhysicsProcess(double _delta)
     {
         if (!IsColliding()) return;
@@ -27,7 +26,10 @@ public partial class GroundMaterialPoller : RayCast3D
         if (!n3d.IsInGroup(GroundMaterialGroup))
         {
             Material = null;
+#pragma warning disable CS8604
+            // Disable null instance warning, impossible to handle for EmitSignal
             EmitSignal(nameof(OnNewMaterialFound), Material);
+#pragma warning restore CS8604
             return;
         }
 
@@ -37,7 +39,12 @@ public partial class GroundMaterialPoller : RayCast3D
         {
             Print.Info("Found ground material");
             Material = gm;
+#pragma warning disable CS8604
+            // Disable null instance warning, impossible to handle otherwise for EmitSignal
             EmitSignal(nameof(OnNewMaterialFound), Material);
+#pragma warning restore CS8604
         }
     }
+
+
 }

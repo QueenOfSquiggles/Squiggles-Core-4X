@@ -34,7 +34,11 @@ project/assembly_name="SquigglesCommon4X"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/squiggles_core_autoloads/plugin.cfg", "res://addons/squigglesbt/plugin.cfg")
+enabled=PackedStringArray("res://addons/squiggles_core_autoloads/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 

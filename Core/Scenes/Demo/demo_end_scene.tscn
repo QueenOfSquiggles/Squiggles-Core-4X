@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://c2cwa48442wwj"]
 
 [ext_resource type="Script" path="res://Core/Scenes/Demo/DemoEndScene.cs" id="2_5jid3"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="2_vajuf"]
@@ -101,7 +101,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5jid3")
-main_menu_scene = "res://Menus/main_menu.tscn"
+_MainMenuScene = "res://Core/Scenes/UI/Menus/main_menu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

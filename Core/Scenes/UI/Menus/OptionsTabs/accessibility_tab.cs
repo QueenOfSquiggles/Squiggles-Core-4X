@@ -7,67 +7,56 @@ using queen.extension;
 
 public partial class accessibility_tab : PanelContainer
 {
-    [Export] private NodePath path_checkbox_no_flashing_lights;
-    [Export] private NodePath path_slider_rumble_strength;
-    [Export] private NodePath path_slider_screen_shake_strength;
-    [Export] private NodePath path_slider_rumble_duration;
-    [Export] private NodePath path_slider_screen_shake_duration;
-    [Export] private NodePath path_slider_max_volume;
-    [Export] private NodePath path_slider_engine_time_scale;
-    [Export] private NodePath path_option_font;
-    [Export] private NodePath path_gui_scale;
-    [Export] private NodePath path_check_always_show_reticle;
+    [Export] private CheckBox _CheckboxNoFlashingLights;
+    [Export] private Slider _SliderRumbleStrength;
+    [Export] private Slider _SliderScreenShakeStrength;
+    [Export] private Slider _SliderRumbleDuration;
+    [Export] private Slider _SliderScreenShakeDuration;
+    [Export] private Slider _SliderMaxVolume;
+    [Export] private Slider _SliderTimeScale;
+    [Export] private Slider _SliderGUIScale;
+    [Export] private OptionButton _OptionFont;
+    [Export] private CheckBox _CheckAlwaysShowReticle;
 
-    private CheckBox checkbox_no_flashing_lights;
-    private Slider slider_rumble_strength;
-    private Slider slider_screen_shake_strength;
-    private Slider slider_rumble_duration;
-    private Slider slider_screen_shake_duration;
-    private Slider slider_max_volume;
-    private Slider slider_time_scale;
-    private Slider slider_gui_scale;
-    private OptionButton option_font;
-    private CheckBox check_always_show_reticle;
-
-    private bool RequiresReload = false;
+    private bool _RequiresReload = false;
 
     public override void _Ready()
     {
-        this.GetNode(path_checkbox_no_flashing_lights, out checkbox_no_flashing_lights);
-        this.GetNode(path_option_font, out option_font);
-        this.GetNode(path_check_always_show_reticle, out check_always_show_reticle);
-        // The Slider Combo needs to be 'cracked' to access the actual slider node. Not preferable...
-        // TODO maybe find a better way to access this node? 
-        this.GetSafe(path_slider_rumble_strength, out slider_rumble_strength);
-        this.GetSafe(path_slider_screen_shake_strength, out slider_screen_shake_strength);
-        this.GetSafe(path_slider_rumble_duration, out slider_rumble_duration);
-        this.GetSafe(path_slider_screen_shake_duration, out slider_screen_shake_duration);
-        this.GetSafe(path_slider_max_volume, out slider_max_volume);
-        this.GetSafe(path_slider_engine_time_scale, out slider_time_scale);
-        this.GetSafe(path_gui_scale, out slider_gui_scale);
+        // obligatory workaround for godot not using constructors to load exported values
+        if (_CheckboxNoFlashingLights is null ||
+            _SliderRumbleStrength is null ||
+            _SliderRumbleDuration is null ||
+            _SliderScreenShakeStrength is null ||
+            _SliderScreenShakeDuration is null ||
+            _SliderMaxVolume is null ||
+            _SliderTimeScale is null ||
+            _OptionFont is null ||
+            _SliderGUIScale is null ||
+            _CheckAlwaysShowReticle is null
+        ) return;
 
-        checkbox_no_flashing_lights.SetPressedNoSignal(Access.Instance.PreventFlashingLights);
-        slider_rumble_strength.Value = Effects.Instance.RumbleStrength;
-        slider_rumble_duration.Value = Effects.Instance.MaxRumbleDuration;
-        slider_screen_shake_strength.Value = Effects.Instance.ScreenShakeStrength;
-        slider_screen_shake_duration.Value = Effects.Instance.MaxScreenShakeDuration;
-        slider_max_volume.Value = Access.Instance.AudioDecibelLimit;
-        slider_time_scale.Value = Access.Instance.EngineTimeScale;
-        option_font.Selected = Access.Instance.FontOption;
-        slider_gui_scale.Value = Access.Instance.GUI_Scale;
-        check_always_show_reticle.ButtonPressed = Access.Instance.AlwaysShowReticle;
+        _CheckboxNoFlashingLights.SetPressedNoSignal(Access.Instance.PreventFlashingLights);
+        _SliderRumbleStrength.Value = Effects.Instance.RumbleStrength;
+        _SliderRumbleDuration.Value = Effects.Instance.MaxRumbleDuration;
+        _SliderScreenShakeStrength.Value = Effects.Instance.ScreenShakeStrength;
+        _SliderScreenShakeDuration.Value = Effects.Instance.MaxScreenShakeDuration;
+        _SliderMaxVolume.Value = Access.Instance.AudioDecibelLimit;
+        _SliderTimeScale.Value = Access.Instance.EngineTimeScale;
+        _OptionFont.Selected = Access.Instance.FontOption;
+        _SliderGUIScale.Value = Access.Instance.GUI_Scale;
+        _CheckAlwaysShowReticle.ButtonPressed = Access.Instance.AlwaysShowReticle;
 
-        checkbox_no_flashing_lights.Toggled += OnNoFlashingLightsChanged;
-        option_font.ItemSelected += OnFontSelected;
-        check_always_show_reticle.Toggled += OnAlwaysShowReticleToggled;
+        _CheckboxNoFlashingLights.Toggled += OnNoFlashingLightsChanged;
+        _OptionFont.ItemSelected += OnFontSelected;
+        _CheckAlwaysShowReticle.Toggled += OnAlwaysShowReticleToggled;
 
-        slider_rumble_strength.ValueChanged += SetRumbleStrength;
-        slider_rumble_duration.ValueChanged += SetMaxRumbleDuration;
-        slider_screen_shake_strength.ValueChanged += SetScreenShakeStrength;
-        slider_screen_shake_duration.ValueChanged += SetMaxScreenShakeDuration;
-        slider_max_volume.ValueChanged += SetMaxAudio;
-        slider_time_scale.ValueChanged += SetEngineTimeScale;
-        slider_gui_scale.ValueChanged += SetGUIScale;
+        _SliderRumbleStrength.ValueChanged += SetRumbleStrength;
+        _SliderRumbleDuration.ValueChanged += SetMaxRumbleDuration;
+        _SliderScreenShakeStrength.ValueChanged += SetScreenShakeStrength;
+        _SliderScreenShakeDuration.ValueChanged += SetMaxScreenShakeDuration;
+        _SliderMaxVolume.ValueChanged += SetMaxAudio;
+        _SliderTimeScale.ValueChanged += SetEngineTimeScale;
+        _SliderGUIScale.ValueChanged += SetGUIScale;
 
         Events.Data.SerializeAll += ApplyChanges;
 
@@ -97,17 +86,17 @@ public partial class accessibility_tab : PanelContainer
     private void SetGUIScale(double value)
     {
         if (Access.Instance.GUI_Scale != (float)value)
-            RequiresReload = true;
+            _RequiresReload = true;
         Access.Instance.GUI_Scale = (float)value;
     }
 
     private void OnFontSelected(long index)
     {
-        var target = option_font.GetItemId((int)index);
+        var target = _OptionFont?.GetItemId((int)index) ?? Access.FONT_GOTHIC;
         if (target == Access.Instance.FontOption) return;
 
         Access.Instance.FontOption = target;
-        RequiresReload = true;
+        _RequiresReload = true;
     }
 
     private void OnAlwaysShowReticleToggled(bool buttonPressed)
@@ -118,6 +107,6 @@ public partial class accessibility_tab : PanelContainer
     {
         Access.SaveSettings();
         Effects.SaveSettings();
-        if (RequiresReload) GetTree().ReloadCurrentScene(); // no need to set variable. reload resets everything
+        if (_RequiresReload) GetTree().ReloadCurrentScene(); // no need to set variable. reload resets everything
     }
 }

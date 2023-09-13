@@ -47,10 +47,21 @@ public static class Print
 
     private static void DisplayMessage(Msg message)
     {
-        if (OS.HasFeature("editor")) DisplayEditor(message);
+        if (OS.HasEnvironment("VS_DEBUG")) DisplayVsDebugging(message);
+        else if (OS.HasFeature("editor")) DisplayEditor(message);
         else DisplayRelease(message);
 
         DisplayLogFile(message);
+    }
+
+    private static void DisplayVsDebugging(Msg msg)
+    {
+        if (msg.LogLevel < LogLevel) return; // skip lower level messages for clarity. Defaults to WARNING in non-debug release
+        if (msg.IsError) GD.PushError(msg.Text);
+        else if (msg.IsWarning) GD.PushWarning(msg.Text);
+
+        var raw = $"{msg.MsgType} ({msg.LogLevel}) {msg.Text}";
+        GD.PrintRich(msg.WrapFormatting(raw));
     }
 
     private static void DisplayRelease(Msg msg)

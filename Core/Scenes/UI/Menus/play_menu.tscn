@@ -9,13 +9,13 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_m1em8"]
 
-[node name="PlayMenu" type="PanelContainer"]
+[node name="PlayMenu" type="PanelContainer" node_paths=PackedStringArray("_SlotsRoot")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 4.0
 grow_vertical = 2
 script = ExtResource("1_vbd2q")
-PathSaveSlotsRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/SaveSlotsRoot")
+_SlotsRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/SaveSlotsRoot")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

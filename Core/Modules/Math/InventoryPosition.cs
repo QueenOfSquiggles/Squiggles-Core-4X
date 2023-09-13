@@ -68,7 +68,7 @@ public class InventoryPosition : IEqualityComparer<InventoryPosition>, IComparab
     {
         return $"vec2i({X}, {Y})";
     }
-    public int CompareTo(InventoryPosition? other)
+    public int CompareTo(InventoryPosition other)
     {
         if (other is null) return 0;
         int indexOther = other.ToIndex(HASH_CODE_CONTAINER_SIZE);
@@ -77,7 +77,7 @@ public class InventoryPosition : IEqualityComparer<InventoryPosition>, IComparab
         return indexOther < indexSelf ? -1 : 1;
     }
 
-    public bool Equals(InventoryPosition? x, InventoryPosition? y)
+    public bool Equals(InventoryPosition x, InventoryPosition y)
     {
         if (x is null || y is null)
         {
@@ -182,7 +182,7 @@ public class InventoryPosition : IEqualityComparer<InventoryPosition>, IComparab
         return a.GetHashCode() != b.GetHashCode();
     }
 
-    public override bool Equals(object? obj)
+    public override bool Equals(object obj)
     {
         if (ReferenceEquals(this, obj)) return true;
         if (obj is not InventoryPosition pos) return false;

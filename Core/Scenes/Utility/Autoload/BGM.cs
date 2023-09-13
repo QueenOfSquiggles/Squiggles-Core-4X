@@ -10,23 +10,19 @@ using queen.extension;
 /// </summary>
 public partial class BGM : Node
 {
-    [Export] private NodePath path_bus_a;
-    [Export] private NodePath path_bus_b;
 
-    private AudioStreamPlayer bus_a;
-    private AudioStreamPlayer bus_b;
+    [Export] private AudioStreamPlayer _BusA;
+    [Export] private AudioStreamPlayer _BusB;
     private bool bus_a_active = false;
 
-    private static BGM Instance = null;
+    private static BGM Instance;
 
     private const float DB_ON = 0.0f;
     private const float DB_OFF = -79.0f;
 
     public override void _Ready()
     {
-        this.GetNode(path_bus_a, out bus_a);
-        this.GetNode(path_bus_b, out bus_b);
-        this.EnsureSingleton(ref Instance);
+        _ = this.EnsureSingleton(ref Instance);
     }
 
     /// <summary>
@@ -37,16 +33,17 @@ public partial class BGM : Node
     /// <param name="duration">The time it takes to crossfade between the current song and the next song. Defaults to 1 second</param>
     public static void QueueSong(AudioStream stream, float duration = 1.0f, bool continue_duplicate = true)
     {
-        Instance.InternalQueueSong(stream, duration, continue_duplicate);
+        Instance?.InternalQueueSong(stream, duration, continue_duplicate);
     }
 
     private void InternalQueueSong(AudioStream stream, float duration, bool continue_duplicate)
     {
+        if (_BusA is null || _BusB is null) return;
         if (continue_duplicate)
         {
             bool skip = false;
-            if (bus_a_active && bus_a.Stream == stream) skip = true;
-            if ((!bus_a_active) && bus_b.Stream == stream) skip = true;
+            if (bus_a_active && _BusA.Stream == stream) skip = true;
+            if ((!bus_a_active) && _BusB.Stream == stream) skip = true;
             if (skip)
             {
                 return;
@@ -54,12 +51,12 @@ public partial class BGM : Node
         }
         if (bus_a_active)
         {
-            SwapSongs(stream, bus_b, bus_a, duration);
+            SwapSongs(stream, _BusB, _BusA, duration);
             bus_a_active = false;
         }
         else
         {
-            SwapSongs(stream, bus_a, bus_b, duration);
+            SwapSongs(stream, _BusA, _BusB, duration);
             bus_a_active = true;
         }
     }

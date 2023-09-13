@@ -14,7 +14,8 @@ public partial class AudioTab : PanelContainer
         int count = AudioServer.BusCount;
         for (int i = 0; i < count; i++)
         {
-            var scene = _SliderComboScene.Instantiate();
+            var scene = _SliderComboScene?.Instantiate();
+            if (scene is null) continue;
             var bus_name = AudioServer.GetBusName(i);
             scene.Name = $"AudioSlider_{bus_name}";
             var sci = new SliderComboInterface(scene)
@@ -25,7 +26,7 @@ public partial class AudioTab : PanelContainer
                 StepValue = 1,
                 SliderValue = -15
             };
-            _SlidersRoot.AddChild(scene);
+            _SlidersRoot?.AddChild(scene);
         }
 
 
@@ -38,13 +39,14 @@ public partial class AudioTab : PanelContainer
     }
 
 
-
     public void ApplyChanges()
     {
-        int count = AudioServer.BusCount;
+        int count = AudioBuses.Instance.Volumes.Length;
+        var _ = AudioBuses.Instance; // force load, which will resize volumes array
         for (int i = 0; i < count; i++)
         {
-            var slider = _SlidersRoot.GetChild(i);
+            var slider = _SlidersRoot?.GetChild(i);
+            if (slider is null) continue;
             var sci = new SliderComboInterface(slider);
             AudioBuses.Instance.Volumes[i] = sci.SliderValue;
         }

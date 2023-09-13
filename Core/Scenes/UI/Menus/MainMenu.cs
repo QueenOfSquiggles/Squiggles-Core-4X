@@ -11,9 +11,9 @@ using queen.extension;
 
 public partial class MainMenu : Control
 {
-	[Export(PropertyHint.File, "*.tscn")] private string PlayMenuScene;
-	[Export(PropertyHint.File, "*.tscn")] private string Options;
-	[Export(PropertyHint.File, "*.tscn")] private string CreditsScene;
+	[Export(PropertyHint.File, "*.tscn")] private string _PlayMenuScene = "";
+	[Export(PropertyHint.File, "*.tscn")] private string _Options = "";
+	[Export(PropertyHint.File, "*.tscn")] private string _CreditsScene = "";
 
 	[ExportGroup("Node Paths")]
 	[Export] private Control _ButtonsPanel;
@@ -25,9 +25,12 @@ public partial class MainMenu : Control
 	public override void _Ready()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Visible;
-		_GameLogo.Texture = ThisIsYourMainScene.Config.GameLogo;
-		_AuthorLabel.Text = Tr(_AuthorLabel.Text).Replace("%s", ThisIsYourMainScene.Config.AuthorName);
-		_AuthorLabel.Uri = ThisIsYourMainScene.Config.AuthorGamesURL;
+		if (_GameLogo is not null) _GameLogo.Texture = ThisIsYourMainScene.Config?.GameLogo;
+		if (_AuthorLabel is not null)
+		{
+			_AuthorLabel.Text = Tr(_AuthorLabel.Text).Replace("%s", ThisIsYourMainScene.Config?.AuthorName ?? "SET AUTHOR NAME IN CONFIG");
+			_AuthorLabel.Uri = ThisIsYourMainScene.Config?.AuthorGamesURL ?? "";
+		}
 	}
 
 	private async void OnBtnPlay()
@@ -36,13 +39,13 @@ public partial class MainMenu : Control
 		{
 			if (_CurrentPopup is PlayMenu) return;
 			await ClearOldSlidingScene();
-			CreateNewSlidingScene(PlayMenuScene);
+			CreateNewSlidingScene(_PlayMenuScene);
 		}
 		else
 		{
 			Data.SetSaveSlot(Data.CreateSaveSlotName());
 			Events.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-			Scenes.LoadSceneAsync(ThisIsYourMainScene.Config.PlayScene);
+			Scenes.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
 		}
 	}
 
@@ -50,21 +53,21 @@ public partial class MainMenu : Control
 	{
 		Data.LoadMostRecentSaveSlot();
 		Events.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-		Scenes.LoadSceneAsync(ThisIsYourMainScene.Config.PlayScene);
+		Scenes.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
 	}
 
 	private async void OnBtnOptions()
 	{
 		if (_CurrentPopup is OptionsMenu) return;
 		await ClearOldSlidingScene();
-		CreateNewSlidingScene(Options);
+		CreateNewSlidingScene(_Options);
 	}
 
 	private async void OnBtnCredits()
 	{
 		if (_CurrentPopup is CreditsScene) return;
 		await ClearOldSlidingScene();
-		CreateNewSlidingScene(CreditsScene);
+		CreateNewSlidingScene(_CreditsScene);
 	}
 
 
@@ -74,7 +77,7 @@ public partial class MainMenu : Control
 		var sliding_comp = _CurrentPopup.GetComponent<SlidingPanelComponent>();
 		if (sliding_comp is not null)
 		{
-			sliding_comp.RemoveScene();
+			_ = sliding_comp.RemoveScene();
 			await ToSignal(_CurrentPopup, "tree_exited");
 		}
 	}
@@ -82,7 +85,7 @@ public partial class MainMenu : Control
 	private void CreateNewSlidingScene(string scene_file)
 	{
 		var packed = GD.Load<PackedScene>(scene_file);
-		var scene = packed?.Instantiate<Control>();
+		var scene = packed.Instantiate<Control>();
 		if (scene is null) return;
 		scene.GlobalPosition = new Vector2(_ButtonsPanel.Size.X, 0);
 		AddChild(scene);

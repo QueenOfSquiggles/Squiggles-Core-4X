@@ -5,7 +5,7 @@ using queen.extension;
 
 public class SetRandomValue : Leaf
 {
-	private Random rand = new();
+	private Random _Random = new();
 	protected override void RegisterParams()
 	{
 		Params["val_type"] = "float";
@@ -22,7 +22,7 @@ public class SetRandomValue : Leaf
 		var max = GetParam("min", 1.0f, bb).AsSingle();
 		var size = max - min;
 
-		float r() => rand.NextSingle() * size + min;
+		float r() => _Random.NextSingle() * size + min;
 		switch (type)
 		{
 			case "float":
@@ -32,7 +32,7 @@ public class SetRandomValue : Leaf
 				bb.SetLocal(target, (int)r());
 				break;
 			case "bool":
-				bb.SetLocal(target, rand.NextBool());
+				bb.SetLocal(target, _Random.NextBool());
 				break;
 			case "Vector2":
 				bb.SetLocal(target, new Vector2(r(), r()));

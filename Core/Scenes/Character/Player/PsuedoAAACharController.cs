@@ -12,30 +12,22 @@ using queen.extension;
 public partial class PsuedoAAACharController : CharacterBody3D
 {
     [ExportGroup("Movement Stats")]
-    [Export] protected float Speed = 2.0f;
-    [Export] protected float SprintSpeed = 5.0f;
-    [Export] protected float Acceleration = 0.3f;
-    [Export] protected float JumpVelocity = 4.5f;
-    [Export] protected float mouse_sensitivity = 0.03f;
-    [Export] protected float CrouchSpeedScale = 0.45f;
-    [Export] protected float StepHeight = 0.4f;
-    [Export] protected float StepStrength = 3.0f;
+    [Export] protected float _Speed = 2.0f;
+    [Export] protected float _SprintSpeed = 5.0f;
+    [Export] protected float _Acceleration = 0.3f;
+    [Export] protected float _JumpVelocity = 4.5f;
+    [Export] protected float _MouseSensitivity = 0.03f;
+    [Export] protected float _CrouchSpeedScale = 0.45f;
+    [Export] protected float _StepHeight = 0.4f;
+    [Export] protected float _StepStrength = 3.0f;
 
-    [ExportGroup("Node Paths")]
-    [Export] private NodePath PathVCam;
-    [Export] private NodePath PathAnimationPlayer;
-    [Export] private NodePath PathCanStandCheck;
-    [Export] private NodePath PathStepCheckTop;
-    [Export] private NodePath PathStepCheckBottom;
-    [Export] private NodePath PathInteractRay;
-
-    // References
-    protected VirtualCamera vcam;
-    protected AnimationPlayer anim;
-    protected RayCast3D CanStandCheck;
-    protected RayCast3D CanStepCheckTop;
-    protected RayCast3D CanStepCheckBottom;
-    protected RayCast3D InteractionRay;
+    [ExportGroup("Node Refs")]
+    [Export] protected VirtualCamera _Vcam;
+    [Export] protected AnimationPlayer _Anim;
+    [Export] protected RayCast3D _CanStandCheck;
+    [Export] protected RayCast3D _CanStepCheckTop;
+    [Export] protected RayCast3D _CanStepCheckBottom;
+    [Export] protected RayCast3D _InteractionRay;
 
     // Values
     protected Vector2 camera_look_vector = new();
@@ -51,16 +43,12 @@ public partial class PsuedoAAACharController : CharacterBody3D
 
     public override void _Ready()
     {
-        this.GetSafe(PathVCam, out vcam);
-        this.GetSafe(PathAnimationPlayer, out anim);
-        this.GetSafe(PathCanStandCheck, out CanStandCheck);
-        this.GetSafe(PathStepCheckTop, out CanStepCheckTop);
-        this.GetSafe(PathStepCheckBottom, out CanStepCheckBottom);
-        this.GetSafe(PathInteractRay, out InteractionRay);
-
-        CanStepCheckTop.Position += new Vector3(0, StepHeight, 0);
-        CanStepCheckBottom_CastLength = CanStepCheckBottom.TargetPosition.Length();
-        CanStepCheckTop_CastLength = CanStepCheckTop.TargetPosition.Length();
+        if (_CanStepCheckTop is not null && _CanStepCheckBottom is not null)
+        {
+            _CanStepCheckTop.Position += new Vector3(0, _StepHeight, 0);
+            CanStepCheckBottom_CastLength = _CanStepCheckBottom.TargetPosition.Length();
+            CanStepCheckTop_CastLength = _CanStepCheckTop.TargetPosition.Length();
+        }
 
         Events.Gameplay.RequestPlayerAbleToMove += HandleEventPlayerCanMove;
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -91,7 +79,7 @@ public partial class PsuedoAAACharController : CharacterBody3D
 
         // Handle Jump.
         if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-            velocity.Y = JumpVelocity;
+            velocity.Y = _JumpVelocity;
     }
 
     private void CamMoveLogic(ref Vector3 velocity, double delta)
@@ -106,16 +94,16 @@ public partial class PsuedoAAACharController : CharacterBody3D
         {
             // TODO Holy fuck this is some messy logic. This should really get cleaned up somehow. Maybe by having a series of contributing factors? IDK
             // Sprint or No Sprint
-            var target_speed = (IsOnFloor() && Input.IsActionPressed("sprint")) ? SprintSpeed : Speed;
+            var target_speed = (IsOnFloor() && Input.IsActionPressed("sprint")) ? _SprintSpeed : _Speed;
             // Crouching so speed is slowed unless on stairs
-            if (IsCrouching) target_speed = IsOnStairs ? Speed : (Speed * CrouchSpeedScale);
-            CurrentSpeed = Mathf.Lerp(CurrentSpeed, target_speed, Acceleration);
+            if (IsCrouching) target_speed = IsOnStairs ? _Speed : (_Speed * _CrouchSpeedScale);
+            CurrentSpeed = Mathf.Lerp(CurrentSpeed, target_speed, _Acceleration);
             velocity.X = direction.X * CurrentSpeed;
             velocity.Z = direction.Z * CurrentSpeed;
         }
         else
         {
-            CurrentSpeed = Mathf.Lerp(CurrentSpeed, 0, Acceleration);
+            CurrentSpeed = Mathf.Lerp(CurrentSpeed, 0, _Acceleration);
             velocity.X = Mathf.MoveToward(Velocity.X, 0, CurrentSpeed);
             velocity.Z = Mathf.MoveToward(Velocity.Z, 0, CurrentSpeed);
         }
@@ -124,10 +112,11 @@ public partial class PsuedoAAACharController : CharacterBody3D
     private void StepLogic(ref Vector3 velocity, double _delta)
     {
         if (InputVector.LengthSquared() < 0.8f) return;
+        if (_CanStepCheckBottom is null || _CanStepCheckTop is null) return;
 
         var dir = new Vector3(InputVector.X, 0, InputVector.Y);
-        CanStepCheckBottom.TargetPosition = dir * CanStepCheckBottom_CastLength;
-        CanStepCheckTop.TargetPosition = dir * CanStepCheckTop_CastLength;
+        _CanStepCheckBottom.TargetPosition = dir * CanStepCheckBottom_CastLength;
+        _CanStepCheckTop.TargetPosition = dir * CanStepCheckTop_CastLength;
 
         if (!IsOnWall())
         {
@@ -135,26 +124,27 @@ public partial class PsuedoAAACharController : CharacterBody3D
             return;
         }
 
-        IsOnStairs = CanStepCheckBottom.IsColliding() && !CanStepCheckTop.IsColliding();
+        IsOnStairs = _CanStepCheckBottom.IsColliding() && !_CanStepCheckTop.IsColliding();
 
         if (IsOnStairs)
         {
-            velocity.Y = StepHeight * StepStrength;
+            velocity.Y = _StepHeight * _StepStrength;
         }
     }
 
     private void CamLookLogic(double delta)
     {
+        if (_Vcam is null) return;
         var look = (camera_look_vector.LengthSquared() > 0.1f) ? camera_look_vector : GetGamepadLookVector();
         look *= (float)delta;
 
-        RotateY(look.X * mouse_sensitivity);
+        RotateY(look.X * _MouseSensitivity);
 
-        var rot = vcam.Rotation;
-        rot.X += look.Y * mouse_sensitivity;
+        var rot = _Vcam.Rotation;
+        rot.X += look.Y * _MouseSensitivity;
         var cl = Mathf.DegToRad(89.0f);
         rot.X = Mathf.Clamp(rot.X, -cl, cl);
-        vcam.Rotation = rot;
+        _Vcam.Rotation = rot;
 
         camera_look_vector = Vector2.Zero;
     }
@@ -190,18 +180,17 @@ public partial class PsuedoAAACharController : CharacterBody3D
     }
     private bool InputMouseLook(InputEvent e)
     {
-        if (e is not InputEventMouseMotion) return false;
-        var mm = e as InputEventMouseMotion;
+        if (e is not InputEventMouseMotion mm) return false;
         camera_look_vector += mm.Relative * Controls.Instance.MouseLookSensivity * -1f;
         return true;
     }
 
     private bool InputInteract(InputEvent e)
     {
+        if (_InteractionRay is null) return false;
+        _InteractionRay.ForceRaycastUpdate();
 
-        InteractionRay.ForceRaycastUpdate();
-
-        if (InteractionRay.GetCollider() is Node collider && collider is IInteractable inter && inter.IsActive())
+        if (_InteractionRay.GetCollider() is Node collider && collider is IInteractable inter && inter.IsActive())
         {
             if (!LastWasInteractable)
             {

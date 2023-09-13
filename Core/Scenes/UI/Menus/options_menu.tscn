@@ -6,17 +6,18 @@
 [sub_resource type="LabelSettings" id="LabelSettings_cmblw"]
 font_size = 32
 
-[node name="OptionsMenu" type="PanelContainer"]
+[node name="OptionsMenu" type="PanelContainer" node_paths=PackedStringArray("SlidingSceneRoot")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 221.0
 grow_vertical = 2
 script = ExtResource("1_hipj7")
-main_menu_path = "res://Scenes/UI/Menus/main_menu.tscn"
+_MainMenuPath = "res://Core/Scenes/UI/Menus/main_menu.tscn"
+SlidingSceneRoot = NodePath("SlidingRoot")
 path_panel_graphics = "res://Core/Scenes/UI/Menus/OptionsTabs/graphics_tab.tscn"
 path_panel_access = "res://Core/Scenes/UI/Menus/OptionsTabs/accessibility_tab.tscn"
 path_panel_controls = "res://Core/Scenes/UI/Menus/OptionsTabs/controls_tab.tscn"
-path_panel_audio = "res://Core/Scenes/UI/Menus/OptionsTabs/audio_tab.tscn"
+_PathPanelAudio = "res://Core/Scenes/UI/Menus/OptionsTabs/audio_tab.tscn"
 
 [node name="SlidingRoot" type="Control" parent="."]
 layout_mode = 2
@@ -67,9 +68,10 @@ layout_mode = 2
 text = "Audio
 "
 
-[node name="SlidingPanelComponent" type="Node" parent="."]
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_Target")]
 script = ExtResource("2_q803b")
-PathSubSliding = NodePath("../SlidingRoot")
+_Target = NodePath("..")
+_PathSubSlidingRoot = NodePath("../SlidingRoot")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnGameplay" to="." method="OnBtnGameplay"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnGraphics" to="." method="OnBtnGraphics"]

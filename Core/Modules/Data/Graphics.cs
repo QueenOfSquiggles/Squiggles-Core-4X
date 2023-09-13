@@ -13,9 +13,10 @@ public class Graphics
     //
     public int Fullscreen =
 #if DEBUG
-        // fullscreen by default in release builds. Feels more AAA than trashy indie
+        // In DEBUG builds I prefer windowed so I can see my debugging tools as well without much effort
         (int)DisplayServer.WindowMode.Maximized;
 #else
+        // fullscreen by default in release builds. Feels more AAA than trashy indie
         (int)DisplayServer.WindowMode.Fullscreen;
 #endif
 
@@ -42,7 +43,7 @@ public class Graphics
     {
         get
         {
-            if (_instance == null) CreateInstance();
+            if (_instance is null) CreateInstance();
             return _instance;
 
         }

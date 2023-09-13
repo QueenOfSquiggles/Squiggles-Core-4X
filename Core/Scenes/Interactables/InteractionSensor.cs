@@ -11,18 +11,12 @@ public partial class InteractionSensor : Area3D
 {
     [Signal] public delegate void OnCurrentInteractionChangeEventHandler();
 
-    [Export] private NodePath PathDerivePositionFrom = "..";
-    [Export] private bool AutoSelectObjects = false;
-
-    private Node3D DerivedPosition;
+    [Export] private Node3D _DerivedPosition;
+    [Export] private bool _AutoSelectObjects = false;
 
 
-    public Node3D? CurrentInteraction { get; private set; } = null;
 
-    public override void _Ready()
-    {
-        this.GetSafe(PathDerivePositionFrom, out DerivedPosition);
-    }
+    public Node3D CurrentInteraction { get; private set; } = null;
 
     private void OnAreaEnter(Area3D _) => RefreshCurrent();
     private void OnAreaExit(Area3D _) => RefreshCurrent();
@@ -41,25 +35,26 @@ public partial class InteractionSensor : Area3D
         if (options.Count <= 0)
         {
             if (CurrentInteraction == null) return;
-            if (AutoSelectObjects && CurrentInteraction is ISelectable sel) sel.OnDeselect();
+            if (_AutoSelectObjects && CurrentInteraction is ISelectable sel) sel.OnDeselect();
             CurrentInteraction = null;
             EmitSignal(nameof(OnCurrentInteractionChange));
         }
         else
         {
+            if (_DerivedPosition is null) return;
             var n_current = options[0];
             var dist = float.MaxValue;
             foreach (var n in options)
             {
-                var d = (DerivedPosition.GlobalPosition - n.GlobalPosition).LengthSquared();
+                var d = (_DerivedPosition.GlobalPosition - n.GlobalPosition).LengthSquared();
                 if (d > dist) continue;
                 dist = d;
                 n_current = n;
             }
             if (CurrentInteraction == n_current) return;
-            if (AutoSelectObjects && CurrentInteraction is ISelectable sel1) sel1.OnDeselect();
+            if (_AutoSelectObjects && CurrentInteraction is ISelectable sel1) sel1.OnDeselect();
             CurrentInteraction = n_current;
-            if (AutoSelectObjects && CurrentInteraction is ISelectable sel2) sel2.OnSelect();
+            if (_AutoSelectObjects && CurrentInteraction is ISelectable sel2) sel2.OnSelect();
             EmitSignal(nameof(OnCurrentInteractionChange));
         }
 

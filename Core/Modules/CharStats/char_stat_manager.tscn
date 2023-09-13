@@ -6,5 +6,5 @@
 
 [node name="CharStatManager" type="Node"]
 script = ExtResource("1_ddhj8")
-SceneFloatStat = ExtResource("2_t725f")
-SceneStatMod = ExtResource("3_cyi4q")
+_SceneFloatStat = ExtResource("2_t725f")
+_SceneStatMod = ExtResource("3_cyi4q")

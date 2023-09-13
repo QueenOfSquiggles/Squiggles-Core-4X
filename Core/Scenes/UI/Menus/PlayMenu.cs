@@ -7,19 +7,18 @@ using queen.extension;
 
 public partial class PlayMenu : PanelContainer
 {
-    [Export] private NodePath PathSaveSlotsRoot;
 
-    private Control _SlotsRoot;
+    [Export] private Control _SlotsRoot;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        this.GetSafe(PathSaveSlotsRoot, out _SlotsRoot);
         LoadSlots();
     }
 
     private void LoadSlots()
     {
+        if (_SlotsRoot is null) return;
         var slots = Data.GetKnownSaveSlots();
         _SlotsRoot.RemoveAllChildren();
         foreach (var s in slots)
@@ -54,5 +53,5 @@ public partial class PlayMenu : PanelContainer
         Events.Data.TriggerReload();
     }
 
-    private string GetLevelScene() => ThisIsYourMainScene.Config.PlayScene;
+    private string GetLevelScene() => ThisIsYourMainScene.Config?.PlayScene ?? "";
 }

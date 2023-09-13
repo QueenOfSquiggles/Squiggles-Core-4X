@@ -12,8 +12,8 @@ public partial class CharStatManager : Node
     [Signal] public delegate void OnStatModAddedEventHandler(string statName, float value, int modifier);
     [Signal] public delegate void OnStatModRemovedEventHandler(string statName, float value, int modifier);
 
-    [Export] private PackedScene SceneFloatStat;
-    [Export] private PackedScene SceneStatMod;
+    [Export] private PackedScene _SceneFloatStat;
+    [Export] private PackedScene _SceneStatMod;
 
     struct DynStat
     {
@@ -34,7 +34,7 @@ public partial class CharStatManager : Node
 
     public void AddStat(string name, float value, CharStatFloat.Modifier modifier)
     {
-        if (SceneFloatStat.Instantiate() is not CharStatFloat node) return;
+        if (_SceneFloatStat?.Instantiate() is not CharStatFloat node) return;
         node.Name = name;
         node.StoredValue = value;
         node.StatMod = modifier;
@@ -58,7 +58,7 @@ public partial class CharStatManager : Node
     public void AddStatMod(string targetStat, float value, CharStatFloat.Modifier mod, float duration)
     {
         if (!Stats.ContainsKey(targetStat)) return;
-        if (SceneStatMod.Instantiate() is not CharStatFloatMod node) return;
+        if (_SceneStatMod?.Instantiate() is not CharStatFloatMod node) return;
         node.StoredValue = value;
         node.StatMod = mod;
         node.Duration = duration;

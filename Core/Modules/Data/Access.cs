@@ -7,9 +7,9 @@ public class Access
 {
 
 
-    private const int FONT_GOTHIC = 0;
-    private const int FONT_NOTO_SANS = 1;
-    private const int FONT_OPEN_DYSLEXIE = 2;
+    public const int FONT_GOTHIC = 0;
+    public const int FONT_NOTO_SANS = 1;
+    public const int FONT_OPEN_DYSLEXIE = 2;
     private const string FONT_PATH_GOTHIC = "res://Core/Assets/Fonts/DelaGothicOne-Regular.ttf";
     private const string FONT_PATH_NOTO_SANS = "res://Core/Assets/Fonts/NotoSans-Regular.ttf";
     private const string FONT_PATH_OPEN_DYSLEXIE = "res://Core/Assets/Fonts/OpenDyslexic-Regular.otf";
@@ -42,9 +42,8 @@ public class Access
     {
         get
         {
-            if (_instance == null) CreateInstance();
+            if (_instance is null) CreateInstance();
             return _instance;
-
         }
     }
     private static Access _instance = null;
@@ -60,7 +59,7 @@ public class Access
     {
         _instance = new Access();
         var loaded = Data.Load<Access>(FILE_PATH);
-        if (loaded != null)
+        if (loaded is not null)
         {
             _instance = loaded;
             ApplyChanges();
@@ -92,12 +91,12 @@ public class Access
             add_effect = true;
             ael = new();
         }
-        ael.CeilingDb = Instance.AudioDecibelLimit;
+        ael.CeilingDb = _instance.AudioDecibelLimit;
         if (add_effect) AudioServer.AddBusEffect(0, ael);
 
         // font management
         string path = "";
-        switch (Instance.FontOption)
+        switch (_instance.FontOption)
         {
             case FONT_GOTHIC:
                 path = FONT_PATH_GOTHIC;

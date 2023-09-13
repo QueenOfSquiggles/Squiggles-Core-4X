@@ -29,24 +29,43 @@ public class SaveDataBuilder
 
     public void SaveToFile()
     {
+        if (_Data is null) return;
         if (_UseSlot) Data.CurrentSaveSlot.Save(_Data, _FilePath);
         else Data.Save(_Data, _FilePath);
     }
 
     // Store
-    public void PutString(string key, string value) => _Data[key] = value;
+    public void PutString(string key, string value)
+    {
+        if (_Data is null) return;
+        _Data[key] = value;
+    }
 
-    public void PutInt(string key, int value) => _Data[key] = value.ToString("G0");
-    public void PutFloat(string key, float value) => _Data[key] = value.ToString("G");
-    public void PutBool(string key, bool value) => _Data[key] = value.ToString();
+    public void PutInt(string key, int value)
+    {
+        if (_Data is null) return;
+        _Data[key] = value.ToString("G0");
+    }
+    public void PutFloat(string key, float value)
+    {
+        if (_Data is null) return;
+        _Data[key] = value.ToString("G");
+    }
+    public void PutBool(string key, bool value)
+    {
+        if (_Data is null) return;
+        _Data[key] = value.ToString();
+    }
     public void PutVector2(string key, Vector2 value)
     {
+        if (_Data is null) return;
         var s = $"vec({value.X:G},{value.Y:G})";
         _Data[key] = s;
     }
 
     public void PutVector3(string key, Vector3 value)
     {
+        if (_Data is null) return;
         var s = $"vec({value.X:G},{value.Y:G},{value.Z:G})";
         _Data[key] = s;
     }
@@ -54,23 +73,27 @@ public class SaveDataBuilder
     // Collect
     public string GetString(string key)
     {
+        if (_Data is null) return "";
         if (!_Data.ContainsKey(key)) return "";
         return _Data[key];
     }
     public int GetInt(string key)
     {
+        if (_Data is null) return 0;
         if (!_Data.ContainsKey(key)) return 0;
         if (int.TryParse(_Data[key], out int val)) return val;
         return 0;
     }
     public float GetFloat(string key)
     {
+        if (_Data is null) return 0f;
         if (!_Data.ContainsKey(key)) return 0f;
         if (float.TryParse(_Data[key], out float val)) return val;
         return 0f;
     }
     public bool GetBool(string key)
     {
+        if (_Data is null) return false;
         if (!_Data.ContainsKey(key)) return false;
         if (bool.TryParse(_Data[key], out bool val)) return val;
         return false;
@@ -95,6 +118,7 @@ public class SaveDataBuilder
     public bool GetString(string key, out string value)
     {
         value = "";
+        if (_Data is null) return false;
         if (!_Data.ContainsKey(key)) return false;
         value = _Data[key];
         return true;
@@ -102,12 +126,14 @@ public class SaveDataBuilder
     public bool GetInt(string key, out int value)
     {
         value = 0;
+        if (_Data is null) return false;
         if (!_Data.ContainsKey(key)) return false;
         return int.TryParse(_Data[key], out value);
     }
     public bool GetFloat(string key, out float value)
     {
         value = 0f;
+        if (_Data is null) return false;
         if (!_Data.ContainsKey(key)) return false;
         bool passed = float.TryParse(_Data[key], out float v);
         value = v;
@@ -117,6 +143,7 @@ public class SaveDataBuilder
     public bool GetBool(string key, out bool value)
     {
         value = false;
+        if (_Data is null) return false;
         if (!_Data.ContainsKey(key)) return false;
         bool passed = bool.TryParse(_Data[key], out bool v);
         value = v;
@@ -125,6 +152,7 @@ public class SaveDataBuilder
     public bool GetVector2(string key, out Vector2 value)
     {
         value = Vector2.Zero;
+        if (_Data is null) return false;
         var s = GetString(key);
         if (!s.StartsWith("vec2")) return false;
         var floats = s.Replace("vec2(", "").Replace(")", "").SplitFloats(",");
@@ -136,6 +164,7 @@ public class SaveDataBuilder
     public bool GetVector3(string key, out Vector3 value)
     {
         value = Vector3.Zero;
+        if (_Data is null) return false;
         var s = GetString(key);
         if (!s.StartsWith("vec3")) return false;
         var floats = s.Replace("vec3(", "").Replace(")", "").SplitFloats(",");

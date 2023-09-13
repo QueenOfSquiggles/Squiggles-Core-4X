@@ -7,20 +7,18 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0.545098, 0.254902, 0.588235, 1)
 
-[node name="ThisIsYourMainScene" type="Node" node_paths=PackedStringArray("_WarningLabel")]
+[node name="ThisIsYourMainScene" type="Control" node_paths=PackedStringArray("_WarningLabel")]
 editor_description = "This is intended to be the main scene of your game as it handles all of the main redirects and setup based on your configuration file."
-script = ExtResource("1_bn45b")
-_WarningLabel = NodePath("Control/MarginContainer/WarningLabel")
-
-[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bn45b")
+_WarningLabel = NodePath("MarginContainer/WarningLabel")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,8 +39,6 @@ theme_override_constants/margin_top = 128
 theme_override_constants/margin_right = 128
 theme_override_constants/margin_bottom = 128
 
-[node name="WarningLabel" type="Label" parent="Control/MarginContainer"]
+[node name="WarningLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
-text = "This is a warning label
-lorem ipsum dolor sit amet"
 label_settings = SubResource("LabelSettings_oumbg")

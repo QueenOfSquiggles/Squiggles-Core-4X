@@ -9,32 +9,23 @@ using queen.extension;
 public partial class PlayerController : CharacterBody3D
 {
     [ExportGroup("Controls")]
-    [Export] private float mouse_sensitivity = 0.003f;
+    [Export] private float _MouseSensitivity = 0.003f;
 
     [ExportGroup("Movement")]
-    [Export] private float speed = 5.0f;
-    [Export] private float acceleration = 2.0f;
-    [Export] private float deacceleration = 10.0f;
+    [Export] private float _Speed = 5.0f;
+    [Export] private float _Acceleration = 2.0f;
+    [Export] private float _Deacceleration = 10.0f;
 
 
     [ExportGroup("Node Refs")]
-    [Export] private NodePath cam_arm_path;
-    private Node3D cam_arm;
-
-    [Export] private NodePath anim_tree_path;
-    private AnimationTree anim_tree;
-
-    [Export] private NodePath raycast_path;
-    private RayCast3D raycast;
+    [Export] private Node3D _CamArm;
+    [Export] private AnimationTree _AnimTree;
+    [Export] private RayCast3D _RayCast;
 
     private Vector2 camera_look_vector = new();
 
     public override void _Ready()
     {
-        this.GetNode(cam_arm_path, out cam_arm);
-        this.GetNode(anim_tree_path, out anim_tree);
-        this.GetNode(raycast_path, out raycast);
-
         Events.Gameplay.RequestPlayerAbleToMove += HandleEventPlayerCanMove;
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
@@ -54,6 +45,7 @@ public partial class PlayerController : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_CamArm is null || _AnimTree is null) return;
         if (Input.MouseMode != Input.MouseModeEnum.Captured) return;
         PerformMouseLook((float)delta);
 
@@ -62,8 +54,8 @@ public partial class PlayerController : CharacterBody3D
             input_dir = Input.GetVector("gamepad_move_left", "gamepad_move_right", "gamepad_move_back", "gamepad_move_forward");
 
         var intent_vec = new Vector3();
-        intent_vec += cam_arm.GlobalTransform.Basis.X * input_dir.X;
-        intent_vec += cam_arm.GlobalTransform.Basis.Z * input_dir.Y * -1;
+        intent_vec += _CamArm.GlobalTransform.Basis.X * input_dir.X;
+        intent_vec += _CamArm.GlobalTransform.Basis.Z * input_dir.Y * -1;
         intent_vec.Y = 0f;
 
         bool actively_moving = intent_vec.LengthSquared() > 0.1f;
@@ -77,12 +69,12 @@ public partial class PlayerController : CharacterBody3D
             intent_vec.Y = 0f;
             intent_vec = intent_vec.Normalized();
         }
-        anim_tree.Set("parameters/MovementCycle/blend_position", intent_vec.Length());
+        _AnimTree.Set("parameters/MovementCycle/blend_position", intent_vec.Length());
 
-        var accel = Mathf.Lerp(deacceleration, acceleration, intent_vec.Dot(Velocity.Normalized()) * 0.5f + 0.5f);
-        if (!actively_moving) accel = deacceleration;
+        var accel = Mathf.Lerp(_Deacceleration, _Acceleration, intent_vec.Dot(Velocity.Normalized()) * 0.5f + 0.5f);
+        if (!actively_moving) accel = _Deacceleration;
 
-        Velocity = Velocity.Lerp(intent_vec * speed, accel * (float)delta);
+        Velocity = Velocity.Lerp(intent_vec * _Speed, accel * (float)delta);
         if (!IsOnFloor())
         {
             var vel = Velocity;
@@ -96,18 +88,19 @@ public partial class PlayerController : CharacterBody3D
 
     private void PerformMouseLook(float delta)
     {
+        if (_CamArm is null) return;
         var look = (camera_look_vector.LengthSquared() > 0.1f) ?
             camera_look_vector :
             GetGamepadLookVector();
         look *= delta;
 
-        RotateY(look.X * mouse_sensitivity);
+        RotateY(look.X * _MouseSensitivity);
 
-        var rot = cam_arm.Rotation;
-        rot.X += look.Y * mouse_sensitivity;
+        var rot = _CamArm.Rotation;
+        rot.X += look.Y * _MouseSensitivity;
         var cl = Mathf.DegToRad(89.0f);
         rot.X = Mathf.Clamp(rot.X, -cl, cl);
-        cam_arm.Rotation = rot;
+        _CamArm.Rotation = rot;
 
         camera_look_vector = Vector2.Zero;
     }
@@ -120,24 +113,26 @@ public partial class PlayerController : CharacterBody3D
         * GAMEPAD_VEC_FLIP;
     }
 
-    private bool was_colliding_interactable = false;
+    private bool _WasCollidingInteractable = false;
     private void CheckInteractionRay()
     {
-        var collider = raycast.GetCollider();
-        bool flag = collider is not null and IInteractable && (collider as IInteractable).IsActive();
-        if (flag != was_colliding_interactable)
+        if (_RayCast is null) return;
+        var collider = _RayCast.GetCollider();
+
+        bool flag = false;
+        string item_name = "";
+        if (collider is IInteractable iis && iis.IsActive())
         {
-            if (flag)
-            {
-                var item_name = (collider as IInteractable).GetActiveName();
-                Events.GUI.TriggerAbleToInteract(item_name);
-            }
-            else
-            {
-                Events.GUI.TriggerUnableToInteract();
-            }
+            item_name = iis.GetActiveName();
+            flag = true;
         }
-        was_colliding_interactable = flag;
+
+        if (flag != _WasCollidingInteractable)
+        { // TODO there has GOT to be a better way  to lay this out
+            if (flag) Events.GUI.TriggerAbleToInteract(item_name);
+            else Events.GUI.TriggerUnableToInteract();
+        }
+        _WasCollidingInteractable = flag;
     }
 
     public override void _UnhandledInput(InputEvent e)
@@ -155,8 +150,7 @@ public partial class PlayerController : CharacterBody3D
 
     private bool InputMouseLook(InputEvent e)
     {
-        if (e is not InputEventMouseMotion) return false;
-        var mm = e as InputEventMouseMotion;
+        if (e is not InputEventMouseMotion mm) return false;
         camera_look_vector += mm.Relative * Controls.Instance.MouseLookSensivity * -1f;
         return true;
     }
@@ -164,9 +158,10 @@ public partial class PlayerController : CharacterBody3D
     private bool InputInteract(InputEvent e)
     {
         if (!e.IsActionPressed("interact")) return false;
+        if (_RayCast is null) return false;
 
-        raycast.ForceRaycastUpdate();
-        if (raycast.GetCollider() is Node collider && collider is IInteractable inter && inter.IsActive())
+        _RayCast.ForceRaycastUpdate();
+        if (_RayCast.GetCollider() is Node collider && collider is IInteractable inter && inter.IsActive())
         {
             inter.Interact();
         }

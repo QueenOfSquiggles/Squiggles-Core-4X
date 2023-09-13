@@ -4,8 +4,8 @@ using Godot;
 
 public class SetRandomDirection : Leaf
 {
-    private Random rand = new();
-    private Vector3 LastDir = Vector3.Zero;
+    private Random _Random = new();
+    private Vector3 _LastDir = Vector3.Zero;
 
     protected override void RegisterParams()
     {
@@ -17,16 +17,16 @@ public class SetRandomDirection : Leaf
         var target = GetParam("target", "key", bb).AsString();
         var dir = new Vector3
         {
-            X = (rand.NextSingle() - 0.5f) * 2.0f,
-            Z = (rand.NextSingle() - 0.5f) * 2.0f
+            X = (_Random.NextSingle() - 0.5f) * 2.0f,
+            Z = (_Random.NextSingle() - 0.5f) * 2.0f
         }.Normalized();
         bb.SetLocal(target, dir);
-        LastDir = dir;
+        _LastDir = dir;
         return SUCCESS;
     }
 
     public override void LoadDebuggingValues(Blackboard bb)
     {
-        bb.SetLocal($"debug.{Label}:last_dir", LastDir);
+        bb.SetLocal($"debug.{Label}:last_dir", _LastDir);
     }
 }

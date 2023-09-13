@@ -92,10 +92,11 @@ _data = {
 "RESET": SubResource("Animation_dxwn1")
 }
 
-[node name="Scenes" type="Node"]
+[node name="Scenes" type="Node" node_paths=PackedStringArray("_Anim")]
 process_mode = 3
 script = ExtResource("1_qpc8e")
-path_anim = NodePath("AnimationPlayer")
+_Testing = true
+_Anim = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

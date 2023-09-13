@@ -10,15 +10,17 @@ public partial class ActionMappingSlot : HBoxContainer
 
     [Export] public string TargetAction = "";
 
-    private Label label;
-    private Button action_button;
+    private Label _Label;
+    private Button _ActionButton;
     public override void _Ready()
     {
-        this.GetNode("Label", out label);
-        this.GetNode("BtnListen", out action_button);
+        this.GetNode("Label", out _Label);
+        this.GetNode("BtnListen", out _ActionButton);
 
-        label.Text = TargetAction.Replace("_", " ");
-        action_button.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);
+        if (_Label is null || _ActionButton is null) return;
+
+        _Label.Text = TargetAction.Replace("_", " ");
+        _ActionButton.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);
         Controls.Instance.OnControlMappingChanged += HandleMappingChanged;
     }
 
@@ -29,8 +31,8 @@ public partial class ActionMappingSlot : HBoxContainer
 
     private void HandleMappingChanged(string action)
     {
-        if (action != TargetAction) return;
-        action_button.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);
+        if (action != TargetAction || _ActionButton is null) return;
+        _ActionButton.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);
     }
 
     public void AssignButtonPressed()

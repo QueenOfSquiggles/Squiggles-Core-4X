@@ -1,27 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cehxnein641v"]
+[gd_scene load_steps=4 format=3 uid="uid://cehxnein641v"]
 
 [ext_resource type="Script" path="res://Core/Scenes/UI/HUD/Inventory/ItemSlotDisplay.cs" id="1_4mgao"]
 [ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="1_12baf"]
-[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="2_ngcrk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mx625"]
 font_size = 32
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ItemSlotDisplay" type="PanelContainer"]
+[node name="ItemSlotDisplay" type="PanelContainer" node_paths=PackedStringArray("_Label", "_Icon")]
 self_modulate = Color(1, 1, 1, 0)
 offset_right = 132.0
 offset_bottom = 172.0
 script = ExtResource("1_4mgao")
-SelectOffset = 32.0
-PathIcon = NodePath("TextureRect")
-PathLabel = NodePath("TextureRect/Label")
+_Label = NodePath("TextureRect/Label")
+_Icon = NodePath("TextureRect")
 
 [node name="BGTexture" type="TextureRect" parent="."]
 self_modulate = Color(0.32549, 0.384314, 0.341176, 1)
 layout_mode = 2
-texture = ExtResource("2_ngcrk")
+texture = ExtResource("1_12baf")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)

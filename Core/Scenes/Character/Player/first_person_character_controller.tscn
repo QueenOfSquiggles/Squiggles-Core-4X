@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://bn2invm6c5eb8"]
 
 [ext_resource type="Script" path="res://Core/Scenes/Character/Player/PlayerController.cs" id="1_a4hb8"]
 [ext_resource type="PackedScene" uid="uid://cvxg1i0juoqmy" path="res://Core/Scenes/Utility/CameraUtilities/virtual_camera.tscn" id="2_ctyh5"]
@@ -34,13 +34,11 @@ states/Test/node = SubResource("AnimationNodeAnimation_26orf")
 states/Test/position = Vector2(300, 106)
 transitions = ["Start", "Test", SubResource("AnimationNodeStateMachineTransition_uoswe")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_jgq6h"]
-
-[node name="First Person Character Controller" type="CharacterBody3D" groups=["player"]]
+[node name="First Person Character Controller" type="CharacterBody3D" node_paths=PackedStringArray("_CamArm", "_AnimTree", "_RayCast") groups=["player"]]
 script = ExtResource("1_a4hb8")
-cam_arm_path = NodePath("CameraArm")
-anim_tree_path = NodePath("AnimationTree")
-raycast_path = NodePath("CameraArm/VirtualCamera/InteractionRay")
+_CamArm = NodePath("CameraArm")
+_AnimTree = NodePath("AnimationTree")
+_RayCast = NodePath("CameraArm/VirtualCamera/InteractionRay")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801277, 0)
@@ -56,9 +54,6 @@ shape = SubResource("CapsuleShape3D_ovivv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37657, 0)
 
 [node name="VirtualCamera" parent="CameraArm" instance=ExtResource("2_ctyh5")]
-PushCamOnReady = true
-AllowVCamChildren = true
-LerpCamera = false
 
 [node name="InteractionRay" type="RayCast3D" parent="CameraArm/VirtualCamera"]
 target_position = Vector3(0, 0, -1.5)
@@ -74,4 +69,3 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_fs7a4")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_jgq6h")

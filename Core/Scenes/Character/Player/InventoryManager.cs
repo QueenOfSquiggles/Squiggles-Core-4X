@@ -93,7 +93,7 @@ public partial class InventoryManager : Node
 
     public string GetSelectedItem()
     {
-        return _InventorySlots[_Selected]?.Item;
+        return _InventorySlots[_Selected]?.Item ?? "";
     }
 
     public void SetSelection(int select)

@@ -7,31 +7,31 @@ using queen.extension;
 
 public partial class UISounds : Node
 {
-    [Export] private float PopUIScale = 1.1f;
+    [Export] private float _PopUIScale = 1.1f;
 
-    [Export] private NodePath path_select_sfx;
-    [Export] private NodePath path_click_sfx;
-
-    private AudioStreamPlayer sfx_select;
-    private AudioStreamPlayer sfx_click;
-    private static string VoiceID = "";
-    private Tween? LastTween = null;
+    [Export] private AudioStreamPlayer _SFXSelect;
+    [Export] private AudioStreamPlayer _SFXClick;
+    private static string _VoiceID = "";
+    private Tween _LastTween = null;
 
     public override void _Ready()
     {
-        this.GetNode(path_select_sfx, out sfx_select);
-        this.GetNode(path_click_sfx, out sfx_click);
         var parent = GetParent<Control>();
-        if (VoiceID == "")
+        if (_VoiceID == "")
         {
             bool IsEnabled = ProjectSettings.GetSetting("audio/general/text_to_speech", false).AsBool();
-            if (IsEnabled) VoiceID = DisplayServer.TtsGetVoicesForLanguage(OS.GetLocaleLanguage())[0];
+            if (IsEnabled) _VoiceID = DisplayServer.TtsGetVoicesForLanguage(OS.GetLocaleLanguage())[0];
         }
 
-        if (queen.error.Debugging.Assert(parent != null, "UISounds node must be child of a Control node!"))
+        if (parent is not null)
         {
             ConnectSignalsDelayed(parent, 50);
             parent.SetAnchorsPreset(Control.LayoutPreset.Center); // anchor center for uniform scaling
+        }
+        else
+        {
+            // we know this is false, push the assertion failure
+            Debugging.Assert(false, "UISounds node must be child of a Control node!");
         }
     }
 
@@ -61,28 +61,32 @@ public partial class UISounds : Node
     private void OnSelect()
     {
         if (Access.Instance.ReadVisibleTextAloud && GetParent().Get("text").VariantType != Variant.Type.Nil)
-            DoTTS(GetParent().Get("text").AsString());
-        sfx_select.Play();
+        {
+            var text_string = GetParent()?.Get("text").AsString();
+            if (text_string is not null) DoTTS(text_string);
+        }
+        _SFXSelect?.Play();
         AnimatePop();
 
     }
 
-    private void OnClick() => sfx_click.Play();
+    private void OnClick() => _SFXClick?.Play();
 
-    private async void DoTTS(string msg)
+    private static async void DoTTS(string msg)
     {
-        if (VoiceID == "") return;
+        if (_VoiceID == "") return;
         DisplayServer.TtsStop();
-        DisplayServer.TtsSpeak(msg, VoiceID);
+        await Task.Delay(300);
+        DisplayServer.TtsSpeak(msg, _VoiceID);
     }
 
     private void AnimatePop()
     {
-        if (LastTween is not null)
+        if (_LastTween is not null)
         {
             // prevents duplicate scaling where the tweens will stack to create an infinitely large Control
-            LastTween.CustomStep(5.0f); // Forces a run to the end of the tween
-            LastTween.Kill();
+            _LastTween.CustomStep(5.0f); // Forces a run to the end of the tween
+            _LastTween.Kill();
         }
 
         var parent = GetParent<Control>();
@@ -90,9 +94,9 @@ public partial class UISounds : Node
         var start_size = parent.Size;
         var tween = GetTree().CreateTween().SetDefaultStyle();
         tween.SetTrans(Tween.TransitionType.Elastic);
-        tween.TweenProperty(parent, "size", start_size * PopUIScale, 0.1);
+        tween.TweenProperty(parent, "size", start_size * _PopUIScale, 0.1);
         tween.TweenProperty(parent, "size", start_size, 0.05);
-        LastTween = tween;
+        _LastTween = tween;
 
     }
 

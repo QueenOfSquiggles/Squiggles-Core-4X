@@ -11,13 +11,7 @@ public class AudioBuses
     //      Defaults assigned as well
     //
 
-    public float[] Volumes = new float[0];
-    public float VolumeMain = 0.0f;
-    public float VolumeVO = 0.0f;
-    public float VolumeSFX = 0.0f;
-    public float VolumeCreature = 0.0f;
-    public float VolumeDrones = 0.0f;
-
+    public float[] Volumes = Array.Empty<float>();
 
     //
     //  Singleton Setup
@@ -26,7 +20,7 @@ public class AudioBuses
     {
         get
         {
-            if (_instance == null) CreateInstance();
+            if (_instance is null) CreateInstance();
             return _instance;
 
         }
@@ -51,10 +45,18 @@ public class AudioBuses
 
     private static void UpdateAudioServer()
     {
+        if (_instance is null) return;
+
         if (_instance.Volumes.Length != AudioServer.BusCount)
         {
-            Array.Resize(ref _instance.Volumes, AudioServer.BusCount);
+            var temp = new float[AudioServer.BusCount];
+            for (int i = 0; i < _instance.Volumes.Length; i++)
+            {
+                if (i >= temp.Length) break;
+                temp[i] = _instance.Volumes[i];
+            }
         }
+
         for (int i = 0; i < AudioServer.BusCount; i++)
         {
             AudioServer.SetBusVolumeDb(i, _instance.Volumes[i]);
