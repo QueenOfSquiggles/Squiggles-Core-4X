@@ -12,7 +12,15 @@ There do exist several third party assets in this repo. For each pack the licens
 
 ## Installation and Usage
 
-> To be filled out...
+The three main "objects" for this library are the `addons`, `Core`, and `squiggles_config.tres`. Each of these can and should be dropped into the root folder. `addons` and `Core` are set up to support symbolic linking. The `squiggles_config.tres` is a custom resource that defines the configurations for your game.
+
+### Steps
+1. Install main components: `addons`, `Core`, `squiggles_config.tres`
+2. Build code
+3. Enable Plugins
+4. Set Main Scene to: `res://Core/this_is_your_main_scene.tscn`
+5. Modify configurations in `squiggles_config`.
+6. Test run
 
 ## Main Features
 *I may have forgotten some lol*
@@ -71,8 +79,6 @@ There do exist several third party assets in this repo. For each pack the licens
 	- Option to interpolate between cameras
 	- Treated as a camera stack: removing a Vcam from the scene will revert to the previous camera, interpolating between if set to interpolate.
 - Pre-build FPS controller character
-- Pre-set input actions
-	- With Keyboard & Mouse and Gamepad bindings
 - Defult HUD system
 	- Allows for generating arbitrary GUI elements on screen while still having a few defaults
 	- Subtitles system
