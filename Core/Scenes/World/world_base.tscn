@@ -10,7 +10,6 @@
 editor_description = "Intended to be used as a base scene for any 3D scenes in the game. The default necessary nodes are in place for convenience"
 
 [node name="DefaultHUD" parent="." instance=ExtResource("2_b2wle")]
-layer = 6
 
 [node name="PauseMenuController" parent="DefaultHUD" instance=ExtResource("2_2cy7m")]
 

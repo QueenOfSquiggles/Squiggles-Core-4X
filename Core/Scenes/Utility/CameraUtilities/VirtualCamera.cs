@@ -1,110 +1,96 @@
-using System;
+namespace Squiggles.Core.Scenes.Utility.Camera;
+
 using Godot;
-using queen.error;
+using Squiggles.Core.Error;
 
-public partial class VirtualCamera : Marker3D
-{
-    [Export] private bool _PushCamOnReady = false;
-    [Export] private bool _AllowVCamChildren = false;
+public partial class VirtualCamera : Marker3D {
+  [Export] private bool _pushCamOnReady = false;
+  [Export] private bool _allowVCamChildren = false;
 
-    [ExportGroup("Camera Lerping", "_Lerp")]
-    [Export] public bool _LerpCamera = true;
-    [Export] private float _LerpDuration = 0.1f;
+  [ExportGroup("Camera Lerping", "_Lerp")]
+  [Export] public bool LerpCamera = true;
+  [Export] private float _lerpDuration = 0.1f;
 
-    [ExportGroup("Advanced Lerp Options", "_Adv_Lerp")]
-    [Export] private bool _UseAdvancedLerpOptions = false;
-    [Export] private bool _Adv_LerpPosX = true;
-    [Export] private bool Adv_LerpPosY = true;
-    [Export] private bool Adv_LerpPosZ = true;
-    [Export] private bool _Adv_LerpRotX = true;
-    [Export] private bool Adv_LerpRotY = true;
-    [Export] private bool _Adv_LerpRotZ = true;
+  [ExportGroup("Advanced Lerp Options", "_advLerp")]
+  [Export] private bool _useAdvancedLerpOptions = false;
+  [Export] private bool _advLerpPosX = true;
+  [Export] private bool _advLerpPosY = true;
+  [Export] private bool _advLerpPosZ = true;
+  [Export] private bool _advLerpRotX = true;
+  [Export] private bool _advLerpRotY = true;
+  [Export] private bool _advLerpRotZ = true;
 
-    public bool IsOnStack { get; private set; } = false;
+  public bool IsOnStack { get; private set; }
 
-    public float LerpFactor
-    {
-        get
-        {
-            return 1.0f / _LerpDuration;
-        }
+  public float LerpFactor => 1.0f / _lerpDuration;
+
+  public override void _Ready() {
+    if (_pushCamOnReady) {
+      PushVCam();
     }
 
-    public override void _Ready()
-    {
-        if (_PushCamOnReady) PushVCam();
-        if (GetChildCount() > 0 && !_AllowVCamChildren)
-        {
-            Print.Warn("Removing VirtualCamera child nodes. These should be removed for release!");
-            while (GetChildCount() > 0)
-            {
-                var child = GetChild(0);
-                child.QueueFree();
-                RemoveChild(child);
-            }
-        }
+    if (GetChildCount() > 0 && !_allowVCamChildren) {
+      Print.Warn("Removing VirtualCamera child nodes. These should be removed for release!");
+      while (GetChildCount() > 0) {
+        var child = GetChild(0);
+        child.QueueFree();
+        RemoveChild(child);
+      }
+    }
+  }
+
+  public void PushVCam() {
+    GetBrain()?.PushCamera(this);
+    IsOnStack = true;
+  }
+
+  public void PopVCam() {
+    GetBrain()?.PopCamera(this);
+    IsOnStack = false;
+  }
+
+  private CameraBrain GetBrain() {
+    var brain = GetTree().GetFirstNodeInGroup("cam_brain") as CameraBrain;
+    //Debugging.Assert(brain != null, "VirtualCamera failed to find CameraBrain in scene. Possibly it is missing??");
+    return brain;
+  }
+
+  public override void _ExitTree() {
+    var brain = GetBrain();
+    if (brain == null) {
+      return; // Brain has already been cleared
     }
 
-    public void PushVCam()
-    {
-        GetBrain()?.PushCamera(this);
-        IsOnStack = true;
+    if (brain.HasCamera(this)) {
+      PopVCam();
+    }
+  }
+
+  public Transform3D GetNewTransform(Transform3D brainTransform, float delta) {
+    if (!LerpCamera) {
+      return GlobalTransform;
     }
 
-    public void PopVCam()
-    {
-        GetBrain()?.PopCamera(this);
-        IsOnStack = false;
+    if (!_useAdvancedLerpOptions) {
+      return brainTransform.InterpolateWith(GlobalTransform, LerpFactor * delta);
     }
 
-    private CameraBrain GetBrain()
-    {
-        var brain = GetTree().GetFirstNodeInGroup("cam_brain") as CameraBrain;
-        //Debugging.Assert(brain != null, "VirtualCamera failed to find CameraBrain in scene. Possibly it is missing??");
-        return brain;
-    }
+    // Use Advanced Lerping Options
+    var trans = brainTransform; // trans rights
+    var factor = LerpFactor * delta;
 
-    public override void _ExitTree()
-    {
-        var brain = GetBrain();
-        if (brain == null) return; // Brain has already been cleared
-        if (brain.HasCamera(this)) PopVCam();
-    }
+    // Positions
+    trans.Origin.X = _advLerpPosX ? Mathf.Lerp(trans.Origin.X, GlobalPosition.X, factor) : GlobalPosition.X;
+    trans.Origin.Y = _advLerpPosY ? Mathf.Lerp(trans.Origin.Y, GlobalPosition.Y, factor) : GlobalPosition.Y;
+    trans.Origin.Z = _advLerpPosZ ? Mathf.Lerp(trans.Origin.Z, GlobalPosition.Z, factor) : GlobalPosition.Z;
 
-    public Transform3D GetNewTransform(Transform3D brainTransform, float delta)
-    {
-        if (!_LerpCamera) return GlobalTransform;
-        if (!_UseAdvancedLerpOptions) return brainTransform.InterpolateWith(GlobalTransform, LerpFactor * delta);
-
-        // Use Advanced Lerping Options
-        var trans = brainTransform; // trans rights
-        var factor = LerpFactor * delta;
-
-        // Positions
-        if (_Adv_LerpPosX) trans.Origin.X = Mathf.Lerp(trans.Origin.X, GlobalPosition.X, factor);
-        else trans.Origin.X = GlobalPosition.X;
-
-        if (Adv_LerpPosY) trans.Origin.Y = Mathf.Lerp(trans.Origin.Y, GlobalPosition.Y, factor);
-        else trans.Origin.Y = GlobalPosition.Y;
-
-        if (Adv_LerpPosZ) trans.Origin.Z = Mathf.Lerp(trans.Origin.Z, GlobalPosition.Z, factor);
-        else trans.Origin.Z = GlobalPosition.Z;
-
-        // Rotations
-
-        // TODO determine if this correctly lerps rotations
-        if (_Adv_LerpRotX) trans.Basis.X = trans.Basis.X.Lerp(GlobalTransform.Basis.X, factor);
-        else trans.Basis.X = GlobalTransform.Basis.X;
-
-        if (Adv_LerpRotY) trans.Basis.Y = trans.Basis.Y.Lerp(GlobalTransform.Basis.Y, factor);
-        else trans.Basis.Y = GlobalTransform.Basis.Y;
-
-        if (_Adv_LerpRotZ) trans.Basis.Z = trans.Basis.Z.Lerp(GlobalTransform.Basis.Z, factor);
-        else trans.Basis.Z = GlobalTransform.Basis.Z;
-
-
-        return trans;
-    }
+    // Rotations
+    // TODO determine if this correctly lerps rotations
+    trans.Basis.X = _advLerpRotX ? trans.Basis.X.Lerp(GlobalTransform.Basis.X, factor) : GlobalTransform.Basis.X;
+    trans.Basis.Y = _advLerpRotY ? trans.Basis.Y.Lerp(GlobalTransform.Basis.Y, factor) : GlobalTransform.Basis.Y;
+    trans.Basis.Z = _advLerpRotZ ? trans.Basis.Z.Lerp(GlobalTransform.Basis.Z, factor) : GlobalTransform.Basis.Z;
+    return trans;
+  }
 
 
 

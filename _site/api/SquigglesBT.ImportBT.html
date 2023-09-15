@@ -1,0 +1,977 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ImportBT
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ImportBT
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/QueenOfSquiggles/SquigglesCommon4X/new/main/apiSpec/new?filename=SquigglesBT_ImportBT.md&amp;value=---%0Auid%3A%20SquigglesBT.ImportBT%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="SquigglesBT.ImportBT">
+
+
+
+  <h1 id="SquigglesBT_ImportBT" data-uid="SquigglesBT.ImportBT" class="text-break">
+    Class ImportBT
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/SquigglesBT.ImportBT_ScriptPath.generated.cs/#L4"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="SquigglesBT.html">SquigglesBT</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>SquigglesCommon4X.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Tool]
+[ScriptPath(&quot;res://addons/squigglesbt/import/ImportBT.cs&quot;)]
+public class ImportBT : EditorImportPlugin, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GodotObject</span></div>
+      <div><span class="xref">RefCounted</span></div>
+      <div><span class="xref">ResourceImporter</span></div>
+      <div><span class="xref">EditorImportPlugin</span></div>
+      <div><span class="xref">ImportBT</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">EditorImportPlugin.AppendImportExternalResource(string, Dictionary, string, Variant)</a>
+    </div>
+    <div>
+      <span class="xref">EditorImportPlugin.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.InitRef()</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.Reference()</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.Unreference()</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.GetReferenceCount()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotificationPostinitialize</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotificationPredelete</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">GodotObject.InstanceFromId(ulong)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">GodotObject.IsInstanceIdValid(ulong)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsInstanceValid(GodotObject)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.WeakRef(GodotObject)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Dispose()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.Dispose(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ToSignal(GodotObject, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetGodotClassPropertyValue(in godot_string_name, in godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetGodotClassPropertyValue(in godot_string_name, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.RaiseGodotClassSignalCallbacks(in godot_string_name, NativeVariantPtrArgs)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._Get(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._GetPropertyList()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject._Notification(int)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject._PropertyCanRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._PropertyGetRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._Set(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Free()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetClass()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">GodotObject.IsClass(string)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Set(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Get(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetIndexed(NodePath, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetIndexed(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetPropertyList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMethodList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyCanRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyGetRevert(StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject.Notification(int, bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetInstanceId()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetScript(Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetScript()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetMeta(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.RemoveMeta(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMeta(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasMeta(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMetaList()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">GodotObject.AddUserSignal(string, Array)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasUserSignal(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.EmitSignal(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Call(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CallDeferred(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetDeferred(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Callv(StringName, Array)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasMethod(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasSignal(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetSignalList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetSignalConnectionList(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetIncomingConnections()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">GodotObject.Connect(StringName, Callable, uint)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Disconnect(StringName, Callable)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsConnected(StringName, Callable)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.SetBlockSignals(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsBlockingSignals()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotifyPropertyListChanged()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.SetMessageTranslation(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CanTranslateMessages()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Tr(StringName, StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject.TrN(StringName, StringName, int, StringName)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsQueuedForDeletion()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CancelFree()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NativeInstance</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ScriptChanged</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyListChanged</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="SquigglesBT_ImportBT_HasGodotClassMethod_" data-uid="SquigglesBT.ImportBT.HasGodotClassMethod*"></a>
+
+  <h3 id="SquigglesBT_ImportBT_HasGodotClassMethod_Godot_NativeInterop_godot_string_name__" data-uid="SquigglesBT.ImportBT.HasGodotClassMethod(Godot.NativeInterop.godot_string_name@)">
+  HasGodotClassMethod(in godot_string_name)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SquigglesBT.ImportBT_ScriptMethods.generated.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool HasGodotClassMethod(in godot_string_name method)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>method</code> <span class="xref">godot_string_name</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT_InvokeGodotClassMethod_" data-uid="SquigglesBT.ImportBT.InvokeGodotClassMethod*"></a>
+
+  <h3 id="SquigglesBT_ImportBT_InvokeGodotClassMethod_Godot_NativeInterop_godot_string_name__Godot_NativeInterop_NativeVariantPtrArgs_Godot_NativeInterop_godot_variant__" data-uid="SquigglesBT.ImportBT.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name@,Godot.NativeInterop.NativeVariantPtrArgs,Godot.NativeInterop.godot_variant@)">
+  InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SquigglesBT.ImportBT_ScriptMethods.generated.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool InvokeGodotClassMethod(in godot_string_name method, NativeVariantPtrArgs args, out godot_variant ret)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>method</code> <span class="xref">godot_string_name</span></dt>
+    <dd></dd>
+    <dt><code>args</code> <span class="xref">NativeVariantPtrArgs</span></dt>
+    <dd></dd>
+    <dt><code>ret</code> <span class="xref">godot_variant</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT_RestoreGodotObjectData_" data-uid="SquigglesBT.ImportBT.RestoreGodotObjectData*"></a>
+
+  <h3 id="SquigglesBT_ImportBT_RestoreGodotObjectData_Godot_Bridge_GodotSerializationInfo_" data-uid="SquigglesBT.ImportBT.RestoreGodotObjectData(Godot.Bridge.GodotSerializationInfo)">
+  RestoreGodotObjectData(GodotSerializationInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/SquigglesBT.ImportBT_ScriptSerialization.generated.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void RestoreGodotObjectData(GodotSerializationInfo info)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>info</code> <span class="xref">GodotSerializationInfo</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT_SaveGodotObjectData_" data-uid="SquigglesBT.ImportBT.SaveGodotObjectData*"></a>
+
+  <h3 id="SquigglesBT_ImportBT_SaveGodotObjectData_Godot_Bridge_GodotSerializationInfo_" data-uid="SquigglesBT.ImportBT.SaveGodotObjectData(Godot.Bridge.GodotSerializationInfo)">
+  SaveGodotObjectData(GodotSerializationInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/SquigglesBT.ImportBT_ScriptSerialization.generated.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void SaveGodotObjectData(GodotSerializationInfo info)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>info</code> <span class="xref">GodotSerializationInfo</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetImportOptions_" data-uid="SquigglesBT.ImportBT._GetImportOptions*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetImportOptions_System_String_System_Int32_" data-uid="SquigglesBT.ImportBT._GetImportOptions(System.String,System.Int32)">
+  _GetImportOptions(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the options and default values for the preset at this index. Returns an Array of Dictionaries with the following keys: <code>name</code>, <code>default_value</code>, <code>property_hint</code> (optional), <code>hint_string</code> (optional), <code>usage</code> (optional).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Array&lt;Dictionary&gt; _GetImportOptions(string path, int presetIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>presetIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Array</span>&lt;<span class="xref">Dictionary</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetImportOrder_" data-uid="SquigglesBT.ImportBT._GetImportOrder*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetImportOrder" data-uid="SquigglesBT.ImportBT._GetImportOrder">
+  _GetImportOrder()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the order of this importer to be run when importing resources. Importers with <i>lower</i> import orders will be called first, and higher values will be called later. Use this to ensure the importer runs after the dependencies are already imported. The default import order is <code>0</code> unless overridden by a specific importer. See <span class="xref">Godot.ResourceImporter.ImportOrder</span> for some predefined values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int _GetImportOrder()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetImporterName_" data-uid="SquigglesBT.ImportBT._GetImporterName*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetImporterName" data-uid="SquigglesBT.ImportBT._GetImporterName">
+  _GetImporterName()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the unique name of the importer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string _GetImporterName()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetOptionVisibility_" data-uid="SquigglesBT.ImportBT._GetOptionVisibility*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetOptionVisibility_System_String_Godot_StringName_Godot_Collections_Dictionary_" data-uid="SquigglesBT.ImportBT._GetOptionVisibility(System.String,Godot.StringName,Godot.Collections.Dictionary)">
+  _GetOptionVisibility(string, StringName, Dictionary)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method can be overridden to hide specific import options if conditions are met. This is mainly useful for hiding options that depend on others if one of them is disabled. For example:</p>
+<p>
+  <pre>
+    <code class="lang-csharp">public void _GetOptionVisibility(string option, Godot.Collections.Dictionary options)
+                                                                                                                                                                                                                                                             {
+                                                                                                                                                                                                                                                                 // Only show the lossy quality setting if the compression mode is set to "Lossy".
+                                                                                                                                                                                                                                                                 if (option == "compress/lossy_quality" &amp;&amp; options.ContainsKey("compress/mode"))
+                                                                                                                                                                                                                                                                 {
+                                                                                                                                                                                                                                                                     return (int)options["compress/mode"] == CompressLossy; // This is a constant you set
+                                                                                                                                                                                                                                                                 }
+<pre><code>                                                                                                                                                                                                                                                             return true;
+                                                                                                                                                                                                                                                         }&lt;/code&gt;
+</code></pre>
+  </code></pre>
+
+<p>Returns <code>true</code> to make all options always visible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool _GetOptionVisibility(string path, StringName optionName, Dictionary options)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>optionName</code> <span class="xref">StringName</span></dt>
+    <dd></dd>
+    <dt><code>options</code> <span class="xref">Dictionary</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetPresetCount_" data-uid="SquigglesBT.ImportBT._GetPresetCount*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetPresetCount" data-uid="SquigglesBT.ImportBT._GetPresetCount">
+  _GetPresetCount()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of initial presets defined by the plugin. Use <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">_GetImportOptions(string, int)</a> to get the default options for the preset and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">_GetPresetName(int)</a> to get the name of the preset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int _GetPresetCount()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetPresetName_" data-uid="SquigglesBT.ImportBT._GetPresetName*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetPresetName_System_Int32_" data-uid="SquigglesBT.ImportBT._GetPresetName(System.Int32)">
+  _GetPresetName(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the options preset at this index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string _GetPresetName(int presetIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>presetIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetPriority_" data-uid="SquigglesBT.ImportBT._GetPriority*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetPriority" data-uid="SquigglesBT.ImportBT._GetPriority">
+  _GetPriority()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the priority of this plugin for the recognized extension. Higher priority plugins will be preferred. The default priority is <code>1.0</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float _GetPriority()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetRecognizedExtensions_" data-uid="SquigglesBT.ImportBT._GetRecognizedExtensions*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetRecognizedExtensions" data-uid="SquigglesBT.ImportBT._GetRecognizedExtensions">
+  _GetRecognizedExtensions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the list of file extensions to associate with this loader (case-insensitive). e.g. <code>["obj"]</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string[] _GetRecognizedExtensions()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetResourceType_" data-uid="SquigglesBT.ImportBT._GetResourceType*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetResourceType" data-uid="SquigglesBT.ImportBT._GetResourceType">
+  _GetResourceType()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the Godot resource type associated with this loader. e.g. <code>"Mesh"</code> or <code>"Animation"</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string _GetResourceType()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetSaveExtension_" data-uid="SquigglesBT.ImportBT._GetSaveExtension*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetSaveExtension" data-uid="SquigglesBT.ImportBT._GetSaveExtension">
+  _GetSaveExtension()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the extension used to save this resource in the <code>.godot/imported</code> directory (see <code>ProjectSettings.application/config/use_hidden_project_data_directory</code>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string _GetSaveExtension()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__GetVisibleName_" data-uid="SquigglesBT.ImportBT._GetVisibleName*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__GetVisibleName" data-uid="SquigglesBT.ImportBT._GetVisibleName">
+  _GetVisibleName()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name to display in the import window. You should choose this name as a continuation to "Import as", e.g. "Import as Special Mesh".</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string _GetVisibleName()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="SquigglesBT_ImportBT__Import_" data-uid="SquigglesBT.ImportBT._Import*"></a>
+
+  <h3 id="SquigglesBT_ImportBT__Import_System_String_System_String_Godot_Collections_Dictionary_Godot_Collections_Array_System_String__Godot_Collections_Array_System_String__" data-uid="SquigglesBT.ImportBT._Import(System.String,System.String,Godot.Collections.Dictionary,Godot.Collections.Array{System.String},Godot.Collections.Array{System.String})">
+  _Import(string, string, Dictionary, Array&lt;string&gt;, Array&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/addons/squigglesbt/import/ImportBT.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Imports <code>sourceFile</code> into <code>savePath</code> with the import <code>options</code> specified. The <code>platformVariants</code> and <code>genFiles</code> arrays will be modified by this function.</p>
+<p>This method must be overridden to do the actual importing work. See this class' description for an example of overriding this method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Error _Import(string sourceFile, string savePath, Dictionary options, Array&lt;string&gt; platformVariants, Array&lt;string&gt; genFiles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sourceFile</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>savePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>options</code> <span class="xref">Dictionary</span></dt>
+    <dd></dd>
+    <dt><code>platformVariants</code> <span class="xref">Array</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>genFiles</code> <span class="xref">Array</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Error</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPathAttributeGenerator/SquigglesBT.ImportBT_ScriptPath.generated.cs/#L4" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

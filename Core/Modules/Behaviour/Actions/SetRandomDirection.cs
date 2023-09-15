@@ -1,32 +1,25 @@
+namespace Squiggles.Core.BT;
 using System;
-using System.Collections.Generic;
 using Godot;
+using SquigglesBT;
+using SquigglesBT.Nodes;
 
-public class SetRandomDirection : Leaf
-{
-    private Random _Random = new();
-    private Vector3 _LastDir = Vector3.Zero;
+public class SetRandomDirection : Leaf {
+  private readonly Random _random = new();
+  private Vector3 _lastDir = Vector3.Zero;
 
-    protected override void RegisterParams()
-    {
-        Params["target"] = "key";
-    }
+  protected override void RegisterParams() => Params["target"] = "key";
 
-    public override int Tick(Node actor, Blackboard bb)
-    {
-        var target = GetParam("target", "key", bb).AsString();
-        var dir = new Vector3
-        {
-            X = (_Random.NextSingle() - 0.5f) * 2.0f,
-            Z = (_Random.NextSingle() - 0.5f) * 2.0f
-        }.Normalized();
-        bb.SetLocal(target, dir);
-        _LastDir = dir;
-        return SUCCESS;
-    }
+  public override int Tick(Node actor, Blackboard blackboard) {
+    var target = GetParam("target", "key", blackboard).AsString();
+    var dir = new Vector3 {
+      X = (_random.NextSingle() - 0.5f) * 2.0f,
+      Z = (_random.NextSingle() - 0.5f) * 2.0f
+    }.Normalized();
+    blackboard.SetLocal(target, dir);
+    _lastDir = dir;
+    return SUCCESS;
+  }
 
-    public override void LoadDebuggingValues(Blackboard bb)
-    {
-        bb.SetLocal($"debug.{Label}:last_dir", _LastDir);
-    }
+  public override void LoadDebuggingValues(Blackboard bb) => bb.SetLocal($"debug.{Label}:last_dir", _lastDir);
 }

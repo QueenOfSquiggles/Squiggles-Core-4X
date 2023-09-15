@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c4cmhnbbrw7pq"]
 
 [ext_resource type="Script" path="res://Core/Scenes/CutsceneSkipper.cs" id="1_bp03r"]
 

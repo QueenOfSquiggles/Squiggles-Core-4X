@@ -1,11 +1,10 @@
-namespace interaction;
+namespace Squiggles.Core.Interaction;
 
-public interface IInteractable
-{
-    public bool Interact();
+public interface IInteractable {
+  public bool Interact();
 
-    public bool IsActive();
+  public bool GetIsActive();
 
-    public string GetActiveName();
+  public string GetActiveName();
 
 }

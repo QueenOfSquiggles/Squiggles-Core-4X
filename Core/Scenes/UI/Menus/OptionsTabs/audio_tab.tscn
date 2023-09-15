@@ -8,15 +8,15 @@
 [sub_resource type="LabelSettings" id="LabelSettings_81ya3"]
 font_size = 32
 
-[node name="AudioOptions" type="PanelContainer" node_paths=PackedStringArray("_SlidersRoot")]
+[node name="AudioOptions" type="PanelContainer" node_paths=PackedStringArray("_slidersRoot")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 346.0
 grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("1_uko75")
-_SlidersRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer")
-_SliderComboScene = ExtResource("2_wor7r")
+_slidersRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer")
+_sliderComboScene = ExtResource("2_wor7r")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -57,8 +57,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_Target")]
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_target")]
 script = ExtResource("4_yvpk1")
-_Target = NodePath("..")
+_target = NodePath("..")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnApply" to="." method="ApplyChanges"]

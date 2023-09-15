@@ -1,53 +1,62 @@
+namespace Squiggles.Core.Scenes.Utility;
+
 using System;
 using Godot;
-using queen.data;
-using queen.extension;
+using Squiggles.Core.Data;
+using Squiggles.Core.Scenes.Utility.Camera;
 
-public partial class ScreenShakeDriver : Node
-{
-    [Export] private FastNoiseLite _Noise;
+public partial class ScreenShakeDriver : Node {
+  [Export] private FastNoiseLite _noise;
+  [Export] private Camera3D _camera;
 
-    private float _NoiseIndex = 0.0f;
-    private float _ShakeStrength = 0.0f;
-    private float _Speed = 0.0f;
-    private float _Decay = 0.0f;
-    [Export] private Camera3D camera;
+  private float _noiseIndex;
+  private float _shakeStrength;
+  private float _speed;
+  private float _decay;
 
-    public override void _Ready()
-    {
-        if (_Noise is null) return;
-        _Noise.Seed = new Random().Next();
+  public override void _Ready() {
+    if (_noise is null) {
+      return;
     }
 
-    public void ApplyShake(float speed, float strength, float decay_rate)
-    {
-        _ShakeStrength = strength;
-        _Speed = speed;
-        _Decay = decay_rate;
+    _noise.Seed = new Random().Next();
+  }
+
+  public void ApplyShake(float speed, float strength, float decay_rate) {
+    _shakeStrength = strength;
+    _speed = speed;
+    _decay = decay_rate;
+  }
+
+  public override void _Process(double delta) {
+    _shakeStrength = Mathf.Lerp(_shakeStrength, 0, _decay * (float)delta);
+    var off = GetCurrentNoise((float)delta);
+
+    switch (_camera) {
+      case null:
+        return;
+      case CameraBrain brain:
+        brain.Offset = new Vector2(off.X, off.Y);
+        break;
+      default:
+        _camera.Position = off;
+        break;
+    }
+  }
+
+  private Vector3 GetCurrentNoise(float delta) {
+    if (_noise is null) {
+      return Vector3.Zero;
     }
 
-    public override void _Process(double delta)
-    {
-        _ShakeStrength = Mathf.Lerp(_ShakeStrength, 0, _Decay * (float)delta);
-        var off = GetCurrentNoise((float)delta);
-
-        if (camera is null) return;
-        if (camera is CameraBrain brain) brain.Offset = new Vector2(off.X, off.Y);
-        else camera.Position = off;
-    }
-
-    private Vector3 GetCurrentNoise(float delta)
-    {
-        if (_Noise is null) return Vector3.Zero;
-        _NoiseIndex += delta * _Speed;
-        return new Vector3()
-        {
-            X = _Noise.GetNoise2D(1, _NoiseIndex) * _ShakeStrength,
-            Y = _Noise.GetNoise2D(100, _NoiseIndex) * _ShakeStrength,
-            // TODO is Z shake helpful? I feel like it might not be
-            // Z = noise.GetNoise2D(1000, noise_index) * shake_strength,
-        } * Effects.Instance.ScreenShakeStrength;
-    }
+    _noiseIndex += delta * _speed;
+    return new Vector3() {
+      X = _noise.GetNoise2D(1, _noiseIndex) * _shakeStrength,
+      Y = _noise.GetNoise2D(100, _noiseIndex) * _shakeStrength,
+      // TODO is Z shake helpful? I feel like it might not be
+      // Z = noise.GetNoise2D(1000, noise_index) * shake_strength,
+    } * Effects.Instance.ScreenShakeStrength;
+  }
 
 
 }

@@ -9,13 +9,13 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_m1em8"]
 
-[node name="PlayMenu" type="PanelContainer" node_paths=PackedStringArray("_SlotsRoot")]
+[node name="PlayMenu" type="PanelContainer" node_paths=PackedStringArray("_slotsRoot")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 4.0
 grow_vertical = 2
 script = ExtResource("1_vbd2q")
-_SlotsRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/SaveSlotsRoot")
+_slotsRoot = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/SaveSlotsRoot")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -76,8 +76,9 @@ theme_override_constants/margin_bottom = 32
 [node name="SaveSlotsRoot" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SlidingPanelComponent" type="Node" parent="."]
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_target")]
 script = ExtResource("2_id8sb")
+_target = NodePath("..")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnContinue" to="." method="OnBtnContinue"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnNewGame" to="." method="OnBtnNewGame"]

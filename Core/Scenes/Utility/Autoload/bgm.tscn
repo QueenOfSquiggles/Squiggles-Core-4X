@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Core/Scenes/Utility/Autoload/BGM.cs" id="1_1qcmy"]
 
-[node name="BGM" type="Node" node_paths=PackedStringArray("_BusA", "_BusB")]
+[node name="BGM" type="Node" node_paths=PackedStringArray("_busA", "_busB")]
 script = ExtResource("1_1qcmy")
-_BusA = NodePath("BusA")
-_BusB = NodePath("BusB")
+_busA = NodePath("BusA")
+_busB = NodePath("BusB")
 
 [node name="BusA" type="AudioStreamPlayer" parent="."]
 

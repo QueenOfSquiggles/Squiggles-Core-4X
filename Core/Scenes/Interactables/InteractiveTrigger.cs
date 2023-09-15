@@ -1,35 +1,26 @@
-using System;
+namespace Squiggles.Core.Scenes.Interactables;
+
 using Godot;
-using interaction;
-using Modules.Interaction;
-using queen.error;
+using Squiggles.Core.Interaction;
 
-public partial class InteractiveTrigger : Area3D, IInteractable, ISelectable
-{
+public partial class InteractiveTrigger : Area3D, IInteractable, ISelectable {
 
-    [Export] public bool is_active = true;
-    [Export] public string custom_name = "";
-    [Signal] public delegate void OnInteractedEventHandler();
-    [Signal] public delegate void OnSelectedEventHandler();
-    [Signal] public delegate void OnDeselectedEventHandler();
+  [Export] public bool IsActive = true;
+  [Export] public string CustomName = "";
+  [Signal] public delegate void OnInteractedEventHandler();
+  [Signal] public delegate void OnSelectedEventHandler();
+  [Signal] public delegate void OnDeselectedEventHandler();
 
-    public virtual string GetActiveName()
-    {
-        return custom_name.Length > 0 ? custom_name : Name;
-    }
+  public virtual string GetActiveName() => CustomName.Length > 0 ? CustomName : Name;
 
-    public virtual bool Interact()
-    {
-        EmitSignal(nameof(OnInteracted));
-        return true;
-    }
+  public virtual bool Interact() {
+    EmitSignal(nameof(OnInteracted));
+    return true;
+  }
 
-    public virtual bool IsActive()
-    {
-        return is_active;
-    }
+  public virtual bool GetIsActive() => IsActive;
 
-    public void OnSelect() => EmitSignal(nameof(OnSelected));
+  public void OnSelect() => EmitSignal(nameof(OnSelected));
 
-    public void OnDeselect() => EmitSignal(nameof(OnDeselected));
+  public void OnDeselect() => EmitSignal(nameof(OnDeselected));
 }

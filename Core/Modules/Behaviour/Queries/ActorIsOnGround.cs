@@ -1,25 +1,27 @@
-using System;
-using System.Collections.Generic;
+namespace Squiggles.Core.BT;
 using Godot;
-using queen.error;
-using queen.extension;
+using Squiggles.Core.Error;
+using SquigglesBT;
+using SquigglesBT.Nodes;
 
-public class ActorRaycastColliding : Leaf
-{
+public class ActorRaycastColliding : Leaf {
 
-    protected override void RegisterParams()
-    {
-        Params["raycast_key"] = "unassigned_path";
+  protected override void RegisterParams() => Params["raycast_key"] = "unassigned_path";
+
+  public override int Tick(Node actor, Blackboard blackboard) {
+    if (actor is not RigidBody3D rb) {
+      return FAILURE;
     }
 
-    public override int Tick(Node actor, Blackboard bb)
-    {
-        if (actor is not RigidBody3D rb) return FAILURE;
-        var path = GetParam("raycast_key", "", bb).AsString();
-        if (path == "") { Print.Warn($"Failed to find raycast key."); return FAILURE; }
-        var raycast = actor.GetNode<RayCast3D>(path);
-        if (raycast is null) return FAILURE;
-        return raycast.IsColliding() ? SUCCESS : FAILURE;
+    var path = GetParam("raycast_key", "", blackboard).AsString();
+
+    if (path == "") {
+      Print.Warn($"Failed to find raycast key.");
+      return FAILURE;
     }
+
+    var raycast = actor.GetNode<RayCast3D>(path);
+    return raycast is null ? FAILURE : raycast.IsColliding() ? SUCCESS : FAILURE;
+  }
 
 }

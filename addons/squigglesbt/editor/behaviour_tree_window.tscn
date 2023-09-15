@@ -18,7 +18,7 @@ events = [SubResource("InputEventKey_cyrnq")]
 [sub_resource type="LabelSettings" id="LabelSettings_2e1vy"]
 font_size = 24
 
-[node name="BehaviourTreeWindow" type="Window" node_paths=PackedStringArray("_TreeContainerRoot", "_CurrentTreeLabel")]
+[node name="BehaviourTreeWindow" type="Window" node_paths=PackedStringArray("_treeContainerRoot", "_currentTreeLabel")]
 mode = 2
 title = "Behaviour Tree"
 initial_position = 1
@@ -26,11 +26,11 @@ size = Vector2i(1280, 900)
 wrap_controls = true
 content_scale_mode = 1
 script = ExtResource("1_qu7ux")
-_TreeContainerRoot = NodePath("PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/TreeContainer")
-_CurrentTreeLabel = NodePath("PanelContainer/VBoxContainer/CurrentTreeLabel")
-_SceneNoChildren = ExtResource("1_m8j1w")
-_SceneOneChild = ExtResource("4_axebq")
-_SceneManyChildren = ExtResource("5_n1jnn")
+_treeContainerRoot = NodePath("PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/TreeContainer")
+_currentTreeLabel = NodePath("PanelContainer/VBoxContainer/CurrentTreeLabel")
+_sceneNoChildren = ExtResource("1_m8j1w")
+_sceneOneChild = ExtResource("4_axebq")
+_sceneManyChildren = ExtResource("5_n1jnn")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15

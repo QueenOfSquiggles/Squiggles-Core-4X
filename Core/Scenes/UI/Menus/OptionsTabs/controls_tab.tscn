@@ -9,7 +9,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4loes"]
 font_size = 32
 
-[node name="ControlSettings" type="PanelContainer" node_paths=PackedStringArray("_PopupListening", "_SliderMouse", "SliderGamepad", "_MappingRoot")]
+[node name="ControlSettings" type="PanelContainer" node_paths=PackedStringArray("_popupListening", "_sliderMouse", "_sliderGamepad", "_mappingRoot")]
 custom_minimum_size = Vector2(720, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -18,11 +18,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_y6pcj")
-_PopupListening = NodePath("SlidingRoot/ListeningPopup")
-_SliderMouse = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity/HBoxContainer/HSlider")
-SliderGamepad = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity/HBoxContainer/HSlider")
-_MappingRoot = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings")
-_MappingScene = ExtResource("3_hxwhr")
+_popupListening = NodePath("SlidingRoot/ListeningPopup")
+_sliderMouse = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/MouseSensitivity/HBoxContainer/HSlider")
+_sliderGamepad = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Sensitivity/GamepadSensitivity/HBoxContainer/HSlider")
+_mappingRoot = NodePath("MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings")
+_mappingScene = ExtResource("3_hxwhr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -162,9 +162,9 @@ Press any button to assign!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_Target")]
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_target")]
 script = ExtResource("5_dayim")
-_Target = NodePath("..")
+_target = NodePath("..")
 
 [connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnApplyChanges" to="." method="ApplyChanges"]
 [connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/Mappings/HBoxContainer/BtnResetAll" to="." method="ResetAllMappings"]

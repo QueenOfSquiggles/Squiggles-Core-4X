@@ -97,14 +97,14 @@ _data = {
 "RESET": SubResource("Animation_c1qpn")
 }
 
-[node name="PseudoAAA_FPS_Controller" type="CharacterBody3D" node_paths=PackedStringArray("_Vcam", "_Anim", "_CanStandCheck", "_CanStepCheckTop", "_CanStepCheckBottom", "_InteractionRay")]
+[node name="PseudoAAA_FPS_Controller" type="CharacterBody3D" node_paths=PackedStringArray("_vcam", "_anim", "_canStandCheck", "_canStepCheckTop", "_canStepCheckBottom", "_interactionRay")]
 script = ExtResource("1_av74f")
-_Vcam = NodePath("CamRoot/CameraSway/VirtualCamera")
-_Anim = NodePath("AnimationPlayer")
-_CanStandCheck = NodePath("CanStandCheck")
-_CanStepCheckTop = NodePath("StepRayTop")
-_CanStepCheckBottom = NodePath("StepRayBottom")
-_InteractionRay = NodePath("CamRoot/CameraSway/VirtualCamera/InteractRay")
+_vcam = NodePath("CamRoot/CameraSway/VirtualCamera")
+_anim = NodePath("AnimationPlayer")
+_canStandCheck = NodePath("CanStandCheck")
+_canStepCheckTop = NodePath("StepRayTop")
+_canStepCheckBottom = NodePath("StepRayBottom")
+_interactionRay = NodePath("CamRoot/CameraSway/VirtualCamera/InteractRay")
 
 [node name="LowerBody" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)

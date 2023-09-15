@@ -1,17 +1,16 @@
+namespace Squiggles.Core.Scenes.UI;
+
 using Godot;
-using queen.events;
-using System;
+using Squiggles.Core.Events;
 
-public partial class HUDRequests : Node
-{
+public partial class HUDRequests : Node {
 
-    public void RequestSubtitle(string text) => Events.GUI.TriggerRequestSubtitle(text);
-    public void RequestAlert(string text) => Events.GUI.TriggerRequestAlert(text);
+  public void RequestSubtitle(string text) => EventBus.GUI.TriggerRequestSubtitle(text);
+  public void RequestAlert(string text) => EventBus.GUI.TriggerRequestAlert(text);
 
-    public void ClearAll()
-    {
-        RequestSubtitle("");
-        RequestAlert("");
-    }
+  public void ClearAll() {
+    RequestSubtitle("");
+    RequestAlert("");
+  }
 
 }

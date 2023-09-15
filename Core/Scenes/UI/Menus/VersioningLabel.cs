@@ -1,21 +1,17 @@
+namespace Squiggles.Core.Scenes.UI.Menus;
+
 using Godot;
-using System;
 
-public partial class VersioningLabel : Label
-{
-    [Export] private string text_release = "Full Release";
-    [Export] private string text_demo = "Demo Version";
+public partial class VersioningLabel : Label {
+  [Export] private string _textRelease = "Full Release";
+  [Export] private string _textDemo = "Demo Version";
 
-    public override void _Ready()
-    {
-        if (OS.HasFeature("demo"))
-            Text = text_demo;
-        else 
-            Text = text_release;
-        #if DEBUG
-            Text += " - debug";
-        #endif
-    }
-    
+  public override void _Ready() {
+    Text = OS.HasFeature("demo") ? _textDemo : _textRelease;
+#if DEBUG
+    Text += " - debug";
+#endif
+  }
+
 
 }

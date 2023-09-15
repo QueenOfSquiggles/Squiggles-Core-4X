@@ -1,16 +1,16 @@
-using System.Collections.Generic;
+namespace SquigglesBT.Nodes;
 using Godot;
 
-public class Succeeder : Decorator
-{
-    public override int Tick(Node actor, Blackboard blackboard)
-    {
-        if (Children.Count <= 0) return FAILURE;
-        Children[0].Tick(actor, blackboard);
-        return SUCCESS;
+public class Succeeder : Decorator {
+  public override int Tick(Node actor, Blackboard blackboard) {
+    if (Children.Count <= 0) {
+      return FAILURE;
     }
-    protected override void RegisterParams()
-    {
-    }
+
+    Children[0].Tick(actor, blackboard);
+    return SUCCESS;
+  }
+  protected override void RegisterParams() {
+  }
 
 }

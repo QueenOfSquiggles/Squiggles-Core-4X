@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://b8y0v225qjej4"]
 
 [ext_resource type="Script" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.gd" id="1_qfqto"]
 

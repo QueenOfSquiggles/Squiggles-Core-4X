@@ -1,92 +1,78 @@
-using System;
+namespace Squiggles.Core.Scenes.UI.Menus;
+
 using Godot;
-using queen.data;
-using queen.events;
-using queen.extension;
+using Squiggles.Core.Data;
+using Squiggles.Core.Events;
 
-public partial class GraphicsTab : PanelContainer
-{
-    [Export] private PackedScene PackedGraphicsDisplay;
 
-    [ExportGroup("Node Paths")]
-    [Export] private NodePath PathGraphicsDisplayRoot = "MarginContainer/VBoxContainer/GraphicsDisplayRoot";
-    [Export] private OptionButton _OptionFullscreen;
-    [Export] private CheckBox _CheckBloom;
-    [Export] private CheckBox _CheckSSR;
-    [Export] private CheckBox _CheckSSAO;
-    [Export] private CheckBox _CheckSSIL;
-    [Export] private CheckBox _CheckSDFGI;
-    [Export] private HSlider _SliderExposure;
-    [Export] private HSlider _SliderBrightness;
-    [Export] private HSlider _SliderContrast;
-    [Export] private HSlider _SliderSaturation;
+public partial class GraphicsTab : PanelContainer {
+  [Export] private PackedScene _packedGraphicsDisplay;
 
-    public override void _Ready()
-    {
-        if (_OptionFullscreen is null ||
-            _CheckBloom is null ||
-            _CheckSSR is null ||
-            _CheckSSAO is null ||
-            _CheckSSIL is null ||
-            _CheckSDFGI is null ||
-            _SliderExposure is null ||
-            _SliderBrightness is null ||
-            _SliderContrast is null ||
-            _SliderSaturation is null
-        ) return;
+  [ExportGroup("Node Paths")]
+  [Export] private NodePath _pathGraphicsDisplayRoot = "MarginContainer/VBoxContainer/GraphicsDisplayRoot";
+  [Export] private OptionButton _optionFullscreen;
+  [Export] private CheckBox _checkBloom;
+  [Export] private CheckBox _checkSSR;
+  [Export] private CheckBox _checkSSAO;
+  [Export] private CheckBox _checkSSIL;
+  [Export] private CheckBox _checkSDFGI;
+  [Export] private HSlider _sliderExposure;
+  [Export] private HSlider _sliderBrightness;
+  [Export] private HSlider _sliderContrast;
+  [Export] private HSlider _sliderSaturation;
 
-        int current = _OptionFullscreen.GetItemIndex(Graphics.Instance.Fullscreen);
-        _OptionFullscreen.Selected = current;
-
-        _CheckBloom.ButtonPressed = Graphics.Instance.Bloom;
-        _CheckSSR.ButtonPressed = Graphics.Instance.SSR;
-        _CheckSSAO.ButtonPressed = Graphics.Instance.SSAO;
-        _CheckSSIL.ButtonPressed = Graphics.Instance.SSIL;
-        _CheckSDFGI.ButtonPressed = Graphics.Instance.SDFGI;
-        _SliderExposure.Value = Graphics.Instance.TonemapExposure;
-        _SliderBrightness.Value = Graphics.Instance.Brightness;
-        _SliderContrast.Value = Graphics.Instance.Contrast;
-        _SliderSaturation.Value = Graphics.Instance.Saturation;
-
-        Events.Data.SerializeAll += ApplyGraphicsSettings;
-
-        var root = GetNode(PathGraphicsDisplayRoot) as Control;
-        if (root is not null)
-        {
-            var scene = PackedGraphicsDisplay?.Instantiate();
-            if (scene is not null) root.AddChild(scene);
-        }
+  public override void _Ready() {
+    if (_optionFullscreen is null ||
+        _checkBloom is null ||
+        _checkSSR is null ||
+        _checkSSAO is null ||
+        _checkSSIL is null ||
+        _checkSDFGI is null ||
+        _sliderExposure is null ||
+        _sliderBrightness is null ||
+        _sliderContrast is null ||
+        _sliderSaturation is null
+    ) {
+      return;
     }
 
-    public override void _ExitTree()
-    {
-        Events.Data.SerializeAll -= ApplyGraphicsSettings;
-    }
+    var current = _optionFullscreen.GetItemIndex(Graphics.Instance.Fullscreen);
+    _optionFullscreen.Selected = current;
 
-    public void ApplyGraphicsSettings()
-    {
-        if (_OptionFullscreen is null ||
-            _CheckBloom is null ||
-            _CheckSSR is null ||
-            _CheckSSAO is null ||
-            _CheckSSIL is null ||
-            _CheckSDFGI is null ||
-            _SliderExposure is null ||
-            _SliderBrightness is null ||
-            _SliderContrast is null ||
-            _SliderSaturation is null
-        ) return;
+    _checkBloom.ButtonPressed = Graphics.Instance.Bloom;
+    _checkSSR.ButtonPressed = Graphics.Instance.SSR;
+    _checkSSAO.ButtonPressed = Graphics.Instance.SSAO;
+    _checkSSIL.ButtonPressed = Graphics.Instance.SSIL;
+    _checkSDFGI.ButtonPressed = Graphics.Instance.SDFGI;
+    _sliderExposure.Value = Graphics.Instance.TonemapExposure;
+    _sliderBrightness.Value = Graphics.Instance.Brightness;
+    _sliderContrast.Value = Graphics.Instance.Contrast;
+    _sliderSaturation.Value = Graphics.Instance.Saturation;
 
-        Graphics.Instance.Fullscreen = _OptionFullscreen.GetSelectedId();
-        Graphics.Instance.Bloom = _CheckBloom.ButtonPressed;
-        Graphics.Instance.SSR = _CheckSSR.ButtonPressed;
-        Graphics.Instance.SSAO = _CheckSSAO.ButtonPressed;
-        Graphics.Instance.SSIL = _CheckSSIL.ButtonPressed;
-        Graphics.Instance.SDFGI = _CheckSDFGI.ButtonPressed;
-        Graphics.Instance.TonemapExposure = (float)_SliderExposure.Value;
-        Graphics.Instance.Brightness = (float)_SliderBrightness.Value;
-        Graphics.Instance.Contrast = (float)_SliderContrast.Value;
-        Graphics.Instance.Saturation = (float)_SliderSaturation.Value;
-        Graphics.MarkGraphicsChanged();
+    EventBus.Data.SerializeAll += ApplyGraphicsSettings;
+
+    var root = GetNode(_pathGraphicsDisplayRoot) as Control;
+    if (root is not null) {
+      var scene = _packedGraphicsDisplay?.Instantiate();
+      if (scene is not null) {
+        root.AddChild(scene);
+      }
     }
+  }
+
+  public override void _ExitTree() => EventBus.Data.SerializeAll -= ApplyGraphicsSettings;
+
+  public void ApplyGraphicsSettings() {
+    Graphics.Instance.Fullscreen = _optionFullscreen.GetSelectedId();
+    Graphics.Instance.Bloom = _checkBloom.ButtonPressed;
+    Graphics.Instance.SSR = _checkSSR.ButtonPressed;
+    Graphics.Instance.SSAO = _checkSSAO.ButtonPressed;
+    Graphics.Instance.SSIL = _checkSSIL.ButtonPressed;
+    Graphics.Instance.SDFGI = _checkSDFGI.ButtonPressed;
+    Graphics.Instance.TonemapExposure = (float)_sliderExposure.Value;
+    Graphics.Instance.Brightness = (float)_sliderBrightness.Value;
+    Graphics.Instance.Contrast = (float)_sliderContrast.Value;
+    Graphics.Instance.Saturation = (float)_sliderSaturation.Value;
+    Graphics.MarkGraphicsChanged();
+  }
 }
