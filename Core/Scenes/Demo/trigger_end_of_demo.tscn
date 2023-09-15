@@ -4,4 +4,4 @@
 
 [node name="TriggerEndOfDemo" type="Node"]
 script = ExtResource("1_s6wkp")
-demo_end_scene = "res://Core/Scenes/Demo/demo_end_scene.tscn"
+_demo_end_scene = "res://Core/Scenes/UI/Menus/main_menu.tscn"

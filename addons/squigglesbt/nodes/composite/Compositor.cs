@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using Godot;
+namespace SquigglesBT.Nodes;
 
-public abstract class Compositor : BTNode
-{
-    public Compositor() : base("Compositor", -1) { }
+public abstract class Compositor : BTNode {
+  public Compositor() : base("Compositor", -1) { }
 
 }

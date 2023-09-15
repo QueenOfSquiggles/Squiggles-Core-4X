@@ -1,0 +1,3752 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/nessa/Documents/programming/godot/projects/repos/SquigglesCommon4X/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.AI.IUtilitySelectionComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.AI.IUtilitySelectionComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.AI.UtilitySelector.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.AI.UtilitySelector.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.AI.UtilitySelector.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.AI.UtilitySelector.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.AI.UtilitySelector.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.AI.UtilitySelector.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.AI.UtilitySelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.AI.UtilitySelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.AI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.AI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.ActorLookAtVelocity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.ActorLookAtVelocity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.ActorPlayAnim.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.ActorPlayAnim.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.ActorRaycastColliding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.ActorRaycastColliding.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.ApplyForceToActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.ApplyForceToActor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.QueryCompareFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.QueryCompareFloat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.SetRandomDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.SetRandomDirection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.SetRandomValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.SetRandomValue.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.StoreActorVelocity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.StoreActorVelocity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.StoreVec3Length.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.StoreVec3Length.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.Vec3Math.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.Vec3Math.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.BT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.BT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.Modifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.Modifier.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatFloatMod.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatManager.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatManager.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatManager.OnStatChangeEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatManager.OnStatChangeEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatManager.OnStatModAddedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatManager.OnStatModAddedEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatManager.OnStatModRemovedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatManager.OnStatModRemovedEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatManager.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatManager.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatManager.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatManager.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.CharStatManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.CharStatManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.CharStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.CharStats.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.Access.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.Access.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.AudioBuses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.AudioBuses.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.Controls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.DataPath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.DataPath.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.Effects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.Effects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.Graphics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.Graphics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.ModRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.ModRegistry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.SaveData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.SaveData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.SaveDataBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.SaveDataBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.Stats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.Stats.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Editor.HelperEditorOnlyMesh3D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Editor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Editor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Error.Debugging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Error.Debugging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Error.Msg.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Error.Msg.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Error.Print.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Error.Print.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Error.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventBus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventEmitter.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventEmitter.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventEmitter.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventEmitter.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventEmitter.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventEmitter.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventEmitter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventEmitter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventsAudio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventsAudio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventsData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventsData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventsGameplay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventsGameplay.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventsInventory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventsInventory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.EventsUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.EventsUI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Events.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.AnimationPlayerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.AnimationPlayerExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.ArrayExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.ArrayExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.DictionaryExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.DictionaryExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.InteractionSensor.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.InteractionSensor.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.InteractionSensor.OnCurrentInteractionChangeEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.InteractionSensor.OnCurrentInteractionChangeEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.InteractionSensor.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.InteractionSensor.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.InteractionSensor.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.InteractionSensor.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.InteractionSensor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.InteractionSensor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.NodeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.NodeExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.RandomExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.RandomExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.StringArrayExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.StringArrayExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.StringExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.TransformExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.TransformExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.TweenExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.TweenExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.Vector2IExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.Vector2IExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.Vector3Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.Vector3Extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Extension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Extension.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Interaction.IInteractable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Interaction.IInteractable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Interaction.ISelectable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Interaction.ISelectable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Interaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Interaction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Math.InventoryPosition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Math.InventoryPosition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Math.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Math.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Modification.IModificationAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Modification.IModificationAdapter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Modification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Modification.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Audio.SceneBGMLoader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.FootstepSoundsComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.Slot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.Slot.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.SlotSelectEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.SlotSelectEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.SlotUpdateEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.SlotUpdateEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.InventoryManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PlayerController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.PsuedoAAACharController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Character.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Character.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.DemoEndScene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.TriggerEndOfDemo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Demo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Demo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.OnDeselectedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.OnDeselectedEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.OnInteractedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.OnInteractedEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.OnSelectedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.OnSelectedEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.InteractiveTrigger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Interactables.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Interactables.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.OnItemPickupEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.OnItemPickupEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.OnItemRejectedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.OnItemRejectedEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.ItemCollector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.WorldItemComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ItemSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ItemSystem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Modification.ModLoadingStep.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Modification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Modification.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Registration.RegistrationManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Registration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Registration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.ThisIsYourMainScene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.DefaultHUD.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.HUDRequests.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.ItemSlotDisplay.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AccessibilityTab.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.ListenForActionEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.ListenForActionEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ActionMappingSlot.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.AudioTab.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.ControlsTab.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.CreditsScene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GameplayTab.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.GraphicsTab.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.LaunchSequence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.MainMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.OptionsMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PauseMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.PlayMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.SliderComboInterface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.SliderComboInterface.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.TabContainerGamepadSupport.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.VersioningLabel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.Menus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.Menus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.SlidingPanelComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.UI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.UI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.BGM.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CameraBrain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.CinematicSequence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.DynamicDOFRay.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.VirtualCamera.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.Camera.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.EffectsDriver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ForceAccessLoad.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadControlsMappings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.LoadGraphicsSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.SceneTransitions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.ScreenShakeDriver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.UISounds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.WorldEnvSettingsCompliant.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.Utility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.Utility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.CutsceneSkipper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterial.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.OnNewMaterialFoundEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.OnNewMaterialFoundEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.GroundMaterialPoller.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.WorldBoundary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.World.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.World.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.Scenes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.Scenes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.SquigglesCoreConfigFile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.WorldEntity.WorldEntity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.WorldEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.WorldEntity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Core.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Test.TestsMain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Test.TestsMain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Squiggles.Test.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Squiggles.Test.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTree.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTree.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTree.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTree.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTree.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTree.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTree.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTree.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTreeWindow.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTreeWindow.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTreeWindow.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTreeWindow.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTreeWindow.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTreeWindow.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.BehaviourTreeWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.BehaviourTreeWindow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Blackboard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Blackboard.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.ImportBT.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.ImportBT.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.ImportBT.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.ImportBT.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.ImportBT.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.ImportBT.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.ImportBT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.ImportBT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BTDebug.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BTDebug.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BTDebugPanel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BTNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BTNode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.BTProcessMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.BTProcessMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.BTStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.BTStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BehaviourTreeNode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.BlackboardHas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.BlackboardHas.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.ClockLimiter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.ClockLimiter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Compositor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Compositor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.DebugPrint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.DebugPrint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Decorator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Decorator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Failer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Failer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Inverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Inverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Leaf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Leaf.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Limiter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Limiter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Root.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Root.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Select.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Select.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.SelectStar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.SelectStar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Sequence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Sequence.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.SequenceStar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.SequenceStar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.Succeeder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.Succeeder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.TestNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.TestNode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.TimeLimiter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.TimeLimiter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.WaitForSeconds.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.WaitForSeconds.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.Nodes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.Nodes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.TreePanel.MethodName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.TreePanel.MethodName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.TreePanel.OnParamUpdateEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.TreePanel.OnParamUpdateEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.TreePanel.PropertyName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.TreePanel.PropertyName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.TreePanel.SignalName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.TreePanel.SignalName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.TreePanel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.TreePanel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SquigglesBT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SquigglesBT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

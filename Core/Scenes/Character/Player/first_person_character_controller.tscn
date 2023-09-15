@@ -34,11 +34,11 @@ states/Test/node = SubResource("AnimationNodeAnimation_26orf")
 states/Test/position = Vector2(300, 106)
 transitions = ["Start", "Test", SubResource("AnimationNodeStateMachineTransition_uoswe")]
 
-[node name="First Person Character Controller" type="CharacterBody3D" node_paths=PackedStringArray("_CamArm", "_AnimTree", "_RayCast") groups=["player"]]
+[node name="First Person Character Controller" type="CharacterBody3D" node_paths=PackedStringArray("_camArm", "_animTree", "_rayCast") groups=["player"]]
 script = ExtResource("1_a4hb8")
-_CamArm = NodePath("CameraArm")
-_AnimTree = NodePath("AnimationTree")
-_RayCast = NodePath("CameraArm/VirtualCamera/InteractionRay")
+_camArm = NodePath("CameraArm")
+_animTree = NodePath("AnimationTree")
+_rayCast = NodePath("CameraArm/VirtualCamera/InteractionRay")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801277, 0)

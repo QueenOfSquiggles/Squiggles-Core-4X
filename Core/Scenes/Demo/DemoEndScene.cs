@@ -1,15 +1,12 @@
+namespace Squiggles.Core.Scenes.Demo;
 using Godot;
-using System;
+using Squiggles.Core.Scenes.Utility;
 
-public partial class DemoEndScene : Control
-{
-    [Export(PropertyHint.File, "*.tscn")] private string _MainMenuScene = "";
+public partial class DemoEndScene : Control {
+  [Export(PropertyHint.File, "*.tscn")] private string _mainMenuScene = "";
 
-    public override void _Ready()
-    {
-        // extra safe guard since we are likely to be coming from the play space, which has the mouse captured
-        Input.MouseMode = Input.MouseModeEnum.Visible;
-    }
+  // extra safe guard since we are likely to be coming from the play space, which has the mouse captured
+  public override void _Ready() => Input.MouseMode = Input.MouseModeEnum.Visible;
 
-    public void ReturnMainMenu() => Scenes.LoadSceneAsync(_MainMenuScene);
+  public void ReturnMainMenu() => SceneTransitions.LoadSceneAsync(_mainMenuScene);
 }

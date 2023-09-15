@@ -1,12 +1,11 @@
+namespace Squiggles.Core.Scenes.Utility;
+
 using Godot;
-using queen.data;
-using System;
+using Squiggles.Core.Data;
 
-public partial class LoadGraphicsSettings : Node
-{
+public partial class LoadGraphicsSettings : Node {
 
-    public override void _Ready()
-    {
-        var _ = Graphics.Instance.SDFGI; // forces instance initialization
-    }
+  public override void _Ready() {
+    var _ = Graphics.Instance.SDFGI; // forces instance initialization
+  }
 }

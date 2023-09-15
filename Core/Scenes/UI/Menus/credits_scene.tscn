@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/CreditsScene.cs" id="2_0eafv"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="3_l3624"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_og6d8"]
+[sub_resource type="LabelSettings" id="LabelSettings_rrpdt"]
+font_size = 20
 shadow_size = 5
-shadow_color = Color(0, 0, 0, 0.658824)
+shadow_color = Color(0, 0, 0, 0.854902)
 shadow_offset = Vector2(3, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vlqgw"]
@@ -14,7 +15,7 @@ shadow_size = 3
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5, 5)
 
-[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("_CreditsLinesRoot")]
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("_creditsLinesRoot")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -23,8 +24,8 @@ offset_right = 806.0
 offset_bottom = 183.5
 grow_vertical = 2
 script = ExtResource("2_0eafv")
-_CreditsLinesRoot = NodePath("MarginContainer/VBoxContainer")
-_LabelStyling = SubResource("LabelSettings_og6d8")
+_creditsLinesRoot = NodePath("MarginContainer/VBoxContainer")
+_labelStyling = SubResource("LabelSettings_rrpdt")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -45,6 +46,5 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_Target")]
+[node name="SlidingPanelComponent" type="Node" parent="."]
 script = ExtResource("3_l3624")
-_Target = NodePath("..")

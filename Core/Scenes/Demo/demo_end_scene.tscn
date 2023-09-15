@@ -101,7 +101,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5jid3")
-_MainMenuScene = "res://Core/Scenes/UI/Menus/main_menu.tscn"
+_mainMenuScene = "res://Core/Scenes/UI/Menus/main_menu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

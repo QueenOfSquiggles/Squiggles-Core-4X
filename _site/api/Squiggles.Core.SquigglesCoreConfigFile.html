@@ -1,0 +1,926 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SquigglesCoreConfigFile
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SquigglesCoreConfigFile
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/QueenOfSquiggles/SquigglesCommon4X/new/main/apiSpec/new?filename=Squiggles_Core_SquigglesCoreConfigFile.md&amp;value=---%0Auid%3A%20Squiggles.Core.SquigglesCoreConfigFile%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Squiggles.Core.SquigglesCoreConfigFile">
+
+
+
+  <h1 id="Squiggles_Core_SquigglesCoreConfigFile" data-uid="Squiggles.Core.SquigglesCoreConfigFile" class="text-break">
+    Class SquigglesCoreConfigFile
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/Squiggles.Core.SquigglesCoreConfigFile_ScriptSerialization.generated.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Squiggles.html">Squiggles</a>.<a class="xref" href="Squiggles.Core.html">Core</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>SquigglesCommon4X.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[GlobalClass]
+[ScriptPath(&quot;res://Core/MetaConfig/SquigglesCoreConfigFile.cs&quot;)]
+public class SquigglesCoreConfigFile : Resource, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GodotObject</span></div>
+      <div><span class="xref">RefCounted</span></div>
+      <div><span class="xref">Resource</span></div>
+      <div><span class="xref">SquigglesCoreConfigFile</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">Resource._GetRid()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Resource.TakeOverPath(string)</a>
+    </div>
+    <div>
+      <span class="xref">Resource.GetRid()</span>
+    </div>
+    <div>
+      <span class="xref">Resource.GetLocalScene()</span>
+    </div>
+    <div>
+      <span class="xref">Resource.SetupLocalToScene()</span>
+    </div>
+    <div>
+      <span class="xref">Resource.EmitChanged()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Resource.Duplicate(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Resource.InvokeGodotClassMethod(in godot_string_name, NativeVariantPtrArgs, out godot_variant)</span>
+    </div>
+    <div>
+      <span class="xref">Resource.HasGodotClassMethod(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">Resource.HasGodotClassSignal(in godot_string_name)</span>
+    </div>
+    <div>
+      <span class="xref">Resource.ResourceLocalToScene</span>
+    </div>
+    <div>
+      <span class="xref">Resource.ResourcePath</span>
+    </div>
+    <div>
+      <span class="xref">Resource.ResourceName</span>
+    </div>
+    <div>
+      <span class="xref">Resource.Changed</span>
+    </div>
+    <div>
+      <span class="xref">Resource.SetupLocalToSceneRequested</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.InitRef()</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.Reference()</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.Unreference()</span>
+    </div>
+    <div>
+      <span class="xref">RefCounted.GetReferenceCount()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotificationPostinitialize</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotificationPredelete</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">GodotObject.InstanceFromId(ulong)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">GodotObject.IsInstanceIdValid(ulong)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsInstanceValid(GodotObject)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.WeakRef(GodotObject)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Dispose()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.Dispose(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ToSignal(GodotObject, StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.RaiseGodotClassSignalCallbacks(in godot_string_name, NativeVariantPtrArgs)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._Get(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._GetPropertyList()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject._Notification(int)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject._PropertyCanRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._PropertyGetRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject._Set(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Free()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetClass()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">GodotObject.IsClass(string)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Set(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Get(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetIndexed(NodePath, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetIndexed(NodePath)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetPropertyList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMethodList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyCanRevert(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyGetRevert(StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject.Notification(int, bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetInstanceId()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetScript(Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetScript()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetMeta(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.RemoveMeta(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMeta(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasMeta(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetMetaList()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">GodotObject.AddUserSignal(string, Array)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasUserSignal(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.EmitSignal(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Call(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CallDeferred(StringName, params Variant[])</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.SetDeferred(StringName, Variant)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Callv(StringName, Array)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasMethod(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.HasSignal(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetSignalList()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetSignalConnectionList(StringName)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.GetIncomingConnections()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">GodotObject.Connect(StringName, Callable, uint)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Disconnect(StringName, Callable)</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsConnected(StringName, Callable)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.SetBlockSignals(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsBlockingSignals()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NotifyPropertyListChanged()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">GodotObject.SetMessageTranslation(bool)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CanTranslateMessages()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.Tr(StringName, StringName)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">GodotObject.TrN(StringName, StringName, int, StringName)</a>
+    </div>
+    <div>
+      <span class="xref">GodotObject.IsQueuedForDeletion()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.CancelFree()</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.NativeInstance</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.ScriptChanged</span>
+    </div>
+    <div>
+      <span class="xref">GodotObject.PropertyListChanged</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_AuthorGamesURL" data-uid="Squiggles.Core.SquigglesCoreConfigFile.AuthorGamesURL">
+  AuthorGamesURL
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public string AuthorGamesURL</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_AuthorName" data-uid="Squiggles.Core.SquigglesCoreConfigFile.AuthorName">
+  AuthorName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ExportGroup(&quot;Author Info&quot;, &quot;Author&quot;)]
+[Export(PropertyHint.None, &quot;&quot;)]
+public string AuthorName</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_CreditsLines" data-uid="Squiggles.Core.SquigglesCoreConfigFile.CreditsLines">
+  CreditsLines
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ExportGroup(&quot;Credits&quot;, &quot;&quot;)]
+[Export(PropertyHint.None, &quot;&quot;)]
+public string[] CreditsLines</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_GameLogo" data-uid="Squiggles.Core.SquigglesCoreConfigFile.GameLogo">
+  GameLogo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public Texture2D GameLogo</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Texture2D</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_HideUIMappings" data-uid="Squiggles.Core.SquigglesCoreConfigFile.HideUIMappings">
+  HideUIMappings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public bool HideUIMappings</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_LaunchSceneOverride" data-uid="Squiggles.Core.SquigglesCoreConfigFile.LaunchSceneOverride">
+  LaunchSceneOverride
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ExportGroup(&quot;Scene Overrides&quot;, &quot;&quot;)]
+[Export(PropertyHint.File, &quot;*.tscn&quot;)]
+public string LaunchSceneOverride</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_MainMenuOverride" data-uid="Squiggles.Core.SquigglesCoreConfigFile.MainMenuOverride">
+  MainMenuOverride
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.File, &quot;*.tscn&quot;)]
+public string MainMenuOverride</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_PlayScene" data-uid="Squiggles.Core.SquigglesCoreConfigFile.PlayScene">
+  PlayScene
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ExportGroup(&quot;Required Properties&quot;, &quot;&quot;)]
+[Export(PropertyHint.File, &quot;*.tscn&quot;)]
+public string PlayScene</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_RegistryPathPattern" data-uid="Squiggles.Core.SquigglesCoreConfigFile.RegistryPathPattern">
+  RegistryPathPattern
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ExportGroup(&quot;Registries&quot;, &quot;Registry&quot;)]
+[Export(PropertyHint.None, &quot;&quot;)]
+public string RegistryPathPattern</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_RegistryTypes" data-uid="Squiggles.Core.SquigglesCoreConfigFile.RegistryTypes">
+  RegistryTypes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Export(PropertyHint.None, &quot;&quot;)]
+public string[] RegistryTypes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_RemapControlsNames" data-uid="Squiggles.Core.SquigglesCoreConfigFile.RemapControlsNames">
+  RemapControlsNames
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/MetaConfig/SquigglesCoreConfigFile.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ExportGroup(&quot;Remappable Controls&quot;, &quot;&quot;)]
+[Export(PropertyHint.None, &quot;&quot;)]
+public string[] RemapControlsNames</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Squiggles_Core_SquigglesCoreConfigFile_GetGodotClassPropertyValue_" data-uid="Squiggles.Core.SquigglesCoreConfigFile.GetGodotClassPropertyValue*"></a>
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_GetGodotClassPropertyValue_Godot_NativeInterop_godot_string_name__Godot_NativeInterop_godot_variant__" data-uid="Squiggles.Core.SquigglesCoreConfigFile.GetGodotClassPropertyValue(Godot.NativeInterop.godot_string_name@,Godot.NativeInterop.godot_variant@)">
+  GetGodotClassPropertyValue(in godot_string_name, out godot_variant)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/Squiggles.Core.SquigglesCoreConfigFile_ScriptProperties.generated.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool GetGodotClassPropertyValue(in godot_string_name name, out godot_variant value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <span class="xref">godot_string_name</span></dt>
+    <dd></dd>
+    <dt><code>value</code> <span class="xref">godot_variant</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_SquigglesCoreConfigFile_RestoreGodotObjectData_" data-uid="Squiggles.Core.SquigglesCoreConfigFile.RestoreGodotObjectData*"></a>
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_RestoreGodotObjectData_Godot_Bridge_GodotSerializationInfo_" data-uid="Squiggles.Core.SquigglesCoreConfigFile.RestoreGodotObjectData(Godot.Bridge.GodotSerializationInfo)">
+  RestoreGodotObjectData(GodotSerializationInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/Squiggles.Core.SquigglesCoreConfigFile_ScriptSerialization.generated.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void RestoreGodotObjectData(GodotSerializationInfo info)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>info</code> <span class="xref">GodotSerializationInfo</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_SquigglesCoreConfigFile_SaveGodotObjectData_" data-uid="Squiggles.Core.SquigglesCoreConfigFile.SaveGodotObjectData*"></a>
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_SaveGodotObjectData_Godot_Bridge_GodotSerializationInfo_" data-uid="Squiggles.Core.SquigglesCoreConfigFile.SaveGodotObjectData(Godot.Bridge.GodotSerializationInfo)">
+  SaveGodotObjectData(GodotSerializationInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/Squiggles.Core.SquigglesCoreConfigFile_ScriptSerialization.generated.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void SaveGodotObjectData(GodotSerializationInfo info)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>info</code> <span class="xref">GodotSerializationInfo</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_SquigglesCoreConfigFile_SetGodotClassPropertyValue_" data-uid="Squiggles.Core.SquigglesCoreConfigFile.SetGodotClassPropertyValue*"></a>
+
+  <h3 id="Squiggles_Core_SquigglesCoreConfigFile_SetGodotClassPropertyValue_Godot_NativeInterop_godot_string_name__Godot_NativeInterop_godot_variant__" data-uid="Squiggles.Core.SquigglesCoreConfigFile.SetGodotClassPropertyValue(Godot.NativeInterop.godot_string_name@,Godot.NativeInterop.godot_variant@)">
+  SetGodotClassPropertyValue(in godot_string_name, in godot_variant)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptPropertiesGenerator/Squiggles.Core.SquigglesCoreConfigFile_ScriptProperties.generated.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool SetGodotClassPropertyValue(in godot_string_name name, in godot_variant value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <span class="xref">godot_string_name</span></dt>
+    <dd></dd>
+    <dt><code>value</code> <span class="xref">godot_variant</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/docfx_project/Godot.SourceGenerators/Godot.SourceGenerators.ScriptSerializationGenerator/Squiggles.Core.SquigglesCoreConfigFile_ScriptSerialization.generated.cs/#L6" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

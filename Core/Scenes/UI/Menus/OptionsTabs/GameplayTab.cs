@@ -1,25 +1,19 @@
+namespace Squiggles.Core.Scenes.UI.Menus;
 using Godot;
-using System;
-using System.Collections.Generic;
 
-public partial class GameplayTab : PanelContainer
-{
+public partial class GameplayTab : PanelContainer {
 
-    // TODO this is really a stub, probably should be replaced with a config mapped custom panel since gameplay settings are highly specific to the game in question
-    public override void _Ready()
-    {
-    }
+  // TODO this is really a stub, probably should be replaced with a config mapped custom panel since gameplay settings are highly specific to the game in question
+  // public override void _Ready() {
+  // }
 
-    private void LoadPresets()
-    {
-    }
+  // private void LoadPresets() {
+  // }
 
-    private void LoadFromPreviousData()
-    {
-    }
+  // private void LoadFromPreviousData() {
+  // }
 
-    private void AttachSignals()
-    {
-    }
+  // private void AttachSignals() {
+  // }
 
 }

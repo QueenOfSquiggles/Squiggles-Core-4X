@@ -1,14 +1,12 @@
-using System;
-using Godot;
-using queen.error;
+namespace Squiggles.Core.Scenes.Audio;
 
-public partial class SceneBGMLoader : Node
-{
-    [Export] private AudioStream _MusicTrack;
-    [Export(PropertyHint.Range, "0.0,3.0")] private float crossfade_duration = 1.0f;
-    public override void _Ready()
-    {
-        BGM.QueueSong(_MusicTrack, crossfade_duration);
-    }
+using Godot;
+using Squiggles.Core.Scenes.Utility;
+
+public partial class SceneBGMLoader : Node {
+  [Export] private AudioStream _musicTrack;
+  [Export(PropertyHint.Range, "0.0,3.0")] private float _crossfade_duration = 1.0f;
+
+  public override void _Ready() => BGM.QueueSong(_musicTrack, _crossfade_duration);
 
 }

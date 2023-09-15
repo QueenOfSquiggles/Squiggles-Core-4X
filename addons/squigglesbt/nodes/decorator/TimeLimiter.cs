@@ -1,33 +1,37 @@
-using System.Collections.Generic;
+namespace SquigglesBT.Nodes;
+
 using Godot;
 
-public class TimeLimiter : Decorator
-{
+public class TimeLimiter : Decorator {
 
 
-    private float counter = int.MaxValue;
+  private float _counter = int.MaxValue;
 
 
-    protected override void RegisterParams()
-    {
-        Params["seconds"] = 1.0f;
+  protected override void RegisterParams() => Params["seconds"] = 1.0f;
+
+  public override int Tick(Node actor, Blackboard blackboard) {
+    if (Children.Count <= 0) {
+      return FAILURE;
     }
 
-    public override int Tick(Node actor, Blackboard bb)
-    {
-        if (Children.Count <= 0) return FAILURE;
-        var p_counter = GetParam("seconds", 0.0f, bb).AsSingle();
-        if (counter > p_counter) counter = p_counter;
-
-        if (counter <= 0) return FAILURE;
-        counter -= bb.GetLocal("delta").AsSingle();
-        var result = Children[0].Tick(actor, bb);
-        if (result != RUNNING) counter = -1;
-        return result;
+    var p_counter = GetParam("seconds", 0.0f, blackboard).AsSingle();
+    if (_counter > p_counter) {
+      _counter = p_counter;
     }
 
-    public override void LoadDebuggingValues(Blackboard bb)
-    {
-        bb.SetLocal($"debug.{Label}:counter", counter);
+    if (_counter <= 0) {
+      return FAILURE;
     }
+
+    _counter -= blackboard.GetLocal("delta").AsSingle();
+    var result = Children[0].Tick(actor, blackboard);
+    if (result != RUNNING) {
+      _counter = -1;
+    }
+
+    return result;
+  }
+
+  public override void LoadDebuggingValues(Blackboard bb) => bb.SetLocal($"debug.{Label}:counter", _counter);
 }

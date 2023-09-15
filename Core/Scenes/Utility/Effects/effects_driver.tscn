@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://cqi8ly36p405c"]
 
 [ext_resource type="Script" path="res://Core/Scenes/Utility/Effects/EffectsDriver.cs" id="1_jxcrj"]
 

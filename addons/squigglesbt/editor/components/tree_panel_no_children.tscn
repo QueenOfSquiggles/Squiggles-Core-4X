@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" path="res://addons/squigglesbt/editor/components/TreePanel.cs" id="1_xs4ja"]
 
-[node name="TreePanelNoChildren" type="PanelContainer" node_paths=PackedStringArray("_ChildrenPanel", "_NodeTypeLabel", "_NodeNameLabel", "_Params")]
+[node name="TreePanelNoChildren" type="PanelContainer" node_paths=PackedStringArray("_childrenPanel", "_nodeTypeLabel", "_nodeNameLabel", "_params")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xs4ja")
-_ChildrenPanel = NodePath("MarginContainer/VBoxContainer/Control")
-_NodeTypeLabel = NodePath("MarginContainer/VBoxContainer/NodeTypeLabel")
-_NodeNameLabel = NodePath("MarginContainer/VBoxContainer/NodeNameLabel")
-_Params = NodePath("MarginContainer/VBoxContainer/Params")
+_childrenPanel = NodePath("MarginContainer/VBoxContainer/Control")
+_nodeTypeLabel = NodePath("MarginContainer/VBoxContainer/NodeTypeLabel")
+_nodeNameLabel = NodePath("MarginContainer/VBoxContainer/NodeNameLabel")
+_params = NodePath("MarginContainer/VBoxContainer/Params")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

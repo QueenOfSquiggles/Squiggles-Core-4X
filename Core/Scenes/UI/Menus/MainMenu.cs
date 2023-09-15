@@ -1,102 +1,106 @@
-namespace menus;
+namespace Squiggles.Core.Scenes.UI.Menus;
 
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Godot;
-using queen.data;
-using queen.error;
-using queen.events;
-using queen.extension;
+using Squiggles.Core.Data;
+using Squiggles.Core.Error;
+using Squiggles.Core.Events;
+using Squiggles.Core.Extension;
+using Squiggles.Core.Scenes.Utility;
 
-public partial class MainMenu : Control
-{
-	[Export(PropertyHint.File, "*.tscn")] private string _PlayMenuScene = "";
-	[Export(PropertyHint.File, "*.tscn")] private string _Options = "";
-	[Export(PropertyHint.File, "*.tscn")] private string _CreditsScene = "";
+public partial class MainMenu : Control {
+  [Export(PropertyHint.File, "*.tscn")] private string _playMenuScene = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _options = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _creditsScene = "";
 
-	[ExportGroup("Node Paths")]
-	[Export] private Control _ButtonsPanel;
-	[Export] private TextureRect _GameLogo;
-	[Export] private LinkButton _AuthorLabel;
+  [ExportGroup("Node Paths")]
+  [Export] private Control _buttonsPanel;
+  [Export] private TextureRect _gameLogo;
+  [Export] private LinkButton _authorLabel;
 
-	private Node _CurrentPopup = null;
+  private Node _currentPopup;
 
-	public override void _Ready()
-	{
-		Input.MouseMode = Input.MouseModeEnum.Visible;
-		if (_GameLogo is not null) _GameLogo.Texture = ThisIsYourMainScene.Config?.GameLogo;
-		if (_AuthorLabel is not null)
-		{
-			_AuthorLabel.Text = Tr(_AuthorLabel.Text).Replace("%s", ThisIsYourMainScene.Config?.AuthorName ?? "SET AUTHOR NAME IN CONFIG");
-			_AuthorLabel.Uri = ThisIsYourMainScene.Config?.AuthorGamesURL ?? "";
-		}
-	}
+  public override void _Ready() {
+    Input.MouseMode = Input.MouseModeEnum.Visible;
+    if (_gameLogo is not null) {
+      _gameLogo.Texture = ThisIsYourMainScene.Config?.GameLogo;
+    }
 
-	private async void OnBtnPlay()
-	{
-		if (Data.HasSaveData())
-		{
-			if (_CurrentPopup is PlayMenu) return;
-			await ClearOldSlidingScene();
-			CreateNewSlidingScene(_PlayMenuScene);
-		}
-		else
-		{
-			Data.SetSaveSlot(Data.CreateSaveSlotName());
-			Events.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-			Scenes.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
-		}
-	}
+    if (_authorLabel is not null) {
+      _authorLabel.Text = Tr(_authorLabel.Text).Replace("%s", ThisIsYourMainScene.Config?.AuthorName ?? "SET AUTHOR NAME IN CONFIG");
+      _authorLabel.Uri = ThisIsYourMainScene.Config?.AuthorGamesURL ?? "";
+    }
+  }
 
-	private void OnBtnContinue()
-	{
-		Data.LoadMostRecentSaveSlot();
-		Events.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-		Scenes.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
-	}
+  private async void OnBtnPlay() {
+    if (SaveData.HasSaveData()) {
+      if (_currentPopup is PlayMenu) {
+        return;
+      }
 
-	private async void OnBtnOptions()
-	{
-		if (_CurrentPopup is OptionsMenu) return;
-		await ClearOldSlidingScene();
-		CreateNewSlidingScene(_Options);
-	}
+      await ClearOldSlidingScene();
+      CreateNewSlidingScene(_playMenuScene);
+    }
+    else {
+      SaveData.SetSaveSlot(SaveData.CreateSaveSlotName());
+      EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
+      SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+    }
+  }
 
-	private async void OnBtnCredits()
-	{
-		if (_CurrentPopup is CreditsScene) return;
-		await ClearOldSlidingScene();
-		CreateNewSlidingScene(_CreditsScene);
-	}
+  private static void OnBtnContinue() {
+    SaveData.LoadMostRecentSaveSlot();
+    EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
+    SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+  }
+
+  private async void OnBtnOptions() {
+    if (_currentPopup is OptionsMenu) {
+      return;
+    }
+
+    await ClearOldSlidingScene();
+    CreateNewSlidingScene(_options);
+  }
+
+  private async void OnBtnCredits() {
+    if (_currentPopup is CreditsScene) {
+      return;
+    }
+
+    await ClearOldSlidingScene();
+    CreateNewSlidingScene(_creditsScene);
+  }
 
 
-	private async Task ClearOldSlidingScene()
-	{
-		if (_CurrentPopup is null || !IsInstanceValid(_CurrentPopup)) return;
-		var sliding_comp = _CurrentPopup.GetComponent<SlidingPanelComponent>();
-		if (sliding_comp is not null)
-		{
-			_ = sliding_comp.RemoveScene();
-			await ToSignal(_CurrentPopup, "tree_exited");
-		}
-	}
+  private async Task ClearOldSlidingScene() {
+    if (_currentPopup is null || !IsInstanceValid(_currentPopup)) {
+      return;
+    }
 
-	private void CreateNewSlidingScene(string scene_file)
-	{
-		var packed = GD.Load<PackedScene>(scene_file);
-		var scene = packed.Instantiate<Control>();
-		if (scene is null) return;
-		scene.GlobalPosition = new Vector2(_ButtonsPanel.Size.X, 0);
-		AddChild(scene);
-		_CurrentPopup = scene;
-	}
+    var sliding_comp = _currentPopup.GetComponent<SlidingPanelComponent>();
+    if (sliding_comp is not null) {
+      _ = sliding_comp.RemoveScene();
+      await ToSignal(_currentPopup, "tree_exited");
+    }
+  }
 
-	private void OnBtnQuit()
-	{
-		Print.Debug("Quitting game");
-		GetTree().Quit();
-	}
+  private void CreateNewSlidingScene(string scene_file) {
+    var packed = GD.Load<PackedScene>(scene_file);
+    var scene = packed.Instantiate<Control>();
+    if (scene is null) {
+      return;
+    }
+
+    scene.GlobalPosition = new Vector2(_buttonsPanel.Size.X, 0);
+    AddChild(scene);
+    _currentPopup = scene;
+  }
+
+  private void OnBtnQuit() {
+    Print.Debug("Quitting game");
+    GetTree().Quit();
+  }
 
 
 }

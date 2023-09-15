@@ -1,19 +1,18 @@
-using Godot;
+namespace Squiggles.Core.Error;
 
-namespace queen.error;
+public static class Debugging {
 
-public static class Debugging
-{
-
-    public static bool Assert(bool value, string message = "Assertion Failed")
-    {
+  public static bool Assert(bool value, string message = "Assertion Failed") {
 #if DEBUG
-        // only executes in debug builds. Otherwise acts as a defensive programming style
-        if (value) return value;
-        Print.Error(message);
+    // only executes in debug builds. Otherwise acts as a defensive programming style
+    if (value) {
+      return value;
+    }
+
+    Print.Error(message);
 
 #endif
-        return value;
-    }
+    return value;
+  }
 
 }

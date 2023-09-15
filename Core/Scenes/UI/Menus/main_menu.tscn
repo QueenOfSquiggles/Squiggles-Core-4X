@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/MainMenu.cs" id="1_ef7d4"]
 [ext_resource type="PackedScene" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="3_k7orp"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="4_geber"]
-[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="5_scqaj"]
+[ext_resource type="Texture2D" uid="uid://cqbcyciga5j3d" path="res://icon.png" id="5_scqaj"]
 [ext_resource type="PackedScene" path="res://Core/Scenes/Utility/ControlsHelp/load_controls_mappings.tscn" id="6_unbtx"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/VersioningLabel.cs" id="7_1dicm"]
 [ext_resource type="Script" path="res://Core/Scenes/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
@@ -12,7 +12,7 @@
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("_ButtonsPanel", "_GameLogo", "_AuthorLabel")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("_buttonsPanel", "_gameLogo", "_authorLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,12 +20,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ef7d4")
-_PlayMenuScene = "res://Core/Scenes/UI/Menus/play_menu.tscn"
-_Options = "res://Core/Scenes/UI/Menus/options_menu.tscn"
-_CreditsScene = "res://Core/Scenes/UI/Menus/credits_scene.tscn"
-_ButtonsPanel = NodePath("ControlButtons")
-_GameLogo = NodePath("ControlButtons/MarginContainer/VBoxContainer/TitleTexture")
-_AuthorLabel = NodePath("ControlButtons/MarginContainer/VBoxContainer/LinkButton")
+_playMenuScene = "res://Core/Scenes/UI/Menus/play_menu.tscn"
+_options = "res://Core/Scenes/UI/Menus/options_menu.tscn"
+_creditsScene = "res://Core/Scenes/UI/Menus/credits_scene.tscn"
+_buttonsPanel = NodePath("ControlButtons")
+_gameLogo = NodePath("ControlButtons/MarginContainer/VBoxContainer/TitleTexture")
+_authorLabel = NodePath("ControlButtons/MarginContainer/VBoxContainer/LinkButton")
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -138,7 +138,6 @@ script = ExtResource("7_1dicm")
 
 [node name="SceneBGMLoader" type="Node" parent="."]
 script = ExtResource("8_4ubeu")
-crossfade_duration = 2.0
 
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" to="." method="OnBtnPlay"]
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnOptions" to="." method="OnBtnOptions"]

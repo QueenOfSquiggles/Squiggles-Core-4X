@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://deg3ndbgofqus"]
 
 [ext_resource type="Script" path="res://Core/Scenes/Utility/CameraUtilities/DynamicDOFRay.cs" id="1_siq51"]
 

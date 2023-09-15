@@ -1,14 +1,16 @@
-using System;
+namespace Squiggles.Core.Scenes.World;
+
 using Godot;
 
-public partial class WorldBoundary : Area3D
-{
-    [Export] private string PlayerGroupName = "player";
-    [Export] private Node3D _RespawnPoint;
+public partial class WorldBoundary : Area3D {
+  [Export] private string _playerGroupName = "player";
+  [Export] private Node3D _respawnPoint;
 
-    private void OnBodyEnter(Node3D node)
-    {
-        if (_RespawnPoint is null) return;
-        node.GlobalPosition = _RespawnPoint.GlobalPosition;
+  private void OnBodyEnter(Node3D node) {
+    if (_respawnPoint is null) {
+      return;
     }
+
+    node.GlobalPosition = _respawnPoint.GlobalPosition;
+  }
 }

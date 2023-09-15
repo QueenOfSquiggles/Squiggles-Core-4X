@@ -1,80 +1,68 @@
-using System;
+namespace Squiggles.Core.Scenes.UI.Menus;
+
 using System.Threading.Tasks;
 using Godot;
-using queen.events;
-using queen.extension;
+using Squiggles.Core.Events;
+using Squiggles.Core.Extension;
+using Squiggles.Core.Scenes.Utility;
 
-public partial class PauseMenu : Control
-{
+public partial class PauseMenu : Control {
 
-    [Export(PropertyHint.File, "*.tscn")] private string _MainMenuFile = "";
-    [Export(PropertyHint.File, "*.tscn")] private string _OptionsMenuFile = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _mainMenuFile = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _optionsMenuFile = "";
 
-    [Export] private Control _MenuPanel;
-    private Control _CurrentPopup = null;
+  [Export] private Control _menuPanel;
+  private Control _currentPopup;
 
-    public override void _Ready()
-    {
-        GetTree().Paused = true;
-        Input.MouseMode = Input.MouseModeEnum.Visible;
+  public override void _Ready() {
+    GetTree().Paused = true;
+    Input.MouseMode = Input.MouseModeEnum.Visible;
+  }
+
+  public override void _UnhandledInput(InputEvent @event) {
+    if (@event.IsActionPressed("ui_cancel")) {
+
+      ReturnToPlay();
+      this.HandleInput();
+    }
+  }
+
+  private async void ReturnToPlay() {
+    EventBus.Data.TriggerSerializeAll();
+    await Task.Delay(10);
+    Input.MouseMode = Input.MouseModeEnum.Captured;
+    GetTree().Paused = false;
+    QueueFree();
+  }
+
+  private async void ExitToMainMenu() {
+    EventBus.Data.TriggerSerializeAll();
+    await Task.Delay(10);
+    GetTree().Paused = false;
+    SceneTransitions.LoadSceneAsync(_mainMenuFile);
+  }
+
+  private void OnBtnOptions() {
+    if (_currentPopup is null || !IsInstanceValid(_currentPopup)) {
+      CreateNewSlidingScene(_optionsMenuFile);
+    }
+    else {
+      _currentPopup?.GetComponent<SlidingPanelComponent>()?.RemoveScene();
     }
 
-    public override void _UnhandledInput(InputEvent e)
-    {
-        if (e.IsActionPressed("ui_cancel"))
-        {
+  }
+  private static void OnBtnSave() => EventBus.Data.TriggerSerializeAll();
 
-            ReturnToPlay();
-            this.HandleInput();
-        }
-    }
+  private static void OnBtnReloadLastSave() => EventBus.Data.TriggerReload();
 
-    private async void ReturnToPlay()
-    {
-        Events.Data.TriggerSerializeAll();
-        await Task.Delay(10);
-        Input.MouseMode = Input.MouseModeEnum.Captured;
-        GetTree().Paused = false;
-        QueueFree();
+  private void CreateNewSlidingScene(string scene_file) {
+    var packed = GD.Load<PackedScene>(scene_file);
+    var scene = packed?.Instantiate<Control>();
+    if (scene is null) {
+      return;
     }
-
-    private async void ExitToMainMenu()
-    {
-        Events.Data.TriggerSerializeAll();
-        await Task.Delay(10);
-        GetTree().Paused = false;
-        Scenes.LoadSceneAsync(_MainMenuFile);
-    }
-
-    private void OnBtnOptions()
-    {
-        if (_CurrentPopup is null || !IsInstanceValid(_CurrentPopup))
-        {
-            CreateNewSlidingScene(_OptionsMenuFile);
-        }
-        else
-        {
-            _CurrentPopup?.GetComponent<SlidingPanelComponent>()?.RemoveScene();
-        }
-
-    }
-    private void OnBtnSave()
-    {
-        Events.Data.TriggerSerializeAll();
-    }
-
-    private void OnBtnReloadLastSave()
-    {
-        Events.Data.TriggerReload();
-    }
-
-    private void CreateNewSlidingScene(string scene_file)
-    {
-        var packed = GD.Load<PackedScene>(scene_file);
-        var scene = packed?.Instantiate<Control>();
-        if (scene is null) return;
-        scene.GlobalPosition = new Vector2(_MenuPanel?.Size.X ?? 0, 0);
-        AddChild(scene);
-        _CurrentPopup = scene;
-    }
+    scene.GlobalPosition = new Vector2(_menuPanel?.Size.X ?? 0, 0);
+    AddChild(scene);
+    _currentPopup = scene;
+  }
 }

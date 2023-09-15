@@ -1,8 +1,7 @@
-namespace queen.modification;
-public interface IModificationAdapter
-{
+namespace Squiggles.Core.Modification;
+public interface IModificationAdapter {
 
-    void OnRegister();
-    void OnUnRegister();
+  void OnRegister();
+  void OnUnRegister();
 
 }

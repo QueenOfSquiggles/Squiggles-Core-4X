@@ -1,72 +1,82 @@
-using System;
+namespace Squiggles.Core.Scenes.UI.Menus;
+
 using System.Threading.Tasks;
 using Godot;
-using queen.error;
-using queen.events;
-using queen.extension;
+using Squiggles.Core.Error;
+using Squiggles.Core.Events;
+using Squiggles.Core.Extension;
 
-public partial class OptionsMenu : Control
-{
-    [Export(PropertyHint.File, "*.tscn")] private string _MainMenuPath = "";
-    [Export] private Control SlidingSceneRoot;
-
-
-    [ExportGroup("Panel Scene References")]
-    [Export(PropertyHint.File, "*.tscn")] private string _PathPanelGameplay = "";
-    [Export(PropertyHint.File, "*.tscn")] private string path_panel_graphics = "";
-    [Export(PropertyHint.File, "*.tscn")] private string path_panel_access = "";
-    [Export(PropertyHint.File, "*.tscn")] private string path_panel_controls = "";
-    [Export(PropertyHint.File, "*.tscn")] private string _PathPanelAudio = "";
+public partial class OptionsMenu : Control {
+  [Export(PropertyHint.File, "*.tscn")] private string _mainMenuPath = "";
+  [Export] private Control _slidingSceneRoot;
 
 
-    private Node CurrentPopup = null;
-    private bool IsBusy = false;
+  [ExportGroup("Panel Scene References")]
+  [Export(PropertyHint.File, "*.tscn")] private string _pathPanelGameplay = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _pathPanelGraphics = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _pathPanelAccess = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _pathPanelControls = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _pathPanelAudio = "";
 
-    // TODO integrate a gameplay settings panel
-    private void OnBtnGameplay() { } // => DoPanelThing(path_panel_gameplay);
-    private void OnBtnGraphics() => DoPanelThing(path_panel_graphics);
-    private void OnBtnAccess() => DoPanelThing(path_panel_access);
-    private void OnBtnAudio() => DoPanelThing(_PathPanelAudio);
-    private void OnBtnControls() => DoPanelThing(path_panel_controls);
 
-    private async void DoPanelThing(string file_path)
-    {
-        if (IsBusy) return;
-        Events.Data.TriggerSerializeAll();
-        // Print.Debug($"OptionsMenu: attempting sliding in {file_path}");
-        IsBusy = true;
-        var result = await ClearOldSlidingScene(file_path);
-        if (result) CreateNewSlidingScene(file_path);
-        else Print.Warn($"Options menu failed to create panel view for: {file_path.GetFile()}");
-        IsBusy = false;
+  private Node _currentPopup;
+  private bool _isBusy;
+
+  // TODO integrate a gameplay settings panel
+  private static void OnBtnGameplay() { } // => DoPanelThing(path_panel_gameplay);
+  private void OnBtnGraphics() => DoPanelThing(_pathPanelGraphics);
+  private void OnBtnAccess() => DoPanelThing(_pathPanelAccess);
+  private void OnBtnAudio() => DoPanelThing(_pathPanelAudio);
+  private void OnBtnControls() => DoPanelThing(_pathPanelControls);
+
+  private async void DoPanelThing(string file_path) {
+    if (_isBusy) {
+      return;
     }
 
-    private async Task<bool> ClearOldSlidingScene(string scene_file)
-    {
-        if (CurrentPopup is null || !IsInstanceValid(CurrentPopup)) return true;
-        if (CurrentPopup.SceneFilePath == scene_file) return false;
-        var sliding_comp = CurrentPopup.GetComponent<SlidingPanelComponent>();
-        if (sliding_comp is not null)
-        {
-            _ = sliding_comp.RemoveScene();
-            await ToSignal(CurrentPopup, "tree_exited");
-        }
-        return true;
+    EventBus.Data.TriggerSerializeAll();
+    // Print.Debug($"OptionsMenu: attempting sliding in {file_path}");
+    _isBusy = true;
+    var result = await ClearOldSlidingScene(file_path);
+    if (result) {
+      CreateNewSlidingScene(file_path);
+    }
+    else {
+      Print.Warn($"Options menu failed to create panel view for: {file_path.GetFile()}");
     }
 
-    private void CreateNewSlidingScene(string scene_file)
-    {
-        var packed = GD.Load<PackedScene>(scene_file);
-        var scene = packed.Instantiate<Control>();
-        if (scene is null) return;
-        scene.GlobalPosition = new Vector2(Size.X, 0);
-        SlidingSceneRoot.AddChild(scene);
-        CurrentPopup = scene;
+    _isBusy = false;
+  }
+
+  private async Task<bool> ClearOldSlidingScene(string scene_file) {
+    if (_currentPopup is null || !IsInstanceValid(_currentPopup)) {
+      return true;
     }
 
-    public override void _ExitTree()
-    {
-        Events.Data.TriggerSerializeAll();
+    if (_currentPopup.SceneFilePath == scene_file) {
+      return false;
     }
+
+    var sliding_comp = _currentPopup.GetComponent<SlidingPanelComponent>();
+    if (sliding_comp is not null) {
+      _ = sliding_comp.RemoveScene();
+      await ToSignal(_currentPopup, "tree_exited");
+    }
+    return true;
+  }
+
+  private void CreateNewSlidingScene(string scene_file) {
+    var packed = GD.Load<PackedScene>(scene_file);
+    var scene = packed.Instantiate<Control>();
+    if (scene is null) {
+      return;
+    }
+
+    scene.GlobalPosition = new Vector2(Size.X, 0);
+    _slidingSceneRoot.AddChild(scene);
+    _currentPopup = scene;
+  }
+
+  public override void _ExitTree() => EventBus.Data.TriggerSerializeAll();
 
 }

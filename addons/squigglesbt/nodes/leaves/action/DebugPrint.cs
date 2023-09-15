@@ -1,19 +1,18 @@
-using System.Collections.Generic;
+namespace SquigglesBT.Nodes;
 using Godot;
 
-public class DebugPrint : Leaf
-{
+public class DebugPrint : Leaf {
 
-    protected override void RegisterParams()
-    {
-        Params["message"] = "Message UwU";
+  protected override void RegisterParams() => Params["message"] = "Message UwU";
+
+  public override int Tick(Node actor, Blackboard blackboard) {
+    var msg = GetParam("message", "", blackboard).AsString();
+
+    if (msg == "") {
+      return FAILURE;
     }
 
-    public override int Tick(Node actor, Blackboard blackboard)
-    {
-        var msg = GetParam("message", "", blackboard).AsString();
-        if (msg == "") return FAILURE;
-        GD.Print(msg);
-        return SUCCESS;
-    }
+    GD.Print(msg);
+    return SUCCESS;
+  }
 }

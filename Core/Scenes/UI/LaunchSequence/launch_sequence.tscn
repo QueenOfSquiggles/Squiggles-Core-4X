@@ -128,7 +128,7 @@ font_size = 69
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_onokb"]
 
-[node name="LaunchSequence" type="Control" node_paths=PackedStringArray("_Anim", "_GameLogo")]
+[node name="LaunchSequence" type="Control" node_paths=PackedStringArray("_anim", "_gameLogo")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,8 +136,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_q1rby")
-_Anim = NodePath("AnimationPlayer")
-_GameLogo = NodePath("GameLogo")
+_anim = NodePath("AnimationPlayer")
+_gameLogo = NodePath("GameLogo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -220,7 +220,6 @@ stretch_mode = 5
 
 [node name="LoadGraphicsSettings" parent="." instance=ExtResource("6_mmmhm")]
 
-[node name="CutsceneSkipper" parent="." node_paths=PackedStringArray("anim") instance=ExtResource("3_ngdg6")]
-anim = NodePath("../AnimationPlayer")
+[node name="CutsceneSkipper" parent="." instance=ExtResource("3_ngdg6")]
 
 [node name="ForceAccessLoad" parent="." instance=ExtResource("2_kdbm6")]

@@ -1,0 +1,790 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EventsUI
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EventsUI
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/QueenOfSquiggles/SquigglesCommon4X/new/main/apiSpec/new?filename=Squiggles_Core_Events_EventsUI.md&amp;value=---%0Auid%3A%20Squiggles.Core.Events.EventsUI%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Squiggles.Core.Events.EventsUI">
+
+
+
+  <h1 id="Squiggles_Core_Events_EventsUI" data-uid="Squiggles.Core.Events.EventsUI" class="text-break">
+    Class EventsUI
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Squiggles.html">Squiggles</a>.<a class="xref" href="Squiggles.Core.html">Core</a>.<a class="xref" href="Squiggles.Core.Events.html">Events</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>SquigglesCommon4X.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EventsUI</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">EventsUI</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerAbleToInteract_" data-uid="Squiggles.Core.Events.EventsUI.TriggerAbleToInteract*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerAbleToInteract_System_String_" data-uid="Squiggles.Core.Events.EventsUI.TriggerAbleToInteract(System.String)">
+  TriggerAbleToInteract(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerAbleToInteract(string text)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerInventoryResized_" data-uid="Squiggles.Core.Events.EventsUI.TriggerInventoryResized*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerInventoryResized_System_Int32_" data-uid="Squiggles.Core.Events.EventsUI.TriggerInventoryResized(System.Int32)">
+  TriggerInventoryResized(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerInventoryResized(int slots)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slots</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerPlayerInventorySelect_" data-uid="Squiggles.Core.Events.EventsUI.TriggerPlayerInventorySelect*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerPlayerInventorySelect_System_Int32_" data-uid="Squiggles.Core.Events.EventsUI.TriggerPlayerInventorySelect(System.Int32)">
+  TriggerPlayerInventorySelect(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerPlayerInventorySelect(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerRequestAlert_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestAlert*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerRequestAlert_System_String_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestAlert(System.String)">
+  TriggerRequestAlert(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerRequestAlert(string text)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerRequestCloseGUI_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestCloseGUI*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerRequestCloseGUI" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestCloseGUI">
+  TriggerRequestCloseGUI()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerRequestCloseGUI()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerRequestGUI_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestGUI*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerRequestGUI_Godot_Control_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestGUI(Godot.Control)">
+  TriggerRequestGUI(Control)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerRequestGUI(Control gui_node)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gui_node</code> <span class="xref">Control</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerRequestInventory_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestInventory*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerRequestInventory_System_Object_System_Object_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestInventory(System.Object,System.Object)">
+  TriggerRequestInventory(object, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerRequestInventory(object playerContainer, object secondaryContainer = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerContainer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+    <dt><code>secondaryContainer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerRequestSubtitle_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestSubtitle*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerRequestSubtitle_System_String_" data-uid="Squiggles.Core.Events.EventsUI.TriggerRequestSubtitle(System.String)">
+  TriggerRequestSubtitle(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerRequestSubtitle(string text)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerUnableToInteract_" data-uid="Squiggles.Core.Events.EventsUI.TriggerUnableToInteract*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerUnableToInteract" data-uid="Squiggles.Core.Events.EventsUI.TriggerUnableToInteract">
+  TriggerUnableToInteract()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerUnableToInteract()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Squiggles_Core_Events_EventsUI_TriggerUpdatePlayeInventoryDisplay_" data-uid="Squiggles.Core.Events.EventsUI.TriggerUpdatePlayeInventoryDisplay*"></a>
+
+  <h3 id="Squiggles_Core_Events_EventsUI_TriggerUpdatePlayeInventoryDisplay_System_Int32_System_String_System_Int32_" data-uid="Squiggles.Core.Events.EventsUI.TriggerUpdatePlayeInventoryDisplay(System.Int32,System.String,System.Int32)">
+  TriggerUpdatePlayeInventoryDisplay(int, string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void TriggerUpdatePlayeInventoryDisplay(int index, string item, int qty)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>qty</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_MarkAbleToInteract" data-uid="Squiggles.Core.Events.EventsUI.MarkAbleToInteract">
+  MarkAbleToInteract
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;string&gt; MarkAbleToInteract</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_MarkUnableToInteract" data-uid="Squiggles.Core.Events.EventsUI.MarkUnableToInteract">
+  MarkUnableToInteract
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action MarkUnableToInteract</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_PlayerInventorySelectIndex" data-uid="Squiggles.Core.Events.EventsUI.PlayerInventorySelectIndex">
+  PlayerInventorySelectIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;int&gt; PlayerInventorySelectIndex</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_PlayerInventorySizeChange" data-uid="Squiggles.Core.Events.EventsUI.PlayerInventorySizeChange">
+  PlayerInventorySizeChange
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;int&gt; PlayerInventorySizeChange</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_RequestAlert" data-uid="Squiggles.Core.Events.EventsUI.RequestAlert">
+  RequestAlert
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;string&gt; RequestAlert</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_RequestCloseGUI" data-uid="Squiggles.Core.Events.EventsUI.RequestCloseGUI">
+  RequestCloseGUI
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action RequestCloseGUI</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_RequestGUI" data-uid="Squiggles.Core.Events.EventsUI.RequestGUI">
+  RequestGUI
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;Control&gt; RequestGUI</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<span class="xref">Control</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_RequestInventory" data-uid="Squiggles.Core.Events.EventsUI.RequestInventory">
+  RequestInventory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;object, object&gt; RequestInventory</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_RequestSubtitle" data-uid="Squiggles.Core.Events.EventsUI.RequestSubtitle">
+  RequestSubtitle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;string&gt; RequestSubtitle</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Squiggles_Core_Events_EventsUI_UpdatePlayerInventoryDisplay" data-uid="Squiggles.Core.Events.EventsUI.UpdatePlayerInventoryDisplay">
+  UpdatePlayerInventoryDisplay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;int, string, int&gt; UpdatePlayerInventoryDisplay</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-3">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/QueenOfSquiggles/SquigglesCommon4X/blob/main/Core/Modules/Event/Events.cs/#L44" class="edit-link">Edit this page</a>
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
