@@ -23,7 +23,7 @@ public partial class OptionsMenu : Control {
   private bool _isBusy;
 
   // TODO integrate a gameplay settings panel
-  private static void OnBtnGameplay() { } // => DoPanelThing(path_panel_gameplay);
+  private void OnBtnGameplay() => DoPanelThing(_pathPanelGameplay);
   private void OnBtnGraphics() => DoPanelThing(_pathPanelGraphics);
   private void OnBtnAccess() => DoPanelThing(_pathPanelAccess);
   private void OnBtnAudio() => DoPanelThing(_pathPanelAudio);
@@ -49,12 +49,8 @@ public partial class OptionsMenu : Control {
   }
 
   private async Task<bool> ClearOldSlidingScene(string scene_file) {
-    if (_currentPopup is null || !IsInstanceValid(_currentPopup)) {
+    if (_currentPopup is null) {
       return true;
-    }
-
-    if (_currentPopup.SceneFilePath == scene_file) {
-      return false;
     }
 
     var sliding_comp = _currentPopup.GetComponent<SlidingPanelComponent>();

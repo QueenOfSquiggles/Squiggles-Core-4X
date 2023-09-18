@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Squiggles.Core.Error;
+using Squiggles.Core.Events;
 
 public class Controls {
 
@@ -173,6 +174,7 @@ public class Controls {
       var codes = _instance.MappingsOverloads[key];
       _instance.LoadMappingsFromData(key, codes);
     }
+    EventBus.Data.SerializeAll += SaveSettings;
   }
 
   public static void SaveSettings() {

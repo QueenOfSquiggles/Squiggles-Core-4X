@@ -2,6 +2,7 @@ namespace Squiggles.Core.Error;
 
 using System;
 using System.Diagnostics;
+using System.Linq;
 using Godot;
 
 public static class Print {
@@ -63,7 +64,7 @@ public static class Print {
 
     // TODO what formatting is desired for different contexts?
     var msgText = (OS.HasEnvironment("VS_DEBUG") || OS.HasFeature("editor")) ?
-        $"{msg.MsgType}({msg.LogLevel}): {msg.WrapFormatting(msg.Text)}" // Debugging/Editor Context
+        $"{msg.MsgType}({msg.LogLevel}): {msg.Text}" // Debugging/Editor Context
       : $"{msg.MsgType}: {msg.Text}"; // Release Context, expect no formatting support
 
     // prepend date-time when run with "--verbose".
@@ -72,8 +73,37 @@ public static class Print {
     // append class name
     msgText = msg.ClassName.Length > 0 ? $"{msgText}\n\tClass={msg.ClassName}" : msgText;
 
-    // append a stack trace with file and line numbers when printing an error or warning
-    msgText = msg.IsError || msg.IsWarning ? msgText + "\n" + new StackTrace(true) : msgText;
+
+    // Appends simple stack trace (1-2 frames at most)
+    if (msg.IsError || msg.IsWarning) {
+      var stack = new StackTrace();
+
+      StackFrame coreFrame = null;
+      StackFrame externalFrame = null;
+      foreach (var f in stack.GetFrames()) {
+        var declaringType = f.GetMethod()?.DeclaringType;
+        if (declaringType != typeof(Print)) {
+          coreFrame ??= f;
+        }
+        if (!declaringType.Namespace.Contains("Squiggles.Core") && !declaringType.Namespace.StartsWith("Godot")) {
+          externalFrame ??= f;
+        }
+
+        if (coreFrame is not null && externalFrame is not null) {
+          break;
+        }
+      }
+
+      // appends a single line stack trace for the first class external to Print
+      msgText += "\n\t" + GetSimplifiedStackFrame(coreFrame);
+
+      // If available, appends a single stack frame for the first class not part of the Squiggles.Core namespace, I assume that would be the calling code that is not part of the SquigglesCore4X
+      if (externalFrame is not null) {
+        msgText += "\n\t" + GetSimplifiedStackFrame(externalFrame);
+      }
+    }
+
+    msgText = msg.WrapFormatting(msgText);
 
     if (msg.IsError) {
       GD.PushError(msg.Text);
@@ -85,6 +115,13 @@ public static class Print {
     GD.PrintRich(msgText);
   }
 
+  private static string GetSimplifiedStackFrame(StackFrame frame) {
+    var method = frame.GetMethod();
+    return $"at\t\t{method.DeclaringType.FullName}::{method.Name}()" + (frame.HasSource() ?
+    $"\n\t-\t{frame.GetFileName()}:{frame.GetFileLineNumber}" :
+    "\n\t[No Source File Available]") + "\n\n";
+  }
+
   private static void AppendToLogFile(Msg msg) {
     // TODO append to a log file
     using var logFile = FileAccess.Open(LOG_FILE, FileAccess.ModeFlags.ReadWrite);
@@ -92,6 +129,13 @@ public static class Print {
       using (var touch = FileAccess.Open(LOG_FILE, FileAccess.ModeFlags.Write)) {
         touch?.StoreLine("----------");
         touch?.StoreLine($"Logging Session | {DateTime.Now}");
+        touch?.StoreLine($"OS | {OS.GetDistributionName()}");
+        touch?.StoreLine($"Locale | {OS.GetLocale()}");
+        touch?.StoreLine($"Device | {OS.GetModelName()}");
+        touch?.StoreLine($"Godot Args | {OS.GetCmdlineArgs().Join(",")}");
+        touch?.StoreLine($"Game Args | {OS.GetCmdlineUserArgs().Join(",")}");
+        touch?.StoreLine($"Graphics | {OS.GetVideoAdapterDriverInfo().Join(",")}");
+        // touch?.StoreLine($"");
         touch?.StoreLine("----------");
       }
       AppendToLogFile(msg);

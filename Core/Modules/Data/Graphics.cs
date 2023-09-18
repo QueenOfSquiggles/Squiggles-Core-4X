@@ -2,7 +2,7 @@ namespace Squiggles.Core.Data;
 
 using System;
 using Godot;
-
+using Squiggles.Core.Events;
 
 public class Graphics {
 
@@ -60,6 +60,7 @@ public class Graphics {
     else {
       SaveSettings();
     }
+    EventBus.Data.SerializeAll += SaveSettings;
 
     DisplayServer.WindowSetMode((DisplayServer.WindowMode)_instance.Fullscreen);
   }

@@ -33,18 +33,34 @@ public partial class MainMenu : Control {
   }
 
   private async void OnBtnPlay() {
-    if (SaveData.HasSaveData()) {
-      if (_currentPopup is PlayMenu) {
-        return;
-      }
-
-      await ClearOldSlidingScene();
-      CreateNewSlidingScene(_playMenuScene);
-    }
-    else {
-      SaveData.SetSaveSlot(SaveData.CreateSaveSlotName());
-      EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-      SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+    switch (ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.SlotOptions) {
+      case Meta.SaveSlotSettings.SaveSlotOptions.NO_SAVE_DATA:
+        SaveData.CurrentSaveSlot.DeleteSaveSlot(); // clear out any existing data
+        SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+        break;
+      case Meta.SaveSlotSettings.SaveSlotOptions.SINGLE_SAVE_SLOT:
+        SaveData.LoadDefaultSaveSlot();
+        EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
+        SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+        break;
+      case Meta.SaveSlotSettings.SaveSlotOptions.MULTI_SLOT_SAVE_DATA:
+        if (SaveData.HasSaveData()) {
+          if (_currentPopup is PlayMenu) {
+            return;
+          }
+          await ClearOldSlidingScene();
+          CreateNewSlidingScene(_playMenuScene);
+        }
+        else {
+          SaveData.SetSaveSlot(SaveData.CreateSaveSlotName());
+          EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
+          SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+        }
+        break;
+      case null:
+      default:
+        Print.Error("Failed to handle main menu play pressing. Failed to find a valid save slot handling configuration", this);
+        break;
     }
   }
 
@@ -99,6 +115,7 @@ public partial class MainMenu : Control {
 
   private void OnBtnQuit() {
     Print.Debug("Quitting game");
+    EventBus.Data.TriggerSerializeAll();
     GetTree().Quit();
   }
 

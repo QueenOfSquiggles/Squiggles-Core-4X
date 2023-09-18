@@ -1,5 +1,6 @@
 namespace Squiggles.Core.Data;
 
+using Squiggles.Core.Events;
 
 public class Stats {
 
@@ -43,6 +44,8 @@ public class Stats {
     if (loaded != null) {
       _instance = loaded;
     }
+    EventBus.Data.SerializeAll += SaveSettings;
+
   }
 
   public static void SaveSettings() {

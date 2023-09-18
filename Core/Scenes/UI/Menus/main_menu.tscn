@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4l37id685tw"]
 
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/MainMenu.cs" id="1_ef7d4"]
-[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="3_k7orp"]
+[ext_resource type="PackedScene" uid="uid://b8y0v225qjej4" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="3_k7orp"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="4_geber"]
-[ext_resource type="Texture2D" uid="uid://cqbcyciga5j3d" path="res://icon.png" id="5_scqaj"]
-[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/ControlsHelp/load_controls_mappings.tscn" id="6_unbtx"]
+[ext_resource type="Texture2D" uid="uid://d43sw60ib1iq" path="res://icon.png" id="5_scqaj"]
+[ext_resource type="PackedScene" uid="uid://dpt6gu6jg1gx0" path="res://Core/Scenes/Utility/ControlsHelp/load_controls_mappings.tscn" id="6_unbtx"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/VersioningLabel.cs" id="7_1dicm"]
 [ext_resource type="Script" path="res://Core/Scenes/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
 

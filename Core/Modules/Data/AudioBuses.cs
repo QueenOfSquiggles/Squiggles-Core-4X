@@ -2,6 +2,7 @@ namespace Squiggles.Core.Data;
 
 using System;
 using Godot;
+using Squiggles.Core.Events;
 
 public class AudioBuses {
   public float[] Volumes { get; set; } = Array.Empty<float>();
@@ -33,6 +34,7 @@ public class AudioBuses {
     if (loaded != null) {
       _instance = loaded;
     }
+    EventBus.Data.SerializeAll += SaveSettings;
 
     UpdateAudioServer();
   }
