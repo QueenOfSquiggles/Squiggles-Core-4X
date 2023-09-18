@@ -62,6 +62,7 @@ public class AudioBuses {
 
         temp[i] = _instance.Volumes[i];
       }
+      _instance.Volumes = temp;
     }
 
     for (var i = 0; i < AudioServer.BusCount; i++) {

@@ -1,5 +1,6 @@
 namespace Squiggles.Core.Data;
 
+using System;
 using System.Collections.Generic;
 using Squiggles.Core.Events;
 
@@ -9,11 +10,14 @@ public class GameplaySettings {
   //  Meaningful information
   //      Defaults assigned as well
   //
-  public Dictionary<string, string> Options = new();
+  public readonly Dictionary<string, string> Options = new();
 
   //
   //  Helper Functions
   //
+
+  // events
+  public static event Action OptionsChanged;
 
 
   public static bool HasKey(string key) => Instance.Options.ContainsKey(key);
@@ -22,7 +26,7 @@ public class GameplaySettings {
   public static bool GetBool(string key) {
     if (Instance.Options.ContainsKey(key)) {
       var success = bool.TryParse(Instance.Options[key], out var result);
-      return success || result;
+      return success && result;
     }
     return false;
   }
@@ -38,9 +42,20 @@ public class GameplaySettings {
   public static string GetString(string key) => Instance.Options.ContainsKey(key) ? Instance.Options[key] : "";
 
   // Setters
-  public static void SetBool(string key, bool value) => Instance.Options[key] = value.ToString();
-  public static void SetFloat(string key, float value) => Instance.Options[key] = value.ToString();
-  public static void SetString(string key, string value) => Instance.Options[key] = value;
+  public static void SetBool(string key, bool value) {
+    Instance.Options[key] = value.ToString();
+    OptionsChanged?.Invoke();
+  }
+
+  public static void SetFloat(string key, float value) {
+    Instance.Options[key] = value.ToString();
+    OptionsChanged?.Invoke();
+  }
+
+  public static void SetString(string key, string value) {
+    Instance.Options[key] = value;
+    OptionsChanged?.Invoke();
+  }
 
   //
   //  Singleton Setup
