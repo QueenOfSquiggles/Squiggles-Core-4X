@@ -98,9 +98,10 @@ public static class Print {
       msgText += "\n\t" + GetSimplifiedStackFrame(coreFrame);
 
       // If available, appends a single stack frame for the first class not part of the Squiggles.Core namespace, I assume that would be the calling code that is not part of the SquigglesCore4X
-      if (externalFrame is not null) {
+      if (externalFrame is not null && externalFrame != coreFrame) {
         msgText += "\n\t" + GetSimplifiedStackFrame(externalFrame);
       }
+      msgText += "\n\t-----";
     }
 
     msgText = msg.WrapFormatting(msgText);
@@ -119,7 +120,7 @@ public static class Print {
     var method = frame.GetMethod();
     return $"at\t\t{method.DeclaringType.FullName}::{method.Name}()" + (frame.HasSource() ?
     $"\n\t-\t{frame.GetFileName()}:{frame.GetFileLineNumber}" :
-    "\n\t[No Source File Available]") + "\n\n";
+    "\n\t[No Source File Available]");
   }
 
   private static void AppendToLogFile(Msg msg) {

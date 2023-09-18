@@ -19,6 +19,7 @@ public partial class SlidingPanelComponent : Node {
   private bool _isStable; // mood
 
   public override void _Ready() {
+    _target ??= GetNode<Control>("..");
     _target.ZIndex -= 1;
     var xStart = _target.Position.X;
     _target.Position -= new Vector2(_target.Size.X, 0.0f);

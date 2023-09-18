@@ -30,7 +30,7 @@ public partial class PauseMenu : Control {
   private async void ReturnToPlay() {
     EventBus.Data.TriggerSerializeAll();
     await Task.Delay(10);
-    Input.MouseMode = Input.MouseModeEnum.Captured;
+    Input.MouseMode = ThisIsYourMainScene.Config?.GameplayConfig?.GameplayMouseMode ?? Input.MouseModeEnum.Captured;
     GetTree().Paused = false;
     QueueFree();
   }
