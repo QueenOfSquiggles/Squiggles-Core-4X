@@ -1,6 +1,7 @@
 namespace Squiggles.Core.Data;
 using Godot;
 using Squiggles.Core.Error;
+using Squiggles.Core.Events;
 
 public class Access {
 
@@ -69,6 +70,7 @@ public class Access {
     if (_instance == null) {
       return;
     }
+    EventBus.Data.SerializeAll += SaveSettings;
 
     ApplyChanges();
     SaveData.Save(_instance, FILE_PATH);

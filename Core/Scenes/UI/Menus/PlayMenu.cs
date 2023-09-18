@@ -2,6 +2,7 @@ namespace Squiggles.Core.Scenes.UI.Menus;
 
 using Godot;
 using Squiggles.Core.Data;
+using Squiggles.Core.Error;
 using Squiggles.Core.Events;
 using Squiggles.Core.Extension;
 using Squiggles.Core.Scenes.Utility;
@@ -18,6 +19,10 @@ public partial class PlayMenu : PanelContainer {
       return;
     }
 
+    var slotInfo = ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.SlotInfoProvider;
+    Debugging.Assert(slotInfo is not null, "Failed to load slot info provider from play menu!");
+
+
     var slots = SaveData.GetKnownSaveSlots();
     _slotsRoot.RemoveAllChildren();
     foreach (var s in slots) {
@@ -27,8 +32,7 @@ public partial class PlayMenu : PanelContainer {
 
       var btn = new Button();
       _slotsRoot.AddChild(btn);
-      var date = SaveData.ParseSaveSlotName(s);
-      btn.Text = $"{date.ToShortDateString()} - {date.ToShortTimeString()}";
+      btn.Text = $"{slotInfo.GetSaveSlotName(s)}\n{slotInfo.GetSaveSlotSubtitle(s)}";
       btn.Pressed += () => LoadSlot(s);
     }
   }

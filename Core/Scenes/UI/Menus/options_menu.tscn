@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_hipj7")
 _mainMenuPath = "res://Core/Scenes/UI/Menus/main_menu.tscn"
 _slidingSceneRoot = NodePath("SlidingRoot")
+_pathPanelGameplay = "res://Core/Scenes/UI/Menus/OptionsTabs/gameplay_tab.tscn"
 _pathPanelGraphics = "res://Core/Scenes/UI/Menus/OptionsTabs/graphics_tab.tscn"
 _pathPanelAccess = "res://Core/Scenes/UI/Menus/OptionsTabs/accessibility_tab.tscn"
 _pathPanelControls = "res://Core/Scenes/UI/Menus/OptionsTabs/controls_tab.tscn"

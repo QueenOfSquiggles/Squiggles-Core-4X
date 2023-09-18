@@ -2,6 +2,7 @@ namespace Squiggles.Core.Data;
 
 using System;
 using Godot;
+using Squiggles.Core.Events;
 
 public class Effects {
 
@@ -65,6 +66,8 @@ public class Effects {
     if (loaded != null) {
       _instance = loaded;
     }
+    EventBus.Data.SerializeAll += SaveSettings;
+
   }
 
   public static void SaveSettings() {

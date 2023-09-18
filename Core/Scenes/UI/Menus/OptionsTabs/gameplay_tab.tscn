@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnij6xar2kbpg"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/GameplayTab.cs" id="1_03j23"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="2_1nc8h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vjvdc"]
+font_size = 32
+
+[node name="GameplayTab" type="PanelContainer" node_paths=PackedStringArray("_content")]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 4.0
+grow_vertical = 2
+script = ExtResource("1_03j23")
+_content = NodePath("MarginContainer/ScrollContainer/MarginContainer/Content")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/Content"]
+layout_mode = 2
+text = "Gameplay Settings"
+label_settings = SubResource("LabelSettings_vjvdc")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/Content"]
+layout_mode = 2
+
+[node name="BtnApply" type="Button" parent="MarginContainer/ScrollContainer/MarginContainer/Content"]
+layout_mode = 2
+text = "Apply Changes"
+
+[node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_target")]
+script = ExtResource("2_1nc8h")
+_target = NodePath("..")
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/MarginContainer/Content/BtnApply" to="." method="ApplyChanges"]
