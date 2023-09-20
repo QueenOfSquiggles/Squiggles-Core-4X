@@ -1,9 +1,7 @@
 namespace Squiggles.Core.Meta;
 
-using System.Reflection;
 using Godot;
 using Squiggles.Core.Error;
-using Squiggles.Core.Extension;
 
 [GlobalClass]
 public partial class SaveSlotSettings : Resource {
@@ -23,28 +21,18 @@ public partial class SaveSlotSettings : Resource {
   /// </summary>
   [Export] public SaveSlotOptions SlotOptions = SaveSlotOptions.MULTI_SLOT_SAVE_DATA;
 
-  /// <summary>
-  /// The exported string configuration value to specify the target class for slot information providing.
-  /// </summary>
-  [Export] private string _slotInfoProviderClassName = "";
-
-  private ISaveSlotInformationProvider _slotInfoProvider;
+  [Export] private SlotInfoProviderResource _slotInfoProvider;
+  [Export] public bool AllowPlayersToReloadLastSave = true;
 
   /// <summary>
   /// Public attribute that will return the currently loaded (specified) ISaveSlotInformationProvider. If none are specified, the default provider will be loaded with a warning.
   /// </summary>
   public ISaveSlotInformationProvider SlotInfoProvider {
     get {
-      if (_slotInfoProvider is null && _slotInfoProviderClassName is not null and not "") {
-        // attempt to load custom provider
-        _slotInfoProvider = Assembly.GetExecutingAssembly()
-          .InstanceClassOrNullSimple<ISaveSlotInformationProvider>(_slotInfoProviderClassName);
-      }
-
       // use fallback provider because either no custom provider is specified, or we failed to find it based on the class name
       if (_slotInfoProvider is null) {
         Print.Warn("`SaveSlotSettings.SlotInfoProvider` is using fallback provider! If this is intentional, please enter `Squiggles.Core.Meta.DefaultSlotInfoProvider` as the slot info provider class name in your configuration settings!", this);
-        _slotInfoProvider = new DefaultSlotInfoProvider();
+        _slotInfoProvider = new SlotInfoProviderResource();
       }
       return _slotInfoProvider;
     }
