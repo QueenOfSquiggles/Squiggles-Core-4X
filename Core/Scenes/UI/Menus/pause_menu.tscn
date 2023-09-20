@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ded172dwi4pqg"]
 
-[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="2_4gb37"]
+[ext_resource type="PackedScene" uid="uid://b8y0v225qjej4" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="2_4gb37"]
 [ext_resource type="Material" uid="uid://dvq2x62knaaa4" path="res://Core/Assets/Materials/GUI/blur_layer.tres" id="2_htgoq"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/PauseMenu.cs" id="2_u13u6"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="3_b8rfi"]
@@ -47,7 +47,7 @@ _data = {
 "blur_out": SubResource("Animation_3x88v")
 }
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("_menuPanel")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("_menuPanel", "_saveSlotRelatedElements", "_loadLastSaveControl")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -59,6 +59,8 @@ script = ExtResource("2_u13u6")
 _mainMenuFile = "res://Core/Scenes/UI/Menus/main_menu.tscn"
 _optionsMenuFile = "res://Core/Scenes/UI/Menus/options_menu.tscn"
 _menuPanel = NodePath("PanelContainer")
+_saveSlotRelatedElements = [NodePath("PanelContainer/MarginContainer/VBoxContainer/BtnSave"), NodePath("PanelContainer/MarginContainer/VBoxContainer/BtnLoadLastSave")]
+_loadLastSaveControl = NodePath("PanelContainer/MarginContainer/VBoxContainer/BtnLoadLastSave")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -4096
@@ -71,11 +73,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 2
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 358.0
-offset_bottom = 1078.0
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 356.0
+grow_vertical = 2
 
 [node name="SlidePanelRoot" type="Control" parent="PanelContainer"]
 layout_mode = 2

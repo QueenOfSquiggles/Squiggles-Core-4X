@@ -2,7 +2,6 @@ namespace Squiggles.Core.Meta;
 
 /// <summary>
 /// An interface for providing meaningful information for a given save slot. All paths are considered absolute. Implement this to allow loading custom information for your game's save slots.
-/// WARNING for the reflection implementation, a constructor that takes no arguments must be provided for your implementation
 /// </summary>
 public interface ISaveSlotInformationProvider {
   /// <summary>

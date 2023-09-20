@@ -1,5 +1,6 @@
 namespace Squiggles.Core.Scenes.UI.Menus;
 
+using System;
 using System.Threading.Tasks;
 using Godot;
 using Squiggles.Core.Events;
@@ -13,10 +14,22 @@ public partial class PauseMenu : Control {
 
   [Export] private Control _menuPanel;
   private Control _currentPopup;
+  [Export] private Control[] _saveSlotRelatedElements = Array.Empty<Control>();
+  [Export] private Control _loadLastSaveControl;
 
   public override void _Ready() {
     GetTree().Paused = true;
     Input.MouseMode = Input.MouseModeEnum.Visible;
+    if (ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.SlotOptions == Meta.SaveSlotSettings.SaveSlotOptions.NO_SAVE_DATA) {
+      // if no save slot chosen, remove the save data related buttons
+      foreach (var c in _saveSlotRelatedElements) {
+        c?.QueueFree();
+      }
+    }
+    if (ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.AllowPlayersToReloadLastSave is false) {
+      _loadLastSaveControl?.QueueFree();
+    }
+
   }
 
   public override void _UnhandledInput(InputEvent @event) {
