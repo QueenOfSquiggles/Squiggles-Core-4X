@@ -17,6 +17,8 @@ There do exist several third party assets in this repo. For each pack the licens
 
 The three main "objects" for this library are the `addons`, `Core`, and `squiggles_config.tres`. Each of these can and should be dropped into the root folder. `addons` and `Core` are set up to support symbolic linking. The `squiggles_config.tres` is a custom resource that defines the configurations for your game.
 
+Refer to the [guide in the docs](https://queenofsquiggles.github.io/Squiggles-Core-4X/articles/installation.html) for more information in installation and setup!
+
 ## [Further Documentation](https://queenofsquiggles.github.io/Squiggles-Core-4X/)
 
 ### Steps
