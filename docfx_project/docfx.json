@@ -3,20 +3,21 @@
     {
       "src": [
         {
-          "src": "../",
           "files": [
-            "SquigglesCommon4X.csproj"
-          ]
+            "/SquigglesCommon4X.csproj"
+          ],
+          "src": "../"
         }
       ],
+      "disableDefaultFilter": false,
+      "filter": "sc4x_utility_filter.yml",
       "dest": "api",
       "includePrivateMembers": false,
       "disableGitFeatures": false,
-      "disableDefaultFilter": false,
       "noRestore": false,
-      "namespaceLayout": "flattened",
+      "namespaceLayout": "nested",
       "memberLayout": "samePage",
-      "EnumSortOrder": "alphabetic",
+      "EnumSortOrder": "declaringOrder",
       "allowCompilationErrors": false
     }
   ],
@@ -51,8 +52,15 @@
       "default",
       "modern"
     ],
-    "postProcessors": [],
+    "postProcessors": [
+      "ExtractSearchIndex"
+    ],
     "keepFileLink": false,
-    "disableGitFeatures": false
+    "disableGitFeatures": false,
+    "sitemap": {
+      "baseUrl": "https://queenofsquiggles.github.io/Squiggles-Core-4X/",
+      "priority": 0.5,
+      "changefreq": "daily"
+    }
   }
 }
