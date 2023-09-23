@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://0ttia6smek1g"]
+
+[ext_resource type="Script" path="res://Core/Modules/Sequencing/ParticleOneshotHack.gd" id="1_xovnm"]
+
+[sub_resource type="Curve" id="Curve_wrgi6"]
+_data = [Vector2(0, 0), 0.0, 4.04497, 0, 0, Vector2(0.868106, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -10.7253, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_grx8g"]
+curve = SubResource("Curve_wrgi6")
+
+[sub_resource type="Curve" id="Curve_kmdm0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.498801, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tma7e"]
+curve = SubResource("Curve_kmdm0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ed8ox"]
+lifetime_randomness = 0.37
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_rotate_y = true
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_grx8g")
+color = Color(0.329412, 0.333333, 0.25098, 1)
+turbulence_enabled = true
+turbulence_influence_over_life = SubResource("CurveTexture_tma7e")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.31
+collision_use_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6fau"]
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_cvg73"]
+material = SubResource("StandardMaterial3D_w6fau")
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+amount = 64
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ed8ox")
+draw_pass_1 = SubResource("QuadMesh_cvg73")
+script = ExtResource("1_xovnm")

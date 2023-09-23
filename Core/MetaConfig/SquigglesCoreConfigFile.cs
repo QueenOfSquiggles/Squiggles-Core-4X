@@ -1,4 +1,5 @@
 namespace Squiggles.Core;
+
 using System;
 using Godot;
 using Squiggles.Core.Meta;
@@ -10,10 +11,13 @@ public partial class SquigglesCoreConfigFile : Resource {
   [ExportGroup("Required Properties")]
   [Export(PropertyHint.File, "*.tscn")] public string PlayScene = "";
   [Export] public Texture2D GameLogo;
+  [Export] public bool EnableReticle = true;
 
-  [ExportGroup("Scene Overrides")]
-  [Export(PropertyHint.File, "*.tscn")] public string LaunchSceneOverride = "";
-  [Export(PropertyHint.File, "*.tscn")] public string MainMenuOverride = "";
+  [ExportGroup("Graphics")]
+  [Export] public bool EnableColourCorrection = true;
+  [Export] public Godot.Environment DefaultEnvironment;
+
+
 
 
   [ExportGroup("Options Menus")]
@@ -36,10 +40,11 @@ public partial class SquigglesCoreConfigFile : Resource {
   [ExportGroup("Save Slot Handling")]
   [Export] public SaveSlotSettings SaveSlotHandlingSettings;
 
+  [ExportGroup("Scene Overrides")]
+  [Export(PropertyHint.File, "*.tscn")] public string LaunchSceneOverride = "";
+  [Export(PropertyHint.File, "*.tscn")] public string MainMenuOverride = "";
 
   [ExportGroup("Credits")]
   [Export] public string[] CreditsLines = Array.Empty<string>();
-
-
 
 }

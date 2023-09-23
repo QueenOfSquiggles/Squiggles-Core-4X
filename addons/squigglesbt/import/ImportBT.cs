@@ -5,6 +5,7 @@ using Godot.Collections;
 
 [Tool]
 public partial class ImportBT : EditorImportPlugin {
+  // TODO : Can I convert this importer into a runtime managed resource? If so, the addon will become completely unnecessary and can be refactored into /Core
   private enum Presets {
     DEFAULT
   }
@@ -53,7 +54,7 @@ public partial class ImportBT : EditorImportPlugin {
 
   // Metadata
 
-  public override string _GetImporterName() => "squiggles.behaviourtree";
+  public override string _GetImporterName() => "squiggles.behaviourTree";
   public override string _GetVisibleName() => "Behaviour Tree";
   public override string[] _GetRecognizedExtensions() => new string[] { "json" };
   public override string _GetSaveExtension() => "tres";

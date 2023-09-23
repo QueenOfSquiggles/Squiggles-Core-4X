@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Core/Scenes/UI/HUD/DefaultHUD.cs" id="2_lohhk"]
 [ext_resource type="Texture2D" uid="uid://yy8w4i8f2yqv" path="res://Core/Assets/Packs/Kenney Crosshair Pack/PNG/White Retina/crosshair118.png" id="3_34aii"]
 [ext_resource type="PackedScene" uid="uid://cehxnein641v" path="res://Core/Scenes/UI/HUD/Inventory/item_slot_display.tscn" id="4_0ig7p"]
-[ext_resource type="Texture2D" uid="uid://cqbcyciga5j3d" path="res://icon.png" id="6_64rf5"]
+[ext_resource type="Texture2D" uid="uid://d43sw60ib1iq" path="res://icon.png" id="6_64rf5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hjhj8"]
 font_size = 20

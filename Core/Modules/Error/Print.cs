@@ -28,12 +28,23 @@ public static class Print {
 
 
   // Class Name Acquisition (funnily enough, borrowing some styling from Unity)
-  public static void Error<T>(string msg, T inst) => Error(msg, inst.GetType().FullName);
+  public static void Error<T>(string msg, T inst) => Error(msg, StripMetaFromType(inst));
 
-  public static void Warn<T>(string msg, T inst) => DisplayMessage(new Msg(msg, inst.GetType().FullName, true, false).SetLevel(LOG_WARNING).Color(WARN_COLOUR).SetType("WARNING"));
-  public static void Info<T>(string msg, T inst) => DisplayMessage(new Msg(msg, inst.GetType().FullName).SetLevel(LOG_INFO).Color(INFO_COLOUR).Italics().SetType("INFO"));
+  public static void Warn<T>(string msg, T inst) => DisplayMessage(new Msg(msg, StripMetaFromType(inst), true, false).SetLevel(LOG_WARNING).Color(WARN_COLOUR).SetType("WARNING"));
+  public static void Info<T>(string msg, T inst) => DisplayMessage(new Msg(msg, StripMetaFromType(inst)).SetLevel(LOG_INFO).Color(INFO_COLOUR).Italics().SetType("INFO"));
 
-  public static void Debug<T>(string msg, T inst) => Debug(msg, inst.GetType().FullName);
+  public static void Debug<T>(string msg, T inst) => Debug(msg, StripMetaFromType(inst));
+
+  // define how to append metadata for types. Ideally
+  private static string StripMetaFromType<T>(T inst) => inst.GetType().FullName +
+    (inst is Node node ?
+#if DEBUG
+    // in a debug context, give DETAILED information about where the problem occurred. Helps for when multiple transient instances are being tested
+    $"'{node.GetPath()}' -> OwnerScene({node.Owner.SceneFilePath})"
+#else
+    $"'{node.Name}'" // just do the name in non-debug environments
+#endif
+    : "");
 
 
   // Formatting Series
@@ -71,7 +82,7 @@ public static class Print {
     msgText = OS.IsStdOutVerbose() ? $"({DateTime.Now.ToShortDateString()})({DateTime.Now.ToLongTimeString()})" + msgText : msgText;
 
     // append class name
-    msgText = msg.ClassName.Length > 0 ? $"{msgText}\n\tClass={msg.ClassName}" : msgText;
+    msgText = msg.ClassName.Length > 0 ? $"{msgText}\n\tSource={msg.ClassName}" : msgText;
 
 
     // Appends simple stack trace (1-2 frames at most)
