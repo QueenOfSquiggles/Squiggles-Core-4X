@@ -1,0 +1,5 @@
+apiRules:
+- exclude:
+    # Regex matches all that end in the Godot source gen names
+    uidRegex: .*MethodName|.*PropertyName|.*SignalName|.*EventHandler
+

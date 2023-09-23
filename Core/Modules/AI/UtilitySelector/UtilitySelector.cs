@@ -30,7 +30,7 @@ public partial class UtilitySelector : Node {
   /// <summary>
   /// Uses utility calculating components to determine the optimal action.
   /// </summary>
-  /// <param name="actor">An object reference for the actor to pass to the action <seealso cref="IUtlitySelectionComponent"/></param>
+  /// <param name="actor">An object reference for the actor to pass to the action <see cref="IUtilitySelectionComponent"/></param>
   /// <param name="doNoActionIfNegative">True if this selector should return no action if all actions have negative weight. Default is false.</param>
   /// <returns>A string key for the selected action. Returns an empty string if no proper action could be found</returns>
   public string GetBestAction(object actor, bool doNoActionIfNegative = false) {
