@@ -1,6 +1,6 @@
 # Squiggles Common 4X
 
-A boilerplate game base for making games in Godot 4.X with C#
+A boilerplate game base for making games in Godot 4.X with C#. Now available on [The Official Godot Asset Library](https://godotengine.org/asset-library/asset/2142), which means you can install from the Godot editor itself!
 
 ## Tests
 [![.NET](https://github.com/QueenOfSquiggles/SquigglesCommon4X/actions/workflows/dotnet.yml/badge.svg)](https://github.com/QueenOfSquiggles/SquigglesCommon4X/actions/workflows/dotnet.yml)
