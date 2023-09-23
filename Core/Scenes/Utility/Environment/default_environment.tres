@@ -2,3 +2,5 @@
 
 [resource]
 background_mode = 1
+sdfgi_enabled = true
+sdfgi_read_sky_light = false

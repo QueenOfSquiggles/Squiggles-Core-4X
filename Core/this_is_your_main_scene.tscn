@@ -7,7 +7,7 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0.545098, 0.254902, 0.588235, 1)
 
-[node name="ThisIsYourMainScene" type="Control"]
+[node name="ThisIsYourMainScene" type="Control" node_paths=PackedStringArray("_warningLabel")]
 editor_description = "This is intended to be the main scene of your game as it handles all of the main redirects and setup based on your configuration file."
 layout_mode = 3
 anchors_preset = 15
@@ -16,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bn45b")
+_warningLabel = NodePath("MarginContainer/WarningLabel")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

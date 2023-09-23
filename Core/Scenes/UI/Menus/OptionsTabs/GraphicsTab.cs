@@ -21,20 +21,12 @@ public partial class GraphicsTab : PanelContainer {
   [Export] private HSlider _sliderContrast;
   [Export] private HSlider _sliderSaturation;
 
+  [Export] private Control[] _colourCorrectionControls;
+
+  private bool _useColourCorrection = true;
+
   public override void _Ready() {
-    if (_optionFullscreen is null ||
-        _checkBloom is null ||
-        _checkSSR is null ||
-        _checkSSAO is null ||
-        _checkSSIL is null ||
-        _checkSDFGI is null ||
-        _sliderExposure is null ||
-        _sliderBrightness is null ||
-        _sliderContrast is null ||
-        _sliderSaturation is null
-    ) {
-      return;
-    }
+    _useColourCorrection = ThisIsYourMainScene.Config?.EnableColourCorrection is true;
 
     var current = _optionFullscreen.GetItemIndex(Graphics.Instance.Fullscreen);
     _optionFullscreen.Selected = current;
@@ -44,10 +36,18 @@ public partial class GraphicsTab : PanelContainer {
     _checkSSAO.ButtonPressed = Graphics.Instance.SSAO;
     _checkSSIL.ButtonPressed = Graphics.Instance.SSIL;
     _checkSDFGI.ButtonPressed = Graphics.Instance.SDFGI;
-    _sliderExposure.Value = Graphics.Instance.TonemapExposure;
-    _sliderBrightness.Value = Graphics.Instance.Brightness;
-    _sliderContrast.Value = Graphics.Instance.Contrast;
-    _sliderSaturation.Value = Graphics.Instance.Saturation;
+
+    if (_useColourCorrection) {
+      _sliderExposure.Value = Graphics.Instance.TonemapExposure;
+      _sliderBrightness.Value = Graphics.Instance.Brightness;
+      _sliderContrast.Value = Graphics.Instance.Contrast;
+      _sliderSaturation.Value = Graphics.Instance.Saturation;
+    }
+    else {
+      foreach (var c in _colourCorrectionControls) {
+        c.QueueFree();
+      }
+    }
 
     EventBus.Data.SerializeAll += ApplyGraphicsSettings;
 
@@ -69,10 +69,12 @@ public partial class GraphicsTab : PanelContainer {
     Graphics.Instance.SSAO = _checkSSAO.ButtonPressed;
     Graphics.Instance.SSIL = _checkSSIL.ButtonPressed;
     Graphics.Instance.SDFGI = _checkSDFGI.ButtonPressed;
-    Graphics.Instance.TonemapExposure = (float)_sliderExposure.Value;
-    Graphics.Instance.Brightness = (float)_sliderBrightness.Value;
-    Graphics.Instance.Contrast = (float)_sliderContrast.Value;
-    Graphics.Instance.Saturation = (float)_sliderSaturation.Value;
+    if (_useColourCorrection) {
+      Graphics.Instance.TonemapExposure = (float)_sliderExposure.Value;
+      Graphics.Instance.Brightness = (float)_sliderBrightness.Value;
+      Graphics.Instance.Contrast = (float)_sliderContrast.Value;
+      Graphics.Instance.Saturation = (float)_sliderSaturation.Value;
+    }
     Graphics.MarkGraphicsChanged();
   }
 }

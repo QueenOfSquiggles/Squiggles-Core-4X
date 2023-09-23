@@ -9,7 +9,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_scsl4"]
 font_size = 32
 
-[node name="GraphicsTab" type="PanelContainer" node_paths=PackedStringArray("_optionFullscreen", "_checkBloom", "_checkSSR", "_checkSSAO", "_checkSSIL", "_checkSDFGI", "_sliderExposure", "_sliderBrightness", "_sliderContrast", "_sliderSaturation")]
+[node name="GraphicsTab" type="PanelContainer" node_paths=PackedStringArray("_optionFullscreen", "_checkBloom", "_checkSSR", "_checkSSAO", "_checkSSIL", "_checkSDFGI", "_sliderExposure", "_sliderBrightness", "_sliderContrast", "_sliderSaturation", "_colourCorrectionControls")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 11.0
@@ -27,6 +27,7 @@ _sliderExposure = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBox
 _sliderBrightness = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness/HBoxContainer/HSlider")
 _sliderContrast = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast/HBoxContainer/HSlider")
 _sliderSaturation = NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation/HBoxContainer/HSlider")
+_colourCorrectionControls = [NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideExposure"), NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideBrightness"), NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideContrast"), NodePath("MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer/SlideSaturation")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -74,7 +75,7 @@ horizontal_scroll_mode = 0
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 32
+theme_override_constants/separation = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer_2/VBoxContainer"]
 layout_mode = 2

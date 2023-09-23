@@ -50,7 +50,14 @@ public partial class DefaultHUD : Control {
     _rootSubtitle.Modulate = _colourTransparent;
     _rootAlert.Modulate = _colourTransparent;
 
-    _reticle.Scale = Vector2.One * Access.Instance.ReticleHiddenScale;
+    if (ThisIsYourMainScene.Config?.EnableReticle is not true) {
+      _reticle.QueueFree();
+      _reticle = null;
+    }
+    else {
+      _reticle.Scale = Vector2.One * Access.Instance.ReticleHiddenScale;
+    }
+
     _interactionPrompt.Text = "";
 
     _playerMoneyLabel.Text = "";
@@ -128,8 +135,9 @@ public partial class DefaultHUD : Control {
     _promptTween.SetTrans(Tween.TransitionType.Bounce);
     _interactionPrompt.VisibleRatio = 0.0f;
     _interactionPrompt.Text = text;
-
-    _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.Instance.ReticleShownScale, 0.3f);
+    if (_reticle is not null) {
+      _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.Instance.ReticleShownScale, 0.3f);
+    }
     _promptTween.TweenProperty(_interactionPrompt, "visible_ratio", 1.0f, 0.3f);
   }
 
@@ -138,7 +146,9 @@ public partial class DefaultHUD : Control {
     _promptTween = GetTree().CreateTween().SetDefaultStyle();
     _promptTween.SetTrans(Tween.TransitionType.Bounce);
 
-    _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.Instance.ReticleHiddenScale, 0.3f);
+    if (_reticle is not null) {
+      _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.Instance.ReticleHiddenScale, 0.3f);
+    }
     _promptTween.TweenProperty(_interactionPrompt, "visible_ratio", 0.0f, 0.1f);
   }
 

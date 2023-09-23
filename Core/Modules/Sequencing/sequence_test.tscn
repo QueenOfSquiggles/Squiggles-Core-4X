@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://bdx4t38h77ed3"]
+
+[ext_resource type="Script" path="res://Core/Modules/Sequencing/SequenceTriggerArea3D.cs" id="1_ki8ja"]
+[ext_resource type="Script" path="res://Core/Modules/Sequencing/SequenceActionSpawnable.cs" id="2_tmvae"]
+[ext_resource type="PackedScene" uid="uid://0ttia6smek1g" path="res://Core/Modules/Sequencing/sequence_test_particles.tscn" id="3_dtptm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mg25u"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_oywyx"]
+sky_material = SubResource("ProceduralSkyMaterial_mg25u")
+
+[sub_resource type="Environment" id="Environment_jd25h"]
+background_mode = 2
+sky = SubResource("Sky_oywyx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ljhhb"]
+bounce = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20fal"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eryso"]
+
+[sub_resource type="Resource" id="Resource_pmucu"]
+script = ExtResource("2_tmvae")
+_scenes = Array[PackedScene]([ExtResource("3_dtptm")])
+OneShot = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxevm"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i2wb2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtjpe"]
+albedo_color = Color(1, 0, 0.0352941, 1)
+
+[node name="SequenceTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jd25h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.457098, -0.380099, 0.804106, 0, 0.904083, 0.427358, -0.889416, -0.195344, 0.413254, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.953717, 0.300706, 0, -0.300706, 0.953717, 0, 2, 3)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, -1)
+use_collision = true
+size = Vector3(4, 0.2, 4)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["test_group"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1)
+physics_material_override = SubResource("PhysicsMaterial_ljhhb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_20fal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_eryso")
+
+[node name="SequenceTriggerArea3D" type="Area3D" parent="." node_paths=PackedStringArray("_actionsTarget")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -1)
+script = ExtResource("1_ki8ja")
+_freeOnQueueEmpty = false
+_actionsTarget = NodePath("..")
+_sequenceActions = [SubResource("Resource_pmucu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SequenceTriggerArea3D"]
+shape = SubResource("BoxShape3D_xxevm")
+
+[node name="Debug" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.911245, 0.411864, 0, -0.411864, 0.911245, 0, 0, 0, 1, -1, 0, -5)
+visible = false
+mesh = SubResource("CapsuleMesh_i2wb2")
+surface_material_override/0 = SubResource("StandardMaterial3D_rtjpe")
+
+[connection signal="OnTriggerValidationChange" from="SequenceTriggerArea3D" to="Debug" method="set_visible"]
