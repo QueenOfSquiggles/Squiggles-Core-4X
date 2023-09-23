@@ -1,5 +1,9 @@
 apiRules:
-- exclude:
-    # Regex matches all that end in the Godot source gen names
+
+- exclude: # Regex matches all that end in the Godot source gen names
     uidRegex: .*MethodName|.*PropertyName|.*SignalName|.*EventHandler
+
+- exclude: # Regex matches all methods with "GodotClass" || "GodotObject" in the name
+    uidRegex: .*GodotClass.*|.*GodotObject.*
+    type: Method
 
