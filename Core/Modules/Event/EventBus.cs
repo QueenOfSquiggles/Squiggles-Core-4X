@@ -2,6 +2,7 @@ namespace Squiggles.Core.Events;
 
 using System;
 using Godot;
+using Squiggles.Core.Attributes;
 
 
 /// <summary>
@@ -11,8 +12,6 @@ using Godot;
 /// </summary>
 public static class EventBus {
 
-  // Because SC4X is built with "TreatWarningsAsErrors" all elements with [Obselete] cause an error where used. Disable this here to allow building. Future refactors that remove obselete classes should also remove this pragma statement.
-#pragma warning disable CS0618
 
   /// <summary>
   /// An instance of the <see cref="EventsAudio"/> class, which is a container for events that cleans up our event bus.
@@ -36,36 +35,34 @@ public static class EventBus {
   /// </summary>
   public static EventsData Data { get; private set; } = new();
 
-#pragma warning restore CS0618
-
 }
 
 /// <summary>
 /// Events for handling and processing audio.
 /// </summary>
-[Obsolete("Will be removed in future refactor. No current workaround", false)]
+[MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
 public class EventsAudio {
   /// <summary>
   /// An event for handling when a sound is played in 3D space. Not used internally to SC4X (yet?)
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<Vector3> OnAudioSpatial;
   /// <summary>
   /// An even for handling when any sound is played.
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action OnAudio;
 
   /// <summary>
   /// Triggers <see cref="OnAudioSpatial"/>
   /// </summary>
   /// <param name="position"></param>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public void TriggerOnAudioSpatial(Vector3 position) => OnAudioSpatial?.Invoke(position);
   /// <summary>
   /// Triggers <see cref="OnAudio"/>
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public void TriggerOnAudio() => OnAudio?.Invoke();
 }
 
@@ -97,13 +94,13 @@ public class EventsGameplay {
   /// <summary>
   /// Called when the player's "stats" change: health, max health, energy, and max energy respectively.
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<float, float, float, float> OnPlayerStatsUpdated;
 
   /// <summary>
   /// Called when the player's "money" changes
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<int> PlayerMoneyChanged;
 
   /// <summary>
@@ -129,12 +126,12 @@ public class EventsGameplay {
   /// <summary>
   /// Triggers <see cref="OnPlayerStatsUpdated"/>
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public void TriggerPlayerStatsUpdated(float health, float max_health, float energy, float max_energy) => OnPlayerStatsUpdated?.Invoke(health, max_health, energy, max_energy);
   /// <summary>
   /// Triggers <see cref="PlayerMoneyChanged"/>
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public void TriggerPlayerMoneyChange(int new_total) => PlayerMoneyChanged?.Invoke(new_total);
 }
 
@@ -167,26 +164,26 @@ public class EventsUI {
   /// <summary>
   /// Called to request display of one or two inventories. The players and a secondary inventory respectively. Not currently used internally. Will be removed in future
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<object, object> RequestInventory;
 
   /// <summary>
   ///Called to update the player inventory display. (item index, item id, item quantity)
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<int, string, int> UpdatePlayerInventoryDisplay;
 
   /// <summary>
   /// Call to force selection of a specific index in the player inventory
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<int> PlayerInventorySelectIndex;
 
   /// <summary>
   /// Called when the player's inventory size changes. (number of slots total)
   /// </summary>
 
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<int> PlayerInventorySizeChange;
 
   /// <summary>
@@ -238,29 +235,29 @@ public class EventsUI {
 /// <summary>
 /// Future refactor will/should strip this section of the event bus in favour of a custom event registration system. So devs with needs not handled by this bus can still use a single event bus singleton for all their event needs
 /// </summary>
-[Obsolete("Will be removed in future refactor. No current workaround", false)]
+[MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
 public class EventsInventory {
   /// <summary>
   /// Called to add an item of (item id, quantity) to the player's inventory.
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<string, int> GivePlayerItem;
   /// <summary>
   /// Called to consume an item from the player's inventory. (item id, quantity)
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public event Action<string, int> ConsumePlayerItem;
 
 
   /// <summary>
   /// Triggers <see cref="GivePlayerItem"/>
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public void TriggerGivePlayerItem(string itemkey, int count = 1) => GivePlayerItem?.Invoke(itemkey, count);
   /// <summary>
   /// Triggers <see cref="ConsumePlayerItem"/>
   /// </summary>
-  [Obsolete("Will be removed in future refactor. No current workaround", false)]
+  [MarkForRefactor("Obselete", "Will be removed in future refactor. No current workaround")]
   public void TriggerConsumePlayerItem(string itemkey, int count = 1) => ConsumePlayerItem?.Invoke(itemkey, count);
 
 }
