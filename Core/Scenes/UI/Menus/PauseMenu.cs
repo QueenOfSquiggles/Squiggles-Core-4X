@@ -7,14 +7,35 @@ using Squiggles.Core.Events;
 using Squiggles.Core.Extension;
 using Squiggles.Core.Scenes.Utility;
 
+/// <summary>
+/// The pause menu, which is used during gameplay is a "pause_menu_controller" is used (res://Core/Scenes/UI/Menus/pause_menu_controller.tscn). It pauses the game using the scene tree pause feature. It contains options for saving and loading as well as the same options menu as in the main menu. It also blurs the background using a weak box blur effect.
+/// </summary>
 public partial class PauseMenu : Control {
 
+  /// <summary>
+  /// The path to the main menu file
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _mainMenuFile = "";
+  /// <summary>
+  /// The path to the options menu file
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _optionsMenuFile = "";
 
+  /// <summary>
+  /// The menu panel
+  /// </summary>
   [Export] private Control _menuPanel;
+  /// <summary>
+  /// The current panel that has popped up
+  /// </summary>
   private Control _currentPopup;
+  /// <summary>
+  /// The controls which are related to games with multiple save slots. (Removed if `<see cref="SaveSlotSettings.SlotOptions"/> != MULTI_SLOT_SAVE_DATA`)
+  /// </summary>
   [Export] private Control[] _saveSlotRelatedElements = Array.Empty<Control>();
+  /// <summary>
+  /// The control related to loading the last save. Removed if the configration disables loading the last save while playing.
+  /// </summary>
   [Export] private Control _loadLastSaveControl;
 
   public override void _Ready() {

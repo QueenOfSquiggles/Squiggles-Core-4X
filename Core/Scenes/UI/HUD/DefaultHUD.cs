@@ -1,37 +1,103 @@
 namespace Squiggles.Core.Scenes.UI;
 
 using Godot;
+using Squiggles.Core.Attributes;
 using Squiggles.Core.Data;
 using Squiggles.Core.Events;
 using Squiggles.Core.Extension;
 
+/// <summary>
+/// A fairly robust Heads Up Display (HUD) that handles many of the built-in signals such as subtitles, alerts, reticle, interaction prompts, and such.
+/// </summary>
+/// <remarks>
+/// Future refactor should probably strip logic into the individual components such that the "DefaultHUD" scene is just a composition of independantly functioning elements. This would allow users to quickly get up and running with a default hud, then customize as they develop.
+/// </remarks>
+[MarkForRefactor("Separation of Duties", "This class manages all of the individual, independant components that can make up a HUD. Splitting responsibilities would allow more customization for HUD layout")]
 public partial class DefaultHUD : Control {
 
+  /// <summary>
+  /// The time it takes for the reticle to transition between scales.
+  /// </summary>
   [ExportGroup("Reticle Settings")]
   [Export] private float _transitionTime = 0.2f;
 
+  /// <summary>
+  /// The packed scene for the inventory
+  /// </summary>
   [ExportGroup("Inventory Stuff")]
   [Export] private PackedScene _inventorySlotPacked;
 
-  [ExportGroup("Player Money", "PlayerMoney")]
+  /// <summary>
+  /// The colour for the player's money pop label. Specifically when money is increasing
+  /// </summary>
+  [ExportGroup("Player Money", "_playerMoney")]
   [Export] private Color _playerMoneyIncreaseCol = Colors.Lime;
+
+  /// <summary>
+  /// The colour for the player's money pop label. Specifically when money is decreasing
+  /// </summary>
   [Export] private Color _playerMoneyDecreaseCol = Colors.Red;
 
-  [ExportGroup("Paths", "Path")]
+  /// <summary>
+  /// the label that takes in subtitle text
+  /// </summary>
+  [ExportGroup("Paths")]
   [Export] private Label _lblSubtitle;
+  /// <summary>
+  /// The label for taking in alert text
+  /// </summary>
   [Export] private Label _lblAlert;
+  /// <summary>
+  /// The root of the subtitle panel
+  /// </summary>
   [Export] private Control _rootSubtitle;
+  /// <summary>
+  /// The root of the alert panel
+  /// </summary>
   [Export] private Control _rootAlert;
+  /// <summary>
+  /// The reticle texture
+  /// </summary>
   [Export] private TextureRect _reticle;
+  /// <summary>
+  /// The label which handles interation prompts
+  /// </summary>
   [Export] private Label _interactionPrompt;
+  /// <summary>
+  /// The root control to load generic GUI elements into
+  /// </summary>
   [Export] private Control _genericGUIRoot;
+  /// <summary>
+  /// The progress bar related to the player's health
+  /// </summary>
   [Export] private TextureProgressBar _playerStatsHealthBar;
+  /// <summary>
+  /// The label for the player health
+  /// </summary>
   [Export] private Label _playerStatsHealthLabel;
+  /// <summary>
+  /// the progress bar for the player's energy
+  /// </summary>
   [Export] private TextureProgressBar _playerStatsEnergyBar;
+  /// <summary>
+  /// the label for the player's energy
+  /// </summary>
   [Export] private Label _playerStatsEnergyLabel;
+  /// <summary>
+  /// the root control for the player's inventory to be instanced in
+  /// </summary>
   [Export] private Control _playerInventory;
+  /// <summary>
+  /// The texture for the money icon
+  /// </summary>
   [Export] private Control _playerMoneyTexture;
+  /// <summary>
+  /// the label for the money display
+  /// </summary>
   [Export] private Label _playerMoneyLabel;
+  /// <summary>
+  /// the label that is used as a pop label using <see cref="SceneTreeTween"/>
+  /// </summary>
   [Export] private Label _playerMoneyPopLabel;
 
 
@@ -218,7 +284,9 @@ public partial class DefaultHUD : Control {
     }));
   }
 
-
+  /// <summary>
+  /// A functionality I would like to preserve is to allow hiding the HUD with F1. Not only is it incredibly useful for making cinematics for trailers and videos, but it's generally a nice feature for players as well (think minecraft). Making your game easier for youtubers/streamers to play makes it easier to get your game into public consciousness (spelling?) and that's pretty fricking awesome if it happens.
+  /// </summary>
   public override void _Input(InputEvent @event) {
     if (@event is InputEventKey kp && kp.Keycode == Key.F1 && kp.IsPressed()) {
       Visible = !Visible; // toggle visibility of HUD for cinematics or other useful things

@@ -7,19 +7,37 @@ using Squiggles.Core.Error;
 using Squiggles.Core.Scenes.Registration;
 using Squiggles.Core.Scenes.Utility;
 
+/// <summary>
+/// This is your main scene! This is the default main scene for SC4X as it handles a ton of rerouting and initialization processes.
+/// </summary>
 public partial class ThisIsYourMainScene : Node {
 
   private static ThisIsYourMainScene _instance;
 
+  /// <summary>
+  /// A reference to the warning label that will show any malformed configuration settings
+  /// </summary>
   [Export] private Label _warningLabel;
 
+  /// <summary>
+  /// The expected path of the configuration file
+  /// </summary>
   private const string CONFIG_FILE_PATH = "res://squiggles_config.tres";
+  /// <summary>
+  /// The path for the default launch sequence. (which is loaded as soon as possible)
+  /// </summary>
   private const string DEFAULT_LAUNCH_SEQUENCE = "res://Core/Scenes/UI/LaunchSequence/launch_sequence.tscn";
 
+  /// <summary>
+  /// A publicly available access to the current instance's configuration file.
+  /// </summary>
   public static SquigglesCoreConfigFile Config => _instance?._config;
 
   private SquigglesCoreConfigFile _config;
 
+  /// <summary>
+  /// The Chickensoft.GodotTest Testing environment used for unit tests (except actually not really because no unit tests exist right now.)
+  /// </summary>
   public TestEnvironment Environment = default!;
 
   public override void _Ready() {

@@ -4,6 +4,9 @@ using Godot;
 using Squiggles.Core.Data;
 using System;
 
+/// <summary>
+/// A World Environment that adheres to the <see cref="Graphics"/> settings. It also loads the <see cref="SquigglesCoreConfigFile.DefaultEnvironment"/> if none are assigned
+/// </summary>
 public partial class WorldEnvSettingsCompliant : WorldEnvironment {
 
   public override void _Ready() {

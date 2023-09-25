@@ -4,6 +4,9 @@ using Godot;
 using Squiggles.Core.Data;
 using Squiggles.Core.Events;
 
+/// <summary>
+/// The tab for controlling audio volumes. It dynamically adjusts to whatever audio bus layout you have established.
+/// </summary>
 public partial class AudioTab : PanelContainer {
   [Export] private Control _slidersRoot;
   [Export] private PackedScene _sliderComboScene;
@@ -18,7 +21,7 @@ public partial class AudioTab : PanelContainer {
 
       var bus_name = AudioServer.GetBusName(i);
       scene.Name = $"AudioSlider_{bus_name}";
-      var sci = new SliderComboInterface(scene) {
+      var sci = new SliderComboAdapter(scene) {
         Text = bus_name,
         MinValue = -72,
         MaxValue = -6,
@@ -44,7 +47,7 @@ public partial class AudioTab : PanelContainer {
         continue;
       }
 
-      var sci = new SliderComboInterface(slider);
+      var sci = new SliderComboAdapter(slider);
       AudioBuses.Instance.Volumes[i] = sci.SliderValue;
     }
     AudioBuses.SaveSettings();

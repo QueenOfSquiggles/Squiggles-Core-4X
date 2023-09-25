@@ -2,6 +2,9 @@ namespace Squiggles.Core.Scenes.World;
 
 using Godot;
 
+/// <summary>
+/// A component for marking a ground to have a particular material.
+/// </summary>
 public partial class GroundMaterial : Node {
   /// <summary>
   /// An audio stream for the material's footstep sounds. Ideally a randomizer to prevent repetition.

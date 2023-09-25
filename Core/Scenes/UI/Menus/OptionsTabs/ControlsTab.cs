@@ -9,16 +9,40 @@ using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 using Squiggles.Core.Events;
 
+/// <summary>
+/// The tab which handles controls sensitivity and rebindings. Refer to <see cref="Controls"/> for how these are consumed. For details on how to set up which mappings are displayed, refer to <see cref="SquigglesCoreConfigFile.RemapControlsNames"/>
+/// </summary>
 public partial class ControlsTab : PanelContainer {
 
+  /// <summary>
+  /// Whether or not this tab is actively listening for inputs to bind to
+  /// </summary>
   private bool _listening;
+  /// <summary>
+  /// The current actionm mapping key to listen for
+  /// </summary>
   private string _currentActionTarget = "";
+  /// <summary>
+  /// The popup used to signal that we are listening for input
+  /// </summary>
   [Export] private Popup _popupListening;
+  /// <summary>
+  /// The slider for mouse look sensitivity
+  /// </summary>
   [Export] private Slider _sliderMouse;
+  /// <summary>
+  /// The slider for gamepad look sensitivity
+  /// </summary>
   [Export] private Slider _sliderGamepad;
 
+  /// <summary>
+  /// The root of the mappings section
+  /// </summary>
   [ExportGroup("Mappings", "_Mapping")]
   [Export] private Control _mappingRoot;
+  /// <summary>
+  /// The scene which is loaded for each mapping.
+  /// </summary>
   [Export] private PackedScene _mappingScene;
 
   public override void _Ready() {
