@@ -4,11 +4,14 @@ using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 using Squiggles.Core.Events;
 
+/// <summary>
+/// The node which triggers the <see cref="ModRegistry"/> to load mods. Only executes mod loading outside of a "demo" context to prevent mods that unlock the remainder of the game. Not a foolproff solution, but it at least makes it harder to spoof.
+/// </summary>
 public partial class ModLoadingStep : Node {
 
-  // In a debug context, do not load any modification data. Ideally the modifications someone is developing are already embedded into the project files. And loading will only happen for exported game versions
-  // #if !DEBUG
-
+  /// <summary>
+  /// In a debug context, do not load any modification data. Ideally the modifications someone is developing are already embedded into the project files. And loading will only happen for exported game versions
+  /// </summary>
   public override void _Ready() {
     if (OS.HasFeature("demo")) {
       Print.Warn("Mod Loading is not supported in demo builds. If you would like to use mods, please acquire the full release");
@@ -26,5 +29,4 @@ public partial class ModLoadingStep : Node {
 
   public override void _ExitTree() => ModRegistry.OnUnRegisterMods();
 
-  // #endif
 }

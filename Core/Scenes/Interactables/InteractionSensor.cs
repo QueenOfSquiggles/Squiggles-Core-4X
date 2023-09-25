@@ -5,14 +5,27 @@ using System.Linq;
 using Godot;
 using Squiggles.Core.Interaction;
 
+/// <summary>
+/// An Area3D based collision detection system for detecting interactable objects. Useful for a variety of things. Mainly, a distance based interactable detector. So the closest available <see cref="IInteractable"/> that is detected by the Area3D is set to <see cref="CurrentInteraction"/>
+/// </summary>
 public partial class InteractionSensor : Area3D {
+  /// <summary>
+  ///  Signal that is emitted when the current interactable object changes
+  /// </summary>
   [Signal] public delegate void OnCurrentInteractionChangeEventHandler();
 
+  /// <summary>
+  /// A node that this should derive it's position from for distance based calculations
+  /// </summary>
   [Export] private Node3D _derivedPosition;
+  /// <summary>
+  /// Whether or not to select <see cref="ISelectable"/> objects automatically.
+  /// </summary>
   [Export] private bool _autoSelectObjects = false;
 
-
-
+  /// <summary>
+  /// The currently available interaction object, or null if none are present.
+  /// </summary>
   public Node3D CurrentInteraction { get; private set; }
 
   private void OnAreaEnter(Area3D _) => RefreshCurrent();
