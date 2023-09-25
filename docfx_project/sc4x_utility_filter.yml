@@ -3,3 +3,12 @@ apiRules:
     # Regex matches all that end in the Godot source gen names
     uidRegex: .*MethodName|.*PropertyName|.*SignalName|.*EventHandler
 
+<<<<<<< Updated upstream
+=======
+- exclude: # Regex matches all methods with "GodotClass", "GodotObject", "GodotProperty", or "GodotMethod" in the name (is this exhaustive of built-in methods??)
+    uidRegex: .*GodotClass.*|.*GodotObject.*|.*GodotProperty.*|.*GodotMethod.*
+    type: Method
+
+- exclude: # Regex matches Godot plugin
+    uidRegex: GodotPlugins.*
+>>>>>>> Stashed changes

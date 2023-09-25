@@ -5,19 +5,43 @@ using Squiggles.Core.Data;
 using Squiggles.Core.Events;
 using Squiggles.Core.Interaction;
 
+/// <summary>
+/// A fairly rudimentary character controller for FPS style movement. Lots of exported variables to allow a variety of game feels.
+/// </summary>
 public partial class PlayerController : CharacterBody3D {
+  /// <summary>
+  /// A scalar for sensitivity that scales the mouse movement down to something more usable.
+  /// </summary>
   [ExportGroup("Controls")]
   [Export] private float _mouseSensitivity = 0.003f;
 
+  /// <summary>
+  /// The base movement speed
+  /// </summary>
   [ExportGroup("Movement")]
   [Export] private float _speed = 5.0f;
+  /// <summary>
+  /// The speed at which the player accelerates (lower values make the player feel almost lethargic)
+  /// </summary>
   [Export] private float _acceleration = 2.0f;
+  /// <summary>
+  /// The speed at which the player decelerates (lower values feel slippery. higher values can feel too responsive to be realistic)
+  /// </summary>
   [Export] private float _deacceleration = 10.0f;
 
 
+  /// <summary>
+  /// The "cam arm" node in the hierarchy
+  /// </summary>
   [ExportGroup("Node Refs")]
   [Export] private Node3D _camArm;
+  /// <summary>
+  /// The animation tree for the player
+  /// </summary>
   [Export] private AnimationTree _animTree;
+  /// <summary>
+  /// The raycast used for interaction detection
+  /// </summary>
   [Export] private RayCast3D _rayCast;
 
   private Vector2 _cameraLookVector;

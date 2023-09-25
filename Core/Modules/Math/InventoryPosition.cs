@@ -10,7 +10,8 @@ using Godot;
 /// <summary>
 /// For some reason Vector2I is not working well for equating for a SortedDictionary in the Item system. This serves to replace the Vector2I in that case.
 /// Note that all comparisons of InventoryPositions are operating on the HashCode which is generated as an integer index for an imaginary container of size HASH_CODE_CONTAINER_SIZE, which currently is 128 <seealso cref="HASH_CODE_CONTAINER_SIZE"/>
-/// See also <seealso cref="Vector2I"/>
+/// <para/>
+/// See also <see cref="Vector2I"/>
 /// </summary>
 public class InventoryPosition : IEqualityComparer<InventoryPosition>, IComparable<InventoryPosition> {
   public static readonly InventoryPosition Zero = new(0, 0);

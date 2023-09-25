@@ -4,16 +4,43 @@ using System.Threading.Tasks;
 using Godot;
 using Squiggles.Core.Extension;
 
+/// <summary>
+/// A component used heavily in the main menu elements. It is designed to create cascading panels that slide in and out smoothly. See the default main menu for examples.
+/// </summary>
 [GlobalClass]
 public partial class SlidingPanelComponent : Node {
 
+  /// <summary>
+  /// The time this panel takes to slide in
+  /// </summary>
   [Export] private float _popInDuration = 0.3f;
+  /// <summary>
+  /// The time this panel takes to slide out
+  /// </summary>
   [Export] private float _popOutDuration = 0.3f;
+  /// <summary>
+  ///
+  /// </summary>
   [Export] private Control _target;
+  /// <summary>
+  /// The path where child sliding panels should be added
+  /// </summary>
   [Export] private NodePath _pathSubSlidingRoot = "..";
+  /// <summary>
+  /// The transition type to use when showing
+  /// </summary>
   [Export] private Tween.TransitionType _transShow = Tween.TransitionType.Cubic;
+  /// <summary>
+  /// The transition type to use when hiding
+  /// </summary>
   [Export] private Tween.TransitionType _transHide = Tween.TransitionType.Cubic;
+  /// <summary>
+  /// The ease type to use when showing
+  /// </summary>
   [Export] private Tween.EaseType _easingShow = Tween.EaseType.Out;
+  /// <summary>
+  /// The ease type to use when hiding
+  /// </summary>
   [Export] private Tween.EaseType _easingHide = Tween.EaseType.Out;
 
   private bool _isStable; // mood
@@ -36,6 +63,10 @@ public partial class SlidingPanelComponent : Node {
     _ = RemoveScene();
   }
 
+  /// <summary>
+  /// An async function that clears this sliding panel. It is async because first it must clear child panels (cascade style) and once they are cleared this one can slide out and them finally return. Await this function to remove the panel and then do something once its gone.
+  /// </summary>
+  /// <returns>nothing! It's async</returns>
   public async Task RemoveScene() {
     if (!_isStable) {
       return;

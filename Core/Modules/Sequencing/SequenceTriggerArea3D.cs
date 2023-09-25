@@ -6,20 +6,41 @@ using Godot;
 using Squiggles.Core.Error;
 using Squiggles.Core.Extension;
 
+/// <summary>
+/// A sequence trigger common to 3D games where an invisible collider is used to trigger any number of actions.
+/// </summary>
 [GlobalClass]
 public partial class SequenceTriggerArea3D : Area3D, ISequenceTrigger {
 
+  /// <summary>
+  /// A signal that is triggered when this trigger's validation state changes
+  /// </summary>
+  /// <param name="isValid"></param>
   [Signal] public delegate void OnTriggerValidationChangeEventHandler(bool isValid);
 
+  /// <summary>
+  /// Whether or not to QueueFree when the <see cref="_sequenceActions"/> array is empty. In conjunction with OneShot SequenceActions, can clean up itself after completing the sequence.
+  /// </summary>
   [Export] private bool _freeOnQueueEmpty = true;
+  /// <summary>
+  /// Treated as the "owner" in the Sequencing objects. This is the node to target for a action that uses a node reference. Ideally not the SequenceTrigger itself in case the trigger has <see cref="_freeOnQueueEmpty"/> set to true.
+  /// </summary>
   [Export] private Node _actionsTarget;
+  /// <summary>
+  /// An array of all <see cref="SequenceActionBase"/>s that should be executed.
+  /// </summary>
   [Export] private SequenceActionBase[] _sequenceActions = Array.Empty<SequenceActionBase>();
 
+  /// <summary>
+  /// A custom filtering for this trigger. Allows for a series of node groups to be defined. Only nodes that are in at least one of the listed groups are considered during collision detection.
+  /// </summary>
   [ExportGroup("Filtering", "_filter")]
   [Export] private string[] _filterGroupsAllowed = Array.Empty<string>();
 
 
   private bool _isTriggered;
+
+  /// <inheritdoc/>
   public bool GetValidationState() => _isTriggered;
 
 
@@ -46,6 +67,9 @@ public partial class SequenceTriggerArea3D : Area3D, ISequenceTrigger {
     PerformTriggerActions();
   }
 
+  /// <summary>
+  /// Called to perform all of the stored actions. Exposed publicly in case you wish to call it programmatically.
+  /// </summary>
   public void PerformTriggerActions() {
     var buffer = _sequenceActions.ToList();
     Print.Debug("Performing actions", this);
