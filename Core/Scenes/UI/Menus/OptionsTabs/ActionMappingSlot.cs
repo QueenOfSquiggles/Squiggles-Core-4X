@@ -4,10 +4,20 @@ using Godot;
 using Squiggles.Core.Data;
 using Squiggles.Core.Extension;
 
+/// <summary>
+/// A GUI element for handling an action mapping.
+/// </summary>
 public partial class ActionMappingSlot : HBoxContainer {
 
+  /// <summary>
+  /// A signal for when the remap button is pressed. Signals up to <see cref="ControlsTab"/>
+  /// </summary>
+  /// <param name="action_name">the name of the action managed by this slot: <see cref="TargetAction"/></param>
   [Signal] public delegate void ListenForActionEventHandler(string action_name);
 
+  /// <summary>
+  /// The action map key stored in this slot
+  /// </summary>
   [Export] public string TargetAction = "";
 
   private Label _label;

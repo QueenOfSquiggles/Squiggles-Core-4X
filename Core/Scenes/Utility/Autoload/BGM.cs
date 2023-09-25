@@ -4,7 +4,6 @@ using Godot;
 using Squiggles.Core.Extension;
 
 /// <summary>
-/// This singleton needs to be in the autoloads in Godot.
 /// It handles BackGround Music (BGM). It assumes only one track at a time will be playing. Any arbitrary stream can be assigned, and the cross-fade duration can be configured
 /// See also: <seealso cref="QueueSong"/>
 /// </summary>

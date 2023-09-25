@@ -3,10 +3,16 @@ namespace Squiggles.Core.Scenes.Utility.Camera;
 using System.Collections.Generic;
 using Godot;
 
+/// <summary>
+/// The camera brain, inspired in name by my most used Unity addon "Cinemachine". A single camera brain is required in your 3D scene to allow <see cref="VirtualCamera"/>s to be detected. Virtual cameras are pushed and popped from a VCam Stack. The topmost active VCam is used to determine the camera brain position and the lerping settings on the vcam determine how snappy the camera brain is to that position. This allows for cutscenes and even small animations to push their own virtual camera (which is only slightly more expensive that just a Node3D) to override the previous camera. If you've used Unity and specifically Cinemachine, or really any other virtual camera system, you probably have plenty of ideas on how this could be used.
+/// </summary>
 public partial class CameraBrain : Camera3D {
+  /// <summary>
+  /// The way this camera brain should update, whether on the process(0) or physics(1) step. Usually, Process is usually your best option. But the physics option will solve stutters if you are using a <see cref="VirtualCamera"/> that has lerping disabled and is moved during the physics step.
+  /// </summary>
   [Export(PropertyHint.Enum, "Process,Physics")] private int _updateMode = 0;
   private const int UPDATE_PROCESS = 0;
-  private const int UPDATE_PHYSICS = 0;
+  private const int UPDATE_PHYSICS = 1;
 
   // treating this as a stack, but using list to let me remove elements anywhere
   private readonly List<VirtualCamera> _vCamStack = new();

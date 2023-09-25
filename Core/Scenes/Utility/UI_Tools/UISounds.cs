@@ -2,14 +2,31 @@ namespace Squiggles.Core.Scenes.Utility;
 
 using System.Threading.Tasks;
 using Godot;
+using Squiggles.Core.Attributes;
 using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 using Squiggles.Core.Extension;
 
+/// <summary>
+/// A generic tool for adding some juice to UI elements.
+/// </summary>
+/// <remarks>
+/// There is functionality for popping up the ui element, sfx for mouse over and click. But there is also some partial feature development for TTS (Text To Speech) for the text contained on the parent node. More testing and development are required to get that feature working but the bones are there. In fact it techincally works, so long as you only want to select one GUI element every 5-10 seconds
+/// </remarks>
+[MarkForRefactor("rename/specify", "this class needs to be renamed in order to better specify its purpose")]
 public partial class UISounds : Node {
+  /// <summary>
+  /// The scale factor at which the element "pops" on mouse over
+  /// </summary>
   [Export] private float _popUIScale = 1.1f;
 
+  /// <summary>
+  /// The audio player for the selection sfx
+  /// </summary>
   [Export] private AudioStreamPlayer _sfxSelect;
+  /// <summary>
+  /// The audio player for the click sfx
+  /// </summary>
   [Export] private AudioStreamPlayer _sfxClick;
   private static string _voiceID = "";
   private Tween _lastTween;

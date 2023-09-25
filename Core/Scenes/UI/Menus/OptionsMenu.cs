@@ -2,20 +2,46 @@ namespace Squiggles.Core.Scenes.UI.Menus;
 
 using System.Threading.Tasks;
 using Godot;
+using Squiggles.Core.Attributes;
 using Squiggles.Core.Error;
 using Squiggles.Core.Events;
 using Squiggles.Core.Extension;
 
+/// <summary>
+/// The root panel of the options menu. Basically redirects to the various categories of options available.
+/// </summary>
 public partial class OptionsMenu : Control {
+  /// <summary>
+  /// The main menu path. Legacy feature
+  /// </summary>
+  [MarkForRefactor("Legacy Feature", "")]
   [Export(PropertyHint.File, "*.tscn")] private string _mainMenuPath = "";
+  /// <summary>
+  /// The root of the sliding scenes that are added.
+  /// </summary>
   [Export] private Control _slidingSceneRoot;
 
 
+  /// <summary>
+  /// Path to the scene for the gameplay panel
+  /// </summary>
   [ExportGroup("Panel Scene References")]
   [Export(PropertyHint.File, "*.tscn")] private string _pathPanelGameplay = "";
+  /// <summary>
+  /// Path to the scene for the graphics panel
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _pathPanelGraphics = "";
+  /// <summary>
+  /// Path to the scene for the accessibility panel
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _pathPanelAccess = "";
+  /// <summary>
+  /// Path to the scene for the controls panel
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _pathPanelControls = "";
+  /// <summary>
+  /// Path to the scene for the audio panel
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _pathPanelAudio = "";
 
 

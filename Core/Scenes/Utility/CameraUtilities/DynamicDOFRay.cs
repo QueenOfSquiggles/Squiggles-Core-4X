@@ -3,10 +3,23 @@ namespace Squiggles.Core.Scenes.Utility.Camera;
 using Godot;
 using Squiggles.Core.Error;
 
+/// <summary>
+/// A utility for the <see cref="CameraBrain"/> (or really any Camera3D if you like) that dynamically applies CameraAttributesPractical to the camera parent node and adjusts the depth of field effect to be the distance of the currently detected collision.
+/// </summary>
 public partial class DynamicDOFRay : RayCast3D {
 
+  /// <summary>
+  /// Determines how fast (in seconds) the depth of field distance should lerp when changing (most noticeable when the distance changes drastically)
+  /// </summary>
   [Export] private float _targetTransitionSpeed = 0.2f;
+  /// <summary>
+  /// The distance where objects are in focus surrounding the current point of focus.
+  /// </summary>
   [Export] private float _transitionRangeMeters = 10.0f;
+
+  /// <summary>
+  /// The distance to lerp to when no collisions are detected.
+  /// </summary>
   [Export] private float _defaultDistance = 50;
   private Camera3D _camera;
   private float _currentTargetDistance = float.MaxValue;

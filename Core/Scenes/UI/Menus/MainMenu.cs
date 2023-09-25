@@ -8,14 +8,35 @@ using Squiggles.Core.Events;
 using Squiggles.Core.Extension;
 using Squiggles.Core.Scenes.Utility;
 
+/// <summary>
+/// The main menu. Similar to <see cref="OptionsMenu"/>, it also serves mostly to redirect to other panes.
+/// </summary>
 public partial class MainMenu : Control {
+  /// <summary>
+  /// The play menu scene
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _playMenuScene = "";
+  /// <summary>
+  /// The options panel scene
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _options = "";
+  /// <summary>
+  /// the credits panel scene
+  /// </summary>
   [Export(PropertyHint.File, "*.tscn")] private string _creditsScene = "";
 
+  /// <summary>
+  /// the panel which contains the buttons
+  /// </summary>
   [ExportGroup("Node Paths")]
   [Export] private Control _buttonsPanel;
+  /// <summary>
+  /// The texture of the game label
+  /// </summary>
   [Export] private TextureRect _gameLogo;
+  /// <summary>
+  /// The link button that holds the author name and author link
+  /// </summary>
   [Export] private LinkButton _authorLabel;
 
   private Node _currentPopup;

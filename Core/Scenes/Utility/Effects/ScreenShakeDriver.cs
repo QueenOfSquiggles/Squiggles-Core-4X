@@ -5,8 +5,18 @@ using Godot;
 using Squiggles.Core.Data;
 using Squiggles.Core.Scenes.Utility.Camera;
 
+/// <summary>
+/// a generic driver for applying screen shake to a camera. Works best with <see cref="CameraBrain"/> but some basic support for any Camera3D is implemented.
+/// </summary>
 public partial class ScreenShakeDriver : Node {
+  /// <summary>
+  /// The noise function to use for calculating screen shake. Probably will require some tweaking if you want something non-default
+  /// </summary>
   [Export] private FastNoiseLite _noise;
+
+  /// <summary>
+  /// A reference to the target camera
+  /// </summary>
   [Export] private Camera3D _camera;
 
   private float _noiseIndex;
@@ -22,6 +32,12 @@ public partial class ScreenShakeDriver : Node {
     _noise.Seed = new Random().Next();
   }
 
+  /// <summary>
+  /// Applies the shake desired
+  /// </summary>
+  /// <param name="speed">how fast to move side to side</param>
+  /// <param name="strength">how far to move from side to side</param>
+  /// <param name="decay_rate">how quickly the effect should "decay" (decrease in intensity)</param>
   public void ApplyShake(float speed, float strength, float decay_rate) {
     _shakeStrength = strength;
     _speed = speed;
@@ -53,7 +69,7 @@ public partial class ScreenShakeDriver : Node {
     return new Vector3() {
       X = _noise.GetNoise2D(1, _noiseIndex) * _shakeStrength,
       Y = _noise.GetNoise2D(100, _noiseIndex) * _shakeStrength,
-      // TODO is Z shake helpful? I feel like it might not be
+      // TODO: is Z shake helpful? I feel like it might not be
       // Z = noise.GetNoise2D(1000, noise_index) * shake_strength,
     } * Effects.Instance.ScreenShakeStrength;
   }

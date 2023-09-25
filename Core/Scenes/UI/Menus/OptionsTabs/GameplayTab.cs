@@ -4,8 +4,14 @@ using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 using Squiggles.Core.Scenes.UI.Menus.Gameplay;
 
+/// <summary>
+/// The tab which contains the gameplay settings dynamically loaded from <see cref="SquigglesCoreConfigFile.GameplayConfig"/> and applied to <see cref="GameplaySettings"/>
+/// </summary>
 public partial class GameplayTab : PanelContainer {
 
+  /// <summary>
+  /// The root for the content of this panel
+  /// </summary>
   [Export] private VBoxContainer _content;
 
   public override void _Ready() {

@@ -1,10 +1,15 @@
 namespace Squiggles.Core.Scenes.UI;
 
 using Godot;
+using Squiggles.Core.Attributes;
 using Squiggles.Core.Scenes.Registration;
 using Squiggles.Core.WorldEntity;
 using static Godot.Tween;
 
+/// <summary>
+/// A template for displaying a single inventory slot. Misguided and badly implemented. Skipping documentation for this since it's intended to be scrapped/drastically changed
+/// </summary>
+[MarkForRefactor("Remove/Improve", "Inventories are something highly specific to individual games. Maybe refactor into a number of templates?")]
 public partial class ItemSlotDisplay : PanelContainer {
   [ExportGroup("Selected Settings", "_Select")]
   [Export] private float _selectOffset = -16.0f;

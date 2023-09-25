@@ -1,11 +1,12 @@
 @tool
 extends BoxContainer
+class_name SliderCombo
 
 signal ValueChangedLazy(value)
 
 @onready var label = $Lbl
 @onready var slider = $HBoxContainer/HSlider
- 
+
 @export var text : String = "" :
 	set(value):
 		text = value

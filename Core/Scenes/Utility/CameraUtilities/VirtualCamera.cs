@@ -3,25 +3,70 @@ namespace Squiggles.Core.Scenes.Utility.Camera;
 using Godot;
 using Squiggles.Core.Error;
 
+/// <summary>
+/// A virtual camera for use with <see cref="CameraBrain"/>. These are incredibly powerful little nuggets and I hope you love them as much as I do.
+/// </summary>
+/// <remarks>
+/// vcams are just so fucking cool
+/// </remarks>
 public partial class VirtualCamera : Marker3D {
+  /// <summary>
+  /// If true, the virtual camera pushes itself to the Camera Brain's stack as soon as this vcam is loaded into the scene.
+  /// </summary>
   [Export] private bool _pushCamOnReady = false;
+  /// <summary>
+  /// Whether or not to allow child nodes of the virtual camera. Ideally, most vcams will not have any child nodes.
+  /// </summary>
   [Export] private bool _allowVCamChildren = false;
 
+  /// <summary>
+  /// Determines whether or not to lerp the camera (if true the Camera Brain will smoothly transition to the position of the vcam. Else it will hard-snap to the transform)
+  /// </summary>
   [ExportGroup("Camera Lerping", "_Lerp")]
   [Export] public bool LerpCamera = true;
+  /// <summary>
+  /// The duration (in seconds) that the CameraBrain lags behind the vcam. (if vcam does not move for that duration, the Camera Brain will come to rest at the same position)
+  /// </summary>
   [Export] private float _lerpDuration = 0.1f;
 
+  /// <summary>
+  /// Toggles the advanced lerping functions which provide better customization, but create a performance hit.
+  /// </summary>
   [ExportGroup("Advanced Lerp Options", "_advLerp")]
   [Export] private bool _useAdvancedLerpOptions = false;
+  /// <summary>
+  /// Toggles lerping the x-axis translations
+  /// </summary>
   [Export] private bool _advLerpPosX = true;
+  /// <summary>
+  /// Toggles lerping the y-axis translations
+  /// </summary>
   [Export] private bool _advLerpPosY = true;
+  /// <summary>
+  /// Toggles lerping the z-axis translations
+  /// </summary>
   [Export] private bool _advLerpPosZ = true;
+  /// <summary>
+  /// Toggles lerping the x-axis rotations
+  /// </summary>
   [Export] private bool _advLerpRotX = true;
+  /// <summary>
+  /// Toggles lerping the y-axis rotations
+  /// </summary>
   [Export] private bool _advLerpRotY = true;
+  /// <summary>
+  /// Toggles lerping the z-axis rotations
+  /// </summary>
   [Export] private bool _advLerpRotZ = true;
 
+  /// <summary>
+  /// Helpful for knowing if the vcam is currently on the stack or not.
+  /// </summary>
   public bool IsOnStack { get; private set; }
 
+  /// <summary>
+  /// The lerp factor (calculated from <see cref="_lerpDuration"/>) to achieve the desired lerp duration
+  /// </summary>
   public float LerpFactor => 1.0f / _lerpDuration;
 
   public override void _Ready() {
@@ -39,11 +84,17 @@ public partial class VirtualCamera : Marker3D {
     }
   }
 
+  /// <summary>
+  /// Pushes this vcam to the CameraBrain stack
+  /// </summary>
   public void PushVCam() {
     GetBrain()?.PushCamera(this);
     IsOnStack = true;
   }
 
+  /// <summary>
+  /// Pops (removes) this vcam from the CameraBrain stack
+  /// </summary>
   public void PopVCam() {
     GetBrain()?.PopCamera(this);
     IsOnStack = false;
