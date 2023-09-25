@@ -4,10 +4,14 @@ using System;
 using System.Reflection;
 using Squiggles.Core.Error;
 
+/// <summary>
+/// SC4X Extensions for System.Reflection.Assembly
+/// </summary>
 public static class AssemblyExtensions {
 
   /// <summary>
   /// An incredibly naive reflection based type loading function. Given the full class name and expected type, tries to instance an object, returning null when failing. If an error occurs during the loading process a warning with a stack trace will be emitted. This method does require an explicit constructor that takes no arguments in order to work properly.
+  /// This was originally created to help me with a specific implementation, which proved to be less efficient than using Godot's Resource so I scrapped the idea. But this utility exists just in case someone finds a use for it. Reflection is pretty powerful so use it wisely.
   /// </summary>
   /// <typeparam name="T">The type for the instance to expect and be cast to</typeparam>
   /// <param name="assem">The target assembly. If no fancy C# work has been done, all of Squiggles.Core as well as your game code should be in the currently executing assembly. </param>

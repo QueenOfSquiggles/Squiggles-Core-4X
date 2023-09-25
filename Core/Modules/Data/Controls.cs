@@ -7,6 +7,9 @@ using Godot;
 using Squiggles.Core.Error;
 using Squiggles.Core.Events;
 
+/// <summary>
+/// A singleton for managing controls mappings and sensitivities.
+/// </summary>
 public class Controls {
 
   //
@@ -14,10 +17,22 @@ public class Controls {
   //      Defaults assigned as well
   //
 
+  /// <summary>
+  /// Sensitivity to be applied when performing mouse look processes. Requires dev implementation
+  /// </summary>
   public float MouseLookSensivity = 400.0f;
+  /// <summary>
+  /// Sensitivity to be applied when performing gamepad/controller look processes. Requires dev implementation
+  /// </summary>
   public float ControllerLookSensitivity = 500.0f;
 
+  /// <summary>
+  /// The currently registerd overloads.
+  /// </summary>
   public Dictionary<string, int[]> MappingsOverloads = new();
+  /// <summary>
+  /// A cache of the original mappings to allow reverting easily.
+  /// </summary>
   private readonly Dictionary<string, List<InputEvent>> _originalMappingsCache = new();
 
 
@@ -25,6 +40,9 @@ public class Controls {
   //  Events
   //
 
+  /// <summary>
+  /// An event triggered when the mappings change
+  /// </summary>
   public event Action<string> OnControlMappingChanged;
 
   //
@@ -35,6 +53,9 @@ public class Controls {
   private const int INPUT_MOUSE_BUTTON = 3;
   private const int INPUT_GAMEPAD_AXIS = 4;
 
+  /// <summary>
+  /// Resets all currently loaded mappings. Probably best you don't touch that buddy
+  /// </summary>
   public void ResetMappings() {
     var affected = new List<string>();
     foreach (var key in MappingsOverloads.Keys) {
@@ -46,6 +67,12 @@ public class Controls {
       OnControlMappingChanged?.Invoke(action);
     }
   }
+
+  /// <summary>
+  /// Sets a provided event to a particular action as an override. Clears existing mappings before inserting new mapping
+  /// </summary>
+  /// <param name="action">the action key</param>
+  /// <param name="assigned_input">the event to map to the action</param>
   public void SetMapping(string action, InputEvent assigned_input) {
     if (!InputMap.HasAction(action)) {
       Print.Warn($"Failed to assign event {assigned_input.AsText()} to input action '{action}'. Mapping not found in InputMap");
@@ -67,6 +94,10 @@ public class Controls {
     OnControlMappingChanged?.Invoke(action);
   }
 
+  /// <summary>
+  /// Resets a single mapping. Used internally. No touchey!
+  /// </summary>
+  /// <param name="action">the action to reset</param>
   public void ResetMapping(string action) {
     if (!_originalMappingsCache.ContainsKey(action)) {
       return;
@@ -134,6 +165,11 @@ public class Controls {
     return e is InputEventJoypadMotion axis ? (new int[] { INPUT_GAMEPAD_AXIS, (int)axis.Axis, (int)axis.AxisValue }) : (new int[] { 0, 0 });
   }
 
+  /// <summary>
+  /// Gets the mapping as text for the given action. Or "" if no mapping is found. This can be used to display mappings through text, or be parsed to show button prompts.
+  /// </summary>
+  /// <param name="action">the action name</param>
+  /// <returns>a string of the mapping, where each line is a mapping event parsed as text</returns>
   public string GetCurrentMappingFor(string action) {
     if (!InputMap.HasAction(action)) {
       Print.Warn($"No action found by name {action}");

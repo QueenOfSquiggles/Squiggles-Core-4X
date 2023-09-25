@@ -60,7 +60,7 @@ public partial class BGM : Node {
 
   private void SwapSongs(AudioStream stream, AudioStreamPlayer begin, AudioStreamPlayer end, float duration) {
     begin.Stream = stream;
-    var tween = GetTree().CreateTween().SetDefaultStyle();
+    var tween = GetTree().CreateTween().SetSC4XStyle();
     tween.SetParallel(); // all tweens now run in parallel
     tween.TweenProperty(begin, "volume_db", DB_ON, duration);
     tween.TweenProperty(end, "volume_db", DB_OFF, duration);

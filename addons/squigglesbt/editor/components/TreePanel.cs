@@ -1,9 +1,11 @@
 namespace SquigglesBT;
 
-using System.Collections.Generic;
 using Godot;
 using SquigglesBT.Nodes;
 
+/// <summary>
+///
+/// </summary>
 public partial class TreePanel : PanelContainer {
   [Signal] public delegate void OnParamUpdateEventHandler(string key, Variant value);
   [Export] private Control _childrenPanel;
@@ -11,7 +13,7 @@ public partial class TreePanel : PanelContainer {
   [Export] private LineEdit _nodeNameLabel;
   [Export] private Control _params;
 
-  private readonly Dictionary<string, Variant> _paramsDict = new();
+  //private readonly Dictionary<string, Variant> _paramsDict = new();
   private BTNode _node;
 
   public override void _Ready() => OnParamUpdate += HandleOnParamsUpdated;

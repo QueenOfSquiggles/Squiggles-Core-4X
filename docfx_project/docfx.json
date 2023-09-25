@@ -12,7 +12,7 @@
       "disableDefaultFilter": false,
       "filter": "sc4x_utility_filter.yml",
       "dest": "api",
-      "includePrivateMembers": false,
+      "includePrivateMembers": true,
       "disableGitFeatures": false,
       "noRestore": false,
       "namespaceLayout": "nested",

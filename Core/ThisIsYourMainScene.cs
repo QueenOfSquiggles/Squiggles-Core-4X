@@ -59,7 +59,7 @@ public partial class ThisIsYourMainScene : Node {
 
   private static void ProcessConfig(SquigglesCoreConfigFile config) {
     foreach (var reg in config.RegistryTypes) {
-      var path = config.RegistryPathPattern;
+      var path = config.RegistryPathPattern.Replace("%s", reg);
       RegistrationManager.RegisterRegistryType(reg, path);
     }
     RegistrationManager.ReloadRegistries();

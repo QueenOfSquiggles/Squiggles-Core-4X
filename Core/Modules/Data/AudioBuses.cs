@@ -4,9 +4,20 @@ using System;
 using Godot;
 using Squiggles.Core.Events;
 
+/// <summary>
+/// The singleton for managing the Godot Audio Bus with a decent layer of abstraction.
+/// </summary>
 public class AudioBuses {
+  /// <summary>
+  /// The volumes (dB) for each audio bus track currently loaded
+  /// </summary>
   public float[] Volumes { get; set; } = Array.Empty<float>();
 
+  /// <summary>
+  /// Utility to quickly access and modify volumes from this singleton.
+  /// </summary>
+  /// <param name="index">the index of the desired audio bus</param>
+  /// <returns>the current volume of the current audio bus</returns>
   public float this[int index] {
     get => Volumes[index];
     set => Volumes[index] = value;
@@ -39,6 +50,9 @@ public class AudioBuses {
     UpdateAudioServer();
   }
 
+  /// <summary>
+  /// Saves settings of this singleton out to disk (global scope)
+  /// </summary>
   public static void SaveSettings() {
     if (_instance == null) {
       return;

@@ -1,8 +1,14 @@
 namespace Squiggles.Core.CharStats;
 using Godot;
 
+/// <summary>
+/// A variant of <see cref="CharStatFloat"/> which intentionally removes itself after a given amount of time. Acting as a temporary modifier.
+/// </summary>
 public partial class CharStatFloatMod : CharStatFloat {
 
+  /// <summary>
+  /// The duration which this stat will last (generally considered a buff/debuff but feel free to interpret otherwise)
+  /// </summary>
   [Export] public float Duration = 1.0f;
 
   public override void _Ready() {

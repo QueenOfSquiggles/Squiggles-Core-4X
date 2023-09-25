@@ -100,7 +100,7 @@ public partial class UISounds : Node {
     }
 
     var start_size = parent.Size;
-    var tween = GetTree().CreateTween().SetDefaultStyle();
+    var tween = GetTree().CreateTween().SetSC4XStyle();
     tween.SetTrans(Tween.TransitionType.Elastic);
     tween.TweenProperty(parent, "size", start_size * _popUIScale, 0.1);
     tween.TweenProperty(parent, "size", start_size, 0.05);

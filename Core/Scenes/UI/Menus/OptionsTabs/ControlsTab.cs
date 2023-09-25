@@ -48,6 +48,9 @@ public partial class ControlsTab : PanelContainer {
       }
     }
     foreach (var action in keys) {
+      if (!InputMap.HasAction(action)) { // allow for input mappings to filter out unsupported controls
+        continue;
+      }
       if (_mappingScene?.Instantiate() is not ActionMappingSlot scene) {
         continue;
       }

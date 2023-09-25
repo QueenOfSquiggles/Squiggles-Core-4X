@@ -3,11 +3,19 @@ using Godot;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// Perform a mathematical operation on a given Vector3
+///     target = Vec3($target) {op} value
+/// Params:
+/// - `op` : string -- the operator to use [+, -, *, /]
+/// - `target` : string -- the name of the target vector to perform the operations on in the blackboard (name not value)
+/// - `value` : Vec3 -- the value to be applied as the secondary value in the operation.
+/// </summary>
 public class Vec3Math : Leaf {
 
   private readonly float[] _defaultArray = new float[3];
   protected override void RegisterParams() {
-    Params["op"] = "float";
+    Params["op"] = "+";
     Params["target"] = "key";
     Params["value"] = _defaultArray;
   }

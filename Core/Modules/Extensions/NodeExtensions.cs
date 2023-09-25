@@ -4,10 +4,14 @@ using System;
 using Godot;
 using Squiggles.Core.Error;
 
+/// <summary>
+/// SC4X Godot.Node Extensions
+/// </summary>
 public static class NodeExtensions {
 
   /// <summary>
   /// An effective override of "GetNode" with built-in null checking and a debug environment safeguard.
+  /// Coincidentally since Godot 4.1, we can just export the node directly, rendering this almost meaningless.
   /// </summary>
   /// <typeparam name="T">The type of the node to acquire</typeparam>
   /// <param name="node">The node we are searching from</param>
@@ -44,9 +48,8 @@ public static class NodeExtensions {
     return true;
   }
   /// <summary>
-  /// A redirect to reduce confusion with the built-in function 'GetNode'
+  /// A redirect to reduce confusion with the built-in function <see cref="GetNode"/>
   /// </summary>
-  /// <seealso cref="GetNode"/>
   public static bool GetSafe<T>(this Node node, NodePath path, out T result, bool alertErrors = true) where T : class => node.GetNode(path, out result, alertErrors);
 
 
@@ -94,6 +97,10 @@ public static class NodeExtensions {
     return null;
   }
 
+  /// <summary>
+  /// Fairly straightforward. Calls QueueFree on all children. I got tired of writing for loops. Sue me.
+  /// </summary>
+  /// <param name="node"></param>
   public static void RemoveAllChildren(this Node node) {
     while (node.GetChildCount() > 0) {
       var child = node.GetChild(0);

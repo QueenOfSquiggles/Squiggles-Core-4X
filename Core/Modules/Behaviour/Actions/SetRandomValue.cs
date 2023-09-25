@@ -6,6 +6,16 @@ using Squiggles.Core.Extension;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// A behaviour tree node that sets a random value into the blackboard
+/// Params:
+/// - `val_type` : string -- a string type of ['float', 'int', 'bool', 'Vector2', 'Vector3'] which determines the type to generate.
+/// - `target` : string -- the name of the variable to load into the blackboard
+/// - `min` : float -- the floating point value to treat as the min. When generating integers a float is first generated and the floored. Booleans do not use min/max
+/// - `max` : float -- the floating point value to treat as the max. See above for use.
+/// - `` : _ -- _
+/// - `` : _ -- _
+/// </summary>
 public class SetRandomValue : Leaf {
   private readonly Random _random = new();
   protected override void RegisterParams() {

@@ -1,7 +1,16 @@
 namespace Squiggles.Core.Extension;
 
+/// <summary>
+/// SC4X string extensions
+/// </summary>
 public static class StringExtensions {
 
+  /// <summary>
+  /// A custom implementation used interally to parse an array of floats from a string using a delimiter.
+  /// </summary>
+  /// <param name="str">the string in question</param>
+  /// <param name="delim">the delimiter to expect</param>
+  /// <returns>an array of floats parsed from the string</returns>.
   public static float[] ParseFloatsSquiggles(this string str, string delim = ",") {
     var chunk = str;
     for (var i = 0; i < str.Length; i++) {
