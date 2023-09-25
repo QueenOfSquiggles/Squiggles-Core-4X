@@ -9,7 +9,7 @@ public partial class EffectsDriver : Node {
       => Effects.Rumble(strong, weak, duration, controller_id);
 
   public void ShakeScreen(float speed, float strength, float duration)
-      => Effects.Shake(GetTree(), speed, strength, duration);
+      => Effects.Shake(speed, strength, duration);
 
   public void ClearEffects() {
     RumbleController(0, 0);

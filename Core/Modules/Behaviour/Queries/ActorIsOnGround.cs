@@ -4,6 +4,11 @@ using Squiggles.Core.Error;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// A behaviour tree node which queries whether the actor is currently on the ground based on a loaded raycast node in the blackboard
+/// Params:
+/// - `raycast_key` : string -- the name of the node path loaded into the behaviour tree by the scene node that manages it. Custom implementations beware!
+/// </summary>
 public class ActorRaycastColliding : Leaf {
 
   protected override void RegisterParams() => Params["raycast_key"] = "unassigned_path";

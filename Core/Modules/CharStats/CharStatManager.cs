@@ -5,20 +5,66 @@ using Godot;
 using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 
+/// <summary>
+/// The root node for CharStat Management. It contains the stats and  ensures everything is as expected. Use this to offload managing certain resource bars in your characters.
+/// </summary>
 public partial class CharStatManager : Node {
 
+  /// <summary>
+  /// A signal delegate for <see cref="OnStatChange"/> which notifies when a stat changes
+  /// </summary>
+  /// <param name="statName">The name of the stat that changed</param>
+  /// <param name="value">The value that it is now currently</param>
   [Signal] public delegate void OnStatChangeEventHandler(string statName, float value);
+
+  /// <summary>
+  /// A signal delegate for <see cref="OnStatModAdded"/> which notifies when a stat mod (buff/debuff) is added
+  /// </summary>
+  /// <param name="statName">the name fo the stat</param>
+  /// <param name="value">the value which the stat currently is</param>
+  /// <param name="modifier">The StatMod enum value, cast to int for easy transfer through Godot</param>
   [Signal] public delegate void OnStatModAddedEventHandler(string statName, float value, int modifier);
+  /// <summary>
+  /// A signal delegate for <see cref="OnStatModRemoved"/> which notifies when a stat mod (buff/debuff) is removed
+  /// </summary>
+  /// <param name="statName">the name fo the stat</param>
+  /// <param name="value">the value which the stat currently is</param>
+  /// <param name="modifier">The StatMod enum value, cast to int for easy transfer through Godot</param>
   [Signal] public delegate void OnStatModRemovedEventHandler(string statName, float value, int modifier);
 
+  /// <summary>
+  /// A reference to the <see cref="CharStatFloat"/> scene for instantiation purposes
+  /// </summary>
   [Export] private PackedScene _sceneFloatStat;
+  /// <summary>
+  /// A reference to the <see cref="CharStatFloatMod"/> scene for instantiation purposes
+  /// </summary>
   [Export] private PackedScene _sceneStatMod;
 
+  /// <summary>
+  /// A structure for handling Dynamic Stats, which are stats that generally have an active regeneration rate which can reference another char stat if desired.
+  /// DynamicStats are instantiated entrirely through code, but are incredibly useful for things like stamina and cooldowns. Anything that can be quickly exhausted and replenished.
+  /// </summary>
   private struct DynStat {
+    /// <summary>
+    /// The current value of the DynStat
+    /// </summary>
     public float Value;
+    /// <summary>
+    /// The maximum value
+    /// </summary>
     public float MaxValue;
+    /// <summary>
+    /// The amount which this stat regenerates every second. This is calculated using frametime to ensure the regenration is not frame rate dependant.
+    /// </summary>
     public float RegenRate;
+    /// <summary>
+    /// the name of a stat to reference instead of using a flat rate for the max value
+    /// </summary>
     public string ReferenceMaxVal;
+    /// <summary>
+    /// the name of a stat to reference instead of using a flat regen rate
+    /// </summary>
     public string ReferenceRegenRate;
   }
 
@@ -27,6 +73,12 @@ public partial class CharStatManager : Node {
 
   public override void _Ready() => RebuildStatDict();
 
+  /// <summary>
+  /// Creates a new <see cref="CharStatFloat"/> with the given values
+  /// </summary>
+  /// <param name="name">the name of the stat</param>
+  /// <param name="value">the initial value of the stat</param>
+  /// <param name="modifier">the <see cref="CharStatFloat.Modifier"/> of the stat</param>
   public void AddStat(string name, float value, CharStatFloat.Modifier modifier) {
     if (_sceneFloatStat?.Instantiate() is not CharStatFloat node) {
       return;
@@ -38,6 +90,15 @@ public partial class CharStatManager : Node {
     RebuildStatDict();
   }
 
+  /// <summary>
+  /// Creates a <see cref="DynStat"/> for this manager with the given values.
+  /// </summary>
+  /// <param name="name">the name of the stat</param>
+  /// <param name="initialValue">the initial value</param>
+  /// <param name="max_value">the maximum value</param>
+  /// <param name="regen_rate">the regeneration rate</param>
+  /// <param name="refMax">the referenced stat to use instead for the max_value (optional)</param>
+  /// <param name="refRegen">the referenced stat to use instead for the regen_rate (optional)</param>
   public void CreateDynamicStat(string name, float initialValue, float max_value, float regen_rate, string refMax = "", string refRegen = "") {
     var dyn = new DynStat() {
       Value = initialValue,
@@ -49,6 +110,13 @@ public partial class CharStatManager : Node {
     _dynamicStats[name] = dyn;
   }
 
+  /// <summary>
+  /// Applies a stat mod (<see cref="CharStatFloatMod"/>) to the target stat with given values
+  /// </summary>
+  /// <param name="targetStat">the stat to apply the mod to</param>
+  /// <param name="value">the value of the mod</param>
+  /// <param name="mod">the <see cref="CharStatFloat.Modifier"/> type.</param>
+  /// <param name="duration">the length of time for which this should be active/</param>
   public void AddStatMod(string targetStat, float value, CharStatFloat.Modifier mod, float duration) {
     if (!_stats.ContainsKey(targetStat)) {
       return;
@@ -68,17 +136,29 @@ public partial class CharStatManager : Node {
         break;
       }
     }
-    node.TreeExiting += () => EmitSignal(nameof(OnStatModAdded), targetStat, value, (int)mod);
+    node.TreeEntered += () => EmitSignal(nameof(OnStatModAdded), targetStat, value, (int)mod);
     node.TreeExiting += DelayedRebuild;
     node.TreeExiting += () => EmitSignal(nameof(OnStatModRemoved), targetStat, value, (int)mod);
     RebuildStatDict();
     // SceneStatMod
   }
 
+  /// <summary>
+  /// Modifies an existing stat (<see cref="CharStatFloat"/> not <see cref="DynStat"/>) with the given delta value. For those unfamiliar, in mathematics, "delta" refers to the value by which something changes. That's why it's commonly associated with the frame time, because it's how much time has changed since the last frame, i.e. the "delta time"
+  ///
+  /// </summary>
+  /// <param name="target">the stat to apply the change to</param>
+  /// <param name="delta_value">the scalar value to change it by (addition)</param>
   public void ModifyStaticStat(string target, float delta_value) {
     var n_val = GetStat(target) + delta_value;
     SetStaticStat(target, n_val);
   }
+
+  /// <summary>
+  /// Assigns a new value to an existing stat.
+  /// </summary>
+  /// <param name="target">the stat to target</param>
+  /// <param name="n_value">the new value to assign</param>
   public void SetStaticStat(string target, float n_value) {
     var stat_node = GetNode<CharStatFloat>(target);
     if (stat_node is null) {
@@ -130,11 +210,27 @@ public partial class CharStatManager : Node {
     // DebugPrintStats();
   }
 
+  /// <summary>
+  /// Determine whether a given stat exists
+  /// </summary>
+  /// <param name="name">the name of the stat</param>
+  /// <returns>Whether a <see cref="CharStatFloat"/> or a <see cref="DynStat"/> is currently registred with this manager</returns>
   public bool HasStat(string name) => _stats.ContainsKey(name) || _dynamicStats.ContainsKey(name);
 
+  /// <summary>
+  /// Gets the value of a particular stat, preferencing DynStat first for better performance since they are most likely to not be cached.
+  /// </summary>
+  /// <param name="name">the target stat</param>
+  /// <returns>the value of the stat, or zero if none exists</returns>
   public float GetStat(string name) => _dynamicStats.TryGetValue(name, out var d_val) ? d_val.Value :
     (_stats.TryGetValue(name, out var val) ? val : 0.0f);
 
+  /// <summary>
+  /// Used to reduce the value of the <see cref="DynStat"/>. They are considered to be a "resource" so consumption is the best way to think of them.
+  /// </summary>
+  /// <param name="statName">that DynStat to consume</param>
+  /// <param name="amount">the amount to consume</param>
+  /// <returns>True if the stat was able to be consumed (had enough). And False if the value was insufficient to consume the desired amount.</returns>
   public bool ConsumeDynStat(string statName, float amount) {
     if (!_dynamicStats.ContainsKey(statName)) {
       return false;
@@ -150,8 +246,17 @@ public partial class CharStatManager : Node {
     return true;
   }
 
+  /// <summary>
+  /// Determines if a partiular stat is above a certain value without applying any modifications. Useful for gating certain abilites or areas behind stat improvements.
+  /// </summary>
+  /// <param name="statName">the name of the stat</param>
+  /// <param name="minAmount">the required amount (stat >= min)</param>
+  /// <returns>true if the stat has the minimum expected value</returns>
   public bool HasStatMinimum(string statName, float minAmount) => HasStat(statName) && GetStat(statName) >= minAmount;
 
+  /// <summary>
+  /// Utility for printing out all stats and their values. Useful when debugging the less observable components of the CharStatManager
+  /// </summary>
   public void DebugPrintStats() {
     Print.Debug($"Stats Manager: {Name}");
     Print.Debug("[Dynamic Stats]");
@@ -165,6 +270,10 @@ public partial class CharStatManager : Node {
     Print.Debug($"End Stats Manager: {Name}");
   }
 
+  /// <summary>
+  /// Saves the stats out to a <see cref="SaveDataBuilder"/>. This should be called by the parent scene node. Such as the character controller.
+  /// </summary>
+  /// <param name="build">the builder to use.</param>
   public void SaveToData(ref SaveDataBuilder build) {
     foreach (var stat in _stats) {
       build.PutFloat($"StatS_{stat.Key}", stat.Value);
@@ -176,6 +285,10 @@ public partial class CharStatManager : Node {
     }
   }
 
+  /// <summary>
+  /// Loads in the properties of the stats from the given <see cref="SaveDataBuilder"/>.  This should be called by the parent scene node. Such as the character controller.
+  /// </summary>
+  /// <param name="build">the builder to use</param>
   public void LoadFromData(SaveDataBuilder build) {
     foreach (var stat in _stats) {
       if (!build.GetFloat($"StatS_{stat.Key}", out var val)) {

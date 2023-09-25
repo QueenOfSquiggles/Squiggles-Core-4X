@@ -4,6 +4,13 @@ using Godot;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// A behaviour tree node which applies a given force onto the actor.
+/// Params:
+/// - `dir` : Vec3 -- the direction of the force
+/// - `speed` : float -- the magnitude of the force
+/// - `is_impulse` : bool -- whether the force is applied as a "CentralForce" or a "CentralImpulse"
+/// </summary>
 public class ApplyForceToActor : Leaf {
   private Vector3 _lastForce = Vector3.Zero;
 

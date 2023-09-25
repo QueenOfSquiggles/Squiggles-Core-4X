@@ -3,6 +3,14 @@ using Godot;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// Performs a float comparison based on available operators
+///     value {op} target
+/// Params:
+/// - `target` : float -- the target value
+/// - `value` : float -- the value which is referenced
+/// - `op` : string -- the operator to use. Recognized: [==, <=, >=, <, >, !=]
+/// </summary>
 public class QueryCompareFloat : Leaf {
 
   protected override void RegisterParams() {

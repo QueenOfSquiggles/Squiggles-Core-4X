@@ -3,6 +3,9 @@ namespace Squiggles.Core.Meta;
 using Godot;
 using Squiggles.Core.Error;
 
+/// <summary>
+/// Save Slot Settings is a resource used by the <see cref="SquigglesCoreConfigFile"/> to load properties of the save slot handling. See individual properties for more details.
+/// </summary>
 [GlobalClass]
 public partial class SaveSlotSettings : Resource {
 
@@ -22,6 +25,9 @@ public partial class SaveSlotSettings : Resource {
   [Export] public SaveSlotOptions SlotOptions = SaveSlotOptions.MULTI_SLOT_SAVE_DATA;
 
   [Export] private SlotInfoProviderResource _slotInfoProvider;
+  /// <summary>
+  /// Enable or disable the ability to quickly reload the last save in the options menu. While technically possible to save scum with this feature disabled, it is more effort than having a button in the pause menu.
+  /// </summary>
   [Export] public bool AllowPlayersToReloadLastSave = true;
 
   /// <summary>

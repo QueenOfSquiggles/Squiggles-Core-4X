@@ -4,12 +4,30 @@ using System;
 using Godot;
 
 
+/// <summary>
+/// The main Event Bus for SC4X. Some events are vestigial from the game I ripped the code out of. I'm slowly working on features as I go and this is definitely an area that could use some TLC
+/// </summary>
 public static class EventBus {
 
+  /// <summary>
+  /// An instance of the <see cref="EventsAudio"/> class, which is a container for events that cleans up our event bus.
+  /// </summary>
   public static EventsAudio Audio { get; private set; } = new();
+  /// <summary>
+  /// An instance of the <see cref="EventsGameplay"/> class, which is a container for events that cleans up our event bus.
+  /// </summary>
   public static EventsGameplay Gameplay { get; private set; } = new();
+  /// <summary>
+  /// An instance of the <see cref="EventsUI"/> class, which is a container for events that cleans up our event bus.
+  /// </summary>
   public static EventsUI GUI { get; private set; } = new();
+  /// <summary>
+  /// An instance of the <see cref="EventsInventory"/> class, which is a container for events that cleans up our event bus.
+  /// </summary>
   public static EventsInventory Inventory { get; private set; } = new();
+  /// <summary>
+  /// An instance of the <see cref="EventsData"/> class, which is a container for events that cleans up our event bus.
+  /// </summary>
   public static EventsData Data { get; private set; } = new();
 
 }

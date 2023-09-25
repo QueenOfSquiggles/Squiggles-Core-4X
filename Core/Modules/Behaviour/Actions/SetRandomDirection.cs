@@ -4,6 +4,11 @@ using Godot;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// A behaviour tree node that sets a random XZ direction to the desired blackboard variable
+/// Params:
+/// - `target` : string -- the target variable name in the blackboard
+/// </summary>
 public class SetRandomDirection : Leaf {
   private readonly Random _random = new();
   private Vector3 _lastDir = Vector3.Zero;

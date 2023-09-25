@@ -3,6 +3,11 @@ using Godot;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// A behaviour tree node which stores the actor's current LinearVelocity, provided it is a RigidBody3D
+/// Params:
+/// - `store_as` : string -- the name of the variable to add into the blackboard
+/// </summary>
 public class StoreActorVelocity : Leaf {
   protected override void RegisterParams() => Params["store_as"] = "key";
 

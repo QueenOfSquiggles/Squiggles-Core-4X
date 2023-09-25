@@ -4,6 +4,12 @@ using Godot;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// A behaviour tree action that aligns the actor look with the actor's velocity. It does assume the actor is a <c>RigidBody3D</c> and fails if not.
+/// Properties include:
+/// - `skip-y` : bool -- whether or not to ignore the Y axis of the movement vector (removes XZ rotations when enabled)
+/// - `model-front` : bool -- whether or not to use the "model front" flag in Godot's <c>Node3D.<see href="https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d-method-look-at">LookAt</see></c>
+/// </summary>
 public class ActorLookAtVelocity : Leaf {
   public ActorLookAtVelocity() { }
 

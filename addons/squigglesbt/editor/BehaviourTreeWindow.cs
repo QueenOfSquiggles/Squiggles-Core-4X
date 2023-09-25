@@ -14,8 +14,6 @@ public partial class BehaviourTreeWindow : Window {
   [Export] private PackedScene _sceneOneChild;
   [Export] private PackedScene _sceneManyChildren;
 
-
-
   public override void _Ready() {
     if (_loadedTree is not null) {
       LoadTree(_loadedTree);

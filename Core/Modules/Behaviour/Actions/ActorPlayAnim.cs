@@ -5,6 +5,12 @@ using Squiggles.Core.Error;
 using SquigglesBT;
 using SquigglesBT.Nodes;
 
+/// <summary>
+/// A behaviour tree node which plays a given animation
+/// Parameters:
+/// - `track` : string -- the track name to play in the animation player
+/// - `reverse` : bool -- whether or not to reverse the animation play direction
+/// </summary>
 public class ActorPlayAnim : Leaf {
 
   protected override void RegisterParams() {

@@ -6,9 +6,18 @@ using Godot;
 using Squiggles.Core.Error;
 using Squiggles.Core.Modification;
 
+/// <summary>
+/// The singleton which handles mod loading. As it stands, this mostly only supports resource swapping and GDScript. You would need to compile with unsafe code enabled to be able to load C# assembly files at runtime. I'm gonna assume that if you're smart enough to make that work, you're smart enough to add that feature too because I could only get part way. See commented out code for my attempts (T.T)
+///
+/// Also an important note, all of the methods in this are called internally. Basically no touchey my stuffey!
+/// </summary>
 public static class ModRegistry {
 
   private const string MODS_PATH = "user://Mods";
+
+  /// <summary>
+  /// A publicly available count of how many mods have been loaded. Not currently used internally but if you find a use for it then enjoy!
+  /// </summary>
   public static int LoadedMods { get; private set; }
   private static readonly List<IModificationAdapter> _mods = new();
 

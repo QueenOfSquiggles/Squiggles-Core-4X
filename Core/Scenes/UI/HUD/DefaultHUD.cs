@@ -120,7 +120,7 @@ public partial class DefaultHUD : Control {
       return;
     }
 
-    var tween = GetTree().CreateTween().SetDefaultStyle();
+    var tween = GetTree().CreateTween().SetSC4XStyle();
     var colour = isVisible ? _colourVisible : _colourTransparent;
     tween.TweenProperty(control, "modulate", colour, 0.2f);
   }
@@ -131,7 +131,7 @@ public partial class DefaultHUD : Control {
     }
 
     _promptTween?.Kill();
-    _promptTween = GetTree().CreateTween().SetDefaultStyle();
+    _promptTween = GetTree().CreateTween().SetSC4XStyle();
     _promptTween.SetTrans(Tween.TransitionType.Bounce);
     _interactionPrompt.VisibleRatio = 0.0f;
     _interactionPrompt.Text = text;
@@ -143,7 +143,7 @@ public partial class DefaultHUD : Control {
 
   private void OnCannotInteract() {
     _promptTween?.Kill();
-    _promptTween = GetTree().CreateTween().SetDefaultStyle();
+    _promptTween = GetTree().CreateTween().SetSC4XStyle();
     _promptTween.SetTrans(Tween.TransitionType.Bounce);
 
     if (_reticle is not null) {
