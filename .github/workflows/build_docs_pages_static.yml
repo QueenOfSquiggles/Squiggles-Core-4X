@@ -5,6 +5,10 @@ on:
   push:
     branches:
     - main
+    paths:
+    - "Core/**.cs" # only automatically rebuild when modifications are made to the core
+    - "docfx_project/" # or when the docfx project settings are changed
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
