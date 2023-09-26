@@ -12,6 +12,8 @@ using Squiggles.Core.Scenes.Utility;
 /// </summary>
 public partial class ThisIsYourMainScene : Node {
 
+  // Testing dotnet workflow
+  
   private static ThisIsYourMainScene _instance;
 
   /// <summary>
