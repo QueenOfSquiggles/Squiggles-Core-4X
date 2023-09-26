@@ -11,7 +11,6 @@ using Squiggles.Core.Scenes.Utility;
 /// This is your main scene! This is the default main scene for SC4X as it handles a ton of rerouting and initialization processes.
 /// </summary>
 public partial class ThisIsYourMainScene : Node {
-  // Testing new docfx building-workflow
 
   private static ThisIsYourMainScene _instance;
 
