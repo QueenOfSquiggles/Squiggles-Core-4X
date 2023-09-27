@@ -6,6 +6,9 @@ name: .NET
 on:
   pull_request:
     branches: [ "main" ]
+    path: # limit builds to when the actual C# files are altered. Otherwise assume previous build state.
+    - "**.cs"
+    - "**.csproj"
 
 jobs:
   build:
