@@ -1,0 +1,145 @@
+[gd_scene load_steps=17 format=3 uid="uid://bcbvejaujcfuq"]
+
+[ext_resource type="PackedScene" uid="uid://ctgxlwrddpdbx" path="res://Core/Scenes/Utility/CameraUtilities/camera_brain.tscn" id="1_echvd"]
+[ext_resource type="PackedScene" uid="uid://bwohee6c633j6" path="res://Core/Scenes/UI/Menus/pause_menu_controller.tscn" id="1_lphxg"]
+[ext_resource type="PackedScene" uid="uid://cvxg1i0juoqmy" path="res://Core/Scenes/Utility/CameraUtilities/virtual_camera.tscn" id="2_66sht"]
+[ext_resource type="Script" path="res://Core/Modules/FSM/FiniteStateMachine.cs" id="3_ms3ms"]
+[ext_resource type="Script" path="res://implementation_example/CharacterTest.cs" id="3_vbofn"]
+[ext_resource type="Script" path="res://Core/Modules/FSM/HFSM_State.cs" id="5_hxqdr"]
+[ext_resource type="Script" path="res://implementation_example/StateFPS.cs" id="6_r8hyv"]
+[ext_resource type="Script" path="res://implementation_example/StateLongview.cs" id="8_fckee"]
+[ext_resource type="Script" path="res://implementation_example/StateOTS.cs" id="9_s8tyr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_faohw"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_pylhh"]
+sky_material = SubResource("ProceduralSkyMaterial_faohw")
+
+[sub_resource type="Environment" id="Environment_n2uht"]
+background_mode = 2
+sky = SubResource("Sky_pylhh")
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vrt5t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ahx75"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0whk5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7pmcn"]
+size = Vector3(0.1, 0.1, 1)
+
+[node name="FSMTest" type="Node3D"]
+
+[node name="PauseMenuController" parent="." instance=ExtResource("1_lphxg")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n2uht")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CameraBrain" parent="." instance=ExtResource("1_echvd")]
+transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, 3.27558, 2.56597, 3.0853)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("_stateMachine", "_tpsStates", "_stateFPS", "_stateLongView", "_stateOTS")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13635, 0.962011)
+script = ExtResource("3_vbofn")
+_stateMachine = NodePath("FiniteStateMachine")
+_tpsStates = NodePath("FiniteStateMachine/StateTPS")
+_stateFPS = NodePath("FiniteStateMachine/StateFPS")
+_stateLongView = NodePath("FiniteStateMachine/StateTPS/StateLongview")
+_stateOTS = NodePath("FiniteStateMachine/StateTPS/StateOTS")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_vrt5t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_ahx75")
+
+[node name="omni_cam_arm" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632, 0)
+
+[node name="FPS_Camera" parent="CharacterBody3D/omni_cam_arm" instance=ExtResource("2_66sht")]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/omni_cam_arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.248648, 0)
+shape = SubResource("SphereShape3D_0whk5")
+spring_length = 5.0
+
+[node name="TPSCamLong" parent="CharacterBody3D/omni_cam_arm/SpringArm3D" instance=ExtResource("2_66sht")]
+
+[node name="ots_cam" type="Node3D" parent="CharacterBody3D/omni_cam_arm"]
+transform = Transform3D(0.993572, 0, 0.113203, 0, 1, 0, -0.113203, 0, 0.993572, 0.719, -0.063, 0)
+
+[node name="TPSCamOTS" parent="CharacterBody3D/omni_cam_arm/ots_cam" instance=ExtResource("2_66sht")]
+
+[node name="FiniteStateMachine" type="Node" parent="CharacterBody3D" node_paths=PackedStringArray("_initialState")]
+script = ExtResource("3_ms3ms")
+_initialState = NodePath("StateFPS")
+
+[node name="StateFPS" type="Node" parent="CharacterBody3D/FiniteStateMachine" node_paths=PackedStringArray("_camActor", "_camArm", "_vcam")]
+script = ExtResource("6_r8hyv")
+_camActor = NodePath("../..")
+_camArm = NodePath("../../omni_cam_arm")
+_vcam = NodePath("../../omni_cam_arm/FPS_Camera")
+
+[node name="StateTPS" type="Node" parent="CharacterBody3D/FiniteStateMachine" node_paths=PackedStringArray("_initialState")]
+script = ExtResource("5_hxqdr")
+_initialState = NodePath("StateLongview")
+
+[node name="StateLongview" type="Node" parent="CharacterBody3D/FiniteStateMachine/StateTPS" node_paths=PackedStringArray("_camActor", "_camArm", "_vcam")]
+script = ExtResource("8_fckee")
+_camActor = NodePath("../../..")
+_camArm = NodePath("../../../omni_cam_arm")
+_vcam = NodePath("../../../omni_cam_arm/SpringArm3D/TPSCamLong")
+
+[node name="StateOTS" type="Node" parent="CharacterBody3D/FiniteStateMachine/StateTPS" node_paths=PackedStringArray("_camActor", "_camArm", "_vcam")]
+script = ExtResource("9_s8tyr")
+_camActor = NodePath("../../..")
+_camArm = NodePath("../../../omni_cam_arm")
+_vcam = NodePath("../../../omni_cam_arm/ots_cam/TPSCamOTS")
+_max = 45.0
+_min = -45.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57603, 0.132868, -0.64316)
+mesh = SubResource("BoxMesh_7pmcn")
+
+[node name="world_geom" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="world_geom"]
+use_collision = true
+size = Vector3(5.24139, 0.272705, 4.82661)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -485.5
+offset_top = -40.0
+offset_right = 485.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/PanelContainer"]
+layout_mode = 2
+text = "Toggle FPS/TPS (Spacebar) Over the shoulder view (Hold right click in TPS)"
