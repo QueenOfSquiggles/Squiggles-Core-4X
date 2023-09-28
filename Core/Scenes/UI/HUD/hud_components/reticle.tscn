@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu8lcuyc6iins"]
+
+[ext_resource type="Texture2D" uid="uid://yy8w4i8f2yqv" path="res://Core/Assets/Packs/Kenney Crosshair Pack/PNG/White Retina/crosshair118.png" id="1_di4tw"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/hud_components/Reticle.cs" id="2_b5ve7"]
+
+[node name="Reticle" type="TextureRect"]
+texture_filter = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("1_di4tw")
+stretch_mode = 3
+script = ExtResource("2_b5ve7")

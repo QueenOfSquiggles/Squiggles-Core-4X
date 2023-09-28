@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://davldsm6ogh24"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/hud_components/SubtitlePanel.cs" id="1_qkv4v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqhrl"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SubtitlePanel" type="HBoxContainer" node_paths=PackedStringArray("_subtitleLabel")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -138.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("1_qkv4v")
+_subtitleLabel = NodePath("PanelContainer/Subtitle")
+
+[node name="BorderBuffer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+size_flags_stretch_ratio = 8.0
+
+[node name="Subtitle" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Lorem Ipsum"
+label_settings = SubResource("LabelSettings_jqhrl")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="BorderBuffer2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3

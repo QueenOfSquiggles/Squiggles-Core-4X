@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqm15kscl7aw1"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/hud_components/AlertPanel.cs" id="1_anq2v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x624"]
+bg_color = Color(0.262745, 0.270588, 0.290196, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.266667)
+shadow_size = 1
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_37enn"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.67451)
+shadow_offset = Vector2(2, 1)
+
+[node name="AlertPanel" type="PanelContainer" node_paths=PackedStringArray("_label")]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -222.001
+offset_top = 26.0
+offset_bottom = 105.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1x624")
+script = ExtResource("1_anq2v")
+_label = NodePath("MarginContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+label_settings = SubResource("LabelSettings_37enn")

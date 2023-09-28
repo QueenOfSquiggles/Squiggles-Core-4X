@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dch3uo5y6oled"]
+
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="1_28occ"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/hud_components/PlayerEnergy.cs" id="2_d6by8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ervri"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PlayerEnergy" type="TextureProgressBar" node_paths=PackedStringArray("_label")]
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 136.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("1_28occ")
+texture_over = ExtResource("1_28occ")
+texture_progress = ExtResource("1_28occ")
+tint_progress = Color(0, 1, 0.152941, 1)
+script = ExtResource("2_d6by8")
+_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+label_settings = SubResource("LabelSettings_ervri")
+horizontal_alignment = 2
+vertical_alignment = 2

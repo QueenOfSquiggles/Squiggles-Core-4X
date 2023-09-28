@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://ok1il3g42obf"]
+
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="1_b76ry"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/hud_components/PlayerMoneyDisplay.cs" id="1_xrqh4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6rgm"]
+font_size = 51
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.682353)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvgve"]
+font_size = 41
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DisplayMoney" type="TextureRect" node_paths=PackedStringArray("_label", "_playerMoneyPopLabel")]
+self_modulate = Color(1, 1, 1, 0.552941)
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 256.0
+grow_horizontal = 0
+texture = ExtResource("1_b76ry")
+stretch_mode = 5
+script = ExtResource("1_xrqh4")
+_label = NodePath("MoneyLabel")
+_playerMoneyPopLabel = NodePath("TransactionPopLabel")
+
+[node name="MoneyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -234.0
+offset_top = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "999,999,999,999"
+label_settings = SubResource("LabelSettings_p6rgm")
+vertical_alignment = 2
+justification_flags = 0
+
+[node name="TransactionPopLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -33.0
+offset_bottom = 6.10352e-05
+grow_horizontal = 0
+grow_vertical = 0
+text = "+1246"
+label_settings = SubResource("LabelSettings_cvgve")

@@ -1,61 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://clvfklayqmfnw"]
+[gd_scene load_steps=12 format=3 uid="uid://clvfklayqmfnw"]
 
 [ext_resource type="Theme" uid="uid://b6m4xd68fa5um" path="res://Core/Assets/Theme/default_theme.tres" id="1_ftm8j"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/HUD/DefaultHUD.cs" id="2_lohhk"]
-[ext_resource type="Texture2D" uid="uid://yy8w4i8f2yqv" path="res://Core/Assets/Packs/Kenney Crosshair Pack/PNG/White Retina/crosshair118.png" id="3_34aii"]
 [ext_resource type="PackedScene" uid="uid://cehxnein641v" path="res://Core/Scenes/UI/HUD/Inventory/item_slot_display.tscn" id="4_0ig7p"]
-[ext_resource type="Texture2D" uid="uid://d43sw60ib1iq" path="res://icon.png" id="6_64rf5"]
+[ext_resource type="PackedScene" uid="uid://cu8lcuyc6iins" path="res://Core/Scenes/UI/HUD/hud_components/reticle.tscn" id="4_yumwi"]
+[ext_resource type="PackedScene" uid="uid://174fj511x6da" path="res://Core/Scenes/UI/HUD/hud_components/interaction_prompt.tscn" id="5_jmiy2"]
+[ext_resource type="PackedScene" uid="uid://fkc7m2ki73ew" path="res://Core/Scenes/UI/HUD/hud_components/player_inventory_slots.tscn" id="6_qkdrv"]
+[ext_resource type="PackedScene" uid="uid://bqm15kscl7aw1" path="res://Core/Scenes/UI/HUD/hud_components/alert_panel.tscn" id="7_ashqc"]
+[ext_resource type="PackedScene" uid="uid://btffth3dw2uom" path="res://Core/Scenes/UI/HUD/hud_components/player_health.tscn" id="8_lor57"]
+[ext_resource type="PackedScene" uid="uid://dch3uo5y6oled" path="res://Core/Scenes/UI/HUD/hud_components/player_energy.tscn" id="9_rnwx1"]
+[ext_resource type="PackedScene" uid="uid://ok1il3g42obf" path="res://Core/Scenes/UI/HUD/hud_components/player_money_display.tscn" id="10_dt1cj"]
+[ext_resource type="PackedScene" uid="uid://davldsm6ogh24" path="res://Core/Scenes/UI/HUD/hud_components/subtitle_panel.tscn" id="11_7yaxq"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_hjhj8"]
-font_size = 20
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jqhrl"]
-font_size = 32
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x624"]
-bg_color = Color(0.262745, 0.270588, 0.290196, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-corner_radius_top_left = 32
-corner_radius_bottom_left = 32
-shadow_color = Color(0, 0, 0, 0.266667)
-shadow_size = 1
-shadow_offset = Vector2(10, 10)
-
-[sub_resource type="LabelSettings" id="LabelSettings_37enn"]
-font_size = 30
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 0.67451)
-shadow_offset = Vector2(2, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ervri"]
-font_size = 32
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ilwt1"]
-size = Vector2(128, 128)
-
-[sub_resource type="LabelSettings" id="LabelSettings_p6rgm"]
-font_size = 51
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 0.682353)
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_cvgve"]
-font_size = 41
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[node name="DefaultHUD" type="Control" node_paths=PackedStringArray("_lblSubtitle", "_lblAlert", "_rootSubtitle", "_rootAlert", "_reticle", "_interactionPrompt", "_genericGUIRoot", "_playerStatsHealthBar", "_playerStatsHealthLabel", "_playerStatsEnergyBar", "_playerStatsEnergyLabel", "_playerInventory", "_playerMoneyTexture", "_playerMoneyLabel", "_playerMoneyPopLabel")]
+[node name="DefaultHUD" type="Control" node_paths=PackedStringArray("_genericGUIRoot")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,128 +23,48 @@ mouse_filter = 2
 theme = ExtResource("1_ftm8j")
 script = ExtResource("2_lohhk")
 _inventorySlotPacked = ExtResource("4_0ig7p")
-_lblSubtitle = NodePath("SubtitlePanel/PanelContainer/Subtitle")
-_lblAlert = NodePath("AlertPanel/MarginContainer/Label")
-_rootSubtitle = NodePath("SubtitlePanel")
-_rootAlert = NodePath("AlertPanel")
-_reticle = NodePath("Reticle")
-_interactionPrompt = NodePath("InteractionPrompt")
 _genericGUIRoot = NodePath("GenericUIContainer")
-_playerStatsHealthBar = NodePath("Control/Panel/PlayerHealth")
-_playerStatsHealthLabel = NodePath("Control/Panel/PlayerHealth/Label")
-_playerStatsEnergyBar = NodePath("Control/Panel_2/PlayerEnergy")
-_playerStatsEnergyLabel = NodePath("Control/Panel_2/PlayerEnergy/Label")
-_playerInventory = NodePath("PlayerInventorySlots")
-_playerMoneyTexture = NodePath("DisplayMoney")
-_playerMoneyLabel = NodePath("DisplayMoney/MoneyLabel")
-_playerMoneyPopLabel = NodePath("DisplayMoney/TransactionPopLabel")
 
-[node name="Reticle" type="TextureRect" parent="."]
-texture_filter = 4
+[node name="Reticle" parent="." instance=ExtResource("4_yumwi")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(64, 64)
-mouse_filter = 2
-texture = ExtResource("3_34aii")
-stretch_mode = 3
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 
-[node name="InteractionPrompt" type="Label" parent="."]
+[node name="InteractionPrompt" parent="." instance=ExtResource("5_jmiy2")]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 88.0
-offset_bottom = 121.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Lorem Ispum"
-label_settings = SubResource("LabelSettings_hjhj8")
-horizontal_alignment = 1
+offset_top = 67.0
+offset_bottom = 100.0
 
-[node name="SubtitlePanel" type="HBoxContainer" parent="."]
+[node name="PlayerInventorySlots" parent="." instance=ExtResource("6_qkdrv")]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -138.0
-offset_bottom = -83.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_top = -132.0
 
-[node name="BorderBuffer" type="Control" parent="SubtitlePanel"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="SubtitlePanel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-size_flags_stretch_ratio = 8.0
-
-[node name="Subtitle" type="Label" parent="SubtitlePanel/PanelContainer"]
-custom_minimum_size = Vector2(360, 0)
-layout_mode = 2
-size_flags_vertical = 8
-text = "Lorem Ipsum"
-label_settings = SubResource("LabelSettings_jqhrl")
-horizontal_alignment = 1
-vertical_alignment = 2
-autowrap_mode = 3
-
-[node name="BorderBuffer2" type="Control" parent="SubtitlePanel"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PlayerInventorySlots" type="HBoxContainer" parent="."]
-visible = false
+[node name="AlertPanel" parent="." instance=ExtResource("7_ashqc")]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 16
-alignment = 1
+offset_left = -274.0
+offset_top = 285.0
+offset_bottom = 366.0
 
-[node name="ItemSlotDisplay" parent="PlayerInventorySlots" instance=ExtResource("4_0ig7p")]
-layout_mode = 2
-
-[node name="AlertPanel" type="PanelContainer" parent="."]
-modulate = Color(1, 1, 1, 0)
+[node name="Stats Bars" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -222.001
-offset_top = 26.0
-offset_bottom = 105.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_1x624")
+offset_right = 185.0
+offset_bottom = 260.0
 
-[node name="MarginContainer" type="MarginContainer" parent="AlertPanel"]
+[node name="PlayerHealth" parent="Stats Bars" instance=ExtResource("8_lor57")]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
 
-[node name="Label" type="Label" parent="AlertPanel/MarginContainer"]
+[node name="PlayerEnergy" parent="Stats Bars" instance=ExtResource("9_rnwx1")]
 layout_mode = 2
-text = "Lorem Ipsum"
-label_settings = SubResource("LabelSettings_37enn")
+
+[node name="DisplayMoney" parent="." instance=ExtResource("10_dt1cj")]
+layout_mode = 1
+
+[node name="SubtitlePanel" parent="." instance=ExtResource("11_7yaxq")]
+layout_mode = 1
+offset_top = -193.0
+offset_bottom = -138.0
 
 [node name="GenericUIContainer" type="Control" parent="."]
 layout_mode = 1
@@ -197,113 +74,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-
-[node name="Control" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-offset_right = 185.0
-offset_bottom = 260.0
-
-[node name="Panel" type="Control" parent="Control"]
-custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
-
-[node name="PlayerHealth" type="TextureProgressBar" parent="Control/Panel"]
-layout_mode = 2
-offset_top = 8.0
-offset_right = 128.0
-offset_bottom = 136.0
-max_value = 1.0
-step = 0.0
-value = 0.657
-fill_mode = 3
-texture_under = ExtResource("6_64rf5")
-texture_over = ExtResource("6_64rf5")
-texture_progress = ExtResource("6_64rf5")
-tint_progress = Color(1, 0.356863, 0.419608, 1)
-
-[node name="Label" type="Label" parent="Control/Panel/PlayerHealth"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "999"
-label_settings = SubResource("LabelSettings_ervri")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Panel_2" type="Control" parent="Control"]
-custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
-
-[node name="PlayerEnergy" type="TextureProgressBar" parent="Control/Panel_2"]
-layout_mode = 2
-offset_top = 8.0
-offset_right = 128.0
-offset_bottom = 136.0
-max_value = 1.0
-step = 0.0
-value = 1.0
-fill_mode = 3
-texture_under = ExtResource("6_64rf5")
-texture_over = ExtResource("6_64rf5")
-texture_progress = ExtResource("6_64rf5")
-tint_progress = Color(0, 1, 0.152941, 1)
-
-[node name="Label" type="Label" parent="Control/Panel_2/PlayerEnergy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "999"
-label_settings = SubResource("LabelSettings_ervri")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="DisplayMoney" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -256.0
-offset_bottom = 256.0
-grow_horizontal = 0
-texture = SubResource("PlaceholderTexture2D_ilwt1")
-stretch_mode = 5
-
-[node name="MoneyLabel" type="Label" parent="DisplayMoney"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -234.0
-offset_top = -78.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "999,999,999,999"
-label_settings = SubResource("LabelSettings_p6rgm")
-vertical_alignment = 2
-justification_flags = 0
-
-[node name="TransactionPopLabel" type="Label" parent="DisplayMoney"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -33.0
-offset_bottom = 6.10352e-05
-grow_horizontal = 0
-grow_vertical = 0
-text = "+1246"
-label_settings = SubResource("LabelSettings_cvgve")
