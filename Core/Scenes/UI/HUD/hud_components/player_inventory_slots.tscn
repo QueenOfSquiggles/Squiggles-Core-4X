@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://fkc7m2ki73ew"]
+
+[ext_resource type="Script" path="res://Core/Scenes/UI/HUD/hud_components/PlayerInventorySlots.cs" id="1_5bihs"]
+[ext_resource type="PackedScene" uid="uid://cehxnein641v" path="res://Core/Scenes/UI/HUD/Inventory/item_slot_display.tscn" id="1_dffe8"]
+
+[node name="PlayerInventorySlots" type="HBoxContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("1_5bihs")
+_inventorySlotPacked = ExtResource("1_dffe8")
+
+[node name="ItemSlotDisplay" parent="." instance=ExtResource("1_dffe8")]
+layout_mode = 2
