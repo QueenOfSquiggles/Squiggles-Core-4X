@@ -40,7 +40,6 @@ load_path = "res://.godot/imported/grey_tickGrey.png-a26f08745dad8b33759a696908a
 load_path = "res://.godot/imported/grey_tickWhite.png-643ddf3df4188774169e257320c1b1f4.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_25o63"]
-load_path = "res://.godot/imported/grey_arrowDownWhite.png-b9fb185887387e4d747e067294a2b55a.ctex"
 
 [resource]
 default_font = ExtResource("1_l51w2")
