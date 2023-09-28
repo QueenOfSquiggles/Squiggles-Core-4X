@@ -4,6 +4,7 @@ using Godot;
 /// <summary>
 /// A variant of <see cref="CharStatFloat"/> which intentionally removes itself after a given amount of time. Acting as a temporary modifier.
 /// </summary>
+[GlobalClass]
 public partial class CharStatFloatMod : CharStatFloat {
 
   /// <summary>

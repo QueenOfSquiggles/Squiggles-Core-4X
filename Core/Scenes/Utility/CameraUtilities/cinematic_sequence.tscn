@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct71a4y4m3yiv"]
-
-[ext_resource type="Script" path="res://Core/Scenes/Utility/CameraUtilities/CinematicSequence.cs" id="1_15iyj"]
-
-[node name="CinematicSequence" type="Node"]
-script = ExtResource("1_15iyj")

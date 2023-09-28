@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://deg3ndbgofqus"]
-
-[ext_resource type="Script" path="res://Core/Scenes/Utility/CameraUtilities/DynamicDOFRay.cs" id="1_siq51"]
-
-[node name="Dynamic DOF Ray" type="RayCast3D"]
-target_position = Vector3(0, 0, -50)
-script = ExtResource("1_siq51")

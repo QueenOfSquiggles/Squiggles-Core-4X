@@ -8,6 +8,7 @@ using Squiggles.Core.Error;
 /// <summary>
 /// The root node for CharStat Management. It contains the stats and  ensures everything is as expected. Use this to offload managing certain resource bars in your characters.
 /// </summary>
+[GlobalClass]
 public partial class CharStatManager : Node {
 
   /// <summary>
@@ -31,15 +32,6 @@ public partial class CharStatManager : Node {
   /// <param name="value">the value which the stat currently is</param>
   /// <param name="modifier">The StatMod enum value, cast to int for easy transfer through Godot</param>
   [Signal] public delegate void OnStatModRemovedEventHandler(string statName, float value, int modifier);
-
-  /// <summary>
-  /// A reference to the <see cref="CharStatFloat"/> scene for instantiation purposes
-  /// </summary>
-  [Export] private PackedScene _sceneFloatStat;
-  /// <summary>
-  /// A reference to the <see cref="CharStatFloatMod"/> scene for instantiation purposes
-  /// </summary>
-  [Export] private PackedScene _sceneStatMod;
 
   /// <summary>
   /// A structure for handling Dynamic Stats, which are stats that generally have an active regeneration rate which can reference another char stat if desired.
@@ -80,12 +72,11 @@ public partial class CharStatManager : Node {
   /// <param name="value">the initial value of the stat</param>
   /// <param name="modifier">the <see cref="CharStatFloat.Modifier"/> of the stat</param>
   public void AddStat(string name, float value, CharStatFloat.Modifier modifier) {
-    if (_sceneFloatStat?.Instantiate() is not CharStatFloat node) {
-      return;
-    }
-    node.Name = name;
-    node.StoredValue = value;
-    node.StatMod = modifier;
+    var node = new CharStatFloat {
+      Name = name,
+      StoredValue = value,
+      StatMod = modifier
+    };
     AddChild(node);
     RebuildStatDict();
   }
@@ -122,13 +113,11 @@ public partial class CharStatManager : Node {
       return;
     }
 
-    if (_sceneStatMod?.Instantiate() is not CharStatFloatMod node) {
-      return;
-    }
-
-    node.StoredValue = value;
-    node.StatMod = mod;
-    node.Duration = duration;
+    var node = new CharStatFloatMod {
+      StoredValue = value,
+      StatMod = mod,
+      Duration = duration
+    };
 
     foreach (var c in GetChildren()) {
       if (c.Name == targetStat) {

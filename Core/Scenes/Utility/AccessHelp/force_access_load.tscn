@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7qii2akdhqou"]
-
-[ext_resource type="Script" path="res://Core/Scenes/Utility/AccessHelp/ForceAccessLoad.cs" id="1_3a71k"]
-
-[node name="ForceAccessLoad" type="Node"]
-script = ExtResource("1_3a71k")

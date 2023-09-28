@@ -1,19 +1,43 @@
-[gd_resource type="Resource" script_class="SquigglesCoreConfigFile" load_steps=3 format=3 uid="uid://b04fyr3fsw1lx"]
+[gd_resource type="Resource" script_class="SquigglesCoreConfigFile" load_steps=10 format=3 uid="uid://b04fyr3fsw1lx"]
 
 [ext_resource type="Script" path="res://Core/MetaConfig/SquigglesCoreConfigFile.cs" id="1_55e3y"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/GameplayTabResources/GameplayOptionsSettings.cs" id="1_cdlkp"]
+[ext_resource type="Script" path="res://Core/MetaConfig/SlotInfoProviderResource.cs" id="2_1ds4l"]
+[ext_resource type="Script" path="res://Core/MetaConfig/SaveSlotSettings.cs" id="3_efeen"]
+
+[sub_resource type="Environment" id="Environment_nqvnm"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wawyq"]
+
+[sub_resource type="Resource" id="Resource_8egm1"]
+script = ExtResource("1_cdlkp")
+GameplayMouseMode = 2
+OptionsArray = Array[Object]([])
+
+[sub_resource type="Resource" id="Resource_bj6ea"]
+script = ExtResource("2_1ds4l")
+
+[sub_resource type="Resource" id="Resource_hqg1a"]
+script = ExtResource("3_efeen")
+SlotOptions = 2
+_slotInfoProvider = SubResource("Resource_bj6ea")
+AllowPlayersToReloadLastSave = true
 
 [resource]
 script = ExtResource("1_55e3y")
 PlayScene = "res://example_play_scene.tscn"
 GameLogo = SubResource("PlaceholderTexture2D_wawyq")
-LaunchSceneOverride = ""
-MainMenuOverride = ""
+EnableReticle = true
+EnableColourCorrection = true
+DefaultEnvironment = SubResource("Environment_nqvnm")
 RemapControlsNames = PackedStringArray()
 HideUIMappings = true
+GameplayConfig = SubResource("Resource_8egm1")
 RegistryPathPattern = "res://Game/Registries/%s/"
 RegistryTypes = PackedStringArray()
 AuthorName = "QueenOfSquiggles"
 AuthorGamesURL = "https://queenofsquiggles.itch.io/"
+SaveSlotHandlingSettings = SubResource("Resource_hqg1a")
+LaunchSceneOverride = ""
+MainMenuOverride = ""
 CreditsLines = PackedStringArray("Kenney - for all kinds of awesome CC0 assets")

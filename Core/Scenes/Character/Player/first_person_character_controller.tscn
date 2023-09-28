@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bn2invm6c5eb8"]
 
 [ext_resource type="Script" path="res://Core/Scenes/Character/Player/PlayerController.cs" id="1_a4hb8"]
-[ext_resource type="PackedScene" uid="uid://cvxg1i0juoqmy" path="res://Core/Scenes/Utility/CameraUtilities/virtual_camera.tscn" id="2_ctyh5"]
+[ext_resource type="Script" path="res://Core/Modules/Camera/VirtualCamera.cs" id="2_l0fbd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bput"]
 albedo_color = Color(0.368627, 0.054902, 0.607843, 1)
@@ -53,7 +53,9 @@ shape = SubResource("CapsuleShape3D_ovivv")
 [node name="CameraArm" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37657, 0)
 
-[node name="VirtualCamera" parent="CameraArm" instance=ExtResource("2_ctyh5")]
+[node name="VirtualCamera" type="Marker3D" parent="CameraArm"]
+gizmo_extents = 1.0
+script = ExtResource("2_l0fbd")
 
 [node name="InteractionRay" type="RayCast3D" parent="CameraArm/VirtualCamera"]
 target_position = Vector3(0, 0, -1.5)

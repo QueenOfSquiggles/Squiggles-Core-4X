@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqvtk8t4gy4df"]
+[gd_scene load_steps=3 format=3 uid="uid://cqvtk8t4gy4df"]
 
-[ext_resource type="PackedScene" uid="uid://bwohee6c633j6" path="res://Core/Scenes/UI/Menus/pause_menu_controller.tscn" id="1_45dlq"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/pause_menu_controller.gd" id="1_m7oqd"]
+[ext_resource type="PackedScene" uid="uid://ded172dwi4pqg" path="res://Core/Scenes/UI/Menus/pause_menu.tscn" id="2_pijph"]
 
 [node name="ExamplePlayScene" type="Node2D"]
 
-[node name="PauseMenuController" parent="." instance=ExtResource("1_45dlq")]
+[node name="PauseMenuController" type="CanvasLayer" parent="."]
+layer = 128
+script = ExtResource("1_m7oqd")
+pause_menu_scene = ExtResource("2_pijph")

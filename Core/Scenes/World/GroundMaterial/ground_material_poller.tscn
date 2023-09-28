@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://xiabcgjmvnuf"]
-
-[ext_resource type="Script" path="res://Core/Scenes/World/GroundMaterial/GroundMaterialPoller.cs" id="1_qhdx5"]
-
-[node name="GroundMaterialPoller" type="RayCast3D"]
-debug_shape_custom_color = Color(1, 1, 0, 1)
-debug_shape_thickness = 5
-script = ExtResource("1_qhdx5")

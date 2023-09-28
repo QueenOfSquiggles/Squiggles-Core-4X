@@ -1,6 +1,6 @@
+class_name PauseMenuController
 extends Node
-
-@export var pause_menu_scene : PackedScene
+@export var pause_menu_scene : PackedScene = preload("res://Core/Scenes/UI/Menus/pause_menu.tscn")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

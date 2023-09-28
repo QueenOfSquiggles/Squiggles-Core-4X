@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/AudioTab.cs" id="1_uko75"]
 [ext_resource type="PackedScene" uid="uid://sgndh4ywb4st" path="res://Core/Scenes/UI/Menus/OptionsTabs/slider_combo.tscn" id="2_wor7r"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="3_3gmn4"]
-[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="4_yvpk1"]
+[ext_resource type="Script" path="res://Core/Modules/GUI/SlidingPanelComponent.cs" id="4_yvpk1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_81ya3"]
 font_size = 32
