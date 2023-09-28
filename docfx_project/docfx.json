@@ -15,7 +15,7 @@
       "includePrivateMembers": true,
       "disableGitFeatures": false,
       "noRestore": false,
-      "namespaceLayout": "nested",
+      "namespaceLayout": "flat",
       "memberLayout": "samePage",
       "EnumSortOrder": "declaringOrder",
       "allowCompilationErrors": false
