@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmyvj8hghl17s"
-path="res://.godot/imported/grey_arrowUpWhite.png-cc067242b155c0b6f40ffd783144daf0.ctex"
+uid="uid://yy8w4i8f2yqv"
+path="res://.godot/imported/crosshair118.png-48ca4fb46c0eebb9a3edb45452978b0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Core/Assets/Theme/kenney_assets/PNG/grey_arrowUpWhite.png"
-dest_files=["res://.godot/imported/grey_arrowUpWhite.png-cc067242b155c0b6f40ffd783144daf0.ctex"]
+source_file="res://Core/Assets/Packs/Kenney Crosshair Pack/crosshair118.png"
+dest_files=["res://.godot/imported/crosshair118.png-48ca4fb46c0eebb9a3edb45452978b0d.ctex"]
 
 [params]
 
