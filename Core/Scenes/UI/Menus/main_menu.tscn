@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/MainMenu.cs" id="1_ef7d4"]
 [ext_resource type="PackedScene" uid="uid://b8y0v225qjej4" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="3_k7orp"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="4_geber"]
-[ext_resource type="Texture2D" uid="uid://d43sw60ib1iq" path="res://icon.png" id="5_scqaj"]
-[ext_resource type="PackedScene" uid="uid://dpt6gu6jg1gx0" path="res://Core/Scenes/Utility/ControlsHelp/load_controls_mappings.tscn" id="6_unbtx"]
+[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="5_scqaj"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/VersioningLabel.cs" id="7_1dicm"]
-[ext_resource type="Script" path="res://Core/Scenes/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
+[ext_resource type="Script" path="res://Core/Modules/Data/LoadControlsMappings.cs" id="7_otb7q"]
+[ext_resource type="Script" path="res://Core/Modules/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0pa6q"]
 outline_size = 5
@@ -122,8 +122,6 @@ uri = "https://queenofsquiggles.itch.io/"
 
 [node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/LinkButton" instance=ExtResource("4_geber")]
 
-[node name="LoadControlsMappings" parent="." instance=ExtResource("6_unbtx")]
-
 [node name="VersioningLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -138,6 +136,9 @@ script = ExtResource("7_1dicm")
 
 [node name="SceneBGMLoader" type="Node" parent="."]
 script = ExtResource("8_4ubeu")
+
+[node name="LoadControlsMappings" type="Node" parent="."]
+script = ExtResource("7_otb7q")
 
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" to="." method="OnBtnPlay"]
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnOptions" to="." method="OnBtnOptions"]

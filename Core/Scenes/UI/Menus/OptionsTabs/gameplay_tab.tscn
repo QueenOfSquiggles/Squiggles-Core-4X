@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnij6xar2kbpg"]
 
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/GameplayTab.cs" id="1_03j23"]
-[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="2_1nc8h"]
+[ext_resource type="Script" path="res://Core/Modules/GUI/SlidingPanelComponent.cs" id="2_1nc8h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vjvdc"]
 font_size = 32

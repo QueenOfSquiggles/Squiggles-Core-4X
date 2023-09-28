@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://3w0fw3mkyeu6"]
-
-[ext_resource type="Script" path="res://Core/Scenes/ItemSystems/Components/WorldItemComponent.cs" id="1_tagp6"]
-
-[node name="WorldItemComponent" type="Node"]
-script = ExtResource("1_tagp6")

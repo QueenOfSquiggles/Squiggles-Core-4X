@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcbvejaujcfuq"]
+[gd_scene load_steps=20 format=3 uid="uid://bcbvejaujcfuq"]
 
-[ext_resource type="PackedScene" uid="uid://ctgxlwrddpdbx" path="res://Core/Scenes/Utility/CameraUtilities/camera_brain.tscn" id="1_echvd"]
-[ext_resource type="PackedScene" uid="uid://bwohee6c633j6" path="res://Core/Scenes/UI/Menus/pause_menu_controller.tscn" id="1_lphxg"]
-[ext_resource type="PackedScene" uid="uid://cvxg1i0juoqmy" path="res://Core/Scenes/Utility/CameraUtilities/virtual_camera.tscn" id="2_66sht"]
+[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/pause_menu_controller.gd" id="1_65ule"]
+[ext_resource type="PackedScene" uid="uid://ded172dwi4pqg" path="res://Core/Scenes/UI/Menus/pause_menu.tscn" id="2_dvbu6"]
+[ext_resource type="Script" path="res://Core/Scenes/Utility/CameraUtilities/CameraBrain.cs" id="3_0ydh6"]
 [ext_resource type="Script" path="res://Core/Modules/FSM/FiniteStateMachine.cs" id="3_ms3ms"]
 [ext_resource type="Script" path="res://implementation_example/CharacterTest.cs" id="3_vbofn"]
+[ext_resource type="Script" path="res://Core/Scenes/Utility/Effects/ScreenShakeDriver.cs" id="4_u7rkb"]
 [ext_resource type="Script" path="res://Core/Modules/FSM/HFSM_State.cs" id="5_hxqdr"]
+[ext_resource type="Script" path="res://Core/Scenes/Utility/CameraUtilities/VirtualCamera.cs" id="6_70te7"]
 [ext_resource type="Script" path="res://implementation_example/StateFPS.cs" id="6_r8hyv"]
 [ext_resource type="Script" path="res://implementation_example/StateLongview.cs" id="8_fckee"]
 [ext_resource type="Script" path="res://implementation_example/StateOTS.cs" id="9_s8tyr"]
@@ -24,6 +26,8 @@ tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vll2e"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vrt5t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ahx75"]
@@ -35,7 +39,10 @@ size = Vector3(0.1, 0.1, 1)
 
 [node name="FSMTest" type="Node3D"]
 
-[node name="PauseMenuController" parent="." instance=ExtResource("1_lphxg")]
+[node name="PauseMenuController" type="CanvasLayer" parent="."]
+layer = 128
+script = ExtResource("1_65ule")
+pause_menu_scene = ExtResource("2_dvbu6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n2uht")
@@ -44,8 +51,15 @@ environment = SubResource("Environment_n2uht")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CameraBrain" parent="." instance=ExtResource("1_echvd")]
+[node name="CameraBrain" type="Camera3D" parent="." groups=["cam_brain"]]
 transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, 3.27558, 2.56597, 3.0853)
+current = true
+script = ExtResource("3_0ydh6")
+
+[node name="ScreenShakeDriver" type="Node" parent="CameraBrain" node_paths=PackedStringArray("_camera") groups=["screen_shake_driver"]]
+script = ExtResource("4_u7rkb")
+_noise = SubResource("FastNoiseLite_vll2e")
+_camera = NodePath("..")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("_stateMachine", "_tpsStates", "_stateFPS", "_stateLongView", "_stateOTS")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13635, 0.962011)
@@ -66,19 +80,25 @@ mesh = SubResource("CapsuleMesh_ahx75")
 [node name="omni_cam_arm" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.632, 0)
 
-[node name="FPS_Camera" parent="CharacterBody3D/omni_cam_arm" instance=ExtResource("2_66sht")]
+[node name="FPS_Camera" type="Marker3D" parent="CharacterBody3D/omni_cam_arm"]
+gizmo_extents = 1.0
+script = ExtResource("6_70te7")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D/omni_cam_arm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.248648, 0)
 shape = SubResource("SphereShape3D_0whk5")
 spring_length = 5.0
 
-[node name="TPSCamLong" parent="CharacterBody3D/omni_cam_arm/SpringArm3D" instance=ExtResource("2_66sht")]
+[node name="TPSCamLong" type="Marker3D" parent="CharacterBody3D/omni_cam_arm/SpringArm3D"]
+gizmo_extents = 1.0
+script = ExtResource("6_70te7")
 
 [node name="ots_cam" type="Node3D" parent="CharacterBody3D/omni_cam_arm"]
 transform = Transform3D(0.993572, 0, 0.113203, 0, 1, 0, -0.113203, 0, 0.993572, 0.719, -0.063, 0)
 
-[node name="TPSCamOTS" parent="CharacterBody3D/omni_cam_arm/ots_cam" instance=ExtResource("2_66sht")]
+[node name="TPSCamOTS" type="Marker3D" parent="CharacterBody3D/omni_cam_arm/ots_cam"]
+gizmo_extents = 1.0
+script = ExtResource("6_70te7")
 
 [node name="FiniteStateMachine" type="Node" parent="CharacterBody3D" node_paths=PackedStringArray("_initialState")]
 script = ExtResource("3_ms3ms")

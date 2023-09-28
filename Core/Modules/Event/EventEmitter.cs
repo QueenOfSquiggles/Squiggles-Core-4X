@@ -6,6 +6,7 @@ using Squiggles.Core.Error;
 /// <summary>
 /// An emitter for any event that takes no arguments. Events with arguments will need some actual work to call. But this lets us run event emitting from animators or signal callbacks.
 /// </summary>
+[GlobalClass]
 public partial class EventEmitter : Node {
 
   [Export(PropertyHint.Enum, "OnAudio,OnGameStart,OnLevelLoaded,OnPlayerDie,OnPlayerWin,RequestCloseGUI")] private string _eventName = "";

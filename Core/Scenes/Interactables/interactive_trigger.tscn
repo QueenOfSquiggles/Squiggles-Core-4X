@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://lcodk5hyijne"]
-
-[ext_resource type="Script" path="res://Core/Scenes/Interactables/InteractiveTrigger.cs" id="1_wgjsl"]
-
-[node name="InteractiveTrigger" type="Area3D"]
-script = ExtResource("1_wgjsl")

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpt6gu6jg1gx0"]
-
-[ext_resource type="Script" path="res://Core/Scenes/Utility/ControlsHelp/LoadControlsMappings.cs" id="1_vvb50"]
-
-[node name="LoadControlsMappings" type="Node"]
-script = ExtResource("1_vvb50")

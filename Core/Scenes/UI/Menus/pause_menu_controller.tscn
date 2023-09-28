@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwohee6c633j6"]
-
-[ext_resource type="Script" path="res://Core/Scenes/UI/Menus/pause_menu_controller.gd" id="1_sc7k3"]
-[ext_resource type="PackedScene" uid="uid://ded172dwi4pqg" path="res://Core/Scenes/UI/Menus/pause_menu.tscn" id="2_3vv6g"]
-
-[node name="PauseMenuController" type="CanvasLayer"]
-layer = 128
-script = ExtResource("1_sc7k3")
-pause_menu_scene = ExtResource("2_3vv6g")

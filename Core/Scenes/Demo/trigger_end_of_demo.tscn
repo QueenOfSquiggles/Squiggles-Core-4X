@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckjevqkrqaav5"]
-
-[ext_resource type="Script" path="res://Core/Scenes/Demo/TriggerEndOfDemo.cs" id="1_s6wkp"]
-
-[node name="TriggerEndOfDemo" type="Node"]
-script = ExtResource("1_s6wkp")
-_demo_end_scene = "res://Core/Scenes/UI/Menus/main_menu.tscn"

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="1_52vsu"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/PlayMenu.cs" id="1_vbd2q"]
-[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="2_id8sb"]
+[ext_resource type="Script" path="res://Core/Modules/GUI/SlidingPanelComponent.cs" id="3_iwb2i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tddlm"]
 font_size = 32
@@ -77,7 +77,7 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 
 [node name="SlidingPanelComponent" type="Node" parent="." node_paths=PackedStringArray("_target")]
-script = ExtResource("2_id8sb")
+script = ExtResource("3_iwb2i")
 _target = NodePath("..")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BtnContinue" to="." method="OnBtnContinue"]

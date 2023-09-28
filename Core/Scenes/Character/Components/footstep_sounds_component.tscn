@@ -1,16 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://dg7138iwmapsx"]
 
-[ext_resource type="Script" path="res://Core/Scenes/Character/Components/FootstepSoundsComponent.cs" id="1_u11rn"]
-[ext_resource type="PackedScene" uid="uid://xiabcgjmvnuf" path="res://Core/Scenes/World/GroundMaterial/ground_material_poller.tscn" id="2_d2ae5"]
+[ext_resource type="Script" path="res://Core/Modules/Character/FootstepSoundsComponent.cs" id="1_u11rn"]
+[ext_resource type="Script" path="res://Core/Modules/Character/GroundMaterialPoller.cs" id="2_ogjda"]
 
-[node name="FootstepSoundsComponent" type="Node3D" node_paths=PackedStringArray("StepSound", "_GroundPoller")]
+[node name="FootstepSoundsComponent" type="Node3D"]
 script = ExtResource("1_u11rn")
-StepSound = NodePath("StepSound")
-_GroundPoller = NodePath("GroundMaterialPoller")
 
 [node name="StepSound" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 4
 
-[node name="GroundMaterialPoller" parent="." instance=ExtResource("2_d2ae5")]
+[node name="GroundMaterialPoller" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 target_position = Vector3(0, -0.2, 0)
+debug_shape_custom_color = Color(1, 1, 0, 1)
+debug_shape_thickness = 5
+script = ExtResource("2_ogjda")

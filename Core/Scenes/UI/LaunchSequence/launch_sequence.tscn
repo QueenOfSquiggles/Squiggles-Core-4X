@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://ci8028xlquyq1"]
 
-[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/AccessHelp/force_access_load.tscn" id="2_kdbm6"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/LaunchSequence/LaunchSequence.cs" id="2_q1rby"]
-[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/Effects/cutscene_skipper.tscn" id="3_ngdg6"]
+[ext_resource type="Script" path="res://Core/Modules/Data/LoadGraphicsSettings.cs" id="3_rmsai"]
+[ext_resource type="Script" path="res://Core/Modules/Effects/CutsceneSkipper.cs" id="4_3us2h"]
 [ext_resource type="Texture2D" uid="uid://01na5gpnckya" path="res://Core/Scenes/UI/LaunchSequence/icon-alternative-dark.png" id="4_c6jfh"]
-[ext_resource type="PackedScene" path="res://Core/Scenes/Utility/Environment/load_graphics_settings.tscn" id="6_mmmhm"]
+[ext_resource type="Script" path="res://Core/Modules/GUI/ForceAccessLoad.cs" id="5_y2a2w"]
 
 [sub_resource type="Animation" id="Animation_sphh6"]
 resource_name = "OpeningAnimation"
@@ -218,8 +218,11 @@ stretch_mode = 5
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 
-[node name="LoadGraphicsSettings" parent="." instance=ExtResource("6_mmmhm")]
+[node name="LoadGraphicsSettings" type="Node" parent="."]
+script = ExtResource("3_rmsai")
 
-[node name="CutsceneSkipper" parent="." instance=ExtResource("3_ngdg6")]
+[node name="CutsceneSkipper" type="Node" parent="."]
+script = ExtResource("4_3us2h")
 
-[node name="ForceAccessLoad" parent="." instance=ExtResource("2_kdbm6")]
+[node name="ForceAccessLoad" type="Node" parent="."]
+script = ExtResource("5_y2a2w")

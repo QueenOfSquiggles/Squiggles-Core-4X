@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://buiwria0scnlv"]
+[gd_scene load_steps=11 format=3 uid="uid://buiwria0scnlv"]
 
 [ext_resource type="Script" path="res://Core/Scenes/Character/Player/PsuedoAAACharController.cs" id="1_av74f"]
-[ext_resource type="PackedScene" uid="uid://cvxg1i0juoqmy" path="res://Core/Scenes/Utility/CameraUtilities/virtual_camera.tscn" id="2_yeh30"]
+[ext_resource type="Script" path="res://Core/Modules/Camera/VirtualCamera.cs" id="2_78laj"]
+[ext_resource type="Script" path="res://Core/Modules/Character/FootstepSoundsComponent.cs" id="4_1g0op"]
 [ext_resource type="PackedScene" uid="uid://db4g3dbnfr7m5" path="res://Core/Scenes/ShaderSystems/set_shader_global_position.tscn" id="4_ja1gl"]
-[ext_resource type="PackedScene" uid="uid://dg7138iwmapsx" path="res://Core/Scenes/Character/Components/footstep_sounds_component.tscn" id="6_63xay"]
+[ext_resource type="Script" path="res://Core/Scenes/World/GroundMaterial/GroundMaterialPoller.cs" id="5_aufu1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_elj5e"]
 height = 0.8
@@ -135,7 +136,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="CameraSway" type="Node3D" parent="CamRoot"]
 
-[node name="VirtualCamera" parent="CamRoot/CameraSway" instance=ExtResource("2_yeh30")]
+[node name="VirtualCamera" type="Marker3D" parent="CamRoot/CameraSway"]
+gizmo_extents = 1.0
+script = ExtResource("2_78laj")
 
 [node name="InteractRay" type="RayCast3D" parent="CamRoot/CameraSway/VirtualCamera"]
 target_position = Vector3(0, 0, -2.5)
@@ -147,6 +150,16 @@ libraries = {
 }
 
 [node name="SetShaderGlobalPosition" parent="." instance=ExtResource("4_ja1gl")]
-uniform_name = "player_position"
 
-[node name="FootstepSoundsComponent" parent="." instance=ExtResource("6_63xay")]
+[node name="FootstepSoundsComponent" type="Node3D" parent="."]
+script = ExtResource("4_1g0op")
+
+[node name="StepSound" type="AudioStreamPlayer3D" parent="FootstepSoundsComponent"]
+max_polyphony = 4
+
+[node name="GroundMaterialPoller" type="RayCast3D" parent="FootstepSoundsComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+target_position = Vector3(0, -0.2, 0)
+debug_shape_custom_color = Color(1, 1, 0, 1)
+debug_shape_thickness = 5
+script = ExtResource("5_aufu1")

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://df32xgh7wr2n4"]
-
-[ext_resource type="Script" path="res://Core/Scenes/Modification/ModLoadingStep.cs" id="1_6ho7t"]
-
-[node name="ModLoadingStep" type="Node"]
-script = ExtResource("1_6ho7t")

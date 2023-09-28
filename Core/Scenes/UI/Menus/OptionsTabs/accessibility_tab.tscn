@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="2_n5o3d"]
 [ext_resource type="PackedScene" uid="uid://sgndh4ywb4st" path="res://Core/Scenes/UI/Menus/OptionsTabs/slider_combo.tscn" id="2_wr3cm"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/OptionsTabs/clear_scroll.gd" id="3_m8o3s"]
-[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="6_8fdip"]
+[ext_resource type="Script" path="res://Core/Modules/GUI/SlidingPanelComponent.cs" id="6_8fdip"]
 
 [node name="Accessibility" type="PanelContainer" node_paths=PackedStringArray("_checkboxNoFlashingLights", "_sliderRumbleStrength", "_sliderScreenShakeStrength", "_sliderRumbleDuration", "_sliderScreenShakeDuration", "_sliderMaxVolume", "_sliderTimeScale", "_sliderGUIScale", "_optionFont", "_checkAlwaysShowReticle")]
 anchors_preset = 9

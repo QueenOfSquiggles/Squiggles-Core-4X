@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://sgndh4ywb4st" path="res://Core/Scenes/UI/Menus/OptionsTabs/slider_combo.tscn" id="2_h61vd"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="2_u0rvq"]
 [ext_resource type="PackedScene" uid="uid://4elgg5q5jaob" path="res://Core/Scenes/UI/Menus/OptionsTabs/graphics_demo_display_async.tscn" id="2_upr2m"]
-[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="4_26by2"]
+[ext_resource type="Script" path="res://Core/Modules/GUI/SlidingPanelComponent.cs" id="4_26by2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_scsl4"]
 font_size = 32

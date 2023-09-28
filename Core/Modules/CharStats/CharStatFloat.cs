@@ -4,6 +4,7 @@ using Godot;
 /// <summary>
 /// A character stat (float). Designed to composite with child nodes.
 /// </summary>
+[GlobalClass]
 public partial class CharStatFloat : Node {
 
   /// <summary>

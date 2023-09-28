@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bes6on8dhb1c3"]
 
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/CreditsScene.cs" id="2_0eafv"]
-[ext_resource type="Script" path="res://Core/Scenes/UI/Animations/SlidingPanelComponent.cs" id="3_l3624"]
+[ext_resource type="Script" path="res://Core/Modules/GUI/SlidingPanelComponent.cs" id="3_l3624"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rrpdt"]
 font_size = 20
