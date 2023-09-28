@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://b6m4xd68fa5um"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://b6m4xd68fa5um"]
 
 [ext_resource type="FontFile" uid="uid://cpkb4mv46vfpb" path="res://Core/Assets/Fonts/DelaGothicOne-Regular.ttf" id="1_l51w2"]
 [ext_resource type="StyleBox" uid="uid://jntifr8fgmo5" path="res://Core/Assets/Theme/button/normal.tres" id="1_rmmgv"]
@@ -39,11 +39,9 @@ load_path = "res://.godot/imported/grey_tickGrey.png-a26f08745dad8b33759a696908a
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvfsg"]
 load_path = "res://.godot/imported/grey_tickWhite.png-643ddf3df4188774169e257320c1b1f4.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_25o63"]
-
 [resource]
 default_font = ExtResource("1_l51w2")
-default_font_size = 22
+default_font_size = 16
 Button/colors/icon_focus_color = Color(0.427451, 0.427451, 0.427451, 1)
 Button/colors/icon_hover_color = Color(0.427451, 0.427451, 0.427451, 1)
 Button/colors/icon_hover_pressed_color = Color(0.427451, 0.427451, 0.427451, 0.352941)
@@ -53,7 +51,7 @@ Button/styles/focus = ExtResource("2_j5yxf")
 Button/styles/hover = ExtResource("2_j5yxf")
 Button/styles/normal = ExtResource("1_rmmgv")
 Button/styles/pressed = ExtResource("3_paclo")
-CheckBox/constants/h_separation = 16
+CheckBox/constants/h_separation = 8
 CheckBox/icons/checked = SubResource("CompressedTexture2D_0vptf")
 CheckBox/icons/radio_checked = SubResource("CompressedTexture2D_568m8")
 CheckBox/icons/radio_unchecked = SubResource("CompressedTexture2D_5s7yx")
@@ -71,7 +69,11 @@ HSlider/icons/grabber_highlight = SubResource("CompressedTexture2D_jvfsg")
 HSlider/styles/grabber_area = ExtResource("14_w7t2j")
 HSlider/styles/grabber_area_highlight = ExtResource("14_2hr5b")
 LinkButton/styles/focus = ExtResource("2_j5yxf")
-OptionButton/icons/arrow = SubResource("CompressedTexture2D_25o63")
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+OptionButton/icons/arrow = null
 PanelContainer/styles/panel = ExtResource("2_o84u2")
 PopupMenu/icons/checked = SubResource("CompressedTexture2D_0vptf")
 PopupMenu/icons/radio_checked = SubResource("CompressedTexture2D_568m8")
