@@ -49,7 +49,7 @@ public partial class LaunchSequence : Control {
 #endif
     // Load in configuratuion settings
     if (_gameLogo is not null) {
-      _gameLogo.Texture = ThisIsYourMainScene.Config?.GameLogo;
+      _gameLogo.Texture = SC4X.Config?.GameLogo;
     }
 
     var ran = new Random();
@@ -82,7 +82,7 @@ public partial class LaunchSequence : Control {
   /// Used to load to the main menu. Called from the animation so that the <see cref="CutsceneSkipper"/> ensures operation.
   /// </summary>
   public void EndLaunchSequence() {
-    var path = ThisIsYourMainScene.Config?.MainMenuOverride ?? "";
+    var path = SC4X.Config?.MainMenuOverride ?? "";
     if (path is null or "") {
       path = DEFAULT_MAIN_MENU;
     }

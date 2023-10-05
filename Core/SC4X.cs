@@ -10,9 +10,9 @@ using Squiggles.Core.Scenes.Utility;
 /// <summary>
 /// This is your main scene! This is the default main scene for SC4X as it handles a ton of rerouting and initialization processes.
 /// </summary>
-public partial class ThisIsYourMainScene : Node {
+public partial class SC4X : Node {
 
-  private static ThisIsYourMainScene _instance;
+  private static SC4X _instance;
 
   /// <summary>
   /// A reference to the warning label that will show any malformed configuration settings

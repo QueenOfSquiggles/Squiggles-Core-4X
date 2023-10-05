@@ -25,7 +25,7 @@ public partial class PlayMenu : PanelContainer {
       return;
     }
 
-    var slotInfo = ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.SlotInfoProvider;
+    var slotInfo = SC4X.Config?.SaveSlotHandlingSettings?.SlotInfoProvider;
     Debugging.Assert(slotInfo is not null, "Failed to load slot info provider from play menu!");
 
 
@@ -64,5 +64,5 @@ public partial class PlayMenu : PanelContainer {
     EventBus.Data.TriggerReload();
   }
 
-  private static string GetLevelScene() => ThisIsYourMainScene.Config?.PlayScene ?? "";
+  private static string GetLevelScene() => SC4X.Config?.PlayScene ?? "";
 }

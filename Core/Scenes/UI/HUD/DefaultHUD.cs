@@ -116,7 +116,7 @@ public partial class DefaultHUD : Control {
     _rootSubtitle.Modulate = _colourTransparent;
     _rootAlert.Modulate = _colourTransparent;
 
-    if (ThisIsYourMainScene.Config?.EnableReticle is not true) {
+    if (SC4X.Config?.EnableReticle is not true) {
       _reticle.QueueFree();
       _reticle = null;
     }

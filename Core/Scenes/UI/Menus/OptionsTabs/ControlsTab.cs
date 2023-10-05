@@ -54,14 +54,14 @@ public partial class ControlsTab : PanelContainer {
 
     EventBus.Data.SerializeAll += ApplyChanges;
 
-    var keys = ThisIsYourMainScene.Config?.RemapControlsNames ?? Array.Empty<string>();
+    var keys = SC4X.Config?.RemapControlsNames ?? Array.Empty<string>();
     if (keys.Length <= 0) {
       // empty array, assume all are valid and place custom mappings first
       var mappings = InputMap.GetActions();
       var union = new List<StringName>();
       var custom_mappings = mappings.Where((key) => !key.ToString().StartsWith("ui")).ToList();
       union.AddRange(custom_mappings);
-      if (!(ThisIsYourMainScene.Config?.HideUIMappings ?? true)) {
+      if (!(SC4X.Config?.HideUIMappings ?? true)) {
         var ui_mappings = mappings.Where((key) => key.ToString().StartsWith("ui")).ToList();
         union.AddRange(ui_mappings);
       }

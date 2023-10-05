@@ -67,7 +67,7 @@ public partial class GraphicsTab : PanelContainer {
   private bool _useColourCorrection = true;
 
   public override void _Ready() {
-    _useColourCorrection = ThisIsYourMainScene.Config?.EnableColourCorrection is true;
+    _useColourCorrection = SC4X.Config?.EnableColourCorrection is true;
 
     var current = _optionFullscreen.GetItemIndex(Graphics.Instance.Fullscreen);
     _optionFullscreen.Selected = current;

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SquigglesCommon4X"
-run/main_scene="res://Core/this_is_your_main_scene.tscn"
+run/main_scene="res://Core/sc4x_entry.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
