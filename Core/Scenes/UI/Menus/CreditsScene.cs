@@ -25,7 +25,7 @@ public partial class CreditsScene : Control {
   [Export] private LabelSettings _labelStyling;
 
   public override void _Ready() {
-    var lines = ThisIsYourMainScene.Config?.CreditsLines ?? Array.Empty<string>();
+    var lines = SC4X.Config?.CreditsLines ?? Array.Empty<string>();
     foreach (var line in lines) {
       _creditsLinesRoot?.AddChild(new Label() {
         Text = line,

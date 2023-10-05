@@ -17,8 +17,8 @@ public partial class DemoEndScene : Control {
   /// A utility that allows returning to the main menu from calling code or a signal connection. Recommended case is to use an AnimationPlayer to call it with some kind of cutscene.
   /// </summary>
   public void ReturnMainMenu() => SceneTransitions.LoadSceneAsync(
-    ThisIsYourMainScene.Config?.MainMenuOverride?.Length > 0 ?
-      ThisIsYourMainScene.Config?.MainMenuOverride :
+    SC4X.Config?.MainMenuOverride?.Length > 0 ?
+      SC4X.Config?.MainMenuOverride :
       _mainMenuScene
     );
 }

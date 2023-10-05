@@ -44,25 +44,25 @@ public partial class MainMenu : Control {
   public override void _Ready() {
     Input.MouseMode = Input.MouseModeEnum.Visible;
     if (_gameLogo is not null) {
-      _gameLogo.Texture = ThisIsYourMainScene.Config?.GameLogo;
+      _gameLogo.Texture = SC4X.Config?.GameLogo;
     }
 
     if (_authorLabel is not null) {
-      _authorLabel.Text = Tr(_authorLabel.Text).Replace("%s", ThisIsYourMainScene.Config?.AuthorName ?? "SET AUTHOR NAME IN CONFIG");
-      _authorLabel.Uri = ThisIsYourMainScene.Config?.AuthorGamesURL ?? "";
+      _authorLabel.Text = Tr(_authorLabel.Text).Replace("%s", SC4X.Config?.AuthorName ?? "SET AUTHOR NAME IN CONFIG");
+      _authorLabel.Uri = SC4X.Config?.AuthorGamesURL ?? "";
     }
   }
 
   private async void OnBtnPlay() {
-    switch (ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.SlotOptions) {
+    switch (SC4X.Config?.SaveSlotHandlingSettings?.SlotOptions) {
       case Meta.SaveSlotSettings.SaveSlotOptions.NO_SAVE_DATA:
         SaveData.CurrentSaveSlot.DeleteSaveSlot(); // clear out any existing data
-        SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+        SceneTransitions.LoadSceneAsync(SC4X.Config?.PlayScene ?? "");
         break;
       case Meta.SaveSlotSettings.SaveSlotOptions.SINGLE_SAVE_SLOT:
         SaveData.LoadDefaultSaveSlot();
         EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-        SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+        SceneTransitions.LoadSceneAsync(SC4X.Config?.PlayScene ?? "");
         break;
       case Meta.SaveSlotSettings.SaveSlotOptions.MULTI_SLOT_SAVE_DATA:
         if (SaveData.HasSaveData()) {
@@ -75,7 +75,7 @@ public partial class MainMenu : Control {
         else {
           SaveData.SetSaveSlot(SaveData.CreateSaveSlotName());
           EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-          SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+          SceneTransitions.LoadSceneAsync(SC4X.Config?.PlayScene ?? "");
         }
         break;
       case null:
@@ -88,7 +88,7 @@ public partial class MainMenu : Control {
   private static void OnBtnContinue() {
     SaveData.LoadMostRecentSaveSlot();
     EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-    SceneTransitions.LoadSceneAsync(ThisIsYourMainScene.Config?.PlayScene ?? "");
+    SceneTransitions.LoadSceneAsync(SC4X.Config?.PlayScene ?? "");
   }
 
   private async void OnBtnOptions() {

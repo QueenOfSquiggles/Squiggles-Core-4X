@@ -15,7 +15,7 @@ public partial class GameplayTab : PanelContainer {
   [Export] private VBoxContainer _content;
 
   public override void _Ready() {
-    var config = ThisIsYourMainScene.Config?.GameplayConfig;
+    var config = SC4X.Config?.GameplayConfig;
     if (!Debugging.Assert(config is not null, "")) {
       Print.Info("Failed to find configuration data", this);
       return;

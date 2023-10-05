@@ -41,13 +41,13 @@ public partial class PauseMenu : Control {
   public override void _Ready() {
     GetTree().Paused = true;
     Input.MouseMode = Input.MouseModeEnum.Visible;
-    if (ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.SlotOptions == Meta.SaveSlotSettings.SaveSlotOptions.NO_SAVE_DATA) {
+    if (SC4X.Config?.SaveSlotHandlingSettings?.SlotOptions == Meta.SaveSlotSettings.SaveSlotOptions.NO_SAVE_DATA) {
       // if no save slot chosen, remove the save data related buttons
       foreach (var c in _saveSlotRelatedElements) {
         c?.QueueFree();
       }
     }
-    if (ThisIsYourMainScene.Config?.SaveSlotHandlingSettings?.AllowPlayersToReloadLastSave is false) {
+    if (SC4X.Config?.SaveSlotHandlingSettings?.AllowPlayersToReloadLastSave is false) {
       _loadLastSaveControl?.QueueFree();
     }
 
@@ -64,7 +64,7 @@ public partial class PauseMenu : Control {
   private async void ReturnToPlay() {
     EventBus.Data.TriggerSerializeAll();
     await Task.Delay(10);
-    Input.MouseMode = ThisIsYourMainScene.Config?.GameplayConfig?.GameplayMouseMode ?? Input.MouseModeEnum.Captured;
+    Input.MouseMode = SC4X.Config?.GameplayConfig?.GameplayMouseMode ?? Input.MouseModeEnum.Captured;
     GetTree().Paused = false;
     QueueFree();
   }

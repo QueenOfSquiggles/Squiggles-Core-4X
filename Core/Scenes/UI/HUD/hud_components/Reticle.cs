@@ -11,7 +11,7 @@ public partial class Reticle : TextureRect {
   private Tween _tween;
 
   public override void _Ready() {
-    if (ThisIsYourMainScene.Config?.EnableReticle is not true) {
+    if (SC4X.Config?.EnableReticle is not true) {
       QueueFree();
       return;
     }
