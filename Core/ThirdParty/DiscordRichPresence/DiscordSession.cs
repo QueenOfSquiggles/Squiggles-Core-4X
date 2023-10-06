@@ -41,7 +41,7 @@ public partial class DiscordSession : Node {
   /// Initializes the session with the given key name. Useful
   /// </summary>
   /// <param name="keyName"></param>
-  public void InitSession(string keyName) {
+  public static void InitSession(string keyName) {
     var key = Auth.GetKey(keyName);
     if (key is null) {
       // if you're stubborn enough to use your own key name then just delete this print warning
@@ -53,6 +53,14 @@ public partial class DiscordSession : Node {
     };
     Client.OnReady += (sender, e) => DiscordOnReady?.Invoke(sender, e);
     Client.OnPresenceUpdate += (sender, e) => DiscordOnPresenceUpdate?.Invoke(sender, e);
+    if (!Client.Initialize()) {
+      Print.Error("Failed to initialize DiscordRPC client connection");
+      Client = null;
+      return;
+    }
+
+    SetPresence(details: "Launching...");
+    Print.Debug("Initialized discord rich presence");
   }
 
   /// <summary>
@@ -61,7 +69,7 @@ public partial class DiscordSession : Node {
   /// <param name="details">The 'main' details for the presence. Recommended to be a short sentence fragment</param>
   /// <param name="state">The 'state' of the game. In multiplayer competitive games this would be the game-mode the player is currently playing, and possibly the current score if space allows.</param>
   public static void UpdatePresenceText(string details = "", string state = "") {
-    var presence = Client.CurrentPresence;
+    var presence = Client.CurrentPresence ?? new RichPresence();
     presence.Details = details != "" ? details : presence.Details;
     presence.State = state != "" ? state : presence.State;
     Client.SetPresence(presence);
@@ -113,20 +121,24 @@ public partial class DiscordSession : Node {
   /// </summary>
   /// <param name="dateTime">The exact time that the contextual event started. Shown as an upwards counting timer</param>
   public static void SetStartTime(DateTime dateTime) {
-    var presence = Client.CurrentPresence.WithTimestamps(new Timestamps() {
+    var presence = Client.CurrentPresence?.WithTimestamps(new Timestamps() {
       Start = dateTime
     });
-    Client.SetPresence(presence);
+    if (presence is not null) {
+      Client.SetPresence(presence);
+    }
   }
   /// <summary>
   /// Sets the end time of the presence without altering anything else about the presence.
   /// </summary>
   /// <param name="dateTime">The exact time that the contextual event will end. Shown as a downwards counting timer</param>
   public static void SetEndTime(DateTime dateTime) {
-    var presence = Client.CurrentPresence.WithTimestamps(new Timestamps() {
+    var presence = Client.CurrentPresence?.WithTimestamps(new Timestamps() {
       End = dateTime
     });
-    Client.SetPresence(presence);
+    if (presence is not null) {
+      Client.SetPresence(presence);
+    }
   }
 
   /// <summary>

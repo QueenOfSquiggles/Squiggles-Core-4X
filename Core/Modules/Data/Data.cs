@@ -235,11 +235,9 @@ public class DataPath {
       SaveText(json_text, path);
     }
     catch (Exception e) {
-#if DEBUG
       if (print_errors) {
         Print.Error($"Failed on JSON serialization process for '{data}' type='{data.GetType().FullName}'.\n\tPath={path}\n\tError: {e.Message}", typeof(SaveData).FullName);
       }
-#endif
     }
   }
   /// <summary>
@@ -267,11 +265,9 @@ public class DataPath {
       return data;
     }
     catch (Exception e) {
-#if DEBUG
       if (print_errors) {
         Print.Error($"Failed on JSON serialization process for type '{typeof(T).FullName}'.\n\tPath={path}\n\tError: {e.Message}", typeof(SaveData).FullName);
       }
-#endif
     }
     return null;
   }
@@ -339,11 +335,9 @@ public class DataPath {
       return text;
     }
     catch (Exception e) {
-#if DEBUG
       if (print_errors) {
         Print.Error($"Failed to read file.\n\tPath={path}\n\tError: {e.Message}", typeof(SaveData).FullName);
       }
-#endif
     }
     return null;
   }
