@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Scenes="*res://Core/Scenes/Utility/Autoload/scenes.tscn"
 BGM="*res://Core/Scenes/Utility/Autoload/bgm.tscn"
+DiscordSession="*res://Core/ThirdParty/DiscordRichPresence/DiscordSession.cs"
 
 [display]
 

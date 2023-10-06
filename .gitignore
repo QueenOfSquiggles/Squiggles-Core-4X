@@ -13,5 +13,10 @@ _site/
 /**/obj/
 
 _site/
+
 # SC4X configuration file for secret API keys
 appconfig.json
+
+# SC4X test files
+.export/
+export_presets.cfg

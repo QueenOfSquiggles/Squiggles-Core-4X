@@ -42,7 +42,7 @@ public partial class LaunchSequence : Control {
 			{
 				// For the demo run animation every time
 				Print.Debug("Detected Demo Build");
-				chance_do_anyway = 2.0f;
+				_chanceDoAnyway = 2.0f;
 			} else {
 				Print.Debug("Detected Release Build");
 			}
