@@ -127,11 +127,7 @@ public static class Print {
   /// </summary>
   /// <param name="msg">the text of the message to send</param>
   /// <param name="className">the metadata of the class</param>
-  public static void Debug(string msg, string className = "") =>
-#if DEBUG
-    // Nice little QOL so I don't forget my random print statements
-    DisplayMessage(new Msg(msg, className).SetLevel(LOG_DEBUG).Color(DEBUG_COLOUR).Italics().SetType("DEBUG"));
-#endif
+  public static void Debug(string msg, string className = "") => DisplayMessage(new Msg(msg, className).SetLevel(LOG_DEBUG).Color(DEBUG_COLOUR).Italics().SetType("DEBUG"));
 
 
   /// <summary>
