@@ -12,11 +12,6 @@ func _enter_tree() -> void:
 	_set_setting_if_empty("gui/theme/custom", "res://Core/Assets/Theme/default_theme.tres")
 	_set_setting_if_empty("application/run/main_scene", "res://Core/sc4x_entry.tscn")
 
-	if ProjectSettings.get_setting("application/run/main_scene") == "":
-		# if no main scene is currently set
-		ProjectSettings.set_setting("application/run/main_scene", "")
-		print("Auto set main scene to SC4X main scene")
-
 func _exit_tree() -> void:
 	remove_autoload_singleton("Scenes")
 	remove_autoload_singleton("BGM")
