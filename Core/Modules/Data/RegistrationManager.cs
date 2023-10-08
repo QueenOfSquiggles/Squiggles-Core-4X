@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Squiggles.Core.Attributes;
+using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 using Squiggles.Core.Events;
 using Squiggles.Core.WorldEntity;
@@ -46,7 +47,7 @@ public partial class RegistrationManager : Node {
   /// <param name="id">the registered id of the resource</param>
   /// <returns>the resource, cast to T, or null on failure.</returns>
   public static T GetResource<T>(string id) where T : Resource {
-    var type_name = nameof(T);
+    var type_name = typeof(T).Name;
     if (!_registries.ContainsKey(type_name)) {
       Print.Warn($"No registry found for type <{type_name}>");
       return null;
@@ -73,10 +74,12 @@ public partial class RegistrationManager : Node {
     foreach (var type in _registries.Keys) {
       var registry = _registries[type];
       // TODO: create an IIDProvider interface that we can use to acquire IDs from any arbitrary resource implementation and use resource name as a fallback only
-      registry.Dict = LoadRegistry(registry.Path, (Resource res) => res.ResourceName, null, type);
+      registry.Dict = LoadRegistry<Resource>(registry.Path, DefaultIDParse, null, type);
       _registries[type] = registry;
     }
   }
+
+  private static string DefaultIDParse(Resource res) => res is IRegistryID regID ? regID.GetRegistryID() : res.ResourceName;
 
   private delegate string GetIDFor<T>(T obj) where T : Resource; // Delegates for callbacks are frickin awesome. Eat your heart out GDScript!
   private delegate void AddToDictionary<T>(Dictionary<string, T> dict, string id, T obj) where T : Resource;
@@ -108,7 +111,7 @@ public partial class RegistrationManager : Node {
   private static void PrintRegistry<T>(Dictionary<string, T> reg, string label) where T : Resource {
     Print.Debug($"----['{label}' Registry ({reg.Count} elements) ]----");
     foreach (var pair in reg) {
-      Print.Debug($"] '{pair.Key}' : {pair.Value}");
+      Print.Debug($"] '{pair.Key}' : {pair.Value.ResourcePath}");
     }
     Print.Debug($"----[End Registry ]----");
   }

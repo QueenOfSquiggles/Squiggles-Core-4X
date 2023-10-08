@@ -13,7 +13,7 @@ public partial class ScreenShakeDriver : Node {
   /// <summary>
   /// The noise function to use for calculating screen shake. Probably will require some tweaking if you want something non-default
   /// </summary>
-  [Export] private FastNoiseLite _noise;
+  [Export] private FastNoiseLite _noise = new();
 
   /// <summary>
   /// A reference to the target camera
@@ -29,9 +29,10 @@ public partial class ScreenShakeDriver : Node {
     if (_noise is null) {
       return;
     }
-
     _noise.Seed = new Random().Next();
+    Effects.Instance.RequestScreenShake += ApplyShake;
   }
+  public override void _ExitTree() => Effects.Instance.RequestScreenShake -= ApplyShake;
 
   /// <summary>
   /// Applies the shake desired

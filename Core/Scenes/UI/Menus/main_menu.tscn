@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4l37id685tw"]
+[gd_scene load_steps=11 format=3 uid="uid://b4l37id685tw"]
 
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/MainMenu.cs" id="1_ef7d4"]
+[ext_resource type="Texture2D" uid="uid://cmadwvieebxur" path="res://Game/Assets/GUI/main_menu_bg.jpg" id="2_du8k2"]
 [ext_resource type="PackedScene" uid="uid://b8y0v225qjej4" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="3_k7orp"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="4_geber"]
-[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="5_scqaj"]
+[ext_resource type="Texture2D" uid="uid://b0kmgsqo4syyl" path="res://icon.png" id="5_scqaj"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/VersioningLabel.cs" id="7_1dicm"]
 [ext_resource type="Script" path="res://Core/Modules/Data/LoadControlsMappings.cs" id="7_otb7q"]
 [ext_resource type="Script" path="res://Core/Modules/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
+[ext_resource type="AudioStream" uid="uid://dp4083sw00s8a" path="res://Game/Assets/SFX/ThirdParty/Loops/Sci-Fi 6 Loop.ogg" id="8_pslo7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0pa6q"]
 outline_size = 5
@@ -28,6 +30,8 @@ _gameLogo = NodePath("ControlButtons/MarginContainer/VBoxContainer/TitleTexture"
 _authorLabel = NodePath("ControlButtons/MarginContainer/VBoxContainer/LinkButton")
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
+show_behind_parent = true
+z_index = -4096
 texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
@@ -35,7 +39,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 2
+texture = ExtResource("2_du8k2")
+expand_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -139,6 +144,11 @@ script = ExtResource("8_4ubeu")
 
 [node name="LoadControlsMappings" type="Node" parent="."]
 script = ExtResource("7_otb7q")
+
+[node name="SceneBGMLoader2" type="Node" parent="."]
+script = ExtResource("8_4ubeu")
+_musicTrack = ExtResource("8_pslo7")
+_crossfade_duration = 3.0
 
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" to="." method="OnBtnPlay"]
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnOptions" to="." method="OnBtnOptions"]
