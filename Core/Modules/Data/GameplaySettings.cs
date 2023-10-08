@@ -3,8 +3,6 @@ namespace Squiggles.Core.Data;
 using System;
 using System.Collections.Generic;
 using Squiggles.Core.Events;
-using Squiggles.Core.Scenes;
-using Squiggles.Core.Scenes.UI.Menus.Gameplay;
 
 /// <summary>
 /// The singleton for handling gameplay settings. These are designed to be highly configurable with a provider approach.
@@ -119,33 +117,12 @@ public class GameplaySettings {
   private const string FILE_PATH = "gameplay.json";
 
   private static void CreateInstance() {
-    _instance = new GameplaySettings();
-    var loaded = SaveData.Load<GameplaySettings>(FILE_PATH);
-    if (loaded != null) {
-      _instance = loaded;
+    _instance ??= new GameplaySettings();
+    var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
+    foreach (var entry in builder.Iterator) {
+      _instance.Options[entry.Key] = entry.Value;
     }
-    else {
-      // load from config file
-      if (SC4X.Config?.GameplayConfig?.OptionsArray is OptionBase[] options) {
-        foreach (var op in options) {
-          switch (op) {
-            case OptionBool opb:
-              SetBool(opb.InternalName, opb.Value);
-              break;
-            case OptionSlider ops:
-              SetFloat(ops.InternalName, ops.DefaultValue);
-              break;
-            case OptionComboSelect opcs:
-              SetString(opcs.InternalName, opcs.Options[opcs.DefaultSelection]);
-              break;
-          }
-        }
-      }
-    }
-    // Print.Info("Gameplay Options Loaded:");
-    // foreach (var pair in _instance.Options) {
-    //   Print.Info($"\t\"{pair.Key}\" = '{pair.Value}'");
-    // }
+    OptionsChanged?.Invoke();
     EventBus.Data.SerializeAll += SaveSettings;
   }
 
@@ -153,7 +130,10 @@ public class GameplaySettings {
     if (_instance == null) {
       return;
     }
-
-    SaveData.Save(_instance, FILE_PATH);
+    var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false);
+    foreach (var entry in _instance.Options) {
+      builder.PutString(entry.Key, entry.Value);
+    }
+    builder.SaveToFile();
   }
 }

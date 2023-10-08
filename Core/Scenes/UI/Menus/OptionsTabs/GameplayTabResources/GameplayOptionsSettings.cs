@@ -1,6 +1,5 @@
 namespace Squiggles.Core.Scenes.UI.Menus.Gameplay;
 
-using System;
 using Godot;
 using Squiggles.Core.Data;
 
@@ -29,6 +28,8 @@ public partial class GameplayOptionsSettings : Resource {
           break;
         case OptionComboSelect opcs:
           GameplaySettings.SetString(opcs.InternalName, opcs.Options[opcs.DefaultSelection]);
+          break;
+        default:
           break;
       }
     }

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://csw2xkjb373g2"]
+
+[ext_resource type="Script" path="res://test/scenes/GameplaySettingsTest.cs" id="1_7hfnu"]
+
+[node name="GameplaySettingsTest" type="Control" node_paths=PackedStringArray("_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7hfnu")
+_text = NodePath("LineEdit")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 71.0
+offset_right = 980.0
+offset_bottom = 170.0
+
+[node name="BtnSave" type="Button" parent="."]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 264.0
+offset_right = 406.0
+offset_bottom = 272.0
+text = "Save"
+
+[node name="BtnLoad" type="Button" parent="."]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 264.0
+offset_right = 837.0
+offset_bottom = 296.0
+text = "Load"
+
+[connection signal="pressed" from="BtnSave" to="." method="OnSave"]
+[connection signal="pressed" from="BtnLoad" to="." method="OnLoad"]
