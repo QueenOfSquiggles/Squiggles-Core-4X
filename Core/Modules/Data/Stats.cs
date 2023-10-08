@@ -31,8 +31,9 @@ public static class Stats {
 
   public static void SaveSettings() {
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false);
-    builder.PutBool(nameof(FirstTimeLaunch), false); // intentionally hard-coded to ensure reasonable detection of first launch
+    builder.PutBool(nameof(FirstTimeLaunch), FirstTimeLaunch); // intentionally hard-coded to ensure reasonable detection of first launch
     builder.PutFloat(nameof(TotalPlayTime), TotalPlayTime);
+    builder.SaveToFile();
   }
 
 }

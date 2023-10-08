@@ -7,7 +7,7 @@ using Squiggles.Core.Events;
 /// <summary>
 /// The singleton for handling gameplay settings. These are designed to be highly configurable with a provider approach.
 /// </summary>
-public class GameplaySettings {
+public static class GameplaySettings {
 
   //
   //  Meaningful information
@@ -16,7 +16,7 @@ public class GameplaySettings {
   /// <summary>
   /// The loaded options with a key-value pairing where both are strings. They are then parsed when requested.
   /// </summary>
-  public readonly Dictionary<string, string> Options = new();
+  public static readonly Dictionary<string, string> Options = new();
 
   //
   //  Helper Functions
@@ -34,7 +34,7 @@ public class GameplaySettings {
   /// </summary>
   /// <param name="key">the key to check for</param>
   /// <returns>true if the key is present. False if not</returns>
-  public static bool HasKey(string key) => Instance.Options.ContainsKey(key);
+  public static bool HasKey(string key) => Options.ContainsKey(key);
 
   // Getters
   /// <summary>
@@ -43,8 +43,8 @@ public class GameplaySettings {
   /// <param name="key"></param>
   /// <returns></returns>
   public static bool GetBool(string key) {
-    if (Instance.Options.ContainsKey(key)) {
-      var success = bool.TryParse(Instance.Options[key], out var result);
+    if (Options.ContainsKey(key)) {
+      var success = bool.TryParse(Options[key], out var result);
       return success && result;
     }
     return false;
@@ -56,8 +56,8 @@ public class GameplaySettings {
   /// <param name="key"></param>
   /// <returns></returns>
   public static float GetFloat(string key) {
-    if (Instance.Options.ContainsKey(key)) {
-      var success = float.TryParse(Instance.Options[key], out var result);
+    if (Options.ContainsKey(key)) {
+      var success = float.TryParse(Options[key], out var result);
       return success ? result : 0.0f;
     }
     return 0.0f;
@@ -68,7 +68,7 @@ public class GameplaySettings {
   /// </summary>
   /// <param name="key"></param>
   /// <returns></returns>
-  public static string GetString(string key) => Instance.Options.ContainsKey(key) ? Instance.Options[key] : "";
+  public static string GetString(string key) => Options.ContainsKey(key) ? Options[key] : "";
 
   // Setters
   /// <summary>
@@ -77,7 +77,7 @@ public class GameplaySettings {
   /// <param name="key"></param>
   /// <param name="value"></param>
   public static void SetBool(string key, bool value) {
-    Instance.Options[key] = value.ToString();
+    Options[key] = value.ToString();
     OptionsChanged?.Invoke();
   }
 
@@ -87,7 +87,7 @@ public class GameplaySettings {
   /// <param name="key"></param>
   /// <param name="value"></param>
   public static void SetFloat(string key, float value) {
-    Instance.Options[key] = value.ToString();
+    Options[key] = value.ToString();
     OptionsChanged?.Invoke();
   }
 
@@ -97,41 +97,24 @@ public class GameplaySettings {
   /// <param name="key"></param>
   /// <param name="value"></param>
   public static void SetString(string key, string value) {
-    Instance.Options[key] = value;
+    Options[key] = value;
     OptionsChanged?.Invoke();
   }
 
-  //
-  //  Singleton Setup
-  //
-  public static GameplaySettings Instance {
-    get {
-      if (_instance is null) {
-        CreateInstance();
-      }
-
-      return _instance;
-    }
-  }
-  private static GameplaySettings _instance;
   private const string FILE_PATH = "gameplay.json";
 
   private static void CreateInstance() {
-    _instance ??= new GameplaySettings();
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
     foreach (var entry in builder.Iterator) {
-      _instance.Options[entry.Key] = entry.Value;
+      Options[entry.Key] = entry.Value;
     }
     OptionsChanged?.Invoke();
     EventBus.Data.SerializeAll += SaveSettings;
   }
 
   public static void SaveSettings() {
-    if (_instance == null) {
-      return;
-    }
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false);
-    foreach (var entry in _instance.Options) {
+    foreach (var entry in Options) {
       builder.PutString(entry.Key, entry.Value);
     }
     builder.SaveToFile();
