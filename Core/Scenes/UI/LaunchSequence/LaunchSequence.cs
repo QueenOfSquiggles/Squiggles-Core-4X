@@ -53,7 +53,7 @@ public partial class LaunchSequence : Control {
     }
 
     var ran = new Random();
-    if (!Stats.Instance.FirstTimeLaunch && (ran.NextSingle() > _chanceDoAnyway)) {
+    if (!Stats.FirstTimeLaunch && (ran.NextSingle() > _chanceDoAnyway)) {
 #if DEBUG
 
       if (!_testing) {
@@ -73,7 +73,7 @@ public partial class LaunchSequence : Control {
 #endif
     }
 
-    Stats.Instance.FirstTimeLaunch = false;
+    Stats.FirstTimeLaunch = false;
     Stats.SaveSettings();
     _anim?.Play("OpeningAnimation");
   }

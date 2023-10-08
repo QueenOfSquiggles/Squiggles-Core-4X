@@ -31,20 +31,20 @@ public partial class ActionMappingSlot : HBoxContainer {
     }
 
     _label.Text = TargetAction.Replace("_", " ");
-    _actionButton.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);
-    Controls.Instance.OnControlMappingChanged += HandleMappingChanged;
+    _actionButton.Text = Controls.GetCurrentMappingFor(TargetAction);
+    Controls.OnControlMappingChanged += HandleMappingChanged;
   }
 
-  public override void _ExitTree() => Controls.Instance.OnControlMappingChanged -= HandleMappingChanged;
+  public override void _ExitTree() => Controls.OnControlMappingChanged -= HandleMappingChanged;
 
   private void HandleMappingChanged(string action) {
     if (action != TargetAction || _actionButton is null) {
       return;
     }
 
-    _actionButton.Text = Controls.Instance.GetCurrentMappingFor(TargetAction);
+    _actionButton.Text = Controls.GetCurrentMappingFor(TargetAction);
   }
 
   public void AssignButtonPressed() => EmitSignal(nameof(ListenForAction), TargetAction);
-  public void ResetAction() => Controls.Instance.ResetMapping(TargetAction);
+  public void ResetAction() => Controls.ResetMapping(TargetAction);
 }

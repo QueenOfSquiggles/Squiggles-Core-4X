@@ -39,8 +39,8 @@ public partial class AudioTab : PanelContainer {
 
 
   public void ApplyChanges() {
-    var count = AudioBuses.Instance.Volumes.Length;
-    var _ = AudioBuses.Instance; // force load, which will resize volumes array
+    var count = AudioBuses.Volumes.Length;
+    AudioBuses.Load(); // force load, which will resize volumes array
     for (var i = 0; i < count; i++) {
       var slider = _slidersRoot?.GetChild(i);
       if (slider is null) {
@@ -48,7 +48,7 @@ public partial class AudioTab : PanelContainer {
       }
 
       var sci = new SliderComboAdapter(slider);
-      AudioBuses.Instance.Volumes[i] = sci.SliderValue;
+      AudioBuses.Volumes[i] = sci.SliderValue;
     }
     AudioBuses.SaveSettings();
   }

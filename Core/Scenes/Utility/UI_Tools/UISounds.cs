@@ -81,7 +81,7 @@ public partial class UISounds : Node {
   }
 
   private void OnSelect() {
-    if (Access.Instance.ReadVisibleTextAloud && GetParent().Get("text").VariantType != Variant.Type.Nil) {
+    if (Access.ReadVisibleTextAloud && GetParent().Get("text").VariantType != Variant.Type.Nil) {
       var text_string = GetParent()?.Get("text").AsString();
       if (text_string is not null) {
         DoTTS(text_string);

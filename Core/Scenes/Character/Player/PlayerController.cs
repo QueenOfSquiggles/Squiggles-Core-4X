@@ -132,7 +132,7 @@ public partial class PlayerController : CharacterBody3D {
   private Vector2 _gamepadVecFlip = new(-1, 1);
   private Vector2 GetGamepadLookVector()
     => Input.GetVector("gamepad_look_left", "gamepad_look_right", "gamepad_look_down", "gamepad_look_up")
-      * Controls.Instance.ControllerLookSensitivity
+      * Controls.ControllerLookSensitivity
       * _gamepadVecFlip;
 
   private bool _wasCollidingInteractable;
@@ -179,7 +179,7 @@ public partial class PlayerController : CharacterBody3D {
       return false;
     }
 
-    _cameraLookVector += mm.Relative * Controls.Instance.MouseLookSensivity * -1f;
+    _cameraLookVector += mm.Relative * Controls.MouseLookSensivity * -1f;
     return true;
   }
 

@@ -49,8 +49,8 @@ public partial class ControlsTab : PanelContainer {
     _popupListening.Exclusive = true;
     _popupListening.WindowInput += _Input;
 
-    _sliderMouse.Value = Controls.Instance.MouseLookSensivity;
-    _sliderGamepad.Value = Controls.Instance.ControllerLookSensitivity;
+    _sliderMouse.Value = Controls.MouseLookSensivity;
+    _sliderGamepad.Value = Controls.ControllerLookSensitivity;
 
     EventBus.Data.SerializeAll += ApplyChanges;
 
@@ -121,18 +121,18 @@ public partial class ControlsTab : PanelContainer {
 
     if (is_valid) {
       Print.Debug($"Processing input event override for action {_currentActionTarget}, received event: {@event.AsText()}");
-      Controls.Instance.SetMapping(_currentActionTarget, @event);
+      Controls.SetMapping(_currentActionTarget, @event);
       _currentActionTarget = "";
       _listening = false;
       _popupListening?.Hide();
     }
   }
 
-  public void ResetAllMappings() => Controls.Instance.ResetMappings();
+  public void ResetAllMappings() => Controls.ResetMappings();
 
   public void ApplyChanges() {
-    Controls.Instance.MouseLookSensivity = (float)(_sliderMouse?.Value ?? 0);
-    Controls.Instance.ControllerLookSensitivity = (float)(_sliderGamepad?.Value ?? 0);
+    Controls.MouseLookSensivity = (float)(_sliderMouse?.Value ?? 0);
+    Controls.ControllerLookSensitivity = (float)(_sliderGamepad?.Value ?? 0);
     Controls.SaveSettings();
   }
 

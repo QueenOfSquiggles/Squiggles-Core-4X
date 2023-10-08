@@ -7,7 +7,7 @@ using Squiggles.Core.Events;
 /// <summary>
 /// A singleton for managing juicy effects. Also handles the settings for reducing discomfort from certain effects. i.e. a player can disable screen shake if it affects them.
 /// </summary>
-public class Effects {
+public static class Effects {
 
   //
   //  Meaningful information
@@ -17,19 +17,19 @@ public class Effects {
   /// <summary>
   /// The default strength at which to rumble controllers at
   /// </summary>
-  public float RumbleStrength = 0.75f;
+  public static float RumbleStrength { get; set; } = 0.75f;
   /// <summary>
   /// The maximum rumble allowed for rumbling controllers (clamped)
   /// </summary>
-  public float MaxRumbleDuration = 5.0f;
+  public static float MaxRumbleDuration { get; set; } = 5.0f;
   /// <summary>
   /// The default strength at which the screen shakes
   /// </summary>
-  public float ScreenShakeStrength = 0.75f;
+  public static float ScreenShakeStrength { get; set; } = 0.75f;
   /// <summary>
   /// The maximum amount of screen shake allowed.
   /// </summary>
-  public float MaxScreenShakeDuration = 10.0f;
+  public static float MaxScreenShakeDuration { get; set; } = 10.0f;
 
   //
   //  Functions for applying effects
@@ -39,7 +39,7 @@ public class Effects {
   /// Event for when screen shake is requested. Parameters are: speed, strength, duration.
   /// Strength and Duration are adjusted to meet the settings of the user.
   /// </summary>
-  public event Action<float, float, float> RequestScreenShake;
+  public static event Action<float, float, float> RequestScreenShake;
 
   /// <summary>
   /// Triggers a screen shake
@@ -48,9 +48,9 @@ public class Effects {
   /// <param name="strength">the strength at which to shake (higher means shaking moves the camera further</param>
   /// <param name="duration">the duration of time in seconds to perform this screen shake</param>
   public static void Shake(float speed, float strength, float duration) {
-    var str = strength * Instance.ScreenShakeStrength;
-    var dur = Mathf.Clamp(duration, 0.0f, Instance.MaxScreenShakeDuration);
-    Instance.RequestScreenShake?.Invoke(speed, str, 1.0f / dur);
+    var str = strength * ScreenShakeStrength;
+    var dur = Mathf.Clamp(duration, 0.0f, MaxScreenShakeDuration);
+    RequestScreenShake?.Invoke(speed, str, 1.0f / dur);
   }
 
   /// <summary>
@@ -62,9 +62,9 @@ public class Effects {
   /// <param name="controller_id">optionally a specific controller id to rumble. Useful for counch multiplayer. If left default (-1), all connected controllers are rumbled. </param>
   public static void Rumble(float strong, float weak, float duration = 0.1f, int controller_id = -1) {
     var current = Input.GetConnectedJoypads();
-    var len = duration * Instance.MaxRumbleDuration;
-    var str = Mathf.Clamp(strong * Instance.RumbleStrength, 0.0f, 1.0f);
-    var wee = Mathf.Clamp(weak * Instance.RumbleStrength, 0.0f, 1.0f);
+    var len = duration * MaxRumbleDuration;
+    var str = Mathf.Clamp(strong * RumbleStrength, 0.0f, 1.0f);
+    var wee = Mathf.Clamp(weak * RumbleStrength, 0.0f, 1.0f);
 
     if (controller_id < 0) {
       foreach (var index in current) {
@@ -76,37 +76,23 @@ public class Effects {
     }
   }
 
-  //
-  //  Singleton Setup
-  //
-  public static Effects Instance {
-    get {
-      if (_instance is null) {
-        CreateInstance();
-      }
-
-      return _instance;
-
-    }
-  }
-  private static Effects _instance;
   private const string FILE_PATH = "effects.json";
 
   private static void CreateInstance() {
-    _instance = new Effects();
-    var loaded = SaveData.Load<Effects>(FILE_PATH);
-    if (loaded != null) {
-      _instance = loaded;
-    }
     EventBus.Data.SerializeAll += SaveSettings;
-
+    var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
+    RumbleStrength = builder.GetFloat(nameof(RumbleStrength), out var f1) ? f1 : RumbleStrength;
+    MaxRumbleDuration = builder.GetFloat(nameof(MaxRumbleDuration), out var f2) ? f2 : MaxRumbleDuration;
+    ScreenShakeStrength = builder.GetFloat(nameof(ScreenShakeStrength), out var f3) ? f3 : ScreenShakeStrength;
+    MaxScreenShakeDuration = builder.GetFloat(nameof(MaxScreenShakeDuration), out var f4) ? f4 : MaxScreenShakeDuration;
   }
 
   public static void SaveSettings() {
-    if (_instance == null) {
-      return;
-    }
-
-    SaveData.Save(_instance, FILE_PATH);
+    var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false);
+    builder.PutFloat(nameof(RumbleStrength), RumbleStrength);
+    builder.PutFloat(nameof(MaxRumbleDuration), MaxRumbleDuration);
+    builder.PutFloat(nameof(ScreenShakeStrength), ScreenShakeStrength);
+    builder.PutFloat(nameof(MaxScreenShakeDuration), MaxScreenShakeDuration);
+    builder.SaveToFile();
   }
 }

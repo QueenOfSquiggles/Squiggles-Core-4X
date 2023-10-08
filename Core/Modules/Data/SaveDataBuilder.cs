@@ -14,6 +14,7 @@ public class SaveDataBuilder {
   private readonly bool _alertErrs;
 
   public IEnumerable<KeyValuePair<string, string>> Iterator => _data;
+  public IEnumerable<string> Keys => _data.Keys;
 
   /// <summary>
   /// Constructs a new SaveDataBuilder

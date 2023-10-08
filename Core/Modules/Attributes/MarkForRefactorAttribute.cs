@@ -11,7 +11,7 @@ public class MarkForRefactorAttribute : Attribute {
   public string PlannedRefactorName;
   public string ReasoningMessage;
 
-  public MarkForRefactorAttribute(string refactorName, string reasoning) {
+  public MarkForRefactorAttribute(string refactorName, string reasoning = "") {
     PlannedRefactorName = refactorName;
     ReasoningMessage = reasoning;
   }
