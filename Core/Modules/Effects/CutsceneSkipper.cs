@@ -5,6 +5,7 @@ using Godot;
 /// <summary>
 /// A handle tool for allowing players to skip any animation sequence. "skipping" actually uses the animation player's "seek" function which ensures all animation modifications are still applied. So any functions called, events triggered, or manipulation of transforms is respected with this skipper.
 /// </summary>
+[GlobalClass]
 public partial class CutsceneSkipper : Node {
 
   /// <summary>

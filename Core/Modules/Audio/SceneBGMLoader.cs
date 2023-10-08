@@ -6,6 +6,7 @@ using Squiggles.Core.Scenes.Utility;
 /// <summary>
 /// A utility that plays a music track when loaded into the scene. Uses <see cref="BGM"/> for sone queuing.
 /// </summary>
+[GlobalClass]
 public partial class SceneBGMLoader : Node {
   /// <summary>
   /// The track to play

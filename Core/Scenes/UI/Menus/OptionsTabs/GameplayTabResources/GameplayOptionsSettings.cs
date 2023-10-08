@@ -1,6 +1,8 @@
 namespace Squiggles.Core.Scenes.UI.Menus.Gameplay;
 
+using System;
 using Godot;
+using Squiggles.Core.Data;
 
 /// <summary>
 /// The resource used for storying gameplay options. Highly dynamic and loaded from the configuration file.
@@ -16,4 +18,19 @@ public partial class GameplayOptionsSettings : Resource {
   /// </summary>
   [Export] public OptionBase[] OptionsArray;
 
+  public void LoadSettings() {
+    foreach (var op in OptionsArray) {
+      switch (op) {
+        case OptionBool opb:
+          GameplaySettings.SetBool(opb.InternalName, opb.Value);
+          break;
+        case OptionSlider ops:
+          GameplaySettings.SetFloat(ops.InternalName, ops.DefaultValue);
+          break;
+        case OptionComboSelect opcs:
+          GameplaySettings.SetString(opcs.InternalName, opcs.Options[opcs.DefaultSelection]);
+          break;
+      }
+    }
+  }
 }

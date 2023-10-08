@@ -11,7 +11,7 @@ using System;
 public partial class WorldEnvSettingsCompliant : WorldEnvironment {
 
   public override void _Ready() {
-    Environment ??= SC4X.Config?.DefaultEnvironment;
+    Environment = SC4X.Config?.DefaultEnvironment;
     ApplyGraphicsSettings();
     Graphics.Instance.OnGraphicsSettingsChanged += ApplyGraphicsSettings;
   }

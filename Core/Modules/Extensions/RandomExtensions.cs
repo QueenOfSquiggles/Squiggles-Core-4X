@@ -28,4 +28,6 @@ public static class RandomExtensions {
   /// <param name="random"></param>
   /// <returns></returns>
   public static bool NextBool(this Random random) => random.Next() % 2 == 0;
+
+  public static int NextRange(this Random random, int max, int min = 0) => (random.Next() % (max - min + 1)) + min;
 }

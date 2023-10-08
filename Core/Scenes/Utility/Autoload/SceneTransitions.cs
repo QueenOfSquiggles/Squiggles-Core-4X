@@ -13,6 +13,7 @@ public partial class SceneTransitions : Node {
 
   [Export] private bool _testing = false;
   [Export] private AnimationPlayer _anim;
+  [Export] private TextureRect _transitionTexture;
   public override void _Ready() {
     if (!this.EnsureSingleton(ref _instance)) { return; }
   }
@@ -25,8 +26,9 @@ public partial class SceneTransitions : Node {
   /// </remarks>
   /// <param name="file_path">the path to a scene file that will be loaded into</param>
   /// <param name="use_sub_threads">optionally use multiple threads to load. If this is true, there may be a stutter on the main thread, but it will load faster. By default it is false. Use it when you're loading up a fairly large scene. Try without first though since it uses a ton of system resources!</param>
-  public static void LoadSceneAsync(string file_path, bool use_sub_threads = false) => Instance?.InternalLoadSceneAsync(file_path, use_sub_threads);
-  private async void InternalLoadSceneAsync(string file_path, bool use_sub_threads = false) {
+  public static void LoadSceneAsync(string file_path, bool use_sub_threads = false, string colour = "black") => Instance?.InternalLoadSceneAsync(file_path, use_sub_threads);
+  private async void InternalLoadSceneAsync(string file_path, bool use_sub_threads = false, string colour = "black") {
+    (_instance._transitionTexture?.Material as ShaderMaterial)?.SetShaderParameter("bg_colour", Color.FromString(colour, Colors.Black));
     var err = ResourceLoader.LoadThreadedRequest(file_path, "PackedScene", use_sub_threads);
     if (err != Error.Ok) {
       Print.Error($"Failed to load the scene file at {file_path} with the threaded load");

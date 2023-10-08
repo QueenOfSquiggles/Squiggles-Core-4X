@@ -34,7 +34,10 @@ public partial class CameraBrain : Camera3D {
   //
   //  Background Systems
   //
-  public override void _Ready() => TopLevel = true;
+  public override void _Ready() {
+    TopLevel = true;
+    AddToGroup("cam_brain");
+  }
   public override void _Process(double delta) {
     if (_updateMode != UPDATE_PROCESS) {
       return;

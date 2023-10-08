@@ -3,6 +3,8 @@ namespace Squiggles.Core.Data;
 using System;
 using System.Collections.Generic;
 using Squiggles.Core.Events;
+using Squiggles.Core.Scenes;
+using Squiggles.Core.Scenes.UI.Menus.Gameplay;
 
 /// <summary>
 /// The singleton for handling gameplay settings. These are designed to be highly configurable with a provider approach.
@@ -38,7 +40,7 @@ public class GameplaySettings {
 
   // Getters
   /// <summary>
-  /// Gets the option cast to a bool
+  /// Gets the option cast to a boolssss
   /// </summary>
   /// <param name="key"></param>
   /// <returns></returns>
@@ -121,6 +123,24 @@ public class GameplaySettings {
     var loaded = SaveData.Load<GameplaySettings>(FILE_PATH);
     if (loaded != null) {
       _instance = loaded;
+    }
+    else {
+      // load from config file
+      if (SC4X.Config?.GameplayConfig?.OptionsArray is OptionBase[] options) {
+        foreach (var op in options) {
+          switch (op) {
+            case OptionBool opb:
+              SetBool(opb.InternalName, opb.Value);
+              break;
+            case OptionSlider ops:
+              SetFloat(ops.InternalName, ops.DefaultValue);
+              break;
+            case OptionComboSelect opcs:
+              SetString(opcs.InternalName, opcs.Options[opcs.DefaultSelection]);
+              break;
+          }
+        }
+      }
     }
     // Print.Info("Gameplay Options Loaded:");
     // foreach (var pair in _instance.Options) {

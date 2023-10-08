@@ -20,7 +20,7 @@ public class Controls {
   /// <summary>
   /// Sensitivity to be applied when performing mouse look processes. Requires dev implementation
   /// </summary>
-  public float MouseLookSensivity = 400.0f;
+  public float MouseLookSensivity = 300.0f;
   /// <summary>
   /// Sensitivity to be applied when performing gamepad/controller look processes. Requires dev implementation
   /// </summary>
@@ -200,11 +200,8 @@ public class Controls {
   private const string FILE_PATH = "controls.json";
 
   private static void CreateInstance() {
-    _instance = new Controls();
     var loaded = SaveData.Load<Controls>(FILE_PATH);
-    if (loaded != null) {
-      _instance = loaded;
-    }
+    _instance = loaded ?? new Controls();
 
     foreach (var key in _instance.MappingsOverloads.Keys) {
       var codes = _instance.MappingsOverloads[key];

@@ -265,7 +265,7 @@ public partial class InventoryManager : Node {
   public void DoForSlots(SlotDataAction action) {
     for (var i = 0; i < _inventorySlots.Length; i++) {
       var slot = _inventorySlots[i];
-      action(i, slot is null ? "" : slot.Item, slot is null ? 0 : slot.Qty);
+      action(i, slot?.Item ?? "", slot?.Qty ?? 0);
     }
   }
 

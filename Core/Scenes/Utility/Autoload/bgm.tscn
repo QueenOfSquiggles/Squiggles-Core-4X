@@ -8,5 +8,9 @@ _busA = NodePath("BusA")
 _busB = NodePath("BusB")
 
 [node name="BusA" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+bus = &"Music"
 
 [node name="BusB" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+bus = &"Music"

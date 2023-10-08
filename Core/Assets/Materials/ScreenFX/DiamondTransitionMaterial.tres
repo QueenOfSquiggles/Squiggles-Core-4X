@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_5rcpr")
-shader_parameter/progress = 0.0
+shader_parameter/progress = 1.0
 shader_parameter/diamondPixelSize = 10.0
-shader_parameter/down = false
+shader_parameter/down = true
 shader_parameter/bg_colour = Color(0, 0, 0, 1)

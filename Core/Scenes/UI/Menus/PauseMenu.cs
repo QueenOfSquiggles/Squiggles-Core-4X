@@ -85,9 +85,15 @@ public partial class PauseMenu : Control {
     }
 
   }
-  private static void OnBtnSave() => EventBus.Data.TriggerSerializeAll();
 
-  private static void OnBtnReloadLastSave() => EventBus.Data.TriggerReload();
+  private void OnBtnSave() {
+    EventBus.Data.TriggerSerializeAll();
+    var _ = Name; // force access instance data
+  }
+  private void OnBtnReloadLastSave() {
+    EventBus.Data.TriggerReload();
+    var _ = Name; // force access instance data
+  }
 
   private void CreateNewSlidingScene(string scene_file) {
     var packed = GD.Load<PackedScene>(scene_file);
