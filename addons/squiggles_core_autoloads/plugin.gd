@@ -7,24 +7,31 @@ func _enter_tree() -> void:
   # load autoload singletons (scene files as they require a particular structure)
 	add_autoload_singleton("Scenes", "res://Core/Scenes/Utility/Autoload/scenes.tscn")
 	add_autoload_singleton("BGM", "res://Core/Scenes/Utility/Autoload/bgm.tscn")
-
-	# set up project settings
-	_set_setting_if_empty("gui/theme/custom", "res://Core/Assets/Theme/default_theme.tres")
-	_set_setting_if_empty("application/run/main_scene", "res://Core/sc4x_entry.tscn")
+	add_tool_menu_item("SC4X Setup Dialog", _create_setup_popup)
 	
 	# validate encryption status is safe
 	_check_encryption_status()
+	# try to do first-time setup helper
+	_try_initial_setup()
+
+const INIT_FILE = "user://.sc4xinit"
+func _try_initial_setup() -> void:
+	var file := FileAccess.open(INIT_FILE, FileAccess.READ)
+	if file:
+		# file already created
+		return
+	_create_setup_popup()
+	file = FileAccess.open(INIT_FILE, FileAccess.WRITE)
+	file.store_string("smh my head")
+
+func _create_setup_popup() -> void:
+	var scene := load("res://addons/squiggles_core_autoloads/automated_setup_dialog.tscn").instantiate() as ConfirmationDialog
+	get_editor_interface().get_base_control().add_child(scene)
+	scene.popup_centered()
 
 func _exit_tree() -> void:
 	remove_autoload_singleton("Scenes")
 	remove_autoload_singleton("BGM")
-
-func _set_setting_if_empty(key : String, value : String) -> void:
-	if ProjectSettings.get_setting(key) == "":
-		# if no main scene is currently set
-		ProjectSettings.set_setting(key, value)
-		print("Automatically set Project Settings::'%s' to '%s' (SC4X default)" % [key, value])
-	
 
 func _hide_api_keys() -> void:
 	if not FileAccess.file_exists("res://appconfig.json"):
