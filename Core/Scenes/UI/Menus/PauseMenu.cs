@@ -15,11 +15,11 @@ public partial class PauseMenu : Control {
   /// <summary>
   /// The path to the main menu file
   /// </summary>
-  [Export(PropertyHint.File, "*.tscn")] private string _mainMenuFile = "";
+  [Export(PropertyHint.File, "*.tscn")] private string _mainMenuFile = "res://Core/Scenes/UI/Menus/main_menu.tscn";
   /// <summary>
   /// The path to the options menu file
   /// </summary>
-  [Export(PropertyHint.File, "*.tscn")] private string _optionsMenuFile = "";
+  [Export] private PackedScene _optionsMenuFile;
 
   /// <summary>
   /// The menu panel
@@ -73,7 +73,7 @@ public partial class PauseMenu : Control {
     EventBus.Data.TriggerSerializeAll();
     await Task.Delay(10);
     GetTree().Paused = false;
-    SceneTransitions.LoadSceneAsync(_mainMenuFile);
+    SceneTransitions.LoadSceneAsync(SC4X.Config?.MainMenuOverride?.Length > 0 ? SC4X.Config.MainMenuOverride : _mainMenuFile);
   }
 
   private void OnBtnOptions() {
@@ -95,8 +95,7 @@ public partial class PauseMenu : Control {
     var _ = Name; // force access instance data
   }
 
-  private void CreateNewSlidingScene(string scene_file) {
-    var packed = GD.Load<PackedScene>(scene_file);
+  private void CreateNewSlidingScene(PackedScene packed) {
     var scene = packed?.Instantiate<Control>();
     if (scene is null) {
       return;

@@ -53,6 +53,7 @@ public partial class LaunchSequence : Control {
     }
 
     var ran = new Random();
+    Stats.Load();
     if (!Stats.FirstTimeLaunch && (ran.NextSingle() > _chanceDoAnyway)) {
 #if DEBUG
 
@@ -87,6 +88,8 @@ public partial class LaunchSequence : Control {
       path = DEFAULT_MAIN_MENU;
     }
 
+    Stats.FirstTimeLaunch = false;
+    Stats.SaveSettings();
     SceneTransitions.LoadSceneAsync(path);
   }
 

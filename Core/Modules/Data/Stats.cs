@@ -19,9 +19,7 @@ public static class Stats {
 
   private const string FILE_PATH = "stats.json";
 
-  public static void ForceLoadInstance() => CreateInstance();
-
-  private static void CreateInstance() {
+  public static void Load() {
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
     FirstTimeLaunch = builder.GetBool(nameof(FirstTimeLaunch), out var b1) ? b1 : FirstTimeLaunch;
     TotalPlayTime = builder.GetFloat(nameof(TotalPlayTime), out var f1) ? f1 : TotalPlayTime;

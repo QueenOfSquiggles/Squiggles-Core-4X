@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ded172dwi4pqg"]
+[gd_scene load_steps=10 format=3 uid="uid://ded172dwi4pqg"]
 
 [ext_resource type="PackedScene" uid="uid://b8y0v225qjej4" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="2_4gb37"]
 [ext_resource type="Material" uid="uid://dvq2x62knaaa4" path="res://Core/Assets/Materials/GUI/blur_layer.tres" id="2_htgoq"]
+[ext_resource type="PackedScene" uid="uid://qaoatrq0ufkr" path="res://Core/Scenes/UI/Menus/options_menu.tscn" id="2_t5kcg"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/PauseMenu.cs" id="2_u13u6"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="3_b8rfi"]
 
@@ -53,11 +54,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -4.0
+offset_right = -2.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_u13u6")
-_mainMenuFile = "res://Core/Scenes/UI/Menus/main_menu.tscn"
-_optionsMenuFile = "res://Core/Scenes/UI/Menus/options_menu.tscn"
+_optionsMenuFile = ExtResource("2_t5kcg")
 _menuPanel = NodePath("PanelContainer")
 _saveSlotRelatedElements = [NodePath("PanelContainer/MarginContainer/VBoxContainer/BtnSave"), NodePath("PanelContainer/MarginContainer/VBoxContainer/BtnLoadLastSave")]
 _loadLastSaveControl = NodePath("PanelContainer/MarginContainer/VBoxContainer/BtnLoadLastSave")
