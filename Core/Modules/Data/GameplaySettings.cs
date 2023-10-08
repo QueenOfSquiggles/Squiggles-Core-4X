@@ -40,7 +40,7 @@ public class GameplaySettings {
 
   // Getters
   /// <summary>
-  /// Gets the option cast to a bool
+  /// Gets the option cast to a boolssss
   /// </summary>
   /// <param name="key"></param>
   /// <returns></returns>
@@ -126,7 +126,7 @@ public class GameplaySettings {
     }
     else {
       // load from config file
-      if (ThisIsYourMainScene.Config?.GameplayConfig?.OptionsArray is OptionBase[] options) {
+      if (SC4X.Config?.GameplayConfig?.OptionsArray is OptionBase[] options) {
         foreach (var op in options) {
           switch (op) {
             case OptionBool opb:

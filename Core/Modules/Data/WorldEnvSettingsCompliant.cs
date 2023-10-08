@@ -11,7 +11,7 @@ using System;
 public partial class WorldEnvSettingsCompliant : WorldEnvironment {
 
   public override void _Ready() {
-    Environment = ThisIsYourMainScene.Config?.DefaultEnvironment;
+    Environment = SC4X.Config?.DefaultEnvironment;
     ApplyGraphicsSettings();
     Graphics.Instance.OnGraphicsSettingsChanged += ApplyGraphicsSettings;
   }
@@ -25,7 +25,7 @@ public partial class WorldEnvSettingsCompliant : WorldEnvironment {
     Environment.SsilEnabled = Graphics.Instance.SSIL;
     Environment.SdfgiEnabled = Graphics.Instance.SDFGI;
 
-    if (ThisIsYourMainScene.Config?.EnableColourCorrection is true) {
+    if (SC4X.Config?.EnableColourCorrection is true) {
       Environment.TonemapExposure = Graphics.Instance.TonemapExposure;
       Environment.AdjustmentBrightness = Graphics.Instance.Brightness;
       Environment.AdjustmentContrast = Graphics.Instance.Contrast;
