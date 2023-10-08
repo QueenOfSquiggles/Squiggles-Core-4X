@@ -15,15 +15,15 @@ public partial class MainMenu : Control {
   /// <summary>
   /// The play menu scene
   /// </summary>
-  [Export(PropertyHint.File, "*.tscn")] private string _playMenuScene = "";
+  [Export] private PackedScene _playMenuScene;
   /// <summary>
   /// The options panel scene
   /// </summary>
-  [Export(PropertyHint.File, "*.tscn")] private string _options = "";
+  [Export] private PackedScene _options;
   /// <summary>
   /// the credits panel scene
   /// </summary>
-  [Export(PropertyHint.File, "*.tscn")] private string _creditsScene = "";
+  [Export] private PackedScene _creditsScene;
 
   /// <summary>
   /// the panel which contains the buttons
@@ -122,8 +122,7 @@ public partial class MainMenu : Control {
     }
   }
 
-  private void CreateNewSlidingScene(string scene_file) {
-    var packed = GD.Load<PackedScene>(scene_file);
+  private void CreateNewSlidingScene(PackedScene packed) {
     var scene = packed.Instantiate<Control>();
     if (scene is null) {
       return;

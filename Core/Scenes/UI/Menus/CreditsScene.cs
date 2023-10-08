@@ -2,19 +2,12 @@ namespace Squiggles.Core.Scenes.UI.Menus;
 
 using System;
 using Godot;
-using Squiggles.Core.Attributes;
-using Squiggles.Core.Scenes.Utility;
 
 /// <summary>
 /// The scene which displays the credits. These are loaded from the config: <see cref="SquigglesCoreConfigFile.CreditsLines"/>
 /// </summary>
 public partial class CreditsScene : Control {
 
-  /// <summary>
-  /// The path for the main menu. Legacy feature
-  /// </summary>
-  [MarkForRefactor("Obsolete", "property from when credits was a separate scene from the main menu.")]
-  [Export(PropertyHint.File, "*.tscn")] private string _mainMenuPath = "";
   /// <summary>
   /// The root node for the credits lines.
   /// </summary>
@@ -33,7 +26,4 @@ public partial class CreditsScene : Control {
       });
     }
   }
-
-  [MarkForRefactor("Obsolete", "property from when credits was a separate scene from the main menu.")]
-  private void OnMenuButtonPressed() => SceneTransitions.LoadSceneAsync(_mainMenuPath);
 }
