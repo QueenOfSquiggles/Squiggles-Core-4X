@@ -10,18 +10,20 @@ using Squiggles.Core.Extension;
 public class SaveDataBuilder {
   private Dictionary<string, string> _data = new();
   private readonly string _filePath = "";
-  private readonly bool _useRootSlot;
+  private readonly bool _useCurrentSlot;
   private readonly bool _alertErrs;
+
+  public IEnumerable<KeyValuePair<string, string>> Iterator => _data;
 
   /// <summary>
   /// Constructs a new SaveDataBuilder
   /// </summary>
   /// <param name="filePath">the file path to use</param>
   /// <param name="alertErrs">Whether or not to print out errors on failure. Defaults to false</param>
-  /// <param name="useRootSaveSlot">Whether or not to use the root save slot ("user://")</param>
-  public SaveDataBuilder(string filePath, bool alertErrs = false, bool useRootSaveSlot = true) {
+  /// <param name="useCurrentSaveSlot">Whether or not to use the root save slot ("user://")</param>
+  public SaveDataBuilder(string filePath, bool alertErrs = false, bool useCurrentSaveSlot = true) {
     _filePath = filePath;
-    _useRootSlot = useRootSaveSlot;
+    _useCurrentSlot = useCurrentSaveSlot;
     _alertErrs = alertErrs;
   }
 
@@ -30,7 +32,7 @@ public class SaveDataBuilder {
   /// </summary>
   /// <returns>returns this calling save datat builder. Constructing a new one when failing to load</returns>
   public SaveDataBuilder LoadFromFile() {
-    _data = _useRootSlot
+    _data = _useCurrentSlot
       ? SaveData.CurrentSaveSlot.Load<Dictionary<string, string>>(_filePath, _alertErrs)
       : SaveData.Load<Dictionary<string, string>>(_filePath, _alertErrs);
     _data ??= new(); // protects from null access
@@ -45,7 +47,7 @@ public class SaveDataBuilder {
       return;
     }
 
-    if (_useRootSlot) {
+    if (_useCurrentSlot) {
       SaveData.CurrentSaveSlot.Save(_data, _filePath);
     }
     else {
