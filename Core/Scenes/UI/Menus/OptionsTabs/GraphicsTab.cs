@@ -69,20 +69,20 @@ public partial class GraphicsTab : PanelContainer {
   public override void _Ready() {
     _useColourCorrection = SC4X.Config?.EnableColourCorrection is true;
 
-    var current = _optionFullscreen.GetItemIndex(Graphics.Instance.Fullscreen);
+    var current = _optionFullscreen.GetItemIndex(Graphics.Fullscreen);
     _optionFullscreen.Selected = current;
 
-    _checkBloom.ButtonPressed = Graphics.Instance.Bloom;
-    _checkSSR.ButtonPressed = Graphics.Instance.SSR;
-    _checkSSAO.ButtonPressed = Graphics.Instance.SSAO;
-    _checkSSIL.ButtonPressed = Graphics.Instance.SSIL;
-    _checkSDFGI.ButtonPressed = Graphics.Instance.SDFGI;
+    _checkBloom.ButtonPressed = Graphics.Bloom;
+    _checkSSR.ButtonPressed = Graphics.SSR;
+    _checkSSAO.ButtonPressed = Graphics.SSAO;
+    _checkSSIL.ButtonPressed = Graphics.SSIL;
+    _checkSDFGI.ButtonPressed = Graphics.SDFGI;
 
     if (_useColourCorrection) {
-      _sliderExposure.Value = Graphics.Instance.TonemapExposure;
-      _sliderBrightness.Value = Graphics.Instance.Brightness;
-      _sliderContrast.Value = Graphics.Instance.Contrast;
-      _sliderSaturation.Value = Graphics.Instance.Saturation;
+      _sliderExposure.Value = Graphics.TonemapExposure;
+      _sliderBrightness.Value = Graphics.Brightness;
+      _sliderContrast.Value = Graphics.Contrast;
+      _sliderSaturation.Value = Graphics.Saturation;
     }
     else {
       foreach (var c in _colourCorrectionControls) {
@@ -104,17 +104,17 @@ public partial class GraphicsTab : PanelContainer {
   public override void _ExitTree() => EventBus.Data.SerializeAll -= ApplyGraphicsSettings;
 
   public void ApplyGraphicsSettings() {
-    Graphics.Instance.Fullscreen = _optionFullscreen.GetSelectedId();
-    Graphics.Instance.Bloom = _checkBloom.ButtonPressed;
-    Graphics.Instance.SSR = _checkSSR.ButtonPressed;
-    Graphics.Instance.SSAO = _checkSSAO.ButtonPressed;
-    Graphics.Instance.SSIL = _checkSSIL.ButtonPressed;
-    Graphics.Instance.SDFGI = _checkSDFGI.ButtonPressed;
+    Graphics.Fullscreen = _optionFullscreen.GetSelectedId();
+    Graphics.Bloom = _checkBloom.ButtonPressed;
+    Graphics.SSR = _checkSSR.ButtonPressed;
+    Graphics.SSAO = _checkSSAO.ButtonPressed;
+    Graphics.SSIL = _checkSSIL.ButtonPressed;
+    Graphics.SDFGI = _checkSDFGI.ButtonPressed;
     if (_useColourCorrection) {
-      Graphics.Instance.TonemapExposure = (float)_sliderExposure.Value;
-      Graphics.Instance.Brightness = (float)_sliderBrightness.Value;
-      Graphics.Instance.Contrast = (float)_sliderContrast.Value;
-      Graphics.Instance.Saturation = (float)_sliderSaturation.Value;
+      Graphics.TonemapExposure = (float)_sliderExposure.Value;
+      Graphics.Brightness = (float)_sliderBrightness.Value;
+      Graphics.Contrast = (float)_sliderContrast.Value;
+      Graphics.Saturation = (float)_sliderSaturation.Value;
     }
     Graphics.MarkGraphicsChanged();
   }

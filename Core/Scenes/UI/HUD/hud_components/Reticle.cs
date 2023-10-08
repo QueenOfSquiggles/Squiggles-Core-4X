@@ -15,7 +15,7 @@ public partial class Reticle : TextureRect {
       QueueFree();
       return;
     }
-    Scale = Vector2.One * Access.Instance.ReticleHiddenScale;
+    Scale = Vector2.One * Access.ReticleHiddenScale;
     EventBus.GUI.MarkAbleToInteract += OnCanInteract;
     EventBus.GUI.MarkUnableToInteract += OnCannotInteract;
   }
@@ -28,12 +28,12 @@ public partial class Reticle : TextureRect {
   private void OnCanInteract(string _) {
     _tween?.Kill();
     _tween = GetTree().CreateTween().SetSC4XStyle();
-    _tween.TweenProperty(this, "scale", Vector2.One * Access.Instance.ReticleShownScale, _transitionTime);
+    _tween.TweenProperty(this, "scale", Vector2.One * Access.ReticleShownScale, _transitionTime);
   }
   private void OnCannotInteract() {
     _tween?.Kill();
     _tween = GetTree().CreateTween().SetSC4XStyle();
-    _tween.TweenProperty(this, "scale", Vector2.One * Access.Instance.ReticleHiddenScale, _transitionTime);
+    _tween.TweenProperty(this, "scale", Vector2.One * Access.ReticleHiddenScale, _transitionTime);
   }
 
 }

@@ -60,16 +60,16 @@ public partial class AccessibilityTab : PanelContainer {
   private bool _requiresReload;
 
   public override void _Ready() {
-    _checkboxNoFlashingLights.SetPressedNoSignal(Access.Instance.PreventFlashingLights);
-    _sliderRumbleStrength.Value = Effects.Instance.RumbleStrength;
-    _sliderRumbleDuration.Value = Effects.Instance.MaxRumbleDuration;
-    _sliderScreenShakeStrength.Value = Effects.Instance.ScreenShakeStrength;
-    _sliderScreenShakeDuration.Value = Effects.Instance.MaxScreenShakeDuration;
-    _sliderMaxVolume.Value = Access.Instance.AudioDecibelLimit;
-    _sliderTimeScale.Value = Access.Instance.EngineTimeScale;
-    _optionFont.Selected = Access.Instance.FontOption;
-    _sliderGUIScale.Value = Access.Instance.GUI_Scale;
-    _checkAlwaysShowReticle.ButtonPressed = Access.Instance.AlwaysShowReticle;
+    _checkboxNoFlashingLights.SetPressedNoSignal(Access.PreventFlashingLights);
+    _sliderRumbleStrength.Value = Effects.RumbleStrength;
+    _sliderRumbleDuration.Value = Effects.MaxRumbleDuration;
+    _sliderScreenShakeStrength.Value = Effects.ScreenShakeStrength;
+    _sliderScreenShakeDuration.Value = Effects.MaxScreenShakeDuration;
+    _sliderMaxVolume.Value = Access.AudioDecibelLimit;
+    _sliderTimeScale.Value = Access.EngineTimeScale;
+    _optionFont.Selected = Access.FontOption;
+    _sliderGUIScale.Value = Access.GUI_Scale;
+    _checkAlwaysShowReticle.ButtonPressed = Access.AlwaysShowReticle;
 
     _checkboxNoFlashingLights.Toggled += OnNoFlashingLightsChanged;
     _optionFont.ItemSelected += OnFontSelected;
@@ -91,40 +91,40 @@ public partial class AccessibilityTab : PanelContainer {
   public override void _ExitTree() => EventBus.Data.SerializeAll -= ApplyChanges;
 
   private void OnNoFlashingLightsChanged(bool do_no_flashing_lights)
-      => Access.Instance.PreventFlashingLights = do_no_flashing_lights;
+      => Access.PreventFlashingLights = do_no_flashing_lights;
   private void SetRumbleStrength(double value)
-      => Effects.Instance.RumbleStrength = (float)value;
+      => Effects.RumbleStrength = (float)value;
   private void SetScreenShakeStrength(double value)
-      => Effects.Instance.ScreenShakeStrength = (float)value;
+      => Effects.ScreenShakeStrength = (float)value;
   private void SetMaxRumbleDuration(double value)
-      => Effects.Instance.MaxRumbleDuration = (float)value;
+      => Effects.MaxRumbleDuration = (float)value;
   private void SetMaxScreenShakeDuration(double value)
-      => Effects.Instance.MaxScreenShakeDuration = (float)value;
+      => Effects.MaxScreenShakeDuration = (float)value;
   private void SetMaxAudio(double value)
-      => Access.Instance.AudioDecibelLimit = (float)value;
+      => Access.AudioDecibelLimit = (float)value;
   private void SetEngineTimeScale(double value)
-      => Access.Instance.EngineTimeScale = (float)value;
+      => Access.EngineTimeScale = (float)value;
 
   private void SetGUIScale(double value) {
-    if (Access.Instance.GUI_Scale != (float)value) {
+    if (Access.GUI_Scale != (float)value) {
       _requiresReload = true;
     }
 
-    Access.Instance.GUI_Scale = (float)value;
+    Access.GUI_Scale = (float)value;
   }
 
   private void OnFontSelected(long index) {
     var target = _optionFont?.GetItemId((int)index) ?? Access.FONT_GOTHIC;
-    if (target == Access.Instance.FontOption) {
+    if (target == Access.FontOption) {
       return;
     }
 
-    Access.Instance.FontOption = target;
+    Access.FontOption = target;
     _requiresReload = true;
   }
 
   private void OnAlwaysShowReticleToggled(bool buttonPressed)
-      => Access.Instance.AlwaysShowReticle = buttonPressed;
+      => Access.AlwaysShowReticle = buttonPressed;
 
 
   public void ApplyChanges() {

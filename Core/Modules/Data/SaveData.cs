@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Godot;
+using Squiggles.Core.Attributes;
 using Squiggles.Core.Error;
 using Squiggles.Core.Extension;
 
@@ -99,6 +100,7 @@ public static class SaveData {
   /// <param name="data">the serializable class to save</param>
   /// <param name="path">the path relative to "user://"</param>
   /// <param name="do_flush">Whether or not to force an IO flush. This is typically unnecessary and will cause a small pause in the game. But forcing a flush does prevent loss of data in the case of a crash. So this is recommended for level save data. </param>
+  [MarkForRefactor("Currently Borked", "")]
   public static void Save<T>(T data, string path, bool do_flush = false) where T : class => _defaultDataPath.Save(data, path, do_flush);
 
   /// <summary>
@@ -107,6 +109,7 @@ public static class SaveData {
   /// <typeparam name="T">data type to load. Must be specified when it cannot be inferred.</typeparam>
   /// <param name="path">The path of a json file relative to "user://"</param>
   /// <returns>The data of type T that was loaded from file. </returns>
+  [MarkForRefactor("Currently Borked")]
   public static T Load<T>(string path, bool print_errors = true) where T : class => _defaultDataPath.Load<T>(path, print_errors);
 
   /// <summary>
@@ -225,6 +228,7 @@ public class DataPath {
   /// <param name="data">the serializable class to save</param>
   /// <param name="path">the path relative to the assigned path (likely a save slot)</param>
   /// <param name="do_flush">Whether or not to force an IO flush. This is typically unnecessary and will cause a small pause in the game. But forcing a flush does prevent loss of data in the case of a crash. So this is recommended for level save data. </param>
+  [MarkForRefactor("Currently Borked")]
   public void Save<T>(T data, string path, bool do_flush = false, bool print_errors = true) where T : class {
     if (JsonSettings == null) {
       LoadDefaultJsonSettings();

@@ -30,9 +30,9 @@ public partial class ScreenShakeDriver : Node {
       return;
     }
     _noise.Seed = new Random().Next();
-    Effects.Instance.RequestScreenShake += ApplyShake;
+    Effects.RequestScreenShake += ApplyShake;
   }
-  public override void _ExitTree() => Effects.Instance.RequestScreenShake -= ApplyShake;
+  public override void _ExitTree() => Effects.RequestScreenShake -= ApplyShake;
 
   /// <summary>
   /// Applies the shake desired
@@ -73,7 +73,7 @@ public partial class ScreenShakeDriver : Node {
       Y = _noise.GetNoise2D(100, _noiseIndex) * _shakeStrength,
       // TODO: is Z shake helpful? I feel like it might not be
       // Z = noise.GetNoise2D(1000, noise_index) * shake_strength,
-    } * Effects.Instance.ScreenShakeStrength;
+    } * Effects.ScreenShakeStrength;
   }
 
 

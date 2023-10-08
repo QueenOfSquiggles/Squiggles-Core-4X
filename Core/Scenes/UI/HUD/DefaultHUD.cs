@@ -121,7 +121,7 @@ public partial class DefaultHUD : Control {
       _reticle = null;
     }
     else {
-      _reticle.Scale = Vector2.One * Access.Instance.ReticleHiddenScale;
+      _reticle.Scale = Vector2.One * Access.ReticleHiddenScale;
     }
 
     _interactionPrompt.Text = "";
@@ -202,7 +202,7 @@ public partial class DefaultHUD : Control {
     _interactionPrompt.VisibleRatio = 0.0f;
     _interactionPrompt.Text = text;
     if (_reticle is not null) {
-      _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.Instance.ReticleShownScale, 0.3f);
+      _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.ReticleShownScale, 0.3f);
     }
     _promptTween.TweenProperty(_interactionPrompt, "visible_ratio", 1.0f, 0.3f);
   }
@@ -213,7 +213,7 @@ public partial class DefaultHUD : Control {
     _promptTween.SetTrans(Tween.TransitionType.Bounce);
 
     if (_reticle is not null) {
-      _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.Instance.ReticleHiddenScale, 0.3f);
+      _promptTween.TweenProperty(_reticle, "scale", Vector2.One * Access.ReticleHiddenScale, 0.3f);
     }
     _promptTween.TweenProperty(_interactionPrompt, "visible_ratio", 0.0f, 0.1f);
   }

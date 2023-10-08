@@ -10,6 +10,6 @@ using Squiggles.Core.Data;
 public partial class LoadGraphicsSettings : Node {
 
   public override void _Ready() {
-    var _ = Graphics.Instance.SDFGI; // forces instance initialization
+    var _ = Graphics.SDFGI; // forces instance initialization
   }
 }

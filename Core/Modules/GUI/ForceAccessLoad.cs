@@ -9,6 +9,6 @@ using Squiggles.Core.Data;
 [GlobalClass]
 public partial class ForceAccessLoad : Node {
   public override void _Ready() {
-    var _ = Access.Instance.FontOption; // forcing a load of the instance
+    var _ = Access.FontOption; // forcing a load of the instance
   }
 }

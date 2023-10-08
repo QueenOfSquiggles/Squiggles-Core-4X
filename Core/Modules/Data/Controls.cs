@@ -10,7 +10,7 @@ using Squiggles.Core.Events;
 /// <summary>
 /// A singleton for managing controls mappings and sensitivities.
 /// </summary>
-public class Controls {
+public static class Controls {
 
   //
   //  Meaningful information
@@ -20,20 +20,20 @@ public class Controls {
   /// <summary>
   /// Sensitivity to be applied when performing mouse look processes. Requires dev implementation
   /// </summary>
-  public float MouseLookSensivity = 300.0f;
+  public static float MouseLookSensivity { get; set; } = 300.0f;
   /// <summary>
   /// Sensitivity to be applied when performing gamepad/controller look processes. Requires dev implementation
   /// </summary>
-  public float ControllerLookSensitivity = 500.0f;
+  public static float ControllerLookSensitivity { get; set; } = 500.0f;
 
   /// <summary>
   /// The currently registerd overloads.
   /// </summary>
-  public Dictionary<string, int[]> MappingsOverloads = new();
+  public static Dictionary<string, int[]> MappingsOverloads { get; set; } = new();
   /// <summary>
   /// A cache of the original mappings to allow reverting easily.
   /// </summary>
-  private readonly Dictionary<string, List<InputEvent>> _originalMappingsCache = new();
+  private static readonly Dictionary<string, List<InputEvent>> _originalMappingsCache = new();
 
 
   //
@@ -43,7 +43,7 @@ public class Controls {
   /// <summary>
   /// An event triggered when the mappings change
   /// </summary>
-  public event Action<string> OnControlMappingChanged;
+  public static event Action<string> OnControlMappingChanged;
 
   //
   //
@@ -56,7 +56,7 @@ public class Controls {
   /// <summary>
   /// Resets all currently loaded mappings. Probably best you don't touch that buddy
   /// </summary>
-  public void ResetMappings() {
+  public static void ResetMappings() {
     var affected = new List<string>();
     foreach (var key in MappingsOverloads.Keys) {
       affected.Add(key);
@@ -73,7 +73,7 @@ public class Controls {
   /// </summary>
   /// <param name="action">the action key</param>
   /// <param name="assigned_input">the event to map to the action</param>
-  public void SetMapping(string action, InputEvent assigned_input) {
+  public static void SetMapping(string action, InputEvent assigned_input) {
     if (!InputMap.HasAction(action)) {
       Print.Warn($"Failed to assign event {assigned_input.AsText()} to input action '{action}'. Mapping not found in InputMap");
       return;
@@ -98,7 +98,7 @@ public class Controls {
   /// Resets a single mapping. Used internally. No touchey!
   /// </summary>
   /// <param name="action">the action to reset</param>
-  public void ResetMapping(string action) {
+  public static void ResetMapping(string action) {
     if (!_originalMappingsCache.ContainsKey(action)) {
       return;
     }
@@ -113,7 +113,7 @@ public class Controls {
     OnControlMappingChanged?.Invoke(action);
   }
 
-  private void LoadMappingsFromData(string action, int[] codes) {
+  private static void LoadMappingsFromData(string action, int[] codes) {
     InputEvent input = null;
     switch (codes[0]) {
       case INPUT_KEY:
@@ -170,7 +170,7 @@ public class Controls {
   /// </summary>
   /// <param name="action">the action name</param>
   /// <returns>a string of the mapping, where each line is a mapping event parsed as text</returns>
-  public string GetCurrentMappingFor(string action) {
+  public static string GetCurrentMappingFor(string action) {
     if (!InputMap.HasAction(action)) {
       Print.Warn($"No action found by name {action}");
       return "";
@@ -183,38 +183,39 @@ public class Controls {
     }
     return result;
   }
-
-  //
-  //  Singleton Setup
-  //
-  public static Controls Instance {
-    get {
-      if (_instance is null) {
-        CreateInstance();
-      }
-
-      return _instance;
-    }
-  }
-  private static Controls _instance;
   private const string FILE_PATH = "controls.json";
 
-  private static void CreateInstance() {
-    var loaded = SaveData.Load<Controls>(FILE_PATH);
-    _instance = loaded ?? new Controls();
-
-    foreach (var key in _instance.MappingsOverloads.Keys) {
-      var codes = _instance.MappingsOverloads[key];
-      _instance.LoadMappingsFromData(key, codes);
-    }
+  public static void CreateInstance() {
     EventBus.Data.SerializeAll += SaveSettings;
+
+    var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
+    foreach (var entry in builder.Keys) {
+      var vector = builder.GetVector3(entry);
+      var buffer = new int[] { (int)vector.X, (int)vector.Y, (int)vector.Z };
+      LoadMappingsFromData(entry, buffer);
+    }
   }
 
   public static void SaveSettings() {
-    if (_instance == null) {
-      return;
-    }
+    var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false);
+    foreach (var entry in MappingsOverloads) {
+      var x = -1;
+      var y = -1;
+      var z = -1;
+      var buffer = entry.Value;
 
-    SaveData.Save(_instance, FILE_PATH);
+      // TODO: There's gotta be a better way to write this
+      if (buffer.Length > 0) {
+        x = entry.Value[0];
+      }
+      if (buffer.Length > 1) {
+        y = entry.Value[1];
+      }
+      if (buffer.Length > 2) {
+        z = entry.Value[2];
+      }
+
+      builder.PutVector3("entry.key", new(x, y, z));
+    }
   }
 }
