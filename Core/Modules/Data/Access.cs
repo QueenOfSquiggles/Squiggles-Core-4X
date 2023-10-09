@@ -1,6 +1,5 @@
 namespace Squiggles.Core.Data;
 
-using System;
 using Godot;
 using Squiggles.Core.Error;
 using Squiggles.Core.Events;

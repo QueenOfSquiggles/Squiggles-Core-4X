@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4l37id685tw"]
+[gd_scene load_steps=11 format=3 uid="uid://b4l37id685tw"]
 
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/MainMenu.cs" id="1_ef7d4"]
 [ext_resource type="PackedScene" uid="uid://bd0c4x15l7x2v" path="res://Core/Scenes/UI/Menus/play_menu.tscn" id="2_nkm0d"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bes6on8dhb1c3" path="res://Core/Scenes/UI/Menus/credits_scene.tscn" id="4_ihhy2"]
 [ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="5_scqaj"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/VersioningLabel.cs" id="7_1dicm"]
-[ext_resource type="Script" path="res://Core/Modules/Data/LoadControlsMappings.cs" id="7_otb7q"]
 [ext_resource type="Script" path="res://Core/Modules/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0pa6q"]
@@ -141,9 +140,6 @@ script = ExtResource("7_1dicm")
 
 [node name="SceneBGMLoader" type="Node" parent="."]
 script = ExtResource("8_4ubeu")
-
-[node name="LoadControlsMappings" type="Node" parent="."]
-script = ExtResource("7_otb7q")
 
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" to="." method="OnBtnPlay"]
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnOptions" to="." method="OnBtnOptions"]
