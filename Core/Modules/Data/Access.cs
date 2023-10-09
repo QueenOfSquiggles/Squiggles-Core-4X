@@ -1,4 +1,6 @@
 namespace Squiggles.Core.Data;
+
+using System;
 using Godot;
 using Squiggles.Core.Error;
 using Squiggles.Core.Events;
@@ -86,12 +88,7 @@ public static class Access {
 
   private const string FILE_PATH = "access.json";
 
-  /// <summary>
-  ///  Forces an instance to be loaded. Helpful when these properties are required early on in the app's life cycle.
-  /// </summary>
-  public static void ForceLoadInstance() => CreateInstance();
-
-  private static void CreateInstance() {
+  public static void Load() {
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
     // bools
     UseSubtitles = builder.GetBool(nameof(UseSubtitles), out var v1) ? v1 : UseSubtitles;

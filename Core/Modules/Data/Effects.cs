@@ -78,7 +78,7 @@ public static class Effects {
 
   private const string FILE_PATH = "effects.json";
 
-  private static void CreateInstance() {
+  public static void Load() {
     EventBus.Data.SerializeAll += SaveSettings;
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
     RumbleStrength = builder.GetFloat(nameof(RumbleStrength), out var f1) ? f1 : RumbleStrength;

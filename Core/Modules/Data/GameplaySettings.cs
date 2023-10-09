@@ -103,7 +103,7 @@ public static class GameplaySettings {
 
   private const string FILE_PATH = "gameplay.json";
 
-  private static void CreateInstance() {
+  public static void Load() {
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
     foreach (var entry in builder.Iterator) {
       Options[entry.Key] = entry.Value;

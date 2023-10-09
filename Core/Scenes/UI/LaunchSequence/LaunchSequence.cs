@@ -53,7 +53,6 @@ public partial class LaunchSequence : Control {
     }
 
     var ran = new Random();
-    Stats.Load();
     if (!Stats.FirstTimeLaunch && (ran.NextSingle() > _chanceDoAnyway)) {
 #if DEBUG
 

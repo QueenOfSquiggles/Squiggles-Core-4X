@@ -185,7 +185,7 @@ public static class Controls {
   }
   private const string FILE_PATH = "controls.json";
 
-  public static void CreateInstance() {
+  public static void Load() {
     EventBus.Data.SerializeAll += SaveSettings;
 
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();

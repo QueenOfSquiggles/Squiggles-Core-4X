@@ -3,6 +3,7 @@ namespace Squiggles.Core.Scenes;
 using System.Reflection;
 using Chickensoft.GoDotTest;
 using Godot;
+using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 using Squiggles.Core.Scenes.Registration;
 using Squiggles.Core.Scenes.Utility;
@@ -43,6 +44,16 @@ public partial class SC4X : Node {
   public override void _Ready() {
     Print.ClearLogFile();
     Print.AddSystemRedirect();
+
+    // load data singletons
+    Access.Load();
+    AudioBuses.Load();
+    Controls.Load();
+    Effects.Load();
+    GameplaySettings.Load();
+    Graphics.Load();
+    Stats.Load();
+
 #if DEBUG
     // using Chickensoft.GoDotTest, execute tests.
     Environment = TestEnvironment.From(OS.GetCmdlineArgs());

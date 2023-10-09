@@ -73,7 +73,7 @@ public static class Graphics {
 
   private const string FILE_PATH = "graphics.json";
 
-  public static void CreateInstance() {
+  public static void Load() {
     EventBus.Data.SerializeAll += SaveSettings;
     var builder = new SaveDataBuilder(FILE_PATH, useCurrentSaveSlot: false).LoadFromFile();
     Fullscreen = builder.GetInt(nameof(Fullscreen), out var i1) ? i1 : Fullscreen;
