@@ -1,6 +1,5 @@
 namespace Squiggles.Core.Scenes;
 
-using System.Reflection;
 using Godot;
 using Squiggles.Core.Data;
 using Squiggles.Core.Error;
@@ -10,8 +9,7 @@ using Squiggles.Core.Scenes.Utility;
 /// <summary>
 /// This is your main scene! This is the default main scene for SC4X as it handles a ton of rerouting and initialization processes.
 /// </summary>
-public partial class SC4X : Node
-{
+public partial class SC4X : Node {
 
   private static SC4X _instance;
 
@@ -36,8 +34,7 @@ public partial class SC4X : Node
 
   private SquigglesCoreConfigFile _config;
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     Print.ClearLogFile();
     Print.AddSystemRedirect();
 
@@ -50,47 +47,39 @@ public partial class SC4X : Node
     Graphics.Load();
     Stats.Load();
 
-    if (_warningLabel is not null)
-    {
+    if (_warningLabel is not null) {
       _warningLabel.Text = "";
     }
 
     _instance = this;
     _config = TryLoadConfigs();
-    if (_config is not null)
-    {
+    if (_config is not null) {
       ProcessConfig(_config);
       LoadNextScene(_config);
     }
-    else if (_warningLabel is not null)
-    {
+    else if (_warningLabel is not null) {
       var msg = $"Failed to find configuration file at: \n {CONFIG_FILE_PATH}";
       _warningLabel.Text = msg;
       Print.Warn(msg);
     }
   }
 
-  private static SquigglesCoreConfigFile TryLoadConfigs()
-  {
+  private static SquigglesCoreConfigFile TryLoadConfigs() {
     var loaded = GD.Load<SquigglesCoreConfigFile>(CONFIG_FILE_PATH);
     return loaded;
   }
 
-  private static void ProcessConfig(SquigglesCoreConfigFile config)
-  {
-    foreach (var reg in config.RegistryTypes)
-    {
+  private static void ProcessConfig(SquigglesCoreConfigFile config) {
+    foreach (var reg in config.RegistryTypes) {
       var path = config.RegistryPathPattern.Replace("%s", reg);
       RegistrationManager.RegisterRegistryType(reg, path);
     }
     RegistrationManager.ReloadRegistries();
   }
 
-  private static void LoadNextScene(SquigglesCoreConfigFile config)
-  {
+  private static void LoadNextScene(SquigglesCoreConfigFile config) {
     var path = DEFAULT_LAUNCH_SEQUENCE;
-    if (config.LaunchSceneOverride.Length > 5)
-    {
+    if (config.LaunchSceneOverride.Length > 5) {
       path = config.LaunchSceneOverride;
     }
 

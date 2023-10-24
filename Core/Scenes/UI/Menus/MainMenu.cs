@@ -90,6 +90,7 @@ public partial class MainMenu : Control {
   }
 
   private void OnBtnContinue() {
+    var _ = Name; // access instance data, prevent "Mark As Static" error
     SaveData.LoadMostRecentSaveSlot();
     EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
     SceneTransitions.LoadSceneAsync(SC4X.Config?.PlayScene ?? "", showProgressBar: true);

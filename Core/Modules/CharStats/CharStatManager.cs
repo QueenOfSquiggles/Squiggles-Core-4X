@@ -2,7 +2,6 @@ namespace Squiggles.Core.CharStats;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
-using Squiggles.CheeseFruitGroves.Data;
 using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 
