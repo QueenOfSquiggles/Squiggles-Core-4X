@@ -46,9 +46,7 @@ public partial class PlayMenu : PanelContainer {
   private void OnBtnContinue() {
     EventBus.Data.TriggerSerializeAll();
     SaveData.LoadMostRecentSaveSlot();
-    if (GetTree().CurrentScene.SceneFilePath != GetLevelScene()) {
-      SceneTransitions.LoadSceneAsync(GetLevelScene());
-    }
+    LoadPlayScene();
     EventBus.Data.TriggerReload();
   }
 
@@ -57,11 +55,15 @@ public partial class PlayMenu : PanelContainer {
   private void LoadSlot(string slot_name) {
     EventBus.Data.TriggerSerializeAll();
     SaveData.SetSaveSlot(slot_name);
-    if (GetTree().CurrentScene.SceneFilePath != GetLevelScene()) {
-      SceneTransitions.LoadSceneAsync(GetLevelScene());
-    }
+    LoadPlayScene();
 
     EventBus.Data.TriggerReload();
+  }
+
+  private void LoadPlayScene() {
+    if (GetTree().CurrentScene.SceneFilePath != GetLevelScene()) {
+      SceneTransitions.LoadSceneAsync(GetLevelScene(), showProgressBar: true);
+    }
   }
 
   private static string GetLevelScene() => SC4X.Config?.PlayScene ?? "";

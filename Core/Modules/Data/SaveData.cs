@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Godot;
+using Godot.Collections;
 using Squiggles.Core.Attributes;
 using Squiggles.Core.Error;
 using Squiggles.Core.Extension;
@@ -28,7 +29,7 @@ public static class SaveData {
   public static string[] GetKnownSaveSlots() {
     using var dir = DirAccess.Open(SAVE_SLOT_ROOT);
     if (dir == null) {
-      return Array.Empty<string>();
+      return System.Array.Empty<string>();
     }
 
     dir.IncludeHidden = false;
@@ -103,6 +104,8 @@ public static class SaveData {
   [MarkForRefactor("Currently Borked", "")]
   public static void Save<T>(T data, string path, bool do_flush = false) where T : class => _defaultDataPath.Save(data, path, do_flush);
 
+  public static void SaveDict(Dictionary dict, string path, bool do_flush = false) => _defaultDataPath.SaveDict(dict, path, do_flush);
+
   /// <summary>
   /// Loads data from a json file to the serializable class.
   /// </summary>
@@ -111,6 +114,7 @@ public static class SaveData {
   /// <returns>The data of type T that was loaded from file. </returns>
   [MarkForRefactor("Currently Borked")]
   public static T Load<T>(string path, bool print_errors = true) where T : class => _defaultDataPath.Load<T>(path, print_errors);
+  public static Dictionary LoadDict(string path, bool print_errors) => _defaultDataPath.LoadDict(path, print_errors);
 
   /// <summary>
   /// Change the <see cref="JsonSerializerOptions"/> for the root (non-save slot) SaveData system. This can be used to modify how types are serialized in JSON. Make sure this works for the Squiggles.Core.Data singletons if you want to mess with it.
@@ -202,7 +206,7 @@ public class DataPath {
   /// <summary>
   /// Any save slot metadata. Helpful for learning more about the save slot in question when presenting multiple slots.
   /// </summary>
-  private readonly Dictionary<string, string> _saveSlotMetaData = new();
+  private readonly System.Collections.Generic.Dictionary<string, string> _saveSlotMetaData = new();
   /// <summary>
   /// Whether or not this data path allows deletion operations.
   /// </summary>
@@ -246,6 +250,44 @@ public class DataPath {
 #endif
     }
   }
+
+  public void SaveDict(Dictionary dict, string path, bool do_flush = false, bool print_errors = true) {
+    try {
+      var json_text = Json.Stringify(dict, "\t");
+      SaveText(json_text, path);
+    }
+    catch (Exception e) {
+#if DEBUG
+      if (print_errors) {
+        Print.Error($"Failed on JSON serialization process for godot dict '{dict}'.\n\tPath={path}\n\tError: {e.Message}", typeof(SaveData).FullName);
+      }
+#endif
+    }
+  }
+
+  public Dictionary LoadDict(string path, bool print_errors) {
+    try {
+      var json_text = LoadText(path, print_errors);
+      if (json_text is null) {
+        return null;
+      }
+
+      if (json_text.EndsWith("}}")) {
+        json_text = json_text.Replace("}}", "}");
+      }
+
+      return Json.ParseString(json_text).AsGodotDictionary();
+    }
+    catch (Exception e) {
+#if DEBUG
+      if (print_errors) {
+        Print.Error($"Failed on JSON serialization process for '{typeof(Dictionary).FullName}'.\n\tPath={path}\n\tError: {e.Message}", typeof(SaveData).FullName);
+      }
+#endif
+    }
+    return null;
+  }
+
   /// <summary>
   /// Loads data from a json file to the serializable class.
   /// </summary>

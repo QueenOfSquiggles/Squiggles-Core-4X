@@ -57,6 +57,18 @@ public partial class RegistrationManager : Node {
     return !registry.Dict.ContainsKey(id) ? null : registry.Dict[id] as T;
   }
 
+  public static List<T> GetAllResourcesForType<T>() where T : Resource {
+    var type_name = typeof(T).Name;
+    if (!_registries.ContainsKey(type_name)) {
+      Print.Warn($"No registry found for type <{type_name}>");
+      return null;
+    }
+    var reg = _registries[type_name];
+    return reg.Dict.ToList()
+      .ConvertAll((e) => e.Value as T)
+      .Where((e) => e is not null).ToList();
+  }
+
   public override void _Ready() {
     ReloadRegistries();
     EventBus.Data.OnModsLoaded += () => {

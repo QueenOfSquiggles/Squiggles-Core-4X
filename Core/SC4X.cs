@@ -1,7 +1,5 @@
 namespace Squiggles.Core.Scenes;
 
-using System.Reflection;
-using Chickensoft.GoDotTest;
 using Godot;
 using Squiggles.Core.Data;
 using Squiggles.Core.Error;
@@ -36,11 +34,6 @@ public partial class SC4X : Node {
 
   private SquigglesCoreConfigFile _config;
 
-  /// <summary>
-  /// The Chickensoft.GodotTest Testing environment used for unit tests (except actually not really because no unit tests exist right now.)
-  /// </summary>
-  public TestEnvironment Environment = default!;
-
   public override void _Ready() {
     Print.ClearLogFile();
     Print.AddSystemRedirect();
@@ -54,14 +47,6 @@ public partial class SC4X : Node {
     Graphics.Load();
     Stats.Load();
 
-#if DEBUG
-    // using Chickensoft.GoDotTest, execute tests.
-    Environment = TestEnvironment.From(OS.GetCmdlineArgs());
-    if (Environment.ShouldRunTests) {
-      CallDeferred("RunTests");
-      return;
-    }
-#endif
     if (_warningLabel is not null) {
       _warningLabel.Text = "";
     }
@@ -78,8 +63,6 @@ public partial class SC4X : Node {
       Print.Warn(msg);
     }
   }
-
-  private void RunTests() => _ = GoTest.RunTests(Assembly.GetExecutingAssembly(), this, Environment);
 
   private static SquigglesCoreConfigFile TryLoadConfigs() {
     var loaded = GD.Load<SquigglesCoreConfigFile>(CONFIG_FILE_PATH);

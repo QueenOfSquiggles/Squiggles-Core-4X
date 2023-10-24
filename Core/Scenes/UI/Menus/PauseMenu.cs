@@ -61,9 +61,7 @@ public partial class PauseMenu : Control {
     }
   }
 
-  private async void ReturnToPlay() {
-    EventBus.Data.TriggerSerializeAll();
-    await Task.Delay(10);
+  private void ReturnToPlay() {
     Input.MouseMode = SC4X.Config?.GameplayConfig?.GameplayMouseMode ?? Input.MouseModeEnum.Captured;
     GetTree().Paused = false;
     QueueFree();
@@ -93,6 +91,7 @@ public partial class PauseMenu : Control {
   private void OnBtnReloadLastSave() {
     EventBus.Data.TriggerReload();
     var _ = Name; // force access instance data
+    GetTree().ReloadCurrentScene();
   }
 
   private void CreateNewSlidingScene(PackedScene packed) {
