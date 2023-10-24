@@ -38,6 +38,7 @@ public partial class MainMenu : Control {
   /// The link button that holds the author name and author link
   /// </summary>
   [Export] private LinkButton _authorLabel;
+  [Export] private Button _continueButton;
 
   private Node _currentPopup;
 
@@ -50,6 +51,9 @@ public partial class MainMenu : Control {
     if (_authorLabel is not null) {
       _authorLabel.Text = Tr(_authorLabel.Text).Replace("%s", SC4X.Config?.AuthorName ?? "SET AUTHOR NAME IN CONFIG");
       _authorLabel.Uri = SC4X.Config?.AuthorGamesURL ?? "";
+    }
+    if (!SaveData.HasSaveData()) {
+      _continueButton?.QueueFree();
     }
   }
 
@@ -85,10 +89,10 @@ public partial class MainMenu : Control {
     }
   }
 
-  private static void OnBtnContinue() {
+  private void OnBtnContinue() {
     SaveData.LoadMostRecentSaveSlot();
     EventBus.Data.TriggerSerializeAll(); // guarantees any open options menus save their data
-    SceneTransitions.LoadSceneAsync(SC4X.Config?.PlayScene ?? "");
+    SceneTransitions.LoadSceneAsync(SC4X.Config?.PlayScene ?? "", showProgressBar: true);
   }
 
   private async void OnBtnOptions() {
@@ -133,11 +137,10 @@ public partial class MainMenu : Control {
     _currentPopup = scene;
   }
 
-  private void OnBtnQuit() {
+  private async void OnBtnQuit() {
     Print.Debug("Quitting game");
-    EventBus.Data.TriggerSerializeAll();
+    await Task.Run(EventBus.Data.TriggerSerializeAll);
     GetTree().Quit();
   }
-
 
 }

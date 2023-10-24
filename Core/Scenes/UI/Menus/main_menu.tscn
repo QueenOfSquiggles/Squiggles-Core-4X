@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8y0v225qjej4" path="res://Core/Scenes/Utility/UI_Tools/request_focus_on_parent.tscn" id="3_k7orp"]
 [ext_resource type="PackedScene" uid="uid://ci8q8yf6jrc8n" path="res://Core/Scenes/Utility/UI_Tools/ui_effects.tscn" id="4_geber"]
 [ext_resource type="PackedScene" uid="uid://bes6on8dhb1c3" path="res://Core/Scenes/UI/Menus/credits_scene.tscn" id="4_ihhy2"]
-[ext_resource type="Texture2D" uid="uid://miwd8lt2k0vm" path="res://icon.png" id="5_scqaj"]
+[ext_resource type="Texture2D" uid="uid://dg4dlinjntkaf" path="res://icon.png" id="5_scqaj"]
 [ext_resource type="Script" path="res://Core/Scenes/UI/Menus/VersioningLabel.cs" id="7_1dicm"]
 [ext_resource type="Script" path="res://Core/Modules/Audio/SceneBGMLoader.cs" id="8_4ubeu"]
 
@@ -93,6 +93,15 @@ layout_mode = 1
 
 [node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" instance=ExtResource("4_geber")]
 
+[node name="BtnContinue" type="Button" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main_menu.continue"
+
+[node name="UISounds" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnContinue" node_paths=PackedStringArray("_sfxSelect", "_sfxClick") instance=ExtResource("4_geber")]
+_sfxSelect = NodePath("../../BtnOptions/UISounds/Select")
+_sfxClick = NodePath("../../BtnOptions/UISounds/Click")
+
 [node name="BtnOptions" type="Button" parent="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -142,6 +151,7 @@ script = ExtResource("7_1dicm")
 script = ExtResource("8_4ubeu")
 
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnPlay" to="." method="OnBtnPlay"]
+[connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnContinue" to="." method="OnBtnContinue"]
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnOptions" to="." method="OnBtnOptions"]
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnCredits" to="." method="OnBtnCredits"]
 [connection signal="pressed" from="ControlButtons/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/BtnQuit" to="." method="OnBtnQuit"]

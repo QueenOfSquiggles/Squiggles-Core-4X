@@ -2,6 +2,7 @@ namespace Squiggles.Core.CharStats;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
+using Squiggles.CheeseFruitGroves.Data;
 using Squiggles.Core.Data;
 using Squiggles.Core.Error;
 
@@ -9,7 +10,7 @@ using Squiggles.Core.Error;
 /// The root node for CharStat Management. It contains the stats and  ensures everything is as expected. Use this to offload managing certain resource bars in your characters.
 /// </summary>
 [GlobalClass]
-public partial class CharStatManager : Node {
+public partial class CharStatManager : Node, IHasSaveData {
 
   /// <summary>
   /// A signal delegate for <see cref="OnStatChange"/> which notifies when a stat changes
@@ -259,28 +260,33 @@ public partial class CharStatManager : Node {
     Print.Debug($"End Stats Manager: {Name}");
   }
 
+  private const string EMBED_KEY = "__stats";
   /// <summary>
   /// Saves the stats out to a <see cref="SaveDataBuilder"/>. This should be called by the parent scene node. Such as the character controller.
   /// </summary>
   /// <param name="build">the builder to use.</param>
-  public void SaveToData(ref SaveDataBuilder build) {
+  public void SaveToData(ref SaveDataBuilder parentBuilder) {
+    var build = new SaveDataBuilder();
     foreach (var stat in _stats) {
-      build.PutFloat($"StatS_{stat.Key}", stat.Value);
+      build.PutFloat(stat.Key, stat.Value);
     }
     foreach (var stat in _dynamicStats) {
-      build.PutFloat($"StatS_{stat.Key}_Value", stat.Value.Value);
-      build.PutFloat($"StatS_{stat.Key}_Max", stat.Value.MaxValue);
-      build.PutFloat($"StatS_{stat.Key}_Regen", stat.Value.RegenRate);
+      build.PutFloat($"{stat.Key}_Value", stat.Value.Value);
+      build.PutFloat($"{stat.Key}_Max", stat.Value.MaxValue);
+      build.PutFloat($"{stat.Key}_Regen", stat.Value.RegenRate);
     }
+    parentBuilder.Append(build, EMBED_KEY);
   }
 
   /// <summary>
   /// Loads in the properties of the stats from the given <see cref="SaveDataBuilder"/>.  This should be called by the parent scene node. Such as the character controller.
   /// </summary>
   /// <param name="build">the builder to use</param>
-  public void LoadFromData(SaveDataBuilder build) {
+  public void LoadFromData(SaveDataBuilder parentBuilder) {
+    var build = parentBuilder.LoadEmbedded(EMBED_KEY);
+    if (build is null) { return; }
     foreach (var stat in _stats) {
-      if (!build.GetFloat($"StatS_{stat.Key}", out var val)) {
+      if (!build.GetFloat(stat.Key, out var val)) {
         continue;
       }
 
@@ -290,15 +296,15 @@ public partial class CharStatManager : Node {
       }
     }
     foreach (var stat in _dynamicStats) {
-      if (!build.GetFloat($"StatS_{stat.Key}_Value", out var val)) {
+      if (!build.GetFloat($"{stat.Key}_Value", out var val)) {
         continue;
       }
 
-      if (!build.GetFloat($"StatS_{stat.Key}_Max", out var max)) {
+      if (!build.GetFloat($"{stat.Key}_Max", out var max)) {
         continue;
       }
 
-      if (!build.GetFloat($"StatS_{stat.Key}_Regen", out var regen)) {
+      if (!build.GetFloat($"{stat.Key}_Regen", out var regen)) {
         continue;
       }
 
@@ -312,4 +318,7 @@ public partial class CharStatManager : Node {
     }
     RebuildStatDict();
   }
+
+  public void Serialize(SaveDataBuilder builder) => SaveToData(ref builder);
+  public void Deserialize(SaveDataBuilder builder) => LoadFromData(builder);
 }

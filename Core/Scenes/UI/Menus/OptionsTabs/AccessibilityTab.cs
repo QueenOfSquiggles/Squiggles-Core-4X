@@ -131,7 +131,8 @@ public partial class AccessibilityTab : PanelContainer {
     Access.SaveSettings();
     Effects.SaveSettings();
     if (_requiresReload) {
-      GetTree().ReloadCurrentScene(); // no need to set variable. reload resets everything
+      // reloading scene breaks some things???
+      // GetTree().ReloadCurrentScene(); // no need to set variable. reload resets everything
     }
   }
 }
